@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ป.3 วิทย์คำนวณ ใบงาน — การอ้างอิงแหล่งข้อมูล</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Sarabun',sans-serif;background:#f8fafc;min-height:100vh;padding:24px}
+.sheet{max-width:680px;margin:0 auto;background:#fff;border-radius:16px;padding:32px;box-shadow:0 4px 24px rgba(0,0,0,.1)}
+.header{text-align:center;margin-bottom:24px;padding-bottom:16px;border-bottom:3px solid #a855f7}
+.header h1{font-size:24px;font-weight:800;color:#581c87;margin-bottom:4px}
+.header p{color:#64748b;font-size:14px}
+.info-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+.info-box{border:1.5px solid #e2e8f0;border-radius:8px;padding:10px 14px}
+.info-box label{font-size:12px;color:#94a3b8;font-weight:600;display:block;margin-bottom:4px}
+.info-box .line{border-bottom:1.5px solid #94a3b8;min-height:24px}
+.section{margin-bottom:20px}
+.section h2{font-size:16px;font-weight:700;color:#a855f7;margin-bottom:12px;padding-left:10px;border-left:4px solid #a855f7}
+.cite-card{border:1.5px solid #e9d5ff;border-radius:12px;padding:16px;background:#faf5ff;margin-bottom:12px}
+.cite-card h3{font-size:14px;font-weight:700;color:#7e22ce;margin-bottom:10px}
+.cite-field{margin-bottom:8px}
+.cite-field label{font-size:12px;color:#7e22ce;font-weight:600;display:block;margin-bottom:2px}
+.cite-field .line{border-bottom:1.5px solid #c4b5fd;min-height:26px}
+.scenario{background:#fef3c7;border:1.5px solid #fbbf24;border-radius:10px;padding:14px;margin-bottom:10px}
+.scenario p{font-size:14px;color:#92400e;font-weight:600;margin-bottom:6px}
+.answer-line{border-bottom:1px solid #d97706;min-height:28px;margin-top:4px}
+.format-box{background:#f3e8ff;border:1.5px solid #c4b5fd;border-radius:10px;padding:14px;margin-bottom:12px}
+.score-box{background:#f5f3ff;border:1.5px solid #c4b5fd;border-radius:10px;padding:14px 18px;margin-top:16px}
+.score-box h3{color:#581c87;font-size:14px;font-weight:700;margin-bottom:8px}
+.score-row{display:flex;justify-content:space-between;align-items:center;padding:4px 0;font-size:13px}
+.footer{text-align:center;margin-top:20px;color:#94a3b8;font-size:12px}
+@media print{body{background:#fff;padding:0}.sheet{box-shadow:none;padding:20px}}
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="header">
+    <h1>©️ ใบงาน — การอ้างอิงแหล่งข้อมูล</h1>
+    <p>วิทยาการคำนวณ ป.3 | หน่วยที่ 5: ใครเป็นเจ้าของ?</p>
+  </div>
+  <div class="info-row">
+    <div class="info-box"><label>ชื่อ-นามสกุล</label><div class="line"></div></div>
+    <div class="info-box"><label>ชั้น / เลขที่</label><div class="line"></div></div>
+    <div class="info-box"><label>หัวข้อสัตว์ที่ค้นหา</label><div class="line"></div></div>
+    <div class="info-box"><label>คะแนน</label><div class="line"></div></div>
+  </div>
+
+  <div class="section">
+    <h2>📚 รูปแบบการอ้างอิง</h2>
+    <div class="format-box">
+      <p style="font-size:14px;color:#6b21a8;font-weight:600;margin-bottom:6px">รูปแบบ:</p>
+      <p style="font-size:14px;color:#581c87"><strong>ชื่อเว็บไซต์.</strong> (ปีที่เข้าถึง). <em>ชื่อบทความ.</em> สืบค้นจาก: URL</p>
+      <p style="font-size:13px;color:#7e22ce;margin-top:8px">ตัวอย่าง: Wikipedia. (2567). <em>สุนัข.</em> สืบค้นจาก: th.wikipedia.org</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>🔍 ส่วนที่ 1: บันทึกแหล่งข้อมูลที่ค้นหา</h2>
+    <div class="cite-card">
+      <h3>แหล่งที่ 1</h3>
+      <div class="cite-field"><label>ชื่อเว็บไซต์</label><div class="line"></div></div>
+      <div class="cite-field"><label>ชื่อบทความ/หน้า</label><div class="line"></div></div>
+      <div class="cite-field"><label>URL (ที่อยู่เว็บ)</label><div class="line"></div></div>
+      <div class="cite-field"><label>วันที่เข้าถึง</label><div class="line"></div></div>
+    </div>
+    <div class="cite-card">
+      <h3>แหล่งที่ 2</h3>
+      <div class="cite-field"><label>ชื่อเว็บไซต์</label><div class="line"></div></div>
+      <div class="cite-field"><label>ชื่อบทความ/หน้า</label><div class="line"></div></div>
+      <div class="cite-field"><label>URL (ที่อยู่เว็บ)</label><div class="line"></div></div>
+      <div class="cite-field"><label>วันที่เข้าถึง</label><div class="line"></div></div>
+    </div>
+    <div class="cite-card">
+      <h3>แหล่งที่ 3</h3>
+      <div class="cite-field"><label>ชื่อเว็บไซต์</label><div class="line"></div></div>
+      <div class="cite-field"><label>ชื่อบทความ/หน้า</label><div class="line"></div></div>
+      <div class="cite-field"><label>URL (ที่อยู่เว็บ)</label><div class="line"></div></div>
+      <div class="cite-field"><label>วันที่เข้าถึง</label><div class="line"></div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>💭 ส่วนที่ 2: ถูกหรือผิด?</h2>
+    <div class="scenario">
+      <p>เอารูปจาก Google มาใส่รายงานโดยไม่บอกแหล่งที่มา ถูกหรือผิด? เพราะอะไร?</p>
+      <div class="answer-line"></div>
+      <div class="answer-line"></div>
+    </div>
+    <div class="scenario">
+      <p>ใช้รูป Creative Commons ที่บอกว่า "ใช้ฟรีได้โดยไม่ต้องอ้างอิง" ถูกหรือผิด?</p>
+      <div class="answer-line"></div>
+      <div class="answer-line"></div>
+    </div>
+  </div>
+
+  <div class="score-box">
+    <h3>✅ เกณฑ์การให้คะแนน</h3>
+    <div class="score-row"><span>อ้างอิงครบ 3 แหล่ง (ข้อมูลครบถ้วน)</span><span>6 คะแนน</span></div>
+    <div class="score-row"><span>ตอบสถานการณ์ถูกต้อง 2 ข้อ</span><span>4 คะแนน</span></div>
+    <div style="border-top:1px solid #c4b5fd;margin-top:8px;padding-top:8px" class="score-row"><strong>รวม</strong><strong>10 คะแนน</strong></div>
+  </div>
+  <div class="footer">โรงเรียนเซนต์โยเซฟระยอง | ครูแพรพลอย ภิบาลจอมมี</div>
+</div>
+</body>
+</html>

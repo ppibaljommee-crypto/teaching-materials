@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ป.2 คอมเพิ่มเติม คู่มือ — หนังสือเล่มเล็กของฉัน</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Sarabun',sans-serif;background:#f8fafc;min-height:100vh;padding:24px}
+.sheet{max-width:680px;margin:0 auto;background:#fff;border-radius:16px;padding:32px;box-shadow:0 4px 24px rgba(0,0,0,.1)}
+.header{text-align:center;margin-bottom:24px;padding-bottom:16px;border-bottom:3px solid #10b981}
+.header h1{font-size:24px;font-weight:800;color:#065f46;margin-bottom:4px}
+.header p{color:#64748b;font-size:14px}
+.info-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+.info-box{border:1.5px solid #e2e8f0;border-radius:8px;padding:10px 14px}
+.info-box label{font-size:12px;color:#94a3b8;font-weight:600;display:block;margin-bottom:4px}
+.info-box .line{border-bottom:1.5px solid #94a3b8;min-height:24px}
+.section{margin-bottom:20px}
+.section h2{font-size:16px;font-weight:700;color:#10b981;margin-bottom:12px;padding-left:10px;border-left:4px solid #10b981}
+.step-card{background:#f0fdf4;border:1.5px solid #bbf7d0;border-radius:12px;padding:14px 16px;margin-bottom:10px;display:flex;gap:12px;align-items:flex-start}
+.step-num{background:#10b981;color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex-shrink:0}
+.step-content h4{font-size:14px;font-weight:700;color:#065f46;margin-bottom:4px}
+.step-content p{font-size:13px;color:#4b5563}
+.plan-box{border:2px solid #10b981;border-radius:12px;padding:16px;margin-bottom:12px}
+.plan-box h3{font-size:15px;font-weight:700;color:#065f46;margin-bottom:12px}
+.plan-row{display:flex;gap:10px;align-items:center;margin-bottom:8px}
+.plan-row label{font-size:13px;font-weight:600;color:#065f46;white-space:nowrap;min-width:80px}
+.plan-row .line{flex:1;border-bottom:1.5px solid #6ee7b7;min-height:26px}
+.draw-box{border:2px dashed #a7f3d0;border-radius:10px;min-height:100px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:13px;margin-top:8px}
+.score-box{background:#f0fdf4;border:1.5px solid #86efac;border-radius:10px;padding:14px 18px;margin-top:16px}
+.score-box h3{color:#166534;font-size:14px;font-weight:700;margin-bottom:8px}
+.score-row{display:flex;justify-content:space-between;align-items:center;padding:4px 0;font-size:13px}
+.footer{text-align:center;margin-top:20px;color:#94a3b8;font-size:12px}
+@media print{body{background:#fff;padding:0}.sheet{box-shadow:none;padding:20px}}
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="header">
+    <h1>📚 คู่มือสร้าง: หนังสือเล่มเล็กของฉัน</h1>
+    <p>คอมพิวเตอร์เพิ่มเติม ป.2 | หน่วยที่ 5: หนังสือเล่มเล็กของฉัน</p>
+  </div>
+  <div class="info-row">
+    <div class="info-box"><label>ชื่อ-นามสกุล</label><div class="line"></div></div>
+    <div class="info-box"><label>ชั้น / เลขที่</label><div class="line"></div></div>
+    <div class="info-box"><label>หัวข้อหนังสือ</label><div class="line"></div></div>
+    <div class="info-box"><label>คะแนน</label><div class="line"></div></div>
+  </div>
+
+  <div class="section">
+    <h2>📐 ส่วนที่ 1: วางแผนหนังสือก่อนพิมพ์</h2>
+    <div class="plan-box">
+      <h3>📖 แผนผังหนังสือของฉัน</h3>
+      <div class="plan-row"><label>ชื่อหนังสือ:</label><div class="line"></div></div>
+      <div class="plan-row"><label>ชื่อผู้แต่ง:</label><div class="line"></div></div>
+      <div class="plan-row"><label>หัวข้อที่ 1:</label><div class="line"></div></div>
+      <div class="plan-row"><label>หัวข้อที่ 2:</label><div class="line"></div></div>
+      <div class="plan-row"><label>หัวข้อที่ 3:</label><div class="line"></div></div>
+      <p style="font-size:12px;color:#64748b;margin-top:8px">ออกแบบปกคร่าวๆ:</p>
+      <div class="draw-box">วาดแบบปก</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>🔧 ส่วนที่ 2: ขั้นตอนการสร้าง</h2>
+    <div class="step-card"><div class="step-num">1</div><div class="step-content"><h4>ตั้งค่าหน้ากระดาษ</h4><p>Layout → Margins (2cm) → A4 Portrait</p></div></div>
+    <div class="step-card"><div class="step-num">2</div><div class="step-content"><h4>สร้างปก (หน้า 1)</h4><p>ชื่อหนังสือใหญ่ + ชื่อผู้แต่ง + รูปภาพ</p></div></div>
+    <div class="step-card"><div class="step-num">3</div><div class="step-content"><h4>สร้างสารบัญ (หน้า 2)</h4><p>รายชื่อหัวข้อและเลขหน้า</p></div></div>
+    <div class="step-card"><div class="step-num">4</div><div class="step-content"><h4>เขียนเนื้อหา (หน้า 3-4)</h4><p>หัวข้อ + เนื้อหา + รูปภาพประกอบ</p></div></div>
+    <div class="step-card"><div class="step-num">5</div><div class="step-content"><h4>เพิ่มเลขหน้าและบันทึก</h4><p>Insert → Page Number → Ctrl+S บันทึก</p></div></div>
+  </div>
+
+  <div class="section">
+    <h2>✅ รายการตรวจสอบ</h2>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div style="display:flex;align-items:center;gap:10px;padding:6px;background:#f0fdf4;border-radius:8px"><div style="width:20px;height:20px;border:2px solid #10b981;border-radius:4px;flex-shrink:0"></div><span style="font-size:14px">มีปกที่สวยงาม มีชื่อเรื่องและชื่อผู้แต่ง</span></div>
+      <div style="display:flex;align-items:center;gap:10px;padding:6px;background:#f0fdf4;border-radius:8px"><div style="width:20px;height:20px;border:2px solid #10b981;border-radius:4px;flex-shrink:0"></div><span style="font-size:14px">มีสารบัญถูกต้อง</span></div>
+      <div style="display:flex;align-items:center;gap:10px;padding:6px;background:#f0fdf4;border-radius:8px"><div style="width:20px;height:20px;border:2px solid #10b981;border-radius:4px;flex-shrink:0"></div><span style="font-size:14px">เนื้อหาอย่างน้อย 2 หน้า มีรูปภาพ</span></div>
+      <div style="display:flex;align-items:center;gap:10px;padding:6px;background:#f0fdf4;border-radius:8px"><div style="width:20px;height:20px;border:2px solid #10b981;border-radius:4px;flex-shrink:0"></div><span style="font-size:14px">มีเลขหน้าทุกหน้า</span></div>
+      <div style="display:flex;align-items:center;gap:10px;padding:6px;background:#f0fdf4;border-radius:8px"><div style="width:20px;height:20px;border:2px solid #10b981;border-radius:4px;flex-shrink:0"></div><span style="font-size:14px">บันทึกไฟล์ชื่อ: ชื่อตัวเอง_หนังสือ</span></div>
+    </div>
+  </div>
+
+  <div class="score-box">
+    <h3>✅ เกณฑ์การให้คะแนน</h3>
+    <div class="score-row"><span>ปกสวยงาม ครบถ้วน</span><span>2 คะแนน</span></div>
+    <div class="score-row"><span>สารบัญถูกต้อง</span><span>2 คะแนน</span></div>
+    <div class="score-row"><span>เนื้อหาครบ 2+ หน้า มีรูป</span><span>4 คะแนน</span></div>
+    <div class="score-row"><span>มีเลขหน้า + บันทึกไฟล์</span><span>2 คะแนน</span></div>
+    <div style="border-top:1px solid #86efac;margin-top:8px;padding-top:8px" class="score-row"><strong>รวม</strong><strong>10 คะแนน</strong></div>
+  </div>
+  <div class="footer">โรงเรียนเซนต์โยเซฟระยอง | ครูแพรพลอย ภิบาลจอมมี</div>
+</div>
+</body>
+</html>

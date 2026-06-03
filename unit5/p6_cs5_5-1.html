@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ป.6 วิทย์คำนวณ ใบงาน 5.1 — สถานการณ์ภัยไซเบอร์</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Sarabun',sans-serif;background:#f8fafc;min-height:100vh;padding:24px}
+.sheet{max-width:720px;margin:0 auto;background:#fff;border-radius:16px;padding:32px;box-shadow:0 4px 24px rgba(0,0,0,.1)}
+.header{text-align:center;margin-bottom:24px;padding-bottom:16px;border-bottom:3px solid #f59e0b}
+.header h1{font-size:24px;font-weight:800;color:#78350f;margin-bottom:4px}
+.header p{color:#64748b;font-size:14px}
+.info-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+.info-box{border:1.5px solid #e2e8f0;border-radius:8px;padding:10px 14px}
+.info-box label{font-size:12px;color:#94a3b8;font-weight:600;display:block;margin-bottom:4px}
+.info-box .line{border-bottom:1.5px solid #94a3b8;min-height:24px}
+.section{margin-bottom:20px}
+.section h2{font-size:16px;font-weight:700;color:#f59e0b;margin-bottom:12px;padding-left:10px;border-left:4px solid #f59e0b}
+.cyber-card{border:1.5px solid #fed7aa;border-radius:12px;padding:16px;background:#fffbeb;margin-bottom:14px}
+.cyber-card h3{font-size:15px;font-weight:700;color:#92400e;margin-bottom:10px}
+.cyber-card p.scenario{font-size:14px;color:#78350f;background:#fef3c7;border-radius:8px;padding:10px;margin-bottom:10px;border-left:3px solid #f59e0b}
+.field{margin-bottom:8px}
+.field label{font-size:12px;color:#b45309;font-weight:600;display:block;margin-bottom:2px}
+.field .line{border-bottom:1.5px solid #fcd34d;min-height:26px}
+.type-select{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.type-badge{background:#f3f4f6;border:1.5px solid #d1d5db;border-radius:8px;padding:4px 12px;font-size:12px;font-weight:600;cursor:pointer;color:#6b7280}
+.type-badge.selected{background:#fef3c7;border-color:#f59e0b;color:#92400e}
+.score-box{background:#fffbeb;border:1.5px solid #fcd34d;border-radius:10px;padding:14px 18px;margin-top:16px}
+.score-box h3{color:#78350f;font-size:14px;font-weight:700;margin-bottom:8px}
+.score-row{display:flex;justify-content:space-between;align-items:center;padding:4px 0;font-size:13px}
+.footer{text-align:center;margin-top:20px;color:#94a3b8;font-size:12px}
+@media print{body{background:#fff;padding:0}.sheet{box-shadow:none;padding:20px}}
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="header">
+    <h1>🛡️ ใบงาน 5.1 — วิเคราะห์สถานการณ์ภัยไซเบอร์</h1>
+    <p>วิทยาการคำนวณ ป.6 | หน่วยที่ 5: ป้องกันตัวในโลกดิจิทัล</p>
+  </div>
+  <div class="info-row">
+    <div class="info-box"><label>ชื่อ-นามสกุล</label><div class="line"></div></div>
+    <div class="info-box"><label>ชั้น / เลขที่</label><div class="line"></div></div>
+    <div class="info-box"><label>วันที่</label><div class="line"></div></div>
+    <div class="info-box"><label>คะแนน</label><div class="line"></div></div>
+  </div>
+
+  <div class="section">
+    <h2>🎯 คำชี้แจง</h2>
+    <p style="font-size:13px;color:#64748b;background:#f8fafc;padding:10px;border-radius:8px">อ่านสถานการณ์แต่ละข้อ แล้ว (1) ระบุประเภทภัยไซเบอร์ (2) บอกวิธีรับมือที่ถูกต้อง</p>
+  </div>
+
+  <div class="section">
+    <h2>📋 สถานการณ์ที่ต้องวิเคราะห์</h2>
+
+    <div class="cyber-card">
+      <h3>สถานการณ์ที่ 1</h3>
+      <p class="scenario">ได้รับอีเมลจาก "ธนาคารกรุงไทย" แจ้งว่าบัญชีถูกระงับ ต้องคลิกลิงก์เพื่อยืนยันข้อมูล</p>
+      <div class="field"><label>ประเภทภัยไซเบอร์:</label><div class="type-select"><span class="type-badge">Phishing</span><span class="type-badge">Malware</span><span class="type-badge">Scam</span><span class="type-badge">Cyberbullying</span></div></div>
+      <div class="field" style="margin-top:10px"><label>วิธีรับมือ:</label><div class="line"></div><div class="line" style="margin-top:4px"></div></div>
+    </div>
+
+    <div class="cyber-card">
+      <h3>สถานการณ์ที่ 2</h3>
+      <p class="scenario">Download ซอฟต์แวร์ฟรีจากเว็บไซต์ไม่รู้จัก หลังจากนั้นคอมพิวเตอร์ทำงานช้าผิดปกติ มีโปรแกรมแปลกๆ ติดตั้งมาเอง</p>
+      <div class="field"><label>ประเภทภัยไซเบอร์:</label><div class="type-select"><span class="type-badge">Phishing</span><span class="type-badge">Malware</span><span class="type-badge">Scam</span><span class="type-badge">Hacking</span></div></div>
+      <div class="field" style="margin-top:10px"><label>วิธีรับมือ:</label><div class="line"></div><div class="line" style="margin-top:4px"></div></div>
+    </div>
+
+    <div class="cyber-card">
+      <h3>สถานการณ์ที่ 3</h3>
+      <p class="scenario">มีบัญชี Social Media ไม่รู้จักโพสต์รูปที่ทำให้เพื่อนอับอาย และส่งข้อความด่าทอซ้ำๆ</p>
+      <div class="field"><label>ประเภทภัยไซเบอร์:</label><div class="type-select"><span class="type-badge">Phishing</span><span class="type-badge">Malware</span><span class="type-badge">Cyberbullying</span><span class="type-badge">Scam</span></div></div>
+      <div class="field" style="margin-top:10px"><label>วิธีรับมือ:</label><div class="line"></div><div class="line" style="margin-top:4px"></div></div>
+    </div>
+
+    <div class="cyber-card">
+      <h3>สถานการณ์ที่ 4</h3>
+      <p class="scenario">ได้รับข้อความใน Line ว่า "ส่งต่อ 10 คน รับเงิน 5,000 บาท" พร้อมขอให้กรอกเลขบัตรประชาชน</p>
+      <div class="field"><label>ประเภทภัยไซเบอร์:</label><div class="type-select"><span class="type-badge">Phishing</span><span class="type-badge">Scam</span><span class="type-badge">Spam</span><span class="type-badge">Malware</span></div></div>
+      <div class="field" style="margin-top:10px"><label>วิธีรับมือ:</label><div class="line"></div><div class="line" style="margin-top:4px"></div></div>
+    </div>
+
+    <div class="cyber-card">
+      <h3>สถานการณ์ที่ 5</h3>
+      <p class="scenario">รหัสผ่าน Email ถูกเปลี่ยนโดยไม่ได้ทำเอง และมีอีเมลส่งออกไปหาคนอื่นโดยที่ไม่รู้เรื่อง</p>
+      <div class="field"><label>ประเภทภัยไซเบอร์:</label><div class="type-select"><span class="type-badge">Hacking</span><span class="type-badge">Phishing</span><span class="type-badge">Malware</span><span class="type-badge">Scam</span></div></div>
+      <div class="field" style="margin-top:10px"><label>วิธีรับมือ:</label><div class="line"></div><div class="line" style="margin-top:4px"></div></div>
+    </div>
+  </div>
+
+  <div class="score-box">
+    <h3>✅ เกณฑ์การให้คะแนน</h3>
+    <div class="score-row"><span>ระบุประเภทภัยถูกต้อง (5 ข้อ × 1 คะแนน)</span><span>5 คะแนน</span></div>
+    <div class="score-row"><span>วิธีรับมือสมเหตุสมผล (5 ข้อ × 1 คะแนน)</span><span>5 คะแนน</span></div>
+    <div style="border-top:1px solid #fcd34d;margin-top:8px;padding-top:8px" class="score-row"><strong>รวม</strong><strong>10 คะแนน</strong></div>
+  </div>
+  <div class="footer">โรงเรียนเซนต์โยเซฟระยอง | ครูแพรพลอย ภิบาลจอมมี</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ป.2 วิทย์คำนวณ ใบงาน — กฎดิจิทัลของฉัน</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Sarabun',sans-serif;background:#f8fafc;min-height:100vh;padding:24px}
+.sheet{max-width:680px;margin:0 auto;background:#fff;border-radius:16px;padding:32px;box-shadow:0 4px 24px rgba(0,0,0,.1)}
+.header{text-align:center;margin-bottom:24px;padding-bottom:16px;border-bottom:3px solid #10b981}
+.header h1{font-size:24px;font-weight:800;color:#065f46;margin-bottom:4px}
+.header p{color:#64748b;font-size:14px}
+.info-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+.info-box{border:1.5px solid #e2e8f0;border-radius:8px;padding:10px 14px}
+.info-box label{font-size:12px;color:#94a3b8;font-weight:600;display:block;margin-bottom:4px}
+.info-box .line{border-bottom:1.5px solid #94a3b8;min-height:24px}
+.section{margin-bottom:20px}
+.section h2{font-size:16px;font-weight:700;color:#10b981;margin-bottom:12px;padding-left:10px;border-left:4px solid #10b981}
+.pledge-card{border:3px solid #10b981;border-radius:16px;padding:20px;background:#f0fdf4;margin-bottom:16px}
+.pledge-title{font-size:18px;font-weight:800;color:#065f46;text-align:center;margin-bottom:16px}
+.pledge-item{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px dashed #a7f3d0}
+.pledge-item:last-child{border-bottom:none}
+.pledge-num{background:#10b981;color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex-shrink:0}
+.pledge-write{flex:1}
+.pledge-write input,.pledge-write .line{border:none;border-bottom:1.5px solid #6ee7b7;width:100%;min-height:28px;font-family:'Sarabun',sans-serif;font-size:15px;background:transparent}
+.sign-area{text-align:center;margin-top:20px;padding:16px;border:2px dashed #10b981;border-radius:12px}
+.sign-line{border-bottom:1.5px solid #000;width:200px;margin:16px auto 4px}
+.scenario{background:#fef3c7;border:1.5px solid #fbbf24;border-radius:10px;padding:14px;margin-bottom:10px}
+.scenario p{font-size:14px;color:#92400e;font-weight:600;margin-bottom:6px}
+.scenario .answer{border-bottom:1px solid #d97706;min-height:28px;margin-top:4px}
+.score-box{background:#f0fdf4;border:1.5px solid #86efac;border-radius:10px;padding:14px 18px;margin-top:16px}
+.score-box h3{color:#166534;font-size:14px;font-weight:700;margin-bottom:8px}
+.score-row{display:flex;justify-content:space-between;align-items:center;padding:4px 0;font-size:13px}
+.footer{text-align:center;margin-top:20px;color:#94a3b8;font-size:12px}
+@media print{body{background:#fff;padding:0}.sheet{box-shadow:none;padding:20px}}
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="header">
+    <h1>📜 ใบงาน — กฎดิจิทัลของฉัน</h1>
+    <p>วิทยาการคำนวณ ป.2 | หน่วยที่ 5: กฎของฉันในโลกดิจิทัล</p>
+  </div>
+  <div class="info-row">
+    <div class="info-box"><label>ชื่อ-นามสกุล</label><div class="line"></div></div>
+    <div class="info-box"><label>ชั้น / เลขที่</label><div class="line"></div></div>
+    <div class="info-box"><label>วันที่</label><div class="line"></div></div>
+    <div class="info-box"><label>คะแนน</label><div class="line"></div></div>
+  </div>
+
+  <div class="section">
+    <h2>📋 ส่วนที่ 1: Digital Citizenship Pledge Card</h2>
+    <div class="pledge-card">
+      <div class="pledge-title">🤝 คำสัญญาพลเมืองดิจิทัลของฉัน</div>
+      <div class="pledge-item"><div class="pledge-num">1</div><div class="pledge-write"><div class="line"></div></div></div>
+      <div class="pledge-item"><div class="pledge-num">2</div><div class="pledge-write"><div class="line"></div></div></div>
+      <div class="pledge-item"><div class="pledge-num">3</div><div class="pledge-write"><div class="line"></div></div></div>
+      <div class="pledge-item"><div class="pledge-num">4</div><div class="pledge-write"><div class="line"></div></div></div>
+      <div class="pledge-item"><div class="pledge-num">5</div><div class="pledge-write"><div class="line"></div></div></div>
+      <div class="sign-area">
+        <p style="font-size:13px;color:#065f46">ฉันขอสัญญาว่าจะปฏิบัติตามกฎเหล่านี้</p>
+        <div class="sign-line"></div>
+        <p style="font-size:12px;color:#94a3b8">ลายเซ็น</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>🎭 ส่วนที่ 2: สถานการณ์จำลอง</h2>
+    <p style="font-size:13px;color:#64748b;margin-bottom:10px">อ่านสถานการณ์และเขียนว่าควรทำอย่างไร</p>
+    <div class="scenario">
+      <p>🔴 เพื่อนออนไลน์ส่งข้อความด่าทอเรา ควรทำอย่างไร?</p>
+      <div class="answer"></div>
+    </div>
+    <div class="scenario">
+      <p>🔴 เห็นรูปของเพื่อนและอยากแชร์ต่อ ควรทำอย่างไร?</p>
+      <div class="answer"></div>
+    </div>
+    <div class="scenario">
+      <p>🔴 ใช้หน้าจอมาหลายชั่วโมงแล้ว ควรทำอย่างไร?</p>
+      <div class="answer"></div>
+    </div>
+  </div>
+
+  <div class="score-box">
+    <h3>✅ เกณฑ์การให้คะแนน</h3>
+    <div class="score-row"><span>เขียนกฎครบ 5 ข้อ (มีความหมาย)</span><span>5 คะแนน</span></div>
+    <div class="score-row"><span>ตอบสถานการณ์ 3 ข้อ</span><span>3 คะแนน</span></div>
+    <div class="score-row"><span>มีลายเซ็น</span><span>2 คะแนน</span></div>
+    <div style="border-top:1px solid #86efac;margin-top:8px;padding-top:8px" class="score-row"><strong>รวม</strong><strong>10 คะแนน</strong></div>
+  </div>
+  <div class="footer">โรงเรียนเซนต์โยเซฟระยอง | ครูแพรพลอย ภิบาลจอมมี</div>
+</div>
+</body>
+</html>

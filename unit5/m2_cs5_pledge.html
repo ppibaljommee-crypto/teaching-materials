@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ม.2 วิทย์คำนวณ — Digital Citizenship Pledge Card</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Sarabun',sans-serif;background:#f8fafc;min-height:100vh;padding:24px}
+.sheet{max-width:720px;margin:0 auto;background:#fff;border-radius:16px;padding:32px;box-shadow:0 4px 24px rgba(0,0,0,.1)}
+.header{text-align:center;margin-bottom:24px;padding-bottom:16px;border-bottom:3px solid #06b6d4}
+.header h1{font-size:24px;font-weight:800;color:#0c4a6e;margin-bottom:4px}
+.header p{color:#64748b;font-size:14px}
+.info-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+.info-box{border:1.5px solid #e2e8f0;border-radius:8px;padding:10px 14px}
+.info-box label{font-size:12px;color:#94a3b8;font-weight:600;display:block;margin-bottom:4px}
+.info-box .line{border-bottom:1.5px solid #94a3b8;min-height:24px}
+.section{margin-bottom:20px}
+.section h2{font-size:16px;font-weight:700;color:#06b6d4;margin-bottom:12px;padding-left:10px;border-left:4px solid #06b6d4}
+.pledge-card{border:3px solid #06b6d4;border-radius:20px;padding:24px;background:linear-gradient(135deg,#f0f9ff,#e0f2fe);margin-bottom:16px;position:relative}
+.pledge-card::before{content:'🌐';position:absolute;top:-20px;left:50%;transform:translateX(-50%);font-size:36px}
+.pledge-title{font-size:20px;font-weight:800;color:#0c4a6e;text-align:center;margin:8px 0 20px}
+.pledge-sub{font-size:13px;color:#64748b;text-align:center;margin-bottom:16px}
+.pledge-item{display:flex;align-items:flex-start;gap:12px;padding:8px 0;border-bottom:1px dashed #7dd3fc}
+.pledge-item:last-of-type{border-bottom:none}
+.pledge-num{background:#06b6d4;color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex-shrink:0;margin-top:2px}
+.pledge-write{flex:1;border-bottom:1.5px solid #38bdf8;min-height:30px;font-size:15px}
+.sign-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px}
+.sign-box{text-align:center}
+.sign-line{border-bottom:1.5px solid #0ea5e9;min-height:32px;margin-bottom:4px}
+.sign-label{font-size:12px;color:#64748b}
+.analysis{background:#f0f9ff;border:1.5px solid #bae6fd;border-radius:12px;padding:16px;margin-bottom:12px}
+.analysis h3{font-size:14px;font-weight:700;color:#0369a1;margin-bottom:10px}
+.q{font-size:14px;color:#0c4a6e;font-weight:600;margin-bottom:6px}
+.ans{border-bottom:1px solid #7dd3fc;min-height:26px;margin-bottom:10px}
+.score-box{background:#f0f9ff;border:1.5px solid #7dd3fc;border-radius:10px;padding:14px 18px;margin-top:16px}
+.score-box h3{color:#0c4a6e;font-size:14px;font-weight:700;margin-bottom:8px}
+.score-row{display:flex;justify-content:space-between;align-items:center;padding:4px 0;font-size:13px}
+.footer{text-align:center;margin-top:20px;color:#94a3b8;font-size:12px}
+@media print{body{background:#fff;padding:0}.sheet{box-shadow:none;padding:20px}}
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="header">
+    <h1>⚖️ Digital Citizenship Pledge Card</h1>
+    <p>วิทยาการคำนวณ ม.2 | หน่วยที่ 5: ความปลอดภัยและจริยธรรมดิจิทัล</p>
+  </div>
+  <div class="info-row">
+    <div class="info-box"><label>ชื่อ-นามสกุล</label><div class="line"></div></div>
+    <div class="info-box"><label>ชั้น / เลขที่</label><div class="line"></div></div>
+    <div class="info-box"><label>วันที่</label><div class="line"></div></div>
+    <div class="info-box"><label>คะแนน</label><div class="line"></div></div>
+  </div>
+
+  <div class="section">
+    <h2>🤝 ส่วนที่ 1: Digital Citizenship Pledge Card</h2>
+    <div class="pledge-card">
+      <div class="pledge-title">คำสัญญาพลเมืองดิจิทัล</div>
+      <div class="pledge-sub">ฉัน ______________________________ ขอสัญญาต่อตัวเองและสังคมว่า</div>
+      <div class="pledge-item"><div class="pledge-num">1</div><div class="pledge-write"></div></div>
+      <div class="pledge-item"><div class="pledge-num">2</div><div class="pledge-write"></div></div>
+      <div class="pledge-item"><div class="pledge-num">3</div><div class="pledge-write"></div></div>
+      <div class="pledge-item"><div class="pledge-num">4</div><div class="pledge-write"></div></div>
+      <div class="pledge-item"><div class="pledge-num">5</div><div class="pledge-write"></div></div>
+      <div class="sign-row">
+        <div class="sign-box"><div class="sign-line"></div><div class="sign-label">ลายเซ็นผู้ให้คำสัญญา</div></div>
+        <div class="sign-box"><div class="sign-line"></div><div class="sign-label">วันที่ให้คำสัญญา</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📊 ส่วนที่ 2: วิเคราะห์กรณีศึกษา</h2>
+    <div class="analysis">
+      <h3>กรณีศึกษา 1: ข้อมูลรั่วไหล</h3>
+      <p class="q">บริษัทแห่งหนึ่งถูก Hack ข้อมูลลูกค้า 1 ล้านรายหลุดออกไป ใครต้องรับผิดชอบและต้องทำอะไร?</p>
+      <div class="ans"></div><div class="ans"></div>
+    </div>
+    <div class="analysis">
+      <h3>กรณีศึกษา 2: Fake News</h3>
+      <p class="q">เพื่อนแชร์ข่าวที่ดูน่าเชื่อถือแต่ยังไม่ได้ตรวจสอบ คุณจะทำอย่างไร? และทำไม?</p>
+      <div class="ans"></div><div class="ans"></div>
+    </div>
+    <div class="analysis">
+      <h3>กรณีศึกษา 3: PDPA</h3>
+      <p class="q">โรงเรียนต้องการใช้ภาพถ่ายนักเรียนในโบรชัวร์โรงเรียน ต้องทำอะไรตาม PDPA?</p>
+      <div class="ans"></div><div class="ans"></div>
+    </div>
+  </div>
+
+  <div class="score-box">
+    <h3>✅ เกณฑ์การให้คะแนน</h3>
+    <div class="score-row"><span>Pledge Card ครบ 5 ข้อ (สะท้อนความเข้าใจจริง)</span><span>5 คะแนน</span></div>
+    <div class="score-row"><span>วิเคราะห์กรณีศึกษา 3 ข้อ (ถูกต้องและลึกซึ้ง)</span><span>3 คะแนน</span></div>
+    <div class="score-row"><span>มีลายเซ็น + วันที่</span><span>2 คะแนน</span></div>
+    <div style="border-top:1px solid #7dd3fc;margin-top:8px;padding-top:8px" class="score-row"><strong>รวม</strong><strong>10 คะแนน</strong></div>
+  </div>
+  <div class="footer">โรงเรียนเซนต์โยเซฟระยอง | ครูแพรพลอย ภิบาลจอมมี</div>
+</div>
+</body>
+</html>

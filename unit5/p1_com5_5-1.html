@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ป.1 คอมเพิ่มเติม ใบงาน 5.1 — การ์ดแนะนำตัว</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Sarabun',sans-serif;background:#f8fafc;min-height:100vh;padding:24px}
+.sheet{max-width:680px;margin:0 auto;background:#fff;border-radius:16px;padding:32px;box-shadow:0 4px 24px rgba(0,0,0,.1)}
+.header{text-align:center;margin-bottom:24px;padding-bottom:16px;border-bottom:3px solid #f97316}
+.header h1{font-size:24px;font-weight:800;color:#7c2d12;margin-bottom:4px}
+.header p{color:#64748b;font-size:14px}
+.info-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+.info-box{border:1.5px solid #e2e8f0;border-radius:8px;padding:10px 14px}
+.info-box label{font-size:12px;color:#94a3b8;font-weight:600;display:block;margin-bottom:4px}
+.info-box .line{border-bottom:1.5px solid #94a3b8;min-height:24px}
+.section{margin-bottom:20px}
+.section h2{font-size:16px;font-weight:700;color:#f97316;margin-bottom:12px;padding-left:10px;border-left:4px solid #f97316}
+.card-template{border:3px solid #f97316;border-radius:20px;padding:24px;background:#fff7ed;margin-bottom:16px;min-height:300px}
+.card-template h3{font-size:16px;font-weight:700;color:#7c2d12;text-align:center;margin-bottom:16px}
+.info-field{display:grid;grid-template-columns:auto 1fr;gap:8px;align-items:center;margin-bottom:12px}
+.info-field label{font-size:14px;font-weight:600;color:#92400e;white-space:nowrap}
+.info-field .line{border-bottom:1.5px solid #fdba74;min-height:28px}
+.draw-box{border:2px dashed #fdba74;border-radius:12px;min-height:160px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:13px;margin:12px 0}
+.checklist{background:#fff7ed;border:1.5px solid #fdba74;border-radius:10px;padding:14px}
+.check-item{display:flex;align-items:center;gap:10px;padding:6px 0;font-size:14px;border-bottom:1px solid #fed7aa}
+.check-item:last-child{border-bottom:none}
+.checkbox{width:20px;height:20px;border:2px solid #f97316;border-radius:4px;flex-shrink:0}
+.score-box{background:#fff7ed;border:1.5px solid #fdba74;border-radius:10px;padding:14px 18px;margin-top:16px}
+.score-box h3{color:#7c2d12;font-size:14px;font-weight:700;margin-bottom:8px}
+.score-row{display:flex;justify-content:space-between;align-items:center;padding:4px 0;font-size:13px}
+.footer{text-align:center;margin-top:20px;color:#94a3b8;font-size:12px}
+@media print{body{background:#fff;padding:0}.sheet{box-shadow:none;padding:20px}}
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="header">
+    <h1>🎨 ใบงาน 5.1 — การ์ดแนะนำตัว</h1>
+    <p>คอมพิวเตอร์เพิ่มเติม ป.1 | หน่วยที่ 5: สร้างชิ้นงานดิจิทัล</p>
+  </div>
+  <div class="info-row">
+    <div class="info-box"><label>ชื่อ-นามสกุล</label><div class="line"></div></div>
+    <div class="info-box"><label>ชั้น / เลขที่</label><div class="line"></div></div>
+    <div class="info-box"><label>วันที่</label><div class="line"></div></div>
+    <div class="info-box"><label>คะแนน</label><div class="line"></div></div>
+  </div>
+
+  <div class="section">
+    <h2>📋 ใบวางแผนก่อนพิมพ์คอมฯ</h2>
+    <p style="font-size:13px;color:#64748b;margin-bottom:12px">เขียนข้อมูลที่จะใส่ในการ์ดของคุณก่อน แล้วค่อยไปพิมพ์ในคอมพิวเตอร์</p>
+    <div class="card-template">
+      <h3>🌟 การ์ดแนะนำตัวของฉัน</h3>
+      <div class="info-field"><label>ชื่อฉัน:</label><div class="line"></div></div>
+      <div class="info-field"><label>ชั้น:</label><div class="line"></div></div>
+      <div class="info-field"><label>อายุ:</label><div class="line"></div></div>
+      <div class="info-field"><label>สัตว์โปรด:</label><div class="line"></div></div>
+      <div class="info-field"><label>สีโปรด:</label><div class="line"></div></div>
+      <div class="info-field"><label>อาหารโปรด:</label><div class="line"></div></div>
+      <p style="font-size:13px;color:#92400e;margin:12px 0 4px">วาดรูปที่อยากใส่ในการ์ด:</p>
+      <div class="draw-box">วาดรูปที่นี่</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>✅ รายการตรวจสอบหลังสร้างงาน</h2>
+    <div class="checklist">
+      <div class="check-item"><div class="checkbox"></div><span>พิมพ์ชื่อ-นามสกุลในการ์ดแล้ว</span></div>
+      <div class="check-item"><div class="checkbox"></div><span>มีข้อมูลส่วนตัวอย่างน้อย 5 อย่าง</span></div>
+      <div class="check-item"><div class="checkbox"></div><span>ใส่รูปภาพหรือวาดรูปประกอบ</span></div>
+      <div class="check-item"><div class="checkbox"></div><span>ตกแต่งสีสันสวยงาม</span></div>
+      <div class="check-item"><div class="checkbox"></div><span>บันทึกไฟล์ด้วย Ctrl+S แล้ว</span></div>
+    </div>
+  </div>
+
+  <div class="score-box">
+    <h3>✅ เกณฑ์การให้คะแนน</h3>
+    <div class="score-row"><span>มีชื่อและข้อมูลส่วนตัวครบ 5 อย่าง</span><span>5 คะแนน</span></div>
+    <div class="score-row"><span>มีรูปภาพประกอบ</span><span>2 คะแนน</span></div>
+    <div class="score-row"><span>ตกแต่งสวยงาม อ่านง่าย</span><span>3 คะแนน</span></div>
+    <div style="border-top:1px solid #fdba74;margin-top:8px;padding-top:8px" class="score-row"><strong>รวม</strong><strong>10 คะแนน</strong></div>
+  </div>
+  <div class="footer">โรงเรียนเซนต์โยเซฟระยอง | ครูแพรพลอย ภิบาลจอมมี</div>
+</div>
+</body>
+</html>
