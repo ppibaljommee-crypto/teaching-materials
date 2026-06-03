@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ป.1 วิทยาการคำนวณ - ใบงานเขาวงกต</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Sarabun', sans-serif; background: #fff; }
+  .page {
+    width: 210mm; min-height: 297mm; padding: 12mm 14mm;
+    margin: 0 auto; background: #fff;
+  }
+  .header {
+    background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+    border-radius: 16px; padding: 14px 20px; margin-bottom: 10px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .header-icon { font-size: 40px; }
+  .header-text h1 { color: #fff; font-size: 20px; font-weight: 800; }
+  .header-text p { color: rgba(255,255,255,0.9); font-size: 13px; }
+  .subject-badge {
+    background: #fff; color: #FF6B6B; font-size: 11px; font-weight: 700;
+    padding: 2px 10px; border-radius: 20px; display: inline-block; margin-bottom: 4px;
+  }
+  .info-row {
+    display: grid; grid-template-columns: 2fr 1fr 1fr;
+    gap: 8px; margin-bottom: 10px;
+  }
+  .info-box {
+    border: 1.5px solid #ddd; border-radius: 8px; padding: 6px 10px;
+    font-size: 13px;
+  }
+  .info-box label { font-size: 11px; color: #888; display: block; }
+  .info-box .line { border-bottom: 1px solid #ccc; margin-top: 6px; }
+  .section-title {
+    font-size: 15px; font-weight: 700; color: #FF6B6B;
+    border-left: 4px solid #FF6B6B; padding-left: 8px; margin: 10px 0 6px;
+  }
+  .instruction {
+    background: #FFF3E0; border-radius: 10px; padding: 8px 12px;
+    font-size: 13px; margin-bottom: 8px; border-left: 4px solid #FF8E53;
+  }
+
+  /* MAZE */
+  .maze-wrap {
+    display: flex; justify-content: center; margin: 6px 0;
+  }
+  .maze {
+    border: 3px solid #333; background: #FAFAFA;
+    position: relative; width: 160mm; height: 100mm;
+  }
+  /* Maze walls using divs */
+  .maze-inner {
+    display: grid; grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+    width: 100%; height: 100%; position: absolute;
+  }
+  .wall-h { border-bottom: 3px solid #333; }
+  .wall-v { border-right: 3px solid #333; }
+  .wall-hv { border-bottom: 3px solid #333; border-right: 3px solid #333; }
+  .cell { position: relative; }
+
+  .maze-svg { width: 160mm; height: 110mm; }
+
+  .start-label {
+    text-align: center; font-size: 12px; font-weight: 700;
+    color: #4CAF50; margin-top: 2px;
+  }
+  .end-label {
+    text-align: right; font-size: 12px; font-weight: 700;
+    color: #F44336; margin-top: 0px;
+    padding-right: 0;
+  }
+  .maze-labels {
+    width: 160mm; margin: 0 auto; display: flex; justify-content: space-between;
+    font-size: 12px; font-weight: 700; padding: 0 2px;
+  }
+  .maze-labels .s { color: #4CAF50; }
+  .maze-labels .e { color: #F44336; }
+
+  .try-table {
+    width: 100%; border-collapse: collapse; font-size: 12.5px; margin-top: 4px;
+  }
+  .try-table th {
+    background: #FF6B6B; color: #fff; padding: 6px 8px; text-align: center;
+    font-weight: 700; font-size: 13px;
+  }
+  .try-table td {
+    border: 1px solid #ddd; padding: 6px 8px; vertical-align: top;
+  }
+  .try-table tr:nth-child(even) td { background: #FFF9F9; }
+  .result-box {
+    display: inline-block; width: 18px; height: 18px;
+    border: 1.5px solid #ccc; border-radius: 4px;
+    margin-right: 4px; vertical-align: middle;
+  }
+  .result-success { background: #E8F5E9; border-color: #4CAF50; }
+  .result-fail { background: #FFEBEE; border-color: #F44336; }
+
+  .bottom-note {
+    background: #E8F5E9; border-radius: 10px; padding: 8px 12px;
+    font-size: 13px; margin-top: 8px; border-left: 4px solid #4CAF50;
+    text-align: center;
+  }
+
+  @media print {
+    body { background: white; }
+    .page { margin: 0; padding: 10mm 12mm; width: 210mm; height: 297mm; overflow: hidden; }
+    @page { size: A4; margin: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div class="header-icon">🏃</div>
+    <div class="header-text">
+      <div class="subject-badge">วิทยาการคำนวณ • ชั้น ป.1</div>
+      <h1>ใบงานเขาวงกต — ลองผิดลองถูก เราแก้ได้!</h1>
+      <p>หน่วยที่ 1 : ลองผิดลองถูก เราแก้ได้</p>
+    </div>
+  </div>
+
+  <div class="info-row">
+    <div class="info-box"><label>ชื่อ–นามสกุล</label><div class="line"></div></div>
+    <div class="info-box"><label>ชั้น / ห้อง</label><div class="line"></div></div>
+    <div class="info-box"><label>วันที่</label><div class="line"></div></div>
+  </div>
+
+  <div class="section-title">📌 คำชี้แจง</div>
+  <div class="instruction">
+    วาดเส้นทางผ่านเขาวงกตจากจุดเริ่มต้น 🟢 ไปยังจุดหมาย 🔴 ถ้าเจอทางตัน ให้ย้อนกลับแล้วลองทางใหม่ นับจำนวนครั้งที่ลองในตารางด้านล่าง
+  </div>
+
+  <!-- SVG Maze -->
+  <div class="maze-wrap">
+    <svg class="maze-svg" viewBox="0 0 500 330" xmlns="http://www.w3.org/2000/svg">
+      <!-- Background -->
+      <rect width="500" height="330" fill="#FFFDE7" rx="8"/>
+
+      <!-- Outer border -->
+      <rect x="10" y="10" width="480" height="310" fill="none" stroke="#333" stroke-width="4" rx="4"/>
+
+      <!-- Start marker -->
+      <circle cx="30" cy="165" r="12" fill="#4CAF50"/>
+      <text x="30" y="169" text-anchor="middle" fill="white" font-size="14" font-weight="bold" font-family="Arial">S</text>
+
+      <!-- End marker -->
+      <circle cx="480" cy="165" r="12" fill="#F44336"/>
+      <text x="480" y="169" text-anchor="middle" fill="white" font-size="14" font-weight="bold" font-family="Arial">G</text>
+
+      <!-- Maze walls - horizontal lines -->
+      <line x1="10"  y1="90"  x2="140" y2="90"  stroke="#333" stroke-width="3"/>
+      <line x1="200" y1="90"  x2="310" y2="90"  stroke="#333" stroke-width="3"/>
+      <line x1="370" y1="90"  x2="490" y2="90"  stroke="#333" stroke-width="3"/>
+      <line x1="10"  y1="165" x2="90"  y2="165" stroke="#333" stroke-width="3"/>
+      <line x1="150" y1="165" x2="250" y2="165" stroke="#333" stroke-width="3"/>
+      <line x1="310" y1="165" x2="410" y2="165" stroke="#333" stroke-width="3"/>
+      <line x1="10"  y1="240" x2="180" y2="240" stroke="#333" stroke-width="3"/>
+      <line x1="250" y1="240" x2="360" y2="240" stroke="#333" stroke-width="3"/>
+      <line x1="420" y1="240" x2="490" y2="240" stroke="#333" stroke-width="3"/>
+
+      <!-- Maze walls - vertical lines -->
+      <line x1="140" y1="10"  x2="140" y2="90"  stroke="#333" stroke-width="3"/>
+      <line x1="200" y1="90"  x2="200" y2="165" stroke="#333" stroke-width="3"/>
+      <line x1="90"  y1="165" x2="90"  y2="240" stroke="#333" stroke-width="3"/>
+      <line x1="310" y1="90"  x2="310" y2="165" stroke="#333" stroke-width="3"/>
+      <line x1="250" y1="165" x2="250" y2="240" stroke="#333" stroke-width="3"/>
+      <line x1="370" y1="10"  x2="370" y2="90"  stroke="#333" stroke-width="3"/>
+      <line x1="410" y1="165" x2="410" y2="240" stroke="#333" stroke-width="3"/>
+      <line x1="180" y1="240" x2="180" y2="320" stroke="#333" stroke-width="3"/>
+      <line x1="360" y1="240" x2="360" y2="320" stroke="#333" stroke-width="3"/>
+
+      <!-- Labels -->
+      <text x="30" y="320" text-anchor="middle" fill="#4CAF50" font-size="13" font-family="Sarabun,Arial" font-weight="bold">เริ่ม</text>
+      <text x="470" y="320" text-anchor="middle" fill="#F44336" font-size="13" font-family="Sarabun,Arial" font-weight="bold">จบ</text>
+    </svg>
+  </div>
+
+  <div class="section-title">📝 บันทึกการลอง</div>
+  <table class="try-table">
+    <thead>
+      <tr>
+        <th style="width:50px">ครั้งที่</th>
+        <th>ฉันลองเดิน...</th>
+        <th style="width:130px">ผลที่ได้</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align:center">1</td>
+        <td></td>
+        <td>
+          <span class="result-box result-success"></span>ผ่านได้ &nbsp;
+          <span class="result-box result-fail"></span>ทางตัน
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align:center">2</td>
+        <td></td>
+        <td>
+          <span class="result-box result-success"></span>ผ่านได้ &nbsp;
+          <span class="result-box result-fail"></span>ทางตัน
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align:center">3</td>
+        <td></td>
+        <td>
+          <span class="result-box result-success"></span>ผ่านได้ &nbsp;
+          <span class="result-box result-fail"></span>ทางตัน
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="bottom-note">
+    🌟 "ลองผิดหลายครั้งไม่ใช่เรื่องน่าเสียใจ เพราะทุกครั้งที่ล้มเหลว เราได้เรียนรู้และฉลาดขึ้น!"
+  </div>
+</div>
+</body>
+</html>

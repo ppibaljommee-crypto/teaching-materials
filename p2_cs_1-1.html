@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>ป.2 วิทยาการคำนวณ - ใบงาน 1.1</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Sarabun',sans-serif; background:#fff; }
+  .page { width:210mm; min-height:297mm; padding:12mm 14mm; margin:0 auto; background:#fff; }
+  .header {
+    background:linear-gradient(135deg,#667eea,#764ba2);
+    border-radius:16px; padding:14px 20px; margin-bottom:10px;
+    display:flex; align-items:center; gap:14px;
+  }
+  .header-icon { font-size:40px; }
+  .header-text h1 { color:#fff; font-size:18px; font-weight:800; }
+  .header-text p { color:rgba(255,255,255,0.9); font-size:12px; }
+  .subject-badge { background:#fff; color:#667eea; font-size:11px; font-weight:700; padding:2px 10px; border-radius:20px; display:inline-block; margin-bottom:4px; }
+  .info-row { display:grid; grid-template-columns:2fr 1fr 1fr; gap:8px; margin-bottom:10px; }
+  .info-box { border:1.5px solid #ddd; border-radius:8px; padding:6px 10px; font-size:13px; }
+  .info-box label { font-size:11px; color:#888; display:block; }
+  .info-box .line { border-bottom:1px solid #ccc; margin-top:6px; }
+  .section-title { font-size:15px; font-weight:700; color:#667eea; border-left:4px solid #667eea; padding-left:8px; margin:10px 0 6px; }
+  .instruction { background:#EDE7F6; border-radius:10px; padding:8px 12px; font-size:13px; margin-bottom:10px; border-left:4px solid #764ba2; }
+  .q-box { border:1.5px solid #C5CAE9; border-radius:12px; padding:10px 14px; margin-bottom:10px; background:#F8F9FF; }
+  .q-num { display:inline-block; background:#667eea; color:#fff; border-radius:50%; width:24px; height:24px; text-align:center; line-height:24px; font-weight:700; font-size:13px; margin-right:6px; }
+  .q-text { font-size:14px; font-weight:600; display:inline; }
+  .write-line { border-bottom:1.5px solid #C5CAE9; margin:6px 0; height:24px; }
+
+  /* Decomposition arrows */
+  .decomp-container { display:flex; flex-direction:column; align-items:center; margin:8px 0; }
+  .big-task {
+    background:linear-gradient(135deg,#667eea,#764ba2); color:#fff;
+    border-radius:12px; padding:10px 24px; font-size:15px; font-weight:700;
+    text-align:center; margin-bottom:8px;
+  }
+  .arrow-down { font-size:20px; color:#667eea; margin:2px 0; }
+  .sub-tasks { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; }
+  .sub-task {
+    background:#fff; border:2px solid #667eea; border-radius:10px;
+    padding:8px 12px; font-size:13px; text-align:center; min-width:90px;
+  }
+  .sub-task.blank { border-style:dashed; color:#999; border-color:#aaa; }
+
+  .example-section {
+    border:2px solid #E8EAF6; border-radius:12px; padding:10px 14px; margin-bottom:10px; background:#fff;
+  }
+  .example-title { font-size:13px; font-weight:700; color:#667eea; margin-bottom:6px; }
+
+  .your-turn { background:#EDE7F6; border-radius:10px; padding:10px 14px; margin-bottom:10px; }
+  .your-turn-title { font-size:14px; font-weight:700; color:#764ba2; margin-bottom:6px; }
+
+  .big-task-blank {
+    background:#E8EAF6; border:2px dashed #667eea; color:#667eea;
+    border-radius:12px; padding:10px 24px; font-size:14px; font-weight:700;
+    text-align:center; margin-bottom:8px; min-width:200px;
+  }
+  .sub-tasks-blank { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+  .sub-blank {
+    background:#fff; border:2px dashed #aaa; border-radius:10px;
+    padding:8px 12px; font-size:13px; text-align:center; min-width:90px;
+    height:42px;
+  }
+
+  .score-box { border:2px solid #667eea; border-radius:12px; padding:8px 14px; margin-top:10px; display:flex; justify-content:space-between; align-items:center; }
+  .score-box .score { font-size:22px; font-weight:800; color:#667eea; }
+
+  @media print {
+    body { background:white; }
+    .page { margin:0; padding:10mm 12mm; width:210mm; height:297mm; overflow:hidden; }
+    @page { size:A4; margin:0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div class="header-icon">🧩</div>
+    <div class="header-text">
+      <div class="subject-badge">วิทยาการคำนวณ • ชั้น ป.2</div>
+      <h1>ใบงาน 1.1 — แยกงานใหญ่ให้เป็นงานย่อย</h1>
+      <p>หน่วยที่ 1 : แยกงานใหญ่ให้เป็นงานย่อย</p>
+    </div>
+  </div>
+
+  <div class="info-row">
+    <div class="info-box"><label>ชื่อ–นามสกุล</label><div class="line"></div></div>
+    <div class="info-box"><label>ชั้น / ห้อง</label><div class="line"></div></div>
+    <div class="info-box"><label>วันที่</label><div class="line"></div></div>
+  </div>
+
+  <div class="section-title">📌 คำชี้แจง</div>
+  <div class="instruction">การแก้ปัญหาที่ดีต้องแบ่งงานใหญ่ออกเป็นงานย่อยๆ ก่อน เราเรียกว่า <strong>การย่อยปัญหา (Decomposition)</strong> ทำกิจกรรมต่อไปนี้ให้สมบูรณ์</div>
+
+  <!-- Example -->
+  <div class="example-section">
+    <div class="example-title">🌟 ตัวอย่าง : การทำแซนด์วิช</div>
+    <div class="decomp-container">
+      <div class="big-task">🥪 ทำแซนด์วิช</div>
+      <div class="arrow-down">⬇</div>
+      <div class="sub-tasks">
+        <div class="sub-task">1. เตรียมขนมปัง</div>
+        <div class="sub-task">2. ทาเนย</div>
+        <div class="sub-task">3. วางไส้</div>
+        <div class="sub-task">4. ประกบขนมปัง</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Activity 1 -->
+  <div class="q-box">
+    <span class="q-num">1</span>
+    <span class="q-text">เขียนงานย่อยของ "การแปรงฟัน" ให้ครบ (มีบางส่วนให้แล้ว)</span>
+    <div class="decomp-container" style="margin-top:8px">
+      <div class="big-task">🦷 การแปรงฟัน</div>
+      <div class="arrow-down">⬇</div>
+      <div class="sub-tasks">
+        <div class="sub-task">1. บีบยาสีฟัน</div>
+        <div class="sub-task blank">2. ___________</div>
+        <div class="sub-task">3. แปรงฟันให้ทั่ว</div>
+        <div class="sub-task blank">4. ___________</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Activity 2 -->
+  <div class="q-box">
+    <span class="q-num">2</span>
+    <span class="q-text">แยกงานย่อยของ "การไปโรงเรียน" ด้วยตัวเอง (อย่างน้อย 4 ข้อ)</span>
+    <div class="decomp-container" style="margin-top:8px">
+      <div class="big-task">🏫 การไปโรงเรียน</div>
+      <div class="arrow-down">⬇</div>
+      <div class="sub-tasks-blank">
+        <div class="sub-blank">1.</div>
+        <div class="sub-blank">2.</div>
+        <div class="sub-blank">3.</div>
+        <div class="sub-blank">4.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Activity 3 -->
+  <div class="q-box">
+    <span class="q-num">3</span>
+    <span class="q-text">ทำไมเราต้องแยกงานใหญ่เป็นงานย่อย? ตอบเป็นประโยค</span>
+    <div class="write-line"></div>
+    <div class="write-line"></div>
+  </div>
+
+  <div class="score-box">
+    <div class="label">คะแนนที่ได้<br><span style="font-size:11px;color:#999">ครูให้คะแนน</span></div>
+    <div class="score">______ / 10</div>
+    <div style="text-align:center">
+      <div style="font-size:11px;color:#888">ลายมือชื่อครู</div>
+      <div style="border-bottom:1px solid #ccc;width:80px;margin-top:16px"></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

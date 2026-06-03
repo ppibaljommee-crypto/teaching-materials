@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>ป.3 คอมพิวเตอร์เพิ่มเติม - รายงานนักวิทยาศาสตร์น้อย</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Sarabun',sans-serif; background:#f0f0f0; }
+
+  .page {
+    width:210mm; height:297mm; padding:20mm 22mm;
+    margin:10px auto; background:#fff;
+    display:flex; flex-direction:column;
+    page-break-after:always;
+  }
+
+  /* Page 1 - Cover */
+  .cover { text-align:center; }
+  .cover-badge {
+    display:inline-block; background:linear-gradient(135deg,#56CCF2,#2F80ED);
+    color:#fff; font-size:12px; font-weight:700;
+    padding:4px 16px; border-radius:20px; margin-bottom:16px;
+  }
+  .cover-icon { font-size:80px; margin:16px 0; }
+  .cover h1 { font-size:26px; font-weight:800; color:#1a1a2e; line-height:1.3; margin-bottom:8px; }
+  .cover h2 { font-size:16px; font-weight:600; color:#2F80ED; margin-bottom:24px; }
+  .cover-line { border-bottom:2px solid #2F80ED; margin:12px 0; }
+  .cover-info { text-align:left; margin-top:16px; }
+  .cover-field {
+    display:flex; align-items:center; gap:12px;
+    font-size:14px; margin-bottom:10px; padding:8px 12px;
+    border:1.5px solid #E0E0E0; border-radius:8px;
+  }
+  .cover-field label { font-weight:700; color:#2F80ED; min-width:80px; flex-shrink:0; }
+  .cover-field .field-line { flex:1; border-bottom:1px solid #bbb; height:24px; }
+  .cover-footer {
+    margin-top:auto; padding-top:16px;
+    border-top:2px solid #E0E0E0;
+    display:flex; justify-content:space-between;
+    font-size:12px; color:#888;
+  }
+  .cover-school { font-weight:700; color:#1a1a2e; }
+
+  /* Page 2 - Content */
+  .content-header {
+    background:linear-gradient(135deg,#56CCF2,#2F80ED);
+    border-radius:12px; padding:10px 16px; margin-bottom:12px;
+    color:#fff;
+  }
+  .content-header h2 { font-size:16px; font-weight:800; }
+  .content-header p { font-size:11px; opacity:0.9; }
+
+  .section { margin-bottom:12px; }
+  .section-title {
+    font-size:14px; font-weight:700; color:#2F80ED;
+    border-left:4px solid #2F80ED; padding-left:8px; margin-bottom:6px;
+  }
+  .write-area {
+    border:1.5px solid #E0E0E0; border-radius:8px;
+    padding:6px 10px; background:#FAFAFA;
+  }
+  .write-line { border-bottom:1px solid #E0E0E0; height:22px; margin:2px 0; }
+
+  .image-box {
+    border:2px dashed #56CCF2; border-radius:10px;
+    height:60px; display:flex; align-items:center; justify-content:center;
+    color:#bbb; font-size:12px; background:#F8FBFF; margin:6px 0;
+  }
+
+  table.data-table { width:100%; border-collapse:collapse; font-size:12.5px; margin-bottom:8px; }
+  table.data-table th { background:#2F80ED; color:#fff; padding:5px 8px; text-align:center; }
+  table.data-table td { border:1px solid #E0E0E0; padding:5px 8px; }
+  table.data-table tr:nth-child(even) td { background:#F0F8FF; }
+
+  .conclusion-box {
+    border:2px solid #2F80ED; border-radius:10px; padding:8px 12px; background:#E3F2FD;
+    font-size:13px;
+  }
+
+  .rubric-mini { margin-top:8px; }
+  table.rubric-mini { width:100%; border-collapse:collapse; font-size:12px; }
+  table.rubric-mini th { background:#56CCF2; color:#fff; padding:4px 8px; }
+  table.rubric-mini td { border:1px solid #B2EBF2; padding:4px 8px; text-align:center; }
+
+  @media print {
+    body { background:white; }
+    .page { margin:0; padding:18mm 20mm; width:210mm; height:297mm; }
+    @page { size:A4; margin:0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: Cover -->
+<div class="page">
+  <div class="cover">
+    <div class="cover-badge">🔬 คอมพิวเตอร์เพิ่มเติม • ชั้น ป.3 • หน่วยที่ 1</div>
+    <div class="cover-icon">🧪</div>
+    <div class="cover-line"></div>
+    <h1>รายงานนักวิทยาศาสตร์น้อย</h1>
+    <h2>แบบฟอร์มรายงาน 2 หน้า A4</h2>
+    <div class="cover-line"></div>
+
+    <div style="background:#E3F2FD;border-radius:10px;padding:12px;margin:12px 0;text-align:left">
+      <div style="font-size:13px;font-weight:700;color:#1565C0;margin-bottom:8px">📌 คำแนะนำสำหรับนักเรียน</div>
+      <div style="font-size:12.5px;color:#37474F;line-height:1.8">
+        • เลือกหัวข้อที่น่าสนใจ 1 เรื่อง เช่น พืช สัตว์ ปรากฏการณ์ธรรมชาติ<br>
+        • รวบรวมข้อมูลจากหนังสือ / อินเทอร์เน็ต (ขอความช่วยเหลือจากผู้ปกครอง)<br>
+        • เขียนรายงานด้วยลายมือตัวเอง หรือพิมพ์คอมพิวเตอร์ก็ได้<br>
+        • ใส่รูปภาพหรือวาดภาพประกอบ
+      </div>
+    </div>
+
+    <div class="cover-info">
+      <div class="cover-field">
+        <label>ชื่อเรื่อง</label>
+        <div class="field-line"></div>
+      </div>
+      <div class="cover-field">
+        <label>ชื่อ–สกุล</label>
+        <div class="field-line"></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div class="cover-field">
+          <label>ชั้น/ห้อง</label>
+          <div class="field-line"></div>
+        </div>
+        <div class="cover-field">
+          <label>เลขที่</label>
+          <div class="field-line"></div>
+        </div>
+      </div>
+      <div class="cover-field">
+        <label>วันที่ส่ง</label>
+        <div class="field-line"></div>
+      </div>
+    </div>
+
+    <div class="cover-footer">
+      <span class="cover-school">วิชาคอมพิวเตอร์เพิ่มเติม</span>
+      <span>หน้า 1 / 2</span>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 2: Report Content -->
+<div class="page">
+  <div class="content-header">
+    <h2>🔬 เนื้อหารายงาน</h2>
+    <p>กรอกข้อมูลให้ครบทุกส่วน ใส่รูปภาพหรือวาดภาพประกอบ</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">1. ที่มาและความสำคัญ</div>
+    <div class="write-area">
+      <div class="write-line"></div>
+      <div class="write-line"></div>
+      <div class="write-line"></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">2. ข้อมูลและสาระสำคัญ</div>
+    <div class="write-area">
+      <div class="write-line"></div>
+      <div class="write-line"></div>
+      <div class="write-line"></div>
+      <div class="write-line"></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">3. ภาพประกอบ / ตาราง</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <div class="image-box">📷 ภาพที่ 1 : ______________________</div>
+      <div class="image-box">📷 ภาพที่ 2 : ______________________</div>
+    </div>
+    <table class="data-table" style="margin-top:6px">
+      <thead><tr><th>หัวข้อ</th><th>รายละเอียด</th><th>แหล่งข้อมูล</th></tr></thead>
+      <tbody>
+        <tr><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="section-title">4. สรุปผลและความรู้ที่ได้รับ</div>
+    <div class="conclusion-box">
+      <div class="write-line"></div>
+      <div class="write-line"></div>
+    </div>
+  </div>
+
+  <div class="rubric-mini">
+    <div style="font-size:13px;font-weight:700;color:#2F80ED;margin-bottom:4px">📋 เกณฑ์การให้คะแนน</div>
+    <table class="rubric-mini">
+      <thead><tr><th>หัวข้อ</th><th>เต็ม</th><th>ได้รับ</th></tr></thead>
+      <tbody>
+        <tr><td style="text-align:left">ครบถ้วนตามโครงสร้าง</td><td>4</td><td></td></tr>
+        <tr><td style="text-align:left">ข้อมูลถูกต้องและมีแหล่งอ้างอิง</td><td>3</td><td></td></tr>
+        <tr><td style="text-align:left">ภาษาและการนำเสนอ</td><td>3</td><td></td></tr>
+        <tr style="font-weight:700"><td style="text-align:left">รวม</td><td>10</td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="margin-top:auto;padding-top:8px;border-top:1px solid #E0E0E0;display:flex;justify-content:space-between;font-size:11px;color:#888">
+    <span>วิชาคอมพิวเตอร์เพิ่มเติม • ป.3</span>
+    <span>หน้า 2 / 2</span>
+  </div>
+</div>
+
+</body>
+</html>

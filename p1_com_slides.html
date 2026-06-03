@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="th">
+<head><meta charset="UTF-8"><title>ป.1 คอมพิวเตอร์เพิ่มเติม – รู้จักและดูแลคอมพิวเตอร์</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Sarabun',sans-serif;background:#1a1a2e;overflow:hidden;height:100vh}
+  .slide{display:none;width:100vw;height:100vh;flex-direction:column;align-items:center;justify-content:center;padding:40px;position:relative}.slide.active{display:flex}
+  .s1{background:linear-gradient(135deg,#2193b0,#6dd5ed)}.s2{background:linear-gradient(135deg,#1CB5E0,#000046)}.s3{background:linear-gradient(135deg,#56CCF2,#2F80ED)}.s4{background:linear-gradient(135deg,#2193b0,#6dd5ed)}.s5{background:linear-gradient(135deg,#4CAF50,#8BC34A)}.s6{background:linear-gradient(135deg,#f44336,#E91E63)}.s7{background:linear-gradient(135deg,#2193b0,#6dd5ed)}.s8{background:linear-gradient(135deg,#11998e,#38ef7d)}
+  h1{font-size:clamp(30px,6vw,70px);font-weight:800;color:#fff;text-align:center;text-shadow:0 2px 10px rgba(0,0,0,.3);line-height:1.2}
+  h2{font-size:clamp(22px,4vw,50px);font-weight:700;color:#fff;text-align:center;line-height:1.3}
+  p.sub{font-size:clamp(14px,2.5vw,28px);color:rgba(255,255,255,.9);text-align:center;margin-top:10px}
+  .badge{background:rgba(255,255,255,.25);border-radius:50px;padding:8px 24px;font-size:clamp(12px,1.8vw,20px);color:#fff;font-weight:700;margin-bottom:14px}
+  .big-emoji{font-size:clamp(60px,12vw,130px);text-align:center;line-height:1}
+  .teacher-note{position:fixed;top:16px;right:16px;background:rgba(0,0,0,.5);border-radius:12px;padding:8px 14px;color:rgba(255,255,255,.7);font-size:13px;max-width:260px;text-align:right}
+  .card-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+  .card{background:rgba(255,255,255,.2);backdrop-filter:blur(10px);border-radius:18px;padding:18px 22px;text-align:center;min-width:130px;max-width:180px;flex:1;cursor:pointer;transition:all .2s;border:3px solid transparent}
+  .card:hover,.card.selected{border-color:#FFD700;background:rgba(255,255,255,.35)}
+  .card .icon{font-size:clamp(30px,5vw,56px)}
+  .card p{font-size:clamp(13px,2vw,22px);color:#fff;font-weight:700;margin-top:8px}
+  .card .hidden-label{font-size:clamp(11px,1.6vw,18px);color:#FFD700;margin-top:4px;display:none;font-weight:700}
+  .card.selected .hidden-label{display:block}
+  .step-list{list-style:none;margin-top:12px;max-width:750px;width:100%}
+  .step-list li{background:rgba(255,255,255,.2);border-radius:14px;padding:10px 18px;margin-bottom:9px;font-size:clamp(13px,2vw,24px);color:#fff;display:flex;align-items:center;gap:12px}
+  .sn{background:#fff;border-radius:50%;width:34px;height:34px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;flex-shrink:0;color:#2193b0}
+  .rule-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:860px;width:100%;margin-top:14px}
+  .rule-do{background:rgba(76,175,80,.25);border:2px solid #4CAF50;border-radius:18px;padding:16px 20px}
+  .rule-dont{background:rgba(244,67,54,.25);border:2px solid #f44336;border-radius:18px;padding:16px 20px}
+  .rule-do h4{color:#98FB98;font-size:clamp(14px,2.2vw,24px);font-weight:800;margin-bottom:8px}
+  .rule-dont h4{color:#FF8A80;font-size:clamp(14px,2.2vw,24px);font-weight:800;margin-bottom:8px}
+  .rule-item{font-size:clamp(12px,1.8vw,20px);color:#fff;padding:4px 0;display:flex;align-items:flex-start;gap:8px}
+  .quiz-opt{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+  .quiz-btn{background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.5);border-radius:14px;padding:10px 20px;color:#fff;font-size:clamp(13px,1.9vw,22px);font-weight:700;cursor:pointer;transition:all .2s}.quiz-btn:hover{background:rgba(255,255,255,.35)}.quiz-btn.c{background:#4CAF50;border-color:#4CAF50}.quiz-btn.w{background:#f44336;border-color:#f44336;opacity:.7}
+  .reveal-text{font-size:clamp(13px,2vw,22px);color:#fff;font-weight:700;text-align:center;margin-top:10px;display:none}.reveal-text.show{display:block}
+  .reveal-btn{background:#fff;border:none;border-radius:50px;padding:10px 26px;font-size:clamp(13px,1.9vw,22px);font-weight:700;cursor:pointer;margin:8px;color:#2193b0;transition:transform .15s}.reveal-btn:hover{transform:scale(1.05)}
+  .nav{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:16px;z-index:100}
+  .nav-btn{background:rgba(255,255,255,.25);border:2px solid rgba(255,255,255,.4);color:#fff;border-radius:50%;width:52px;height:52px;font-size:22px;cursor:pointer}.nav-btn:hover{background:rgba(255,255,255,.4)}
+  .counter{background:rgba(0,0,0,.3);color:#fff;border-radius:20px;padding:6px 18px;font-size:16px;font-weight:700}
+</style>
+</head>
+<body>
+
+<div class="slide s1 active" id="s1">
+  <div class="teacher-note">👩‍🏫 ให้เด็กมองรอบๆ ห้อง: "เห็นอะไรบ้าง?"</div>
+  <div class="badge">คอมพิวเตอร์เพิ่มเติม • ป.1 • หน่วยที่ 1</div>
+  <div class="big-emoji">💻</div>
+  <h1>รู้จักและดูแล<br>คอมพิวเตอร์</h1>
+  <p class="sub">วันนี้เราจะเป็นเพื่อนกับคอมพิวเตอร์!</p>
+</div>
+
+<div class="slide s2" id="s2">
+  <div class="teacher-note">👩‍🏫 ชี้ที่คอมพิวเตอร์จริงในห้อง ถาม "นี่คืออะไร?"</div>
+  <h2>คอมพิวเตอร์ทำอะไรได้บ้าง? 🤔</h2>
+  <div class="card-row">
+    <div class="card"><div class="icon">🎮</div><p>เล่นเกม</p></div>
+    <div class="card"><div class="icon">📚</div><p>หาข้อมูล</p></div>
+    <div class="card"><div class="icon">🎨</div><p>วาดภาพ</p></div>
+    <div class="card"><div class="icon">🎵</div><p>ฟังเพลง</p></div>
+    <div class="card"><div class="icon">✉️</div><p>ส่งข้อความ</p></div>
+  </div>
+  <p class="sub" style="margin-top:18px">คอมพิวเตอร์ช่วยชีวิตเราได้มากมาย! 🌟</p>
+</div>
+
+<div class="slide s3" id="s3">
+  <div class="teacher-note">👩‍🏫 กดทีละชิ้น แล้วชี้ที่อุปกรณ์จริงในห้อง</div>
+  <h2>🖥️ ส่วนประกอบของคอมพิวเตอร์</h2>
+  <p class="sub">กดที่รูปเพื่อดูชื่อ!</p>
+  <div class="card-row">
+    <div class="card" onclick="this.classList.toggle('selected')">
+      <div class="icon">🖥️</div><p>อะไรนะ?</p>
+      <div class="hidden-label">จอมอนิเตอร์<br>(Monitor)</div>
+    </div>
+    <div class="card" onclick="this.classList.toggle('selected')">
+      <div class="icon">⌨️</div><p>อะไรนะ?</p>
+      <div class="hidden-label">แป้นพิมพ์<br>(Keyboard)</div>
+    </div>
+    <div class="card" onclick="this.classList.toggle('selected')">
+      <div class="icon">🖱️</div><p>อะไรนะ?</p>
+      <div class="hidden-label">เมาส์<br>(Mouse)</div>
+    </div>
+    <div class="card" onclick="this.classList.toggle('selected')">
+      <div class="icon">🗄️</div><p>อะไรนะ?</p>
+      <div class="hidden-label">เคส CPU<br>(Computer Case)</div>
+    </div>
+  </div>
+  <p class="sub" style="margin-top:14px">กดที่รูปเพื่อดูชื่ออุปกรณ์!</p>
+</div>
+
+<div class="slide s4" id="s4">
+  <div class="teacher-note">👩‍🏫 ให้เด็กจับชิ้นส่วนที่พูดถึง แล้วทายชื่อก่อนเฉลย</div>
+  <h2>🔍 แต่ละชิ้นทำอะไร?</h2>
+  <ul class="step-list">
+    <li><span class="sn">🖥️</span><strong style="color:#FFD700">จอมอนิเตอร์</strong> = แสดงภาพและข้อความ (เหมือนหน้าต่างของคอมพิวเตอร์)</li>
+    <li><span class="sn">⌨️</span><strong style="color:#FFD700">แป้นพิมพ์</strong> = พิมพ์ตัวอักษร ตัวเลข และคำสั่ง</li>
+    <li><span class="sn">🖱️</span><strong style="color:#FFD700">เมาส์</strong> = เลื่อนลูกศรบนหน้าจอ กดเลือกสิ่งต่างๆ</li>
+    <li><span class="sn">🗄️</span><strong style="color:#FFD700">เคส CPU</strong> = สมองของคอมพิวเตอร์ เก็บชิ้นส่วนทั้งหมด</li>
+  </ul>
+</div>
+
+<div class="slide s5" id="s5">
+  <div class="teacher-note">👩‍🏫 อ่านข้อ "ควรทำ" พร้อมกัน ให้เด็กทำท่าประกอบ</div>
+  <h2>✅ กฎดูแลคอมพิวเตอร์ — ควรทำ</h2>
+  <ul class="step-list">
+    <li><span class="sn">✓</span>วางคอมพิวเตอร์บนโต๊ะที่มั่นคง ห้ามวางขอบ</li>
+    <li><span class="sn">✓</span>ล้างมือให้สะอาดก่อนใช้งานทุกครั้ง</li>
+    <li><span class="sn">✓</span>ปิดโปรแกรมทีละอย่างก่อนปิดเครื่อง</li>
+    <li><span class="sn">✓</span>บอกครูหรือผู้ปกครองทันทีถ้าคอมพิวเตอร์มีปัญหา</li>
+    <li><span class="sn">✓</span>เก็บสายไฟให้เรียบร้อย ไม่ให้พันกัน</li>
+  </ul>
+</div>
+
+<div class="slide s6" id="s6">
+  <div class="teacher-note">👩‍🏫 อ่านข้อ "ไม่ควรทำ" พร้อมโบกมือ "ไม่" ประกอบ</div>
+  <h2>❌ กฎดูแลคอมพิวเตอร์ — ห้ามทำ!</h2>
+  <ul class="step-list">
+    <li><span class="sn" style="background:#f44336">✘</span>นำอาหารหรือน้ำมาใกล้คอมพิวเตอร์</li>
+    <li><span class="sn" style="background:#f44336">✘</span>ตีหรือทุบแป้นพิมพ์และเมาส์แรงๆ</li>
+    <li><span class="sn" style="background:#f44336">✘</span>ดึงสายไฟออกขณะที่ยังเปิดเครื่องอยู่</li>
+    <li><span class="sn" style="background:#f44336">✘</span>เล่นจนลืมเวลา ใช้นานเกิน 1 ชั่วโมงโดยไม่พัก</li>
+  </ul>
+</div>
+
+<div class="slide s7" id="s7">
+  <div class="teacher-note">👩‍🏫 ทดสอบ: ชูมือถูก/ผิด ก่อนกดเฉลย</div>
+  <h2>🧠 ทดสอบ! ทำแบบนี้ได้ไหม?</h2>
+  <div class="quiz-opt" style="flex-direction:column;align-items:center;gap:8px">
+    <button class="quiz-btn" style="width:80%" onclick="qa(this,false)">🥤 วางแก้วน้ำข้างๆ คีย์บอร์ด</button>
+    <button class="quiz-btn" style="width:80%" onclick="qa(this,true)">🙌 ล้างมือก่อนแตะคีย์บอร์ด</button>
+    <button class="quiz-btn" style="width:80%" onclick="qa(this,false)">😤 ตีเมาส์เมื่อคอมช้า</button>
+    <button class="quiz-btn" style="width:80%" onclick="qa(this,true)">🔌 บอกครูเมื่อจอค้าง</button>
+  </div>
+  <div id="qa-r" class="reveal-text"></div>
+</div>
+
+<div class="slide s8" id="s8">
+  <div class="teacher-note">👩‍🏫 สรุปและแจกใบงาน 1.1</div>
+  <div class="badge">สรุปบทเรียน</div>
+  <h2>วันนี้เราเรียนรู้ว่า... ✨</h2>
+  <ul class="step-list">
+    <li><span class="sn">✓</span>คอมพิวเตอร์มี 4 ส่วนหลัก: จอ แป้นพิมพ์ เมาส์ เคส</li>
+    <li><span class="sn">✓</span>แต่ละส่วนมีหน้าที่ต่างกัน</li>
+    <li><span class="sn">✓</span>เราต้องดูแลคอมพิวเตอร์เหมือนเพื่อนที่ดี</li>
+  </ul>
+  <p class="sub">ครั้งหน้า: เรียนรู้ไฟล์ โฟลเดอร์ และวิธีบันทึกงาน 📁</p>
+</div>
+
+<div class="nav">
+  <button class="nav-btn" onclick="go(-1)">◀</button>
+  <span class="counter" id="counter">1 / 8</span>
+  <button class="nav-btn" onclick="go(1)">▶</button>
+</div>
+
+<script>
+  let cur=0;const slides=document.querySelectorAll('.slide');const total=slides.length;
+  function showSlide(n){slides[cur].classList.remove('active');cur=Math.max(0,Math.min(n,total-1));slides[cur].classList.add('active');document.getElementById('counter').textContent=(cur+1)+' / '+total;}
+  function go(d){showSlide(cur+d)}
+  document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')go(1);if(e.key==='ArrowLeft')go(-1);});
+  let qaScore=0;
+  function qa(btn,c){btn.classList.add(c?'c':'w');if(c){qaScore++;const r=document.getElementById('qa-r');r.textContent='✅ ถูก! '+qaScore+' ข้อแล้ว — เก่งมาก!';r.style.display='block';}else{const r=document.getElementById('qa-r');r.textContent='❌ ลองคิดอีกครั้ง! ดูกฎที่เรียนไปนะ';r.style.display='block';}}
+</script>
+</body>
+</html>

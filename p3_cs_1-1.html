@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>ป.3 วิทยาการคำนวณ - ใบงาน 1.1</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Sarabun',sans-serif; background:#fff; }
+  .page { width:210mm; min-height:297mm; padding:12mm 14mm; margin:0 auto; background:#fff; }
+  .header { background:linear-gradient(135deg,#11998e,#38ef7d); border-radius:16px; padding:14px 20px; margin-bottom:10px; display:flex; align-items:center; gap:14px; }
+  .header-icon { font-size:40px; }
+  .header-text h1 { color:#fff; font-size:18px; font-weight:800; }
+  .header-text p { color:rgba(255,255,255,0.9); font-size:12px; }
+  .subject-badge { background:#fff; color:#11998e; font-size:11px; font-weight:700; padding:2px 10px; border-radius:20px; display:inline-block; margin-bottom:4px; }
+  .info-row { display:grid; grid-template-columns:2fr 1fr 1fr; gap:8px; margin-bottom:10px; }
+  .info-box { border:1.5px solid #ddd; border-radius:8px; padding:6px 10px; font-size:13px; }
+  .info-box label { font-size:11px; color:#888; display:block; }
+  .info-box .line { border-bottom:1px solid #ccc; margin-top:6px; }
+  .section-title { font-size:15px; font-weight:700; color:#11998e; border-left:4px solid #11998e; padding-left:8px; margin:10px 0 6px; }
+  .instruction { background:#E8F5E9; border-radius:10px; padding:8px 12px; font-size:13px; margin-bottom:10px; border-left:4px solid #38ef7d; }
+  .q-box { border:1.5px solid #A5D6A7; border-radius:12px; padding:10px 14px; margin-bottom:10px; background:#F1F8F3; }
+  .q-num { display:inline-block; background:#11998e; color:#fff; border-radius:50%; width:24px; height:24px; text-align:center; line-height:24px; font-weight:700; font-size:13px; margin-right:6px; }
+  .q-text { font-size:14px; font-weight:600; display:inline; }
+  .write-line { border-bottom:1.5px solid #A5D6A7; margin:6px 0; height:24px; }
+
+  .tree-box {
+    border:2px solid #A5D6A7; border-radius:12px; background:#fff;
+    padding:12px; margin:6px 0;
+  }
+  .problem { background:linear-gradient(135deg,#11998e,#38ef7d); color:#fff; border-radius:10px; padding:8px 16px; font-size:14px; font-weight:700; text-align:center; margin-bottom:8px; }
+  .level1 { display:flex; gap:8px; justify-content:center; margin-bottom:8px; }
+  .level1-box { background:#E8F5E9; border:2px solid #11998e; border-radius:8px; padding:6px 10px; font-size:13px; text-align:center; flex:1; max-width:100px; }
+  .level1-box.blank { border-style:dashed; border-color:#999; background:#fff; color:#999; height:40px; }
+  .level2 { display:flex; gap:6px; justify-content:center; }
+  .level2-box { background:#fff; border:1.5px dashed #999; border-radius:8px; padding:5px 8px; font-size:12px; text-align:center; min-width:70px; height:38px; }
+
+  .connector { text-align:center; color:#11998e; font-size:16px; margin:2px 0; }
+
+  .scenario {
+    background:#FFF9C4; border:1.5px solid #F9A825; border-radius:10px;
+    padding:10px 12px; margin:6px 0; font-size:13px;
+  }
+  .scenario strong { color:#E65100; }
+
+  table.steps { width:100%; border-collapse:collapse; font-size:13px; margin-top:4px; }
+  table.steps th { background:#11998e; color:#fff; padding:6px 8px; text-align:left; font-size:13px; }
+  table.steps td { border:1px solid #A5D6A7; padding:6px 8px; vertical-align:top; }
+  table.steps tr:nth-child(even) td { background:#F1F8F3; }
+
+  .score-box { border:2px solid #11998e; border-radius:12px; padding:8px 14px; margin-top:10px; display:flex; justify-content:space-between; align-items:center; }
+  .score-box .score { font-size:22px; font-weight:800; color:#11998e; }
+
+  @media print {
+    body { background:white; }
+    .page { margin:0; padding:10mm 12mm; width:210mm; height:297mm; overflow:hidden; }
+    @page { size:A4; margin:0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div class="header-icon">🌳</div>
+    <div class="header-text">
+      <div class="subject-badge">วิทยาการคำนวณ • ชั้น ป.3</div>
+      <h1>ใบงาน 1.1 — แตกปัญหาใหญ่ให้เล็กลง</h1>
+      <p>หน่วยที่ 1 : แตกปัญหาใหญ่ให้เล็กลง (Decomposition)</p>
+    </div>
+  </div>
+
+  <div class="info-row">
+    <div class="info-box"><label>ชื่อ–นามสกุล</label><div class="line"></div></div>
+    <div class="info-box"><label>ชั้น / ห้อง</label><div class="line"></div></div>
+    <div class="info-box"><label>วันที่</label><div class="line"></div></div>
+  </div>
+
+  <div class="instruction">
+    <strong>การแตกปัญหา (Decomposition)</strong> คือการแบ่งปัญหาใหญ่ออกเป็นส่วนย่อยๆ ที่จัดการได้ง่ายขึ้น เพื่อให้แก้ปัญหาได้อย่างเป็นระบบ
+  </div>
+
+  <div class="q-box">
+    <span class="q-num">1</span>
+    <span class="q-text">เติมคำในกล่องแผนภูมิต้นไม้ให้สมบูรณ์</span>
+    <div class="tree-box">
+      <div class="problem">🏕️ จัดทัศนศึกษา 1 วัน</div>
+      <div class="connector">⬇</div>
+      <div class="level1">
+        <div class="level1-box">วางแผนการเดินทาง</div>
+        <div class="level1-box blank"></div>
+        <div class="level1-box">เตรียมของส่วนตัว</div>
+        <div class="level1-box blank"></div>
+      </div>
+      <div class="connector">⬇</div>
+      <div class="level2">
+        <div class="level2-box"></div>
+        <div class="level2-box"></div>
+        <div class="level2-box"></div>
+        <div class="level2-box"></div>
+        <div class="level2-box"></div>
+        <div class="level2-box"></div>
+      </div>
+      <div style="font-size:11px;color:#888;margin-top:4px;text-align:center">
+        เติมรายละเอียดย่อยของแต่ละส่วนในกล่องล่างสุด
+      </div>
+    </div>
+  </div>
+
+  <div class="q-box">
+    <span class="q-num">2</span>
+    <span class="q-text">อ่านสถานการณ์แล้วแตกปัญหาออกเป็นขั้นตอนย่อย</span>
+    <div class="scenario">
+      <strong>สถานการณ์ :</strong> หนูน้อยอยากทำของขวัญให้คุณแม่วันแม่ โดยจะทำดอกไม้กระดาษใส่กล่อง เขียนการ์ด และตกแต่งกล่อง
+    </div>
+    <table class="steps">
+      <thead><tr><th style="width:40px">ข้อ</th><th>ขั้นตอนย่อย (เขียนเรียงลำดับ)</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td></td></tr>
+        <tr><td>2</td><td></td></tr>
+        <tr><td>3</td><td></td></tr>
+        <tr><td>4</td><td></td></tr>
+        <tr><td>5</td><td></td></tr>
+        <tr><td>6</td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="q-box">
+    <span class="q-num">3</span>
+    <span class="q-text">ยกตัวอย่างปัญหาในชีวิตประจำวันที่สามารถแตกเป็นส่วนย่อยได้ (1 ตัวอย่าง) พร้อมแสดงการแตกปัญหา</span>
+    <div style="display:flex;align-items:center;gap:8px;margin:6px 0">
+      <span style="font-size:13px;font-weight:600">ปัญหาใหญ่ :</span>
+      <div style="flex:1;border-bottom:1.5px solid #A5D6A7;height:24px"></div>
+    </div>
+    <div style="display:flex;gap:6px;margin-top:6px">
+      <div class="level2-box" style="flex:1;min-width:0">ส่วนย่อย 1</div>
+      <div class="level2-box" style="flex:1;min-width:0">ส่วนย่อย 2</div>
+      <div class="level2-box" style="flex:1;min-width:0">ส่วนย่อย 3</div>
+      <div class="level2-box" style="flex:1;min-width:0">ส่วนย่อย 4</div>
+    </div>
+  </div>
+
+  <div class="score-box">
+    <div class="label">คะแนนที่ได้<br><span style="font-size:11px;color:#999">ครูให้คะแนน</span></div>
+    <div class="score">______ / 10</div>
+    <div style="text-align:center">
+      <div style="font-size:11px;color:#888">ลายมือชื่อครู</div>
+      <div style="border-bottom:1px solid #ccc;width:80px;margin-top:16px"></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

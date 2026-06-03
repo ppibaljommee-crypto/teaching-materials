@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="th">
+<head><meta charset="UTF-8"><title>ป.6 คอมพิวเตอร์เพิ่มเติม – รายงานมืออาชีพ</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Sarabun',sans-serif;background:#1a1a2e;overflow:hidden;height:100vh}
+  .slide{display:none;width:100vw;height:100vh;flex-direction:column;align-items:center;justify-content:center;padding:40px;position:relative}.slide.active{display:flex}
+  .s1{background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460)}.s2{background:linear-gradient(135deg,#2B579A,#1a3a6e)}.s3{background:linear-gradient(135deg,#217346,#0d5c2e)}.s4{background:linear-gradient(135deg,#1a1a2e,#2B579A)}.s5{background:linear-gradient(135deg,#217346,#0d5c2e)}.s6{background:linear-gradient(135deg,#1a1a2e,#e94560)}.s7{background:linear-gradient(135deg,#0f3460,#e94560)}.s8{background:linear-gradient(135deg,#1a1a2e,#16213e)}
+  h1{font-size:clamp(26px,5vw,60px);font-weight:800;color:#fff;text-align:center;text-shadow:0 0 20px rgba(100,150,255,.4);line-height:1.2}
+  h2{font-size:clamp(19px,3.6vw,44px);font-weight:700;color:#fff;text-align:center;line-height:1.3}
+  p.sub{font-size:clamp(13px,2.1vw,24px);color:rgba(255,255,255,.85);text-align:center;margin-top:10px}
+  .badge{background:rgba(233,69,96,.35);border:1px solid rgba(233,69,96,.6);border-radius:50px;padding:7px 22px;font-size:clamp(11px,1.6vw,19px);color:#fff;font-weight:700;margin-bottom:14px}
+  .big-emoji{font-size:clamp(54px,10vw,114px);text-align:center;line-height:1}
+  .teacher-note{position:fixed;top:16px;right:16px;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:8px 14px;color:rgba(255,255,255,.65);font-size:13px;max-width:270px;text-align:right}
+  .step-list{list-style:none;margin-top:12px;max-width:750px;width:100%}
+  .step-list li{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:10px 18px;margin-bottom:8px;font-size:clamp(13px,2vw,22px);color:#fff;display:flex;align-items:center;gap:12px}
+  .sn{border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex-shrink:0;color:#fff}
+  .sn.word{background:#2B579A}.sn.excel{background:#217346}.sn.gray{background:#555}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;width:100%;max-width:860px;margin-top:12px}
+  .col{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:16px;padding:16px 20px}
+  .col.word-col{border-color:#4472C4}
+  .col.excel-col{border-color:#70AD47}
+  .col h4{font-size:clamp(13px,2vw,22px);font-weight:800;margin-bottom:8px}
+  .col h4.word-h{color:#4472C4}.col h4.excel-h{color:#70AD47}
+  .col li,.col p{font-size:clamp(11px,1.6vw,18px);color:rgba(255,255,255,.85);padding:3px 0}
+  /* Excel table demo */
+  .excel-demo{background:#1e1e1e;border-radius:10px;padding:10px;margin-top:10px;overflow:hidden;max-width:700px;width:100%}
+  .excel-row{display:flex;gap:2px;margin-bottom:2px}
+  .cell{flex:1;padding:5px 8px;font-size:clamp(10px,1.4vw,15px);border-radius:3px;text-align:center;font-family:'Courier New',monospace}
+  .cell.header{background:#217346;color:#fff;font-weight:700}
+  .cell.data{background:#1a2b1a;color:#98FB98}
+  .cell.formula{background:#1a1a2e;color:#7FDBFF;font-style:italic}
+  .cell.label{background:#2d2d2d;color:#aaa;font-weight:700;text-align:left}
+  .quiz-opt{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+  .quiz-btn{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.3);border-radius:14px;padding:10px 18px;color:#fff;font-size:clamp(12px,1.7vw,19px);font-weight:700;cursor:pointer;transition:all .2s}.quiz-btn:hover{background:rgba(255,255,255,.2)}.quiz-btn.c{background:#4CAF50;border-color:#4CAF50}.quiz-btn.w{background:#f44336;border-color:#f44336;opacity:.7}
+  .reveal-text{font-size:clamp(13px,2vw,22px);color:#7FDBFF;font-weight:700;text-align:center;margin-top:10px;display:none}.reveal-text.show{display:block}
+  .reveal-btn{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:50px;padding:10px 24px;font-size:clamp(13px,1.8vw,20px);font-weight:700;cursor:pointer;margin:6px;transition:transform .15s}.reveal-btn:hover{transform:scale(1.05);background:rgba(255,255,255,.25)}
+  .nav{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:16px;z-index:100}
+  .nav-btn{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:50%;width:52px;height:52px;font-size:22px;cursor:pointer}.nav-btn:hover{background:rgba(255,255,255,.3)}
+  .counter{background:rgba(0,0,0,.5);color:#fff;border-radius:20px;padding:6px 18px;font-size:16px;font-weight:700}
+</style>
+</head>
+<body>
+
+<div class="slide s1 active" id="s1">
+  <div class="teacher-note">👩‍🏫 ถาม: "Word กับ Excel ต่างกันอย่างไร? ใช้ทำอะไร?"</div>
+  <div class="badge">คอมพิวเตอร์เพิ่มเติม • ป.6 • หน่วยที่ 1</div>
+  <div class="big-emoji">📊</div>
+  <h1>รายงานมืออาชีพ</h1>
+  <p class="sub">Word + Excel — เครื่องมือมืออาชีพสำหรับรายงาน</p>
+</div>
+
+<div class="slide s2" id="s2">
+  <div class="teacher-note">👩‍🏫 เปิด Word สาธิตโครงสร้างรายงาน 5 ส่วน</div>
+  <h2>📄 Word — โครงสร้างรายงาน 5 ส่วน</h2>
+  <ul class="step-list">
+    <li><span class="sn word">1</span>หน้าปก — ชื่อเรื่อง, ผู้จัดทำ, โรงเรียน, ปีการศึกษา</li>
+    <li><span class="sn word">2</span>ที่มาและความสำคัญ — เหตุผลที่เลือกหัวข้อนี้</li>
+    <li><span class="sn word">3</span>เนื้อหาสาระ — ข้อมูลที่ค้นคว้า (2–3 ส่วนย่อย)</li>
+    <li><span class="sn word">4</span>สรุปและข้อเสนอแนะ</li>
+    <li><span class="sn word">5</span>บรรณานุกรม — อ้างอิงแหล่งข้อมูล</li>
+  </ul>
+  <p class="sub" style="margin-top:10px">ฟอนต์ TH Sarabun PSK 16pt • ระยะบรรทัด 1.5 • ขอบ 2.5cm</p>
+</div>
+
+<div class="slide s3" id="s3">
+  <div class="teacher-note">👩‍🏫 เปิด Excel สาธิตการพิมพ์ตาราง และใส่สูตร SUM</div>
+  <h2>📊 Excel — ตารางข้อมูลและสูตรคำนวณ</h2>
+  <div class="excel-demo">
+    <div class="excel-row">
+      <div class="cell header" style="max-width:40px">A</div>
+      <div class="cell header">B รายการ</div>
+      <div class="cell header">C คะแนน 1</div>
+      <div class="cell header">D คะแนน 2</div>
+      <div class="cell header">E รวม</div>
+    </div>
+    <div class="excel-row">
+      <div class="cell label" style="max-width:40px">1</div>
+      <div class="cell data">นักเรียน ก</div><div class="cell data">85</div><div class="cell data">90</div>
+      <div class="cell formula">=SUM(C2:D2)</div>
+    </div>
+    <div class="excel-row">
+      <div class="cell label" style="max-width:40px">2</div>
+      <div class="cell data">นักเรียน ข</div><div class="cell data">72</div><div class="cell data">88</div>
+      <div class="cell formula">=SUM(C3:D3)</div>
+    </div>
+    <div class="excel-row">
+      <div class="cell label" style="max-width:40px">9</div>
+      <div class="cell data" style="font-weight:700">ค่าเฉลี่ย</div><div class="cell formula">=AVERAGE(C2:C8)</div><div class="cell formula">=AVERAGE(D2:D8)</div><div class="cell formula">=AVERAGE(E2:E8)</div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:10px">
+    <button class="reveal-btn" onclick="reveal('rf')">📈 สูตรที่ต้องรู้</button>
+    <div id="rf" class="reveal-text" style="font-family:'Courier New',monospace">SUM(range) · AVERAGE(range) · MAX(range) · MIN(range)</div>
+  </div>
+</div>
+
+<div class="slide s4" id="s4">
+  <div class="teacher-note">👩‍🏫 สาธิตการสร้างกราฟใน Excel ทีละขั้นตอน</div>
+  <h2>📈 สร้างกราฟใน Excel</h2>
+  <ul class="step-list">
+    <li><span class="sn excel">1</span>เลือก cell ข้อมูลที่ต้องการ (คลุมดำ)</li>
+    <li><span class="sn excel">2</span>คลิก <strong style="color:#70AD47">แทรก (Insert)</strong> → เลือกประเภทกราฟ</li>
+    <li><span class="sn excel">3</span>เลือก <strong style="color:#7FDBFF">กราฟแท่ง (Bar)</strong> หรือ <strong style="color:#7FDBFF">กราฟเส้น (Line)</strong></li>
+    <li><span class="sn excel">4</span>ตั้งชื่อกราฟและชื่อแกน X, Y</li>
+    <li><span class="sn excel">5</span>ปรับสีและรูปแบบให้ดูดี</li>
+  </ul>
+</div>
+
+<div class="slide s5" id="s5">
+  <div class="teacher-note">👩‍🏫 ให้เด็กทำ: พิมพ์ข้อมูลใน Excel แล้วใส่สูตร SUM</div>
+  <h2>🧠 ทดสอบ: สูตรหาค่าเฉลี่ยคือข้อใด?</h2>
+  <div class="quiz-opt">
+    <button class="quiz-btn" onclick="qa(this,false)" style="font-family:'Courier New',monospace">=SUM(A1:A5)</button>
+    <button class="quiz-btn" onclick="qa(this,true)" style="font-family:'Courier New',monospace">=AVERAGE(A1:A5)</button>
+    <button class="quiz-btn" onclick="qa(this,false)" style="font-family:'Courier New',monospace">=MAX(A1:A5)</button>
+    <button class="quiz-btn" onclick="qa(this,false)" style="font-family:'Courier New',monospace">=COUNT(A1:A5)</button>
+  </div>
+  <div id="qa-r" class="reveal-text"></div>
+</div>
+
+<div class="slide s6" id="s6">
+  <div class="teacher-note">👩‍🏫 แสดง Checklist บนจอ ให้เด็กถามก่อนเริ่มทำ</div>
+  <h2>✅ Checklist ก่อนส่งงาน</h2>
+  <div class="two-col">
+    <div class="col word-col">
+      <h4 class="word-h">📄 Word (20 คะแนน)</h4>
+      <li>☐ ครบ 5 ส่วน</li>
+      <li>☐ ฟอนต์/ระยะบรรทัดถูกต้อง</li>
+      <li>☐ มี Header + Footer</li>
+      <li>☐ บรรณานุกรมถูกรูปแบบ</li>
+    </div>
+    <div class="col excel-col">
+      <h4 class="excel-h">📊 Excel (10 คะแนน)</h4>
+      <li>☐ ตาราง ≥ 8 แถว</li>
+      <li>☐ สูตร SUM, AVERAGE</li>
+      <li>☐ กราฟพร้อมชื่อแกน</li>
+      <li>☐ จัดรูปแบบสวยงาม</li>
+    </div>
+  </div>
+  <p class="sub" style="margin-top:12px">รวม <strong style="color:#FFD700">30 คะแนน</strong></p>
+</div>
+
+<div class="slide s7" id="s7">
+  <div class="teacher-note">👩‍🏫 สาธิตการตั้งชื่อไฟล์และบันทึก</div>
+  <h2>💾 ตั้งชื่อไฟล์อย่างไร?</h2>
+  <div style="background:rgba(255,255,255,.1);border-radius:16px;padding:20px 24px;max-width:700px;width:100%;margin-top:10px">
+    <p style="font-size:clamp(14px,2.2vw,24px);color:#7FDBFF;font-family:'Courier New',monospace;text-align:center;margin-bottom:12px">
+      รายงาน_[ชื่อ]_[ชั้น].docx<br>ข้อมูล_[ชื่อ]_[ชั้น].xlsx
+    </p>
+    <p style="font-size:clamp(13px,2vw,22px);color:#fff;text-align:center">ตัวอย่าง: <span style="color:#FFD700">รายงาน_สมชาย_ป6-2.docx</span></p>
+  </div>
+  <ul class="step-list" style="margin-top:12px">
+    <li><span class="sn gray">!</span>บันทึกบ่อยๆ ด้วย Ctrl+S ทุก 10 นาที</li>
+    <li><span class="sn gray">!</span>สำรองไฟล์ในแฟลชไดรฟ์หรือ Google Drive</li>
+  </ul>
+</div>
+
+<div class="slide s8" id="s8">
+  <div class="teacher-note">👩‍🏫 สรุปและเปิดเวลาให้เด็กเริ่มทำ</div>
+  <div class="badge">สรุปบทเรียน</div>
+  <h2>Word + Excel = รายงานมืออาชีพ ✨</h2>
+  <div class="two-col">
+    <div class="col word-col">
+      <h4 class="word-h">📄 Word</h4>
+      <p>เขียนและจัดรูปแบบเนื้อหา 5 ส่วน</p>
+    </div>
+    <div class="col excel-col">
+      <h4 class="excel-h">📊 Excel</h4>
+      <p>ตาราง + สูตร + กราฟวิเคราะห์ข้อมูล</p>
+    </div>
+  </div>
+  <p class="sub" style="margin-top:14px">คะแนนรวม <strong style="color:#FFD700">30 คะแนน</strong> — ทำได้แน่นอน! 💪</p>
+</div>
+
+<div class="nav">
+  <button class="nav-btn" onclick="go(-1)">◀</button>
+  <span class="counter" id="counter">1 / 8</span>
+  <button class="nav-btn" onclick="go(1)">▶</button>
+</div>
+
+<script>
+  let cur=0;const slides=document.querySelectorAll('.slide');const total=slides.length;
+  function showSlide(n){slides[cur].classList.remove('active');cur=Math.max(0,Math.min(n,total-1));slides[cur].classList.add('active');document.getElementById('counter').textContent=(cur+1)+' / '+total;}
+  function go(d){showSlide(cur+d)}
+  document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')go(1);if(e.key==='ArrowLeft')go(-1);});
+  function reveal(id){document.getElementById(id).classList.toggle('show');}
+  function qa(btn,c){btn.classList.add(c?'c':'w');const r=document.getElementById('qa-r');if(c){r.textContent='✅ ถูก! =AVERAGE(A1:A5) หาค่าเฉลี่ยของ A1 ถึง A5';r.style.display='block';}else{r.textContent='❌ ลองอีกครั้ง! AVERAGE ใช้หาค่าเฉลี่ย';r.style.display='block';}}
+</script>
+</body>
+</html>

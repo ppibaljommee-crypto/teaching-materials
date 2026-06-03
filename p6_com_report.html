@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>ป.6 คอมพิวเตอร์เพิ่มเติม - รายงานมืออาชีพ</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Sarabun',sans-serif; background:#f0f0f0; }
+
+  .page {
+    width:210mm; height:297mm; padding:18mm 20mm;
+    margin:10px auto; background:#fff;
+    display:flex; flex-direction:column;
+    page-break-after:always;
+  }
+
+  /* Page 1: Cover */
+  .cover-stripe {
+    background:linear-gradient(135deg,#1a1a2e,#16213e);
+    height:6px; border-radius:4px; margin-bottom:20px;
+  }
+  .cover-top { display:flex; align-items:center; gap:16px; margin-bottom:16px; }
+  .cover-logo {
+    width:60px; height:60px; background:linear-gradient(135deg,#56CCF2,#2F80ED);
+    border-radius:12px; display:flex; align-items:center; justify-content:center;
+    font-size:32px; flex-shrink:0;
+  }
+  .cover-top-text h1 { font-size:22px; font-weight:800; color:#1a1a2e; }
+  .cover-top-text h2 { font-size:14px; font-weight:600; color:#555; }
+  .cover-divider { border:none; border-top:2px solid #1a1a2e; margin:12px 0; }
+  .cover-subtitle { font-size:13px; color:#777; margin-bottom:16px; }
+
+  .info-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:16px; }
+  .info-field { border:1.5px solid #ddd; border-radius:8px; padding:8px 12px; }
+  .info-field label { font-size:11px; color:#888; display:block; font-weight:600; }
+  .info-field .fl { border-bottom:1px solid #ccc; margin-top:8px; }
+  .info-field.full { grid-column:1/-1; }
+
+  .checklist { background:#F5F5F5; border-radius:10px; padding:10px 14px; margin-bottom:12px; }
+  .checklist-title { font-size:13px; font-weight:700; color:#1a1a2e; margin-bottom:8px; }
+  .cl-item { display:flex; align-items:flex-start; gap:8px; font-size:12.5px; margin-bottom:5px; line-height:1.5; }
+  .cl-item .cb { width:16px; height:16px; border:1.5px solid #999; border-radius:3px; flex-shrink:0; margin-top:2px; }
+
+  .file-req { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:10px; }
+  .file-box {
+    border:2px solid #ddd; border-radius:10px; padding:10px 12px;
+  }
+  .file-box.word { border-color:#2B579A; }
+  .file-box.excel { border-color:#217346; }
+  .file-icon { font-size:22px; margin-bottom:4px; }
+  .file-title { font-size:13px; font-weight:700; }
+  .file-title.word-title { color:#2B579A; }
+  .file-title.excel-title { color:#217346; }
+  .file-req-list { font-size:11.5px; color:#555; margin-top:4px; line-height:1.7; }
+
+  /* Pages 2-3: Report template */
+  .report-header {
+    border-bottom:3px double #1a1a2e; padding-bottom:8px; margin-bottom:12px;
+  }
+  .report-header h2 { font-size:17px; font-weight:800; color:#1a1a2e; }
+  .report-header p { font-size:12px; color:#666; }
+  .report-meta { display:flex; gap:12px; font-size:11px; color:#888; margin-top:4px; }
+  .report-meta span { background:#F5F5F5; padding:2px 8px; border-radius:10px; }
+
+  .section { margin-bottom:10px; }
+  .sec-title {
+    font-size:14px; font-weight:700; background:#1a1a2e; color:#fff;
+    padding:4px 10px; border-radius:6px; margin-bottom:6px; display:inline-block;
+  }
+  .write-area { border:1px solid #E0E0E0; border-radius:8px; padding:6px 10px; background:#FAFAFA; }
+  .wl { border-bottom:1px solid #E8E8E8; height:22px; }
+
+  .image-placeholder {
+    border:2px dashed #aaa; border-radius:8px; background:#F9F9F9;
+    display:flex; align-items:center; justify-content:center;
+    font-size:12px; color:#bbb; margin:4px 0;
+  }
+
+  table.report-table { width:100%; border-collapse:collapse; font-size:12px; margin:4px 0; }
+  table.report-table th { background:#1a1a2e; color:#fff; padding:5px 8px; text-align:left; }
+  table.report-table td { border:1px solid #ddd; padding:5px 8px; }
+  table.report-table tr:nth-child(even) td { background:#F5F5F5; }
+
+  /* Excel template page */
+  .excel-header {
+    background:#217346; color:#fff; padding:8px 12px; border-radius:8px 8px 0 0;
+    font-size:13px; font-weight:700;
+  }
+  .excel-table { width:100%; border-collapse:collapse; font-size:12px; }
+  .excel-table th {
+    background:#D9E1F2; border:1px solid #BDD7EE;
+    padding:5px 8px; text-align:center; font-weight:700;
+  }
+  .excel-table td { border:1px solid #D9D9D9; padding:5px 8px; height:22px; }
+  .excel-table tr:nth-child(even) td { background:#EBF3FB; }
+  .excel-label { font-weight:700; background:#E2EFDA !important; }
+
+  /* Rubric page */
+  table.rubric { width:100%; border-collapse:collapse; font-size:12px; margin-top:6px; }
+  table.rubric th { background:#1a1a2e; color:#fff; padding:6px 8px; }
+  table.rubric td { border:1px solid #ddd; padding:5px 8px; text-align:center; }
+  table.rubric .criteria { text-align:left; font-weight:600; }
+  table.rubric tr:nth-child(even) td { background:#F5F5F5; }
+
+  @media print {
+    body { background:white; }
+    .page { margin:0; padding:16mm 18mm; width:210mm; height:297mm; }
+    @page { size:A4; margin:0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: Assignment Cover Sheet -->
+<div class="page">
+  <div class="cover-stripe"></div>
+  <div class="cover-top">
+    <div class="cover-logo">📊</div>
+    <div class="cover-top-text">
+      <h1>รายงานมืออาชีพ</h1>
+      <h2>คอมพิวเตอร์เพิ่มเติม • ชั้น ป.6 • หน่วยที่ 1</h2>
+    </div>
+  </div>
+  <div class="cover-subtitle">งานชิ้นนี้ต้องส่งเป็นไฟล์ Word + Excel ตามรูปแบบกำหนด (3–4 หน้า A4)</div>
+  <hr class="cover-divider">
+
+  <div class="info-grid">
+    <div class="info-field full"><label>หัวข้อรายงาน</label><div class="fl"></div></div>
+    <div class="info-field full"><label>ชื่อ–นามสกุล</label><div class="fl"></div></div>
+    <div class="info-field"><label>ชั้น / ห้อง</label><div class="fl"></div></div>
+    <div class="info-field"><label>เลขที่</label><div class="fl"></div></div>
+    <div class="info-field"><label>วันที่ส่ง</label><div class="fl"></div></div>
+    <div class="info-field"><label>คะแนนที่ได้</label><div class="fl"></div></div>
+  </div>
+
+  <div class="checklist">
+    <div class="checklist-title">✅ Checklist ก่อนส่งงาน (ติ๊กเมื่อทำแล้ว)</div>
+    <div class="cl-item"><div class="cb"></div>ไฟล์ Word มีหน้าปก, เนื้อหา 2–3 หน้า, บรรณานุกรม</div>
+    <div class="cl-item"><div class="cb"></div>ฟอนต์ TH Sarabun PSK ขนาด 16 / ระยะบรรทัด 1.5</div>
+    <div class="cl-item"><div class="cb"></div>หัวกระดาษ (Header) มีชื่อ–ชั้น, ท้ายกระดาษ (Footer) มีเลขหน้า</div>
+    <div class="cl-item"><div class="cb"></div>ไฟล์ Excel มีตารางข้อมูล, สูตรคำนวณ (SUM/AVERAGE), กราฟ</div>
+    <div class="cl-item"><div class="cb"></div>ตั้งชื่อไฟล์ : รายงาน_[ชื่อ]_[ชั้น].docx และ ข้อมูล_[ชื่อ]_[ชั้น].xlsx</div>
+  </div>
+
+  <div class="file-req">
+    <div class="file-box word">
+      <div class="file-icon">📄</div>
+      <div class="file-title word-title">ไฟล์ Word (.docx)</div>
+      <div class="file-req-list">
+        • หน้าปก (ชื่อเรื่อง, ผู้จัดทำ)<br>
+        • ที่มาและความสำคัญ<br>
+        • เนื้อหาสาระ (2–3 ส่วน)<br>
+        • สรุปและข้อเสนอแนะ<br>
+        • บรรณานุกรม
+      </div>
+    </div>
+    <div class="file-box excel">
+      <div class="file-icon">📊</div>
+      <div class="file-title excel-title">ไฟล์ Excel (.xlsx)</div>
+      <div class="file-req-list">
+        • ชีต 1 : ตารางข้อมูล (ไม่น้อยกว่า 8 แถว)<br>
+        • ชีต 2 : สรุปผลด้วยสูตร SUM, AVERAGE<br>
+        • กราฟแท่งหรือกราฟเส้น 1 กราฟ<br>
+        • จัดรูปแบบตารางให้สวยงาม
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#FFF3E0;border-radius:10px;padding:8px 12px;font-size:12px;color:#E65100;border-left:4px solid #FF9800">
+    <strong>หมายเหตุ :</strong> ในหน้าต่อไปเป็นแบบฟอร์มตัวอย่างที่สามารถพิมพ์มาใช้เป็นร่างก่อนพิมพ์คอมพิวเตอร์ได้
+  </div>
+
+  <div style="margin-top:auto;border-top:1px solid #ddd;padding-top:6px;font-size:11px;color:#888;display:flex;justify-content:space-between">
+    <span>วิชาคอมพิวเตอร์เพิ่มเติม • ป.6</span><span>หน้า 1 / 4</span>
+  </div>
+</div>
+
+<!-- PAGE 2: Word report template (draft) -->
+<div class="page">
+  <div class="report-header">
+    <h2>📄 แบบร่าง Word — เนื้อหารายงาน</h2>
+    <p>ใช้เป็นร่างก่อนพิมพ์ลงคอมพิวเตอร์</p>
+    <div class="report-meta">
+      <span>ฟอนต์: TH Sarabun PSK 16</span>
+      <span>ระยะบรรทัด: 1.5</span>
+      <span>ขอบกระดาษ: 2.5 cm</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <span class="sec-title">1. ที่มาและความสำคัญ</span>
+    <div class="write-area">
+      <div class="wl"></div><div class="wl"></div><div class="wl"></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <span class="sec-title">2. วัตถุประสงค์</span>
+    <div class="write-area">
+      <div class="wl"></div><div class="wl"></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <span class="sec-title">3. เนื้อหาสาระ</span>
+    <div style="display:grid;grid-template-columns:3fr 1fr;gap:8px;align-items:start">
+      <div class="write-area">
+        <div class="wl"></div><div class="wl"></div><div class="wl"></div>
+        <div class="wl"></div><div class="wl"></div>
+      </div>
+      <div class="image-placeholder" style="height:90px">📷<br>รูปภาพ<br>ประกอบ</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <span class="sec-title">4. สรุปและข้อเสนอแนะ</span>
+    <div class="write-area">
+      <div class="wl"></div><div class="wl"></div><div class="wl"></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <span class="sec-title">5. บรรณานุกรม</span>
+    <div class="write-area" style="font-size:12px;color:#888">
+      <div class="wl"></div>
+      <div style="margin-top:4px;font-size:11px;color:#aaa">รูปแบบ: ผู้แต่ง. (ปี). ชื่อหนังสือ. สำนักพิมพ์.</div>
+    </div>
+  </div>
+
+  <div style="margin-top:auto;border-top:1px solid #ddd;padding-top:6px;font-size:11px;color:#888;display:flex;justify-content:space-between">
+    <span>วิชาคอมพิวเตอร์เพิ่มเติม • ป.6</span><span>หน้า 2 / 4</span>
+  </div>
+</div>
+
+<!-- PAGE 3: Excel template -->
+<div class="page">
+  <div class="report-header">
+    <h2>📊 แบบร่าง Excel — ตารางข้อมูลและการคำนวณ</h2>
+    <p>ออกแบบตารางและสูตรที่จะใช้ใน Excel ก่อนพิมพ์จริง</p>
+  </div>
+
+  <div class="section">
+    <div class="excel-header">📋 ชีต 1 : ตารางข้อมูล</div>
+    <table class="excel-table">
+      <thead>
+        <tr>
+          <th style="width:40px">ที่</th>
+          <th>รายการ</th>
+          <th style="width:80px">ข้อมูล 1</th>
+          <th style="width:80px">ข้อมูล 2</th>
+          <th style="width:80px">ข้อมูล 3</th>
+          <th style="width:80px">หมายเหตุ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>2</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>3</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>4</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>5</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>6</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>7</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>8</td><td></td><td></td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section" style="margin-top:10px">
+    <div class="excel-header" style="background:#1a1a2e">📐 ชีต 2 : สรุปผลการคำนวณ</div>
+    <table class="excel-table">
+      <thead>
+        <tr><th>สูตรที่ใช้</th><th>วิธีเขียนใน Excel</th><th>ผลลัพธ์ที่คาดหวัง</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="excel-label">ผลรวม (SUM)</td><td>=SUM(C2:C9)</td><td></td></tr>
+        <tr><td class="excel-label">ค่าเฉลี่ย (AVERAGE)</td><td>=AVERAGE(C2:C9)</td><td></td></tr>
+        <tr><td class="excel-label">ค่าสูงสุด (MAX)</td><td>=MAX(C2:C9)</td><td></td></tr>
+        <tr><td class="excel-label">ค่าต่ำสุด (MIN)</td><td>=MIN(C2:C9)</td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section" style="margin-top:10px">
+    <span class="sec-title" style="background:#217346">📈 ออกแบบกราฟ</span>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px">
+      <div>
+        <div style="font-size:12.5px;font-weight:700;margin-bottom:4px">ประเภทกราฟที่เลือก</div>
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <label style="font-size:12.5px"><input type="checkbox" style="margin-right:6px"> กราฟแท่ง (Bar Chart)</label>
+          <label style="font-size:12.5px"><input type="checkbox" style="margin-right:6px"> กราฟเส้น (Line Chart)</label>
+          <label style="font-size:12.5px"><input type="checkbox" style="margin-right:6px"> กราฟวงกลม (Pie Chart)</label>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12.5px;font-weight:700;margin-bottom:4px">ข้อมูลที่ใช้สร้างกราฟ</div>
+        <div style="border:1px solid #ddd;border-radius:6px;padding:6px;font-size:12px">
+          <div>แกน X : <span style="border-bottom:1px solid #ccc;display:inline-block;width:100px"></span></div>
+          <div style="margin-top:4px">แกน Y : <span style="border-bottom:1px solid #ccc;display:inline-block;width:100px"></span></div>
+        </div>
+      </div>
+    </div>
+    <div class="image-placeholder" style="height:50px;margin-top:8px">📊 ร่างกราฟ (วาดภาพคร่าวๆ)</div>
+  </div>
+
+  <div style="margin-top:auto;border-top:1px solid #ddd;padding-top:6px;font-size:11px;color:#888;display:flex;justify-content:space-between">
+    <span>วิชาคอมพิวเตอร์เพิ่มเติม • ป.6</span><span>หน้า 3 / 4</span>
+  </div>
+</div>
+
+<!-- PAGE 4: Rubric -->
+<div class="page">
+  <div style="background:linear-gradient(135deg,#1a1a2e,#16213e);border-radius:14px;padding:14px 18px;color:#fff;margin-bottom:14px">
+    <div style="font-size:18px;font-weight:800">📋 เกณฑ์การให้คะแนน — รายงานมืออาชีพ</div>
+    <div style="font-size:12px;opacity:0.8;margin-top:4px">คะแนนเต็ม 30 คะแนน (Word 20 + Excel 10)</div>
+  </div>
+
+  <div style="font-size:14px;font-weight:700;color:#1a1a2e;margin-bottom:6px">📄 ส่วนที่ 1 — ไฟล์ Word (20 คะแนน)</div>
+  <table class="rubric">
+    <thead>
+      <tr><th class="criteria" style="text-align:left">หัวข้อประเมิน</th><th>ดีมาก (4)</th><th>ดี (3)</th><th>พอใช้ (2)</th><th>ปรับปรุง (1)</th><th style="width:60px">คะแนน</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="criteria">ครบถ้วนตามโครงสร้าง</td><td>ครบ 5 ส่วน</td><td>ขาด 1 ส่วน</td><td>ขาด 2 ส่วน</td><td>ขาดมากกว่า</td><td></td></tr>
+      <tr><td class="criteria">ความถูกต้องของเนื้อหา</td><td>ถูกต้องทั้งหมด</td><td>ผิดเล็กน้อย</td><td>ผิดหลายส่วน</td><td>ไม่ถูกต้อง</td><td></td></tr>
+      <tr><td class="criteria">การจัดรูปแบบ (Format)</td><td>ถูกต้องทั้งหมด</td><td>ผิด 1–2 จุด</td><td>ผิดหลายจุด</td><td>ไม่ได้จัดรูปแบบ</td><td></td></tr>
+      <tr><td class="criteria">ภาษาและการสื่อสาร</td><td>ชัดเจน อ่านง่าย</td><td>อ่านได้</td><td>มีข้อผิดพลาด</td><td>เข้าใจยาก</td><td></td></tr>
+      <tr><td class="criteria">บรรณานุกรม</td><td>ครบ ถูกรูปแบบ</td><td>มีแต่ผิดรูปแบบ</td><td>ไม่ครบ</td><td>ไม่มี</td><td></td></tr>
+      <tr style="font-weight:700;background:#f0f0f0"><td>รวม Word</td><td colspan="4" style="text-align:right">เต็ม 20 คะแนน</td><td></td></tr>
+    </tbody>
+  </table>
+
+  <div style="font-size:14px;font-weight:700;color:#217346;margin:10px 0 6px">📊 ส่วนที่ 2 — ไฟล์ Excel (10 คะแนน)</div>
+  <table class="rubric">
+    <thead>
+      <tr><th class="criteria" style="text-align:left">หัวข้อประเมิน</th><th>ดีมาก (4/4)</th><th>ดี (3)</th><th>พอใช้ (2)</th><th>ปรับปรุง (1)</th><th style="width:60px">คะแนน</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="criteria">ตารางข้อมูลครบ ≥ 8 แถว</td><td>ครบและจัดสวย</td><td>ครบแต่ยังไม่สวย</td><td>ไม่ครบ 8 แถว</td><td>ไม่มีตาราง</td><td></td></tr>
+      <tr><td class="criteria">ใช้สูตรคำนวณถูกต้อง</td><td>SUM,AVG,MAX,MIN</td><td>2–3 สูตร</td><td>1 สูตร</td><td>ไม่มีสูตร</td><td></td></tr>
+      <tr><td class="criteria">กราฟ</td><td>ครบ ตั้งชื่อแกน</td><td>มีแต่ไม่สมบูรณ์</td><td>กราฟไม่ถูกประเภท</td><td>ไม่มีกราฟ</td><td></td></tr>
+      <tr style="font-weight:700;background:#f0f0f0"><td>รวม Excel</td><td colspan="4" style="text-align:right">เต็ม 10 คะแนน (ข้อ 1–2 = 4+4, ข้อ 3 = 2)</td><td></td></tr>
+    </tbody>
+  </table>
+
+  <div style="border:2px solid #1a1a2e;border-radius:12px;padding:10px 14px;margin-top:10px;display:flex;justify-content:space-between;align-items:center">
+    <div>
+      <div style="font-size:13px;font-weight:700">คะแนนรวมทั้งหมด</div>
+      <div style="font-size:11px;color:#888">Word 20 + Excel 10</div>
+    </div>
+    <div style="font-size:28px;font-weight:800;color:#1a1a2e">______ / 30</div>
+    <div>
+      <div style="font-size:11px;color:#888">ลายมือชื่อครู</div>
+      <div style="border-bottom:1px solid #ccc;width:100px;margin-top:20px"></div>
+    </div>
+  </div>
+
+  <div style="margin-top:auto;border-top:1px solid #ddd;padding-top:6px;font-size:11px;color:#888;display:flex;justify-content:space-between">
+    <span>วิชาคอมพิวเตอร์เพิ่มเติม • ป.6</span><span>หน้า 4 / 4</span>
+  </div>
+</div>
+
+</body>
+</html>

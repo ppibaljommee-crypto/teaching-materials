@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="th">
+<head><meta charset="UTF-8"><title>ป.2 คอมพิวเตอร์เพิ่มเติม – พิมพ์เก่งขึ้น</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Sarabun',sans-serif;background:#1a1a2e;overflow:hidden;height:100vh}
+  .slide{display:none;width:100vw;height:100vh;flex-direction:column;align-items:center;justify-content:center;padding:36px;position:relative}.slide.active{display:flex}
+  .s1{background:linear-gradient(135deg,#f7971e,#ffd200)}.s2{background:linear-gradient(135deg,#f093fb,#f5576c)}.s3{background:linear-gradient(135deg,#1a1a2e,#f7971e)}.s4{background:linear-gradient(135deg,#4facfe,#00f2fe)}.s5{background:linear-gradient(135deg,#667eea,#764ba2)}.s6{background:linear-gradient(135deg,#f7971e,#ffd200)}.s7{background:linear-gradient(135deg,#11998e,#38ef7d)}
+  h1{font-size:clamp(28px,5.5vw,66px);font-weight:800;color:#333;text-align:center;line-height:1.2}
+  h1.w{color:#fff}
+  h2{font-size:clamp(20px,3.8vw,46px);font-weight:700;color:#fff;text-align:center;line-height:1.3}
+  p.sub{font-size:clamp(13px,2.2vw,26px);color:rgba(255,255,255,.9);text-align:center;margin-top:10px}
+  .badge{background:rgba(0,0,0,.2);border-radius:50px;padding:8px 24px;font-size:clamp(12px,1.7vw,20px);color:#333;font-weight:700;margin-bottom:14px}
+  .badge.w{color:#fff;background:rgba(255,255,255,.2)}
+  .big-emoji{font-size:clamp(56px,11vw,120px);text-align:center;line-height:1}
+  .teacher-note{position:fixed;top:16px;right:16px;background:rgba(0,0,0,.5);border-radius:12px;padding:8px 14px;color:rgba(255,255,255,.7);font-size:13px;max-width:260px;text-align:right}
+  /* Keyboard */
+  .kb-wrap{display:flex;justify-content:center;margin:10px 0}
+  .kb{background:#1a1a2e;border-radius:16px;padding:16px 18px;display:flex;flex-direction:column;gap:6px;box-shadow:0 6px 20px rgba(0,0,0,.5)}
+  .kb-row{display:flex;gap:4px;justify-content:center}
+  .k{background:#2d2d44;color:#e0e0e0;border-radius:6px;width:clamp(26px,3.5vw,38px);height:clamp(26px,3.5vw,38px);display:flex;align-items:center;justify-content:center;font-size:clamp(9px,1.4vw,15px);font-weight:700;border:1px solid #444;box-shadow:0 2px 0 #111;transition:all .3s}
+  .k.home{background:#f7971e;color:#000;border-color:#e68a00}
+  .k.hi{background:#FFD700;color:#000;transform:scale(1.2);box-shadow:0 0 12px rgba(255,215,0,.8)}
+  .k.wide{width:clamp(44px,6vw,65px)}.k.space{width:clamp(120px,16vw,180px);font-size:clamp(8px,1.2vw,13px)}
+  .step-list{list-style:none;margin-top:12px;max-width:740px;width:100%}
+  .step-list li{background:rgba(255,255,255,.2);border-radius:14px;padding:10px 18px;margin-bottom:8px;font-size:clamp(13px,2vw,24px);color:#fff;display:flex;align-items:center;gap:12px}
+  .sn{background:#fff;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex-shrink:0;color:#f7971e}
+  .practice-wrap{display:flex;flex-direction:column;align-items:center;gap:10px;width:100%;max-width:800px;margin-top:14px}
+  .practice-row{background:#1a1a2e;border-radius:12px;padding:12px 20px;width:100%;font-family:'Courier New',monospace;font-size:clamp(14px,2.2vw,26px);letter-spacing:4px;color:#7FDBFF;text-align:center;font-weight:700}
+  .practice-label{font-size:clamp(11px,1.6vw,18px);color:rgba(255,255,255,.7);text-align:center}
+  .finger-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:8px 0}
+  .finger{background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.3);border-radius:12px;padding:8px 14px;text-align:center;min-width:90px}
+  .finger.left{border-color:#6dd5ed}.finger.right{border-color:#FFD700}
+  .finger h5{font-size:clamp(11px,1.5vw,16px);color:rgba(255,255,255,.8);font-weight:700;margin-bottom:4px}
+  .finger p{font-family:'Courier New',monospace;font-size:clamp(13px,2vw,22px);color:#fff;font-weight:800;letter-spacing:3px}
+  .quiz-opt{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+  .quiz-btn{background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.5);border-radius:14px;padding:10px 20px;color:#fff;font-size:clamp(13px,1.9vw,22px);font-weight:700;cursor:pointer;transition:all .2s}.quiz-btn:hover{background:rgba(255,255,255,.35)}.quiz-btn.c{background:#4CAF50;border-color:#4CAF50}.quiz-btn.w{background:#f44336;border-color:#f44336;opacity:.7}
+  .reveal-text{font-size:clamp(13px,2vw,22px);color:#fff;font-weight:700;text-align:center;margin-top:10px;display:none}.reveal-text.show{display:block}
+  .nav{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:16px;z-index:100}
+  .nav-btn{background:rgba(255,255,255,.25);border:2px solid rgba(255,255,255,.4);color:#fff;border-radius:50%;width:52px;height:52px;font-size:22px;cursor:pointer}.nav-btn:hover{background:rgba(255,255,255,.4)}
+  .counter{background:rgba(0,0,0,.3);color:#fff;border-radius:20px;padding:6px 18px;font-size:16px;font-weight:700}
+</style>
+</head>
+<body>
+
+<div class="slide s1 active" id="s1">
+  <div class="teacher-note">👩‍🏫 ถาม: "ใครพิมพ์คอมพิวเตอร์ได้บ้าง? ใช้นิ้วไหน?"</div>
+  <div class="badge">คอมพิวเตอร์เพิ่มเติม • ป.2 • หน่วยที่ 1</div>
+  <div class="big-emoji">⌨️</div>
+  <h1>พิมพ์เก่งขึ้น เร็วขึ้น!</h1>
+  <p class="sub" style="color:rgba(0,0,0,.7)">วันนี้เราจะเรียนรู้วิธีพิมพ์ที่ถูกต้อง</p>
+</div>
+
+<div class="slide s2" id="s2">
+  <div class="teacher-note">👩‍🏫 ชี้ที่คีย์บอร์ดจริง อธิบายแต่ละแถว</div>
+  <h2>แป้นพิมพ์มี 4 แถวหลัก</h2>
+  <div class="kb-wrap">
+    <div class="kb">
+      <div class="kb-row">
+        <div class="k">Q</div><div class="k">W</div><div class="k">E</div><div class="k">R</div><div class="k">T</div><div class="k">Y</div><div class="k">U</div><div class="k">I</div><div class="k">O</div><div class="k">P</div>
+      </div>
+      <div class="kb-row">
+        <div class="k home">A</div><div class="k home">S</div><div class="k home">D</div><div class="k home">F</div><div class="k">G</div><div class="k">H</div><div class="k home">J</div><div class="k home">K</div><div class="k home">L</div><div class="k home">;</div>
+      </div>
+      <div class="kb-row">
+        <div class="k wide">Shift</div><div class="k">Z</div><div class="k">X</div><div class="k">C</div><div class="k">V</div><div class="k">B</div><div class="k">N</div><div class="k">M</div><div class="k wide">Shift</div>
+      </div>
+      <div class="kb-row">
+        <div class="k space">SPACE BAR</div>
+      </div>
+    </div>
+  </div>
+  <p class="sub">แถวสีส้ม = <strong style="color:#FFD700">Home Row</strong> — แถวที่นิ้วพักอยู่เสมอ!</p>
+</div>
+
+<div class="slide s3" id="s3">
+  <div class="teacher-note">👩‍🏫 กดปุ่มตัวอักษรทีละตัว ให้เด็กหาตำแหน่งบนคีย์บอร์ดตัวเอง</div>
+  <h2>🖐️ Home Row — ตำแหน่งพักของนิ้ว</h2>
+  <div class="finger-row">
+    <div class="finger left"><h5>🫲 มือซ้าย</h5><p>A S D F</p></div>
+    <div class="finger right"><h5>🫱 มือขวา</h5><p>J K L ;</p></div>
+  </div>
+  <div style="text-align:center;margin:10px 0">
+    <button style="background:rgba(255,255,255,.2);border:none;border-radius:50px;padding:10px 24px;color:#fff;font-size:clamp(13px,2vw,22px);font-weight:700;cursor:pointer" onclick="hiKey()">✨ ดูนิ้วไหนพิมพ์อะไร</button>
+  </div>
+  <div class="kb-wrap">
+    <div class="kb">
+      <div class="kb-row">
+        <div class="k" id="kQ">Q</div><div class="k" id="kW">W</div><div class="k" id="kE">E</div><div class="k" id="kR">R</div><div class="k" id="kT">T</div><div class="k" id="kY">Y</div><div class="k" id="kU">U</div><div class="k" id="kI">I</div><div class="k" id="kO">O</div><div class="k" id="kP">P</div>
+      </div>
+      <div class="kb-row">
+        <div class="k home">A</div><div class="k home">S</div><div class="k home">D</div><div class="k home">F</div><div class="k" id="kG">G</div><div class="k" id="kH">H</div><div class="k home">J</div><div class="k home">K</div><div class="k home">L</div><div class="k home">;</div>
+      </div>
+      <div class="kb-row">
+        <div class="k wide">Shift</div><div class="k" id="kZ">Z</div><div class="k" id="kX">X</div><div class="k" id="kC">C</div><div class="k" id="kV">V</div><div class="k" id="kB">B</div><div class="k" id="kN">N</div><div class="k" id="kM">M</div><div class="k wide">Shift</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide s4" id="s4">
+  <div class="teacher-note">👩‍🏫 สาธิตท่านั่งที่ถูกต้อง ให้เด็กทำตาม</div>
+  <h2>🪑 ท่านั่งที่ถูกต้อง</h2>
+  <ul class="step-list">
+    <li><span class="sn">1</span>นั่งตัวตรง หลังพิง — ไม่ค้อม</li>
+    <li><span class="sn">2</span>ข้อศอกงอ 90 องศา — ไม่ยกไหล่</li>
+    <li><span class="sn">3</span>ตาห่างจอ 50–70 cm — ไม่ก้มหน้า</li>
+    <li><span class="sn">4</span>เท้าแตะพื้น — ไม่ห้อยเท้า</li>
+    <li><span class="sn">5</span>นิ้วพักที่ Home Row ตลอดเวลา</li>
+  </ul>
+</div>
+
+<div class="slide s5" id="s5">
+  <div class="teacher-note">👩‍🏫 ให้เด็กเปิด Notepad แล้วพิมพ์ตาม</div>
+  <h2>✍️ แบบฝึกพิมพ์วันนี้</h2>
+  <div class="practice-wrap">
+    <div class="practice-label">⭐ ขั้น 1 — Home Row เท่านั้น</div>
+    <div class="practice-row">asdf jkl; asdf jkl;</div>
+    <div class="practice-label">⭐⭐ ขั้น 2 — คำง่ายๆ</div>
+    <div class="practice-row">ask all dad fall sad</div>
+    <div class="practice-label">⭐⭐⭐ ขั้น 3 — ประโยค</div>
+    <div class="practice-row">the quick brown fox</div>
+  </div>
+  <p class="sub" style="margin-top:10px">พิมพ์ช้าๆ แม่นกว่าเร็ว!</p>
+</div>
+
+<div class="slide s6" id="s6">
+  <div class="teacher-note">👩‍🏫 ทดสอบด้วยการชี้แป้นในคีย์บอร์ดจริง</div>
+  <h2>🧠 ทดสอบ: นิ้วไหนพิมพ์แป้น F?</h2>
+  <div class="quiz-opt">
+    <button class="quiz-btn" onclick="qa(this,false)">นิ้วก้อยซ้าย</button>
+    <button class="quiz-btn" onclick="qa(this,false)">นิ้วกลางซ้าย</button>
+    <button class="quiz-btn" onclick="qa(this,true)">นิ้วชี้ซ้าย</button>
+    <button class="quiz-btn" onclick="qa(this,false)">นิ้วชี้ขวา</button>
+  </div>
+  <div id="qa-r" class="reveal-text"></div>
+</div>
+
+<div class="slide s7" id="s7">
+  <div class="teacher-note">👩‍🏫 แจกใบงาน 1.1 หรือให้เด็กเปิดไฟล์ HTML บนคอม</div>
+  <div class="badge w">สรุปบทเรียน</div>
+  <h2>วันนี้เราเรียนรู้ว่า... ✨</h2>
+  <ul class="step-list">
+    <li><span class="sn">✓</span><strong style="color:#FFD700">Home Row</strong> = A S D F (ซ้าย) J K L ; (ขวา)</li>
+    <li><span class="sn">✓</span>แต่ละนิ้วมีแป้นของตัวเอง</li>
+    <li><span class="sn">✓</span>นั่งตรง ข้อศอก 90° ตาห่างจอ</li>
+    <li><span class="sn">✓</span>พิมพ์ช้าๆ แม่นก่อน แล้วค่อยเร็ว</li>
+  </ul>
+</div>
+
+<div class="nav">
+  <button class="nav-btn" onclick="go(-1)">◀</button>
+  <span class="counter" id="counter">1 / 7</span>
+  <button class="nav-btn" onclick="go(1)">▶</button>
+</div>
+
+<script>
+  let cur=0;const slides=document.querySelectorAll('.slide');const total=slides.length;
+  function showSlide(n){slides[cur].classList.remove('active');cur=Math.max(0,Math.min(n,total-1));slides[cur].classList.add('active');document.getElementById('counter').textContent=(cur+1)+' / '+total;}
+  function go(d){showSlide(cur+d)}
+  document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')go(1);if(e.key==='ArrowLeft')go(-1);});
+  function hiKey(){const colors={'kQ':'#FF6B6B','kW':'#FF6B6B','kE':'#FF8E53','kR':'#f7971e','kT':'#f7971e','kY':'#ffd200','kU':'#ffd200','kI':'#98FB98','kO':'#6dd5ed','kP':'#6dd5ed','kG':'#f7971e','kH':'#ffd200','kZ':'#FF6B6B','kX':'#FF8E53','kC':'#FF8E53','kV':'#f7971e','kB':'#f7971e','kN':'#ffd200','kM':'#ffd200'};Object.entries(colors).forEach(([id,c])=>{const el=document.getElementById(id);if(el){el.style.background=c;el.style.color='#000';}});}
+  function qa(btn,c){btn.classList.add(c?'c':'w');const r=document.getElementById('qa-r');if(c){r.textContent='✅ ถูก! นิ้วชี้มือซ้าย พิมพ์แป้น F (และ G, R, T, V, B ด้วย)';r.style.display='block';}else{r.textContent='❌ ลองคิดอีกครั้ง! F อยู่ที่ Home Row ฝั่งซ้าย';r.style.display='block';}}
+</script>
+</body>
+</html>

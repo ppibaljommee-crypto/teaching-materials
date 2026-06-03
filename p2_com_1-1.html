@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>ป.2 คอมพิวเตอร์เพิ่มเติม - ใบงาน 1.1</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Sarabun',sans-serif; background:#fff; }
+  .page { width:210mm; min-height:297mm; padding:12mm 14mm; margin:0 auto; background:#fff; }
+  .header { background:linear-gradient(135deg,#f7971e,#ffd200); border-radius:16px; padding:14px 20px; margin-bottom:10px; display:flex; align-items:center; gap:14px; }
+  .header-icon { font-size:40px; }
+  .header-text h1 { color:#4a2000; font-size:18px; font-weight:800; }
+  .header-text p { color:rgba(74,32,0,0.75); font-size:12px; }
+  .subject-badge { background:#4a2000; color:#ffd200; font-size:11px; font-weight:700; padding:2px 10px; border-radius:20px; display:inline-block; margin-bottom:4px; }
+  .info-row { display:grid; grid-template-columns:2fr 1fr 1fr; gap:8px; margin-bottom:10px; }
+  .info-box { border:1.5px solid #ddd; border-radius:8px; padding:6px 10px; font-size:13px; }
+  .info-box label { font-size:11px; color:#888; display:block; }
+  .info-box .line { border-bottom:1px solid #ccc; margin-top:6px; }
+  .section-title { font-size:15px; font-weight:700; color:#f7971e; border-left:4px solid #f7971e; padding-left:8px; margin:10px 0 6px; }
+  .instruction { background:#FFF8E1; border-radius:10px; padding:8px 12px; font-size:13px; margin-bottom:8px; border-left:4px solid #ffd200; }
+
+  /* Keyboard layout */
+  .keyboard-wrap { display:flex; justify-content:center; margin:6px 0 8px; }
+  .keyboard {
+    background:#1a1a2e; border-radius:12px; padding:12px 14px;
+    display:flex; flex-direction:column; gap:4px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.3);
+  }
+  .kb-row { display:flex; gap:3px; justify-content:center; }
+  .key {
+    background:#2d2d44; color:#e0e0e0; border-radius:5px;
+    width:26px; height:26px; display:flex; align-items:center; justify-content:center;
+    font-size:10px; font-weight:700; border:1px solid #444;
+    box-shadow:0 2px 0 #111;
+  }
+  .key.home-row { background:#f7971e; color:#000; border-color:#e68a00; }
+  .key.wide { width:40px; }
+  .key.wider { width:55px; }
+  .key.space { width:120px; font-size:9px; }
+  .key.blank { background:transparent; border:none; box-shadow:none; color:transparent; }
+
+  .home-row-label {
+    text-align:center; font-size:12px; margin-bottom:6px;
+  }
+  .home-highlight { background:#f7971e; color:#000; padding:1px 8px; border-radius:4px; font-weight:700; }
+
+  /* Finger mapping */
+  .finger-table { width:100%; border-collapse:collapse; font-size:12.5px; margin-bottom:8px; }
+  .finger-table th { background:#f7971e; color:#4a2000; padding:5px 8px; text-align:center; font-weight:700; }
+  .finger-table td { border:1px solid #FFE082; padding:5px 8px; text-align:center; }
+  .finger-table tr:nth-child(even) td { background:#FFF9C4; }
+  .left-col { background:#E3F2FD !important; }
+  .right-col { background:#FCE4EC !important; }
+
+  /* Practice area */
+  .practice-box { border:2px dashed #ffd200; border-radius:12px; padding:10px 14px; margin-bottom:8px; background:#FFFDE7; }
+  .practice-title { font-size:13px; font-weight:700; color:#f7971e; margin-bottom:6px; }
+  .typing-line {
+    font-family:'Courier New', monospace; font-size:14px; color:#555;
+    background:#fff; border:1.5px solid #FFE082; border-radius:6px;
+    padding:4px 8px; margin-bottom:4px; letter-spacing:2px;
+  }
+  .blank-line { border-bottom:1.5px solid #FFE082; height:24px; margin:4px 0; background:#fff; padding:0 8px; }
+
+  .q-box { border:1.5px solid #FFE082; border-radius:12px; padding:10px 14px; margin-bottom:8px; background:#FFFDE7; }
+  .q-num { display:inline-block; background:#f7971e; color:#fff; border-radius:50%; width:24px; height:24px; text-align:center; line-height:24px; font-weight:700; font-size:13px; margin-right:6px; }
+  .q-text { font-size:14px; font-weight:600; display:inline; }
+  .write-line { border-bottom:1.5px solid #FFE082; margin:5px 0; height:24px; }
+
+  .score-box { border:2px solid #f7971e; border-radius:12px; padding:8px 14px; margin-top:8px; display:flex; justify-content:space-between; align-items:center; }
+  .score-box .score { font-size:22px; font-weight:800; color:#f7971e; }
+
+  @media print {
+    body { background:white; }
+    .page { margin:0; padding:10mm 12mm; width:210mm; height:297mm; overflow:hidden; }
+    @page { size:A4; margin:0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div class="header-icon">⌨️</div>
+    <div class="header-text">
+      <div class="subject-badge">คอมพิวเตอร์เพิ่มเติม • ชั้น ป.2</div>
+      <h1>ใบงาน 1.1 — พิมพ์เก่งขึ้น เร็วขึ้น</h1>
+      <p>หน่วยที่ 1 : พิมพ์เก่งขึ้น เร็วขึ้น (Typing Skills)</p>
+    </div>
+  </div>
+
+  <div class="info-row">
+    <div class="info-box"><label>ชื่อ–นามสกุล</label><div class="line"></div></div>
+    <div class="info-box"><label>ชั้น / ห้อง</label><div class="line"></div></div>
+    <div class="info-box"><label>วันที่</label><div class="line"></div></div>
+  </div>
+
+  <div class="section-title">⌨️ แป้นพิมพ์และ Home Row Keys</div>
+  <div class="home-row-label">
+    แถว <span class="home-highlight">Home Row</span> คือแถวกลางที่นิ้วพักเสมอ ➜
+    <strong style="color:#f7971e">A S D F</strong> (มือซ้าย) &nbsp;|&nbsp; <strong style="color:#f7971e">J K L ;</strong> (มือขวา)
+  </div>
+
+  <div class="keyboard-wrap">
+    <div class="keyboard">
+      <div class="kb-row">
+        <div class="key">Q</div><div class="key">W</div><div class="key">E</div>
+        <div class="key">R</div><div class="key">T</div><div class="key">Y</div>
+        <div class="key">U</div><div class="key">I</div><div class="key">O</div>
+        <div class="key">P</div>
+      </div>
+      <div class="kb-row">
+        <div class="key home-row">A</div><div class="key home-row">S</div>
+        <div class="key home-row">D</div><div class="key home-row">F</div>
+        <div class="key">G</div><div class="key">H</div>
+        <div class="key home-row">J</div><div class="key home-row">K</div>
+        <div class="key home-row">L</div><div class="key home-row">;</div>
+      </div>
+      <div class="kb-row">
+        <div class="key wide">Shift</div><div class="key">Z</div><div class="key">X</div>
+        <div class="key">C</div><div class="key">V</div><div class="key">B</div>
+        <div class="key">N</div><div class="key">M</div><div class="key wide">Shift</div>
+      </div>
+      <div class="kb-row">
+        <div class="key space">SPACE</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">🤚 นิ้วไหนพิมพ์แป้นไหน?</div>
+  <table class="finger-table">
+    <thead>
+      <tr>
+        <th class="left-col" colspan="4">มือซ้าย 🫲</th>
+        <th class="right-col" colspan="4">มือขวา 🫱</th>
+      </tr>
+      <tr>
+        <th class="left-col">นิ้วก้อย</th><th class="left-col">นิ้วนาง</th>
+        <th class="left-col">นิ้วกลาง</th><th class="left-col">นิ้วชี้</th>
+        <th class="right-col">นิ้วชี้</th><th class="right-col">นิ้วกลาง</th>
+        <th class="right-col">นิ้วนาง</th><th class="right-col">นิ้วก้อย</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="left-col">A, Q, Z</td><td class="left-col">S, W, X</td>
+        <td class="left-col">D, E, C</td><td class="left-col">F, R, T, G, V, B</td>
+        <td class="right-col">J, U, Y, H, N, M</td><td class="right-col">K, I, ,</td>
+        <td class="right-col">L, O, .</td><td class="right-col">; , P, /</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="practice-box">
+    <div class="practice-title">✍️ แบบฝึกพิมพ์ (คัดตามแบบ)</div>
+    <div class="typing-line">asdf jkl; asdf jkl;</div>
+    <div class="blank-line"></div>
+    <div class="typing-line">the quick brown fox</div>
+    <div class="blank-line"></div>
+    <div class="typing-line">hello world good job</div>
+    <div class="blank-line"></div>
+  </div>
+
+  <div class="q-box">
+    <span class="q-num">★</span>
+    <span class="q-text">วงกลมนิ้วที่ถูกต้องสำหรับแป้นต่อไปนี้</span>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:6px">
+      <div style="border:1.5px solid #FFE082;border-radius:8px;padding:6px 8px;text-align:center">
+        <div style="font-size:16px;font-weight:800">F</div>
+        <div style="font-size:11px;color:#888">นิ้ว: ชี้ / กลาง / นาง</div>
+      </div>
+      <div style="border:1.5px solid #FFE082;border-radius:8px;padding:6px 8px;text-align:center">
+        <div style="font-size:16px;font-weight:800">K</div>
+        <div style="font-size:11px;color:#888">นิ้ว: ชี้ / กลาง / นาง</div>
+      </div>
+      <div style="border:1.5px solid #FFE082;border-radius:8px;padding:6px 8px;text-align:center">
+        <div style="font-size:16px;font-weight:800">A</div>
+        <div style="font-size:11px;color:#888">นิ้ว: ก้อย / นาง / กลาง</div>
+      </div>
+      <div style="border:1.5px solid #FFE082;border-radius:8px;padding:6px 8px;text-align:center">
+        <div style="font-size:16px;font-weight:800">L</div>
+        <div style="font-size:11px;color:#888">นิ้ว: ก้อย / นาง / ชี้</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="score-box">
+    <div class="label">คะแนนที่ได้<br><span style="font-size:11px;color:#999">ครูให้คะแนน</span></div>
+    <div class="score">______ / 10</div>
+    <div style="text-align:center">
+      <div style="font-size:11px;color:#888">ลายมือชื่อครู</div>
+      <div style="border-bottom:1px solid #ccc;width:80px;margin-top:16px"></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="th">
+<head><meta charset="UTF-8"><title>ม.2 วิทย์คำนวณ – Computational Thinking</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Sarabun',sans-serif;background:#0a0a1a;overflow:hidden;height:100vh}
+  .slide{display:none;width:100vw;height:100vh;flex-direction:column;align-items:center;justify-content:center;padding:40px;position:relative}.slide.active{display:flex}
+  .s1{background:linear-gradient(135deg,#0f0c29,#302b63,#24243e)}.s2{background:linear-gradient(135deg,#1a1a2e,#16213e)}.s3{background:linear-gradient(135deg,#000428,#004e92)}.s4{background:linear-gradient(135deg,#1a1a2e,#e94560)}.s5{background:linear-gradient(135deg,#0f2027,#203a43,#2c5364)}.s6{background:linear-gradient(135deg,#1a1a2e,#4a00e0)}.s7{background:linear-gradient(135deg,#16213e,#0f3460)}.s8{background:linear-gradient(135deg,#000428,#004e92)}.s9{background:linear-gradient(135deg,#0f0c29,#302b63)}
+  h1{font-size:clamp(26px,5vw,60px);font-weight:800;color:#fff;text-align:center;text-shadow:0 0 20px rgba(100,150,255,.5);line-height:1.2}
+  h2{font-size:clamp(19px,3.6vw,44px);font-weight:700;color:#fff;text-align:center;line-height:1.3}
+  p.sub{font-size:clamp(13px,2.1vw,24px);color:rgba(255,255,255,.8);text-align:center;margin-top:10px}
+  .badge{background:rgba(233,69,96,.4);border:1px solid rgba(233,69,96,.7);border-radius:50px;padding:7px 22px;font-size:clamp(11px,1.6vw,19px);color:#fff;font-weight:700;margin-bottom:14px}
+  .big-emoji{font-size:clamp(54px,10vw,114px);text-align:center;line-height:1}
+  .teacher-note{position:fixed;top:16px;right:16px;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:8px 14px;color:rgba(255,255,255,.65);font-size:13px;max-width:270px;text-align:right}
+  .box{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);backdrop-filter:blur(10px);border-radius:18px;padding:20px 28px;width:100%;max-width:860px;margin-top:12px}
+  .step-list{list-style:none;margin-top:12px;max-width:750px;width:100%}
+  .step-list li{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:10px 18px;margin-bottom:9px;font-size:clamp(13px,2vw,22px);color:#fff;display:flex;align-items:center;gap:12px}
+  .sn{background:#e94560;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex-shrink:0;color:#fff}
+  .reveal-btn{background:rgba(233,69,96,.8);border:1px solid #e94560;color:#fff;border-radius:50px;padding:10px 24px;font-size:clamp(13px,1.8vw,20px);font-weight:700;cursor:pointer;margin:6px;transition:transform .15s}.reveal-btn:hover{transform:scale(1.05);background:#e94560}
+  .reveal-text{font-size:clamp(13px,2vw,22px);color:#7FDBFF;font-weight:700;text-align:center;margin-top:10px;display:none}.reveal-text.show{display:block}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;width:100%;max-width:860px;margin-top:12px}
+  .col{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:16px;padding:16px 20px}
+  .col h4{font-size:clamp(13px,2vw,22px);color:#7FDBFF;font-weight:800;margin-bottom:8px}
+  .col p,.col li{font-size:clamp(11px,1.6vw,18px);color:rgba(255,255,255,.85);padding:3px 0}
+  /* Flowchart demo */
+  .fc-wrap{display:flex;flex-direction:column;align-items:center;gap:4px;margin-top:12px}
+  .fc-node{padding:8px 20px;border-radius:50px;font-size:clamp(12px,1.8vw,20px);font-weight:700;text-align:center;min-width:180px}
+  .fc-oval{background:#7FDBFF;color:#0a0a1a;border-radius:50px}
+  .fc-rect{background:#98FB98;color:#0a0a1a;border-radius:8px}
+  .fc-para{background:#FFD700;color:#0a0a1a;border-radius:8px;transform:skewX(-8deg)}
+  .fc-para span{display:inline-block;transform:skewX(8deg)}
+  .fc-diamond-wrap{position:relative;width:160px;height:80px;display:flex;align-items:center;justify-content:center}
+  .fc-diamond{width:120px;height:60px;background:#FFB347;transform:rotate(45deg);border-radius:6px}
+  .fc-diamond-text{position:absolute;color:#0a0a1a;font-weight:800;font-size:clamp(11px,1.7vw,18px);text-align:center}
+  .fc-arrow{color:rgba(255,255,255,.6);font-size:20px}
+  .fc-branch{display:flex;gap:20px;align-items:flex-start;justify-content:center}
+  .fc-branch-item{display:flex;flex-direction:column;align-items:center;gap:4px}
+  .fc-branch-label{font-size:12px;color:rgba(255,255,255,.7)}
+
+  /* Pseudocode */
+  .pseudo{background:#1e1e1e;border:1px solid #444;border-radius:12px;padding:16px;font-family:'Courier New',monospace;font-size:clamp(11px,1.7vw,18px);color:#d4d4d4;line-height:1.8;width:100%;max-width:700px;margin-top:12px;text-align:left}
+  .kw{color:#569CD6}.fn{color:#DCDCAA}.str{color:#CE9178}.cmt{color:#6A9955}
+
+  .quiz-opt{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+  .quiz-btn{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.3);border-radius:14px;padding:10px 18px;color:#fff;font-size:clamp(12px,1.7vw,19px);font-weight:700;cursor:pointer;transition:all .2s}.quiz-btn:hover{background:rgba(255,255,255,.2)}.quiz-btn.c{background:#4CAF50;border-color:#4CAF50}.quiz-btn.w{background:#f44336;border-color:#f44336;opacity:.7}
+  .nav{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:16px;z-index:100}
+  .nav-btn{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:50%;width:52px;height:52px;font-size:22px;cursor:pointer}.nav-btn:hover{background:rgba(255,255,255,.3)}
+  .counter{background:rgba(0,0,0,.5);color:#fff;border-radius:20px;padding:6px 18px;font-size:16px;font-weight:700}
+</style>
+</head>
+<body>
+
+<div class="slide s1 active" id="s1">
+  <div class="teacher-note">👩‍🏫 ถาม: "Flowchart กับ Pseudocode ต่างกันอย่างไร?"</div>
+  <div class="badge">วิทยาการคำนวณ • ม.2 • หน่วยที่ 1</div>
+  <div class="big-emoji">🖥️</div>
+  <h1>การคิดเชิงคำนวณ<br>&amp; การแก้ปัญหา</h1>
+  <p class="sub">Flowchart · Pseudocode · Algorithm Design</p>
+</div>
+
+<div class="slide s2" id="s2">
+  <div class="teacher-note">👩‍🏫 ทบทวน 4 ทักษะ CT จาก ป.6</div>
+  <h2>ทบทวน: Computational Thinking</h2>
+  <div class="two-col">
+    <div class="col"><h4>🌳 Decomposition</h4><p>แตกปัญหาซับซ้อนเป็นส่วนย่อย</p></div>
+    <div class="col"><h4>🔄 Pattern Recognition</h4><p>มองหารูปแบบและความสม่ำเสมอ</p></div>
+    <div class="col"><h4>🎭 Abstraction</h4><p>ละเว้นรายละเอียดที่ไม่จำเป็น</p></div>
+    <div class="col"><h4>📋 Algorithm</h4><p>ขั้นตอนที่ชัดเจน ทำซ้ำได้</p></div>
+  </div>
+  <p class="sub" style="margin-top:14px">วันนี้เราจะฝึก <strong style="color:#7FDBFF">Algorithm</strong> ด้วย Flowchart และ Pseudocode</p>
+</div>
+
+<div class="slide s3" id="s3">
+  <div class="teacher-note">👩‍🏫 อธิบายสัญลักษณ์ Flowchart ทีละตัว</div>
+  <h2>📊 สัญลักษณ์ Flowchart</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>รูปร่าง → ความหมาย</h4>
+      <p>⬭ วงรี = เริ่มต้น / สิ้นสุด</p>
+      <p>▭ สี่เหลี่ยม = กระบวนการ (Process)</p>
+      <p>◇ เพชร = เงื่อนไข (Decision)</p>
+      <p>⌇ ขนาน = รับ/แสดงผล (I/O)</p>
+      <p>→ ลูกศร = ทิศทางการไหล</p>
+    </div>
+    <div class="col">
+      <h4>ตัวอย่าง Flowchart ง่ายๆ</h4>
+      <div class="fc-wrap" style="transform:scale(0.8);transform-origin:top center">
+        <div class="fc-node fc-oval">เริ่มต้น</div>
+        <div class="fc-arrow">⬇</div>
+        <div class="fc-node fc-para"><span>รับค่า x</span></div>
+        <div class="fc-arrow">⬇</div>
+        <div class="fc-diamond-wrap">
+          <div class="fc-diamond"></div>
+          <div class="fc-diamond-text">x &gt; 0?</div>
+        </div>
+        <div class="fc-branch">
+          <div class="fc-branch-item"><div class="fc-branch-label">ใช่</div><div class="fc-node fc-para" style="min-width:100px"><span>แสดง "บวก"</span></div></div>
+          <div class="fc-branch-item"><div class="fc-branch-label">ไม่ใช่</div><div class="fc-node fc-para" style="min-width:100px"><span>แสดง "ลบ/ศูนย์"</span></div></div>
+        </div>
+        <div class="fc-arrow">⬇</div>
+        <div class="fc-node fc-oval">สิ้นสุด</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide s4" id="s4">
+  <div class="teacher-note">👩‍🏫 เขียน Pseudocode บนกระดานให้นักเรียนดู</div>
+  <h2>💻 Pseudocode คืออะไร?</h2>
+  <div class="box"><p style="font-size:clamp(14px,2.2vw,24px);color:rgba(255,255,255,.9);text-align:center">Pseudocode = <span style="color:#7FDBFF">ภาษากึ่งโปรแกรม</span><br>ใช้อธิบายขั้นตอนก่อนเขียนโค้ดจริง<br>ไม่มี syntax เคร่งครัด แต่อ่านแล้วเข้าใจทันที</p></div>
+  <div class="pseudo">
+<span class="cmt">// หาค่าเฉลี่ย 3 วิชา</span>
+<span class="kw">START</span>
+  <span class="kw">INPUT</span> score1, score2, score3
+  <span class="kw">SET</span> avg = (score1 + score2 + score3) / 3
+  <span class="kw">IF</span> avg &gt;= 50 <span class="kw">THEN</span>
+    <span class="fn">OUTPUT</span> <span class="str">"ผ่าน"</span>
+  <span class="kw">ELSE</span>
+    <span class="fn">OUTPUT</span> <span class="str">"ไม่ผ่าน"</span>
+  <span class="kw">ENDIF</span>
+<span class="kw">END</span>
+  </div>
+</div>
+
+<div class="slide s5" id="s5">
+  <div class="teacher-note">👩‍🏫 ทดสอบ trace โค้ด — ถามว่าถ้า score1=40,score2=60,score3=50 ได้ผลอะไร?</div>
+  <h2>🧠 Trace the Pseudocode</h2>
+  <div class="pseudo" style="font-size:clamp(12px,1.8vw,20px)">
+<span class="cmt">// กำหนดให้: score1=40, score2=60, score3=50</span>
+<span class="kw">SET</span> avg = (40 + 60 + 50) / 3  <span class="cmt">// avg = ?</span>
+<span class="kw">IF</span> avg &gt;= 50 <span class="kw">THEN</span>
+  <span class="fn">OUTPUT</span> <span class="str">"ผ่าน"</span>
+<span class="kw">ELSE</span>
+  <span class="fn">OUTPUT</span> <span class="str">"ไม่ผ่าน"</span>
+<span class="kw">ENDIF</span>
+  </div>
+  <div style="text-align:center;margin-top:14px">
+    <button class="reveal-btn" onclick="reveal('r5')">🔍 ดูคำตอบ</button>
+    <div id="r5" class="reveal-text">avg = 150/3 = 50 → 50 ≥ 50 → OUTPUT "ผ่าน" ✅</div>
+  </div>
+</div>
+
+<div class="slide s6" id="s6">
+  <div class="teacher-note">👩‍🏫 ทดสอบ: ให้นักเรียนเขียน Pseudocode ง่ายๆ บนกระดาษแล้วแชร์</div>
+  <h2>🧠 ทดสอบ: ข้อใดคือ Pseudocode ที่ถูกต้อง?</h2>
+  <div class="quiz-opt" style="flex-direction:column;align-items:center">
+    <button class="quiz-btn" style="width:90%;text-align:left;font-family:'Courier New',monospace" onclick="qa(this,false)">x = input() → if x &gt; 0: print("pos") else: print("neg")</button>
+    <button class="quiz-btn" style="width:90%;text-align:left;font-family:'Courier New',monospace" onclick="qa(this,true)">INPUT x → IF x > 0 THEN OUTPUT "positive" ELSE OUTPUT "negative" ENDIF</button>
+    <button class="quiz-btn" style="width:90%;text-align:left;font-family:'Courier New',monospace" onclick="qa(this,false)">รับตัวเลข ถ้ามากกว่าศูนย์แสดง positive</button>
+  </div>
+  <div id="qa-r" class="reveal-text"></div>
+</div>
+
+<div class="slide s7" id="s7">
+  <div class="teacher-note">👩‍🏫 แจกกระดาษ A3 และอธิบายรูปแบบที่ต้องการ</div>
+  <h2>✍️ งานชิ้นนี้: A3 + นำเสนอ</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>📊 ด้านซ้าย: Flowchart</h4>
+      <ul style="list-style:none">
+        <li>• ใช้สัญลักษณ์ถูกต้อง</li>
+        <li>• มีลูกศรเชื่อมทุกขั้นตอน</li>
+        <li>• เริ่มต้น/สิ้นสุดชัดเจน</li>
+        <li>• ตั้งชื่อโปรแกรม</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h4>💻 ด้านขวา: Pseudocode</h4>
+      <ul style="list-style:none">
+        <li>• START … END ครบ</li>
+        <li>• INPUT / OUTPUT ชัดเจน</li>
+        <li>• IF…THEN…ELSE ถูกต้อง</li>
+        <li>• สอดคล้องกับ Flowchart</li>
+      </ul>
+    </div>
+    <div class="col" style="grid-column:1/-1">
+      <h4>🎤 การนำเสนอ (~3 นาที)</h4>
+      <p>• อธิบาย Flowchart ตามลำดับ | • อ่าน Pseudocode ทีละบรรทัด | • ตอบคำถามเพื่อน</p>
+    </div>
+  </div>
+</div>
+
+<div class="slide s8" id="s8">
+  <div class="teacher-note">👩‍🏫 โจทย์สำหรับงาน A3</div>
+  <h2>📝 โจทย์</h2>
+  <div class="box" style="text-align:center">
+    <p style="font-size:clamp(16px,2.5vw,28px);color:#fff">เขียน <span style="color:#7FDBFF">Flowchart</span> และ <span style="color:#FFD700">Pseudocode</span><br>สำหรับโปรแกรม:</p>
+    <p style="font-size:clamp(18px,3vw,34px);color:#FFD700;font-weight:800;margin-top:12px">
+      "รับคะแนน 3 วิชา<br>หาค่าเฉลี่ย<br>แสดงผล 'ผ่าน' / 'ไม่ผ่าน'"
+    </p>
+    <p style="font-size:clamp(13px,2vw,22px);color:rgba(255,255,255,.7);margin-top:10px">เงื่อนไข: เฉลี่ย ≥ 50 = ผ่าน</p>
+  </div>
+</div>
+
+<div class="slide s9" id="s9">
+  <div class="teacher-note">👩‍🏫 สรุปและให้นักเรียนถามก่อนเริ่มทำ A3</div>
+  <div class="badge">สรุปบทเรียน</div>
+  <h2>Flowchart &amp; Pseudocode ✨</h2>
+  <ul class="step-list">
+    <li><span class="sn">F</span><strong style="color:#7FDBFF">Flowchart</strong> = แสดงขั้นตอนด้วยสัญลักษณ์ (มองเห็นภาพรวม)</li>
+    <li><span class="sn">P</span><strong style="color:#FFD700">Pseudocode</strong> = เขียนด้วยภาษากึ่งโปรแกรม (ละเอียดกว่า)</li>
+    <li><span class="sn">✓</span>ทั้งสองช่วยออกแบบโปรแกรมก่อนเขียนจริง</li>
+  </ul>
+</div>
+
+<div class="nav">
+  <button class="nav-btn" onclick="go(-1)">◀</button>
+  <span class="counter" id="counter">1 / 9</span>
+  <button class="nav-btn" onclick="go(1)">▶</button>
+</div>
+
+<script>
+  let cur=0;const slides=document.querySelectorAll('.slide');const total=slides.length;
+  function showSlide(n){slides[cur].classList.remove('active');cur=Math.max(0,Math.min(n,total-1));slides[cur].classList.add('active');document.getElementById('counter').textContent=(cur+1)+' / '+total;}
+  function go(d){showSlide(cur+d)}
+  document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')go(1);if(e.key==='ArrowLeft')go(-1);});
+  function reveal(id){document.getElementById(id).classList.toggle('show');}
+  function qa(btn,c){btn.classList.add(c?'c':'w');if(c){const r=document.getElementById('qa-r');r.textContent='✅ ถูก! Pseudocode ใช้คำสำคัญมาตรฐานแต่ไม่ต้องเป็น syntax ของภาษาใดภาษาหนึ่ง';r.style.display='block';}}
+</script>
+</body>
+</html>

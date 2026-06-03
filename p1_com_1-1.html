@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>ป.1 คอมพิวเตอร์เพิ่มเติม - ใบงาน 1.1</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Sarabun',sans-serif; background:#fff; }
+  .page { width:210mm; min-height:297mm; padding:12mm 14mm; margin:0 auto; background:#fff; }
+  .header { background:linear-gradient(135deg,#2193b0,#6dd5ed); border-radius:16px; padding:14px 20px; margin-bottom:10px; display:flex; align-items:center; gap:14px; }
+  .header-icon { font-size:40px; }
+  .header-text h1 { color:#fff; font-size:18px; font-weight:800; }
+  .header-text p { color:rgba(255,255,255,0.9); font-size:12px; }
+  .subject-badge { background:#fff; color:#2193b0; font-size:11px; font-weight:700; padding:2px 10px; border-radius:20px; display:inline-block; margin-bottom:4px; }
+  .info-row { display:grid; grid-template-columns:2fr 1fr 1fr; gap:8px; margin-bottom:10px; }
+  .info-box { border:1.5px solid #ddd; border-radius:8px; padding:6px 10px; font-size:13px; }
+  .info-box label { font-size:11px; color:#888; display:block; }
+  .info-box .line { border-bottom:1px solid #ccc; margin-top:6px; }
+  .section-title { font-size:15px; font-weight:700; color:#2193b0; border-left:4px solid #2193b0; padding-left:8px; margin:10px 0 6px; }
+  .instruction { background:#E0F7FA; border-radius:10px; padding:8px 12px; font-size:13px; margin-bottom:10px; border-left:4px solid #6dd5ed; }
+
+  /* Computer diagram */
+  .computer-diagram {
+    display:flex; justify-content:center; align-items:flex-end; gap:16px;
+    margin:8px 0 4px; padding:10px; background:#E0F7FA; border-radius:14px;
+  }
+  .comp-item { display:flex; flex-direction:column; align-items:center; gap:4px; }
+  .comp-box {
+    border:2.5px solid #2193b0; border-radius:8px; background:#fff;
+    display:flex; align-items:center; justify-content:center;
+    font-size:24px; position:relative;
+  }
+  .comp-label { font-size:11px; font-weight:700; color:#555; }
+  .label-box {
+    position:absolute; bottom:-28px; left:50%; transform:translateX(-50%);
+    background:#2193b0; color:#fff; font-size:10px; white-space:nowrap;
+    padding:2px 8px; border-radius:10px;
+  }
+  .label-blank {
+    position:absolute; bottom:-28px; left:50%; transform:translateX(-50%);
+    background:#ddd; color:#999; font-size:10px; white-space:nowrap;
+    padding:2px 30px; border-radius:10px; border:1px dashed #999;
+  }
+
+  .match-section { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:10px; }
+  .match-left { }
+  .match-right { }
+  .match-title { font-size:13px; font-weight:700; color:#2193b0; margin-bottom:6px; }
+  .match-item {
+    display:flex; align-items:center; gap:8px;
+    border:1.5px solid #B2EBF2; border-radius:8px; padding:6px 10px;
+    margin-bottom:6px; background:#fff; font-size:13px;
+  }
+  .match-num { background:#2193b0; color:#fff; border-radius:50%; width:22px; height:22px; text-align:center; line-height:22px; font-weight:700; font-size:12px; flex-shrink:0; }
+  .match-answer { width:28px; height:28px; border:2px solid #B2EBF2; border-radius:6px; text-align:center; line-height:28px; font-weight:700; font-size:14px; flex-shrink:0; }
+
+  .dos-donts { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:10px; }
+  .dos { border:2px solid #4CAF50; border-radius:12px; padding:8px 10px; }
+  .donts { border:2px solid #F44336; border-radius:12px; padding:8px 10px; }
+  .dos-title { font-size:13px; font-weight:700; color:#4CAF50; margin-bottom:6px; }
+  .donts-title { font-size:13px; font-weight:700; color:#F44336; margin-bottom:6px; }
+  .rule-item { display:flex; align-items:flex-start; gap:6px; font-size:12.5px; margin-bottom:4px; }
+  .check { color:#4CAF50; font-weight:700; }
+  .cross { color:#F44336; font-weight:700; }
+
+  .q-box { border:1.5px solid #B2EBF2; border-radius:12px; padding:10px 14px; margin-bottom:8px; background:#F8FDFF; }
+  .q-num { display:inline-block; background:#2193b0; color:#fff; border-radius:50%; width:24px; height:24px; text-align:center; line-height:24px; font-weight:700; font-size:13px; margin-right:6px; }
+  .q-text { font-size:14px; font-weight:600; display:inline; }
+  .write-line { border-bottom:1.5px solid #B2EBF2; margin:5px 0; height:24px; }
+
+  .score-box { border:2px solid #2193b0; border-radius:12px; padding:8px 14px; margin-top:8px; display:flex; justify-content:space-between; align-items:center; }
+  .score-box .score { font-size:22px; font-weight:800; color:#2193b0; }
+
+  @media print {
+    body { background:white; }
+    .page { margin:0; padding:10mm 12mm; width:210mm; height:297mm; overflow:hidden; }
+    @page { size:A4; margin:0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div class="header-icon">💻</div>
+    <div class="header-text">
+      <div class="subject-badge">คอมพิวเตอร์เพิ่มเติม • ชั้น ป.1</div>
+      <h1>ใบงาน 1.1 — รู้จักและดูแลคอมพิวเตอร์</h1>
+      <p>หน่วยที่ 1 : รู้จักและดูแลคอมพิวเตอร์</p>
+    </div>
+  </div>
+
+  <div class="info-row">
+    <div class="info-box"><label>ชื่อ–นามสกุล</label><div class="line"></div></div>
+    <div class="info-box"><label>ชั้น / ห้อง</label><div class="line"></div></div>
+    <div class="info-box"><label>วันที่</label><div class="line"></div></div>
+  </div>
+
+  <div class="section-title">🖥️ ส่วนประกอบของคอมพิวเตอร์</div>
+  <div class="instruction">เขียนชื่อส่วนประกอบให้ถูกต้องในกล่องด้านล่างอุปกรณ์แต่ละชิ้น</div>
+
+  <!-- Simple computer diagram with SVG -->
+  <div style="display:flex;justify-content:center;margin:6px 0 12px">
+    <svg width="400" height="180" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+      <!-- Monitor -->
+      <rect x="120" y="10" width="120" height="85" rx="8" fill="#E3F2FD" stroke="#2193b0" stroke-width="2.5"/>
+      <rect x="128" y="18" width="104" height="64" rx="4" fill="#B3E5FC"/>
+      <text x="180" y="55" text-anchor="middle" font-size="28" fill="#0277BD">🖥</text>
+      <rect x="165" y="95" width="30" height="10" fill="#90CAF9"/>
+      <rect x="140" y="105" width="80" height="8" rx="4" fill="#90CAF9"/>
+      <!-- Label 1 -->
+      <rect x="132" y="118" width="96" height="22" rx="11" fill="#ddd" stroke="#999" stroke-dasharray="4"/>
+      <text x="180" y="133" text-anchor="middle" font-size="11" fill="#999">1. ___________</text>
+
+      <!-- CPU Box -->
+      <rect x="10" y="30" width="70" height="90" rx="6" fill="#E8F5E9" stroke="#2193b0" stroke-width="2.5"/>
+      <text x="45" y="80" text-anchor="middle" font-size="22" fill="#1B5E20">🖥️</text>
+      <circle cx="45" cy="100" r="6" fill="#64B5F6"/>
+      <!-- Label 2 -->
+      <rect x="3" y="128" width="84" height="22" rx="11" fill="#ddd" stroke="#999" stroke-dasharray="4"/>
+      <text x="45" y="143" text-anchor="middle" font-size="11" fill="#999">2. ___________</text>
+
+      <!-- Keyboard -->
+      <rect x="90" y="150" width="180" height="26" rx="5" fill="#F3E5F5" stroke="#2193b0" stroke-width="2.5"/>
+      <text x="180" y="168" text-anchor="middle" font-size="14" fill="#4A148C">⌨️ แป้นพิมพ์</text>
+      <!-- Label 3 -->
+      <!-- already labeled -->
+
+      <!-- Mouse -->
+      <ellipse cx="330" cy="110" rx="28" ry="40" fill="#FFF3E0" stroke="#2193b0" stroke-width="2.5"/>
+      <line x1="330" y1="70" x2="330" y2="100" stroke="#2193b0" stroke-width="1.5"/>
+      <text x="330" y="115" text-anchor="middle" font-size="18">🖱</text>
+      <!-- Label 4 -->
+      <rect x="298" y="155" width="64" height="22" rx="11" fill="#ddd" stroke="#999" stroke-dasharray="4"/>
+      <text x="330" y="170" text-anchor="middle" font-size="11" fill="#999">4. ___________</text>
+
+      <!-- Arrows pointing to labels -->
+      <line x1="180" y1="105" x2="180" y2="115" stroke="#2193b0" stroke-width="1.5" stroke-dasharray="3"/>
+      <line x1="45" y1="120" x2="45" y2="126" stroke="#2193b0" stroke-width="1.5" stroke-dasharray="3"/>
+      <line x1="330" y1="152" x2="330" y2="153" stroke="#2193b0" stroke-width="1.5" stroke-dasharray="3"/>
+    </svg>
+  </div>
+
+  <div style="font-size:12px;color:#888;text-align:center;margin-bottom:8px">
+    คำที่ใช้ได้ : จอมอนิเตอร์ &nbsp;|&nbsp; เมาส์ &nbsp;|&nbsp; เคสคอมพิวเตอร์ (CPU) &nbsp;|&nbsp; แป้นพิมพ์
+  </div>
+
+  <!-- Dos and Don'ts -->
+  <div class="section-title">📋 กฎการดูแลคอมพิวเตอร์</div>
+  <div class="dos-donts">
+    <div class="dos">
+      <div class="dos-title">✅ ควรทำ</div>
+      <div class="rule-item"><span class="check">✔</span> วางคอมพิวเตอร์บนพื้นราบ มั่นคง</div>
+      <div class="rule-item"><span class="check">✔</span> ล้างมือก่อนใช้งาน</div>
+      <div class="rule-item"><span class="check">✔</span> ปิดคอมพิวเตอร์เมื่อเลิกใช้</div>
+      <div class="rule-item"><span class="check">✔</span> <span style="border-bottom:1px dashed #4CAF50;flex:1;height:20px"></span></div>
+    </div>
+    <div class="donts">
+      <div class="donts-title">❌ ไม่ควรทำ</div>
+      <div class="rule-item"><span class="cross">✘</span> นำอาหารหรือน้ำมาวางใกล้คอมพิวเตอร์</div>
+      <div class="rule-item"><span class="cross">✘</span> ตีหรือทุบแป้นพิมพ์แรงๆ</div>
+      <div class="rule-item"><span class="cross">✘</span> ดึงสายไฟออกขณะใช้งาน</div>
+      <div class="rule-item"><span class="cross">✘</span> <span style="border-bottom:1px dashed #F44336;flex:1;height:20px"></span></div>
+    </div>
+  </div>
+
+  <div class="q-box">
+    <span class="q-num">★</span>
+    <span class="q-text">วาดภาพตัวเองกำลังใช้คอมพิวเตอร์อย่างถูกต้อง</span>
+    <div style="border:2px dashed #B2EBF2;border-radius:10px;height:60px;display:flex;align-items:center;justify-content:center;color:#ccc;font-size:12px;margin-top:6px">
+      ✏️ วาดภาพที่นี่
+    </div>
+  </div>
+
+  <div class="score-box">
+    <div class="label">คะแนนที่ได้<br><span style="font-size:11px;color:#999">ครูให้คะแนน</span></div>
+    <div class="score">______ / 10</div>
+    <div style="text-align:center">
+      <div style="font-size:11px;color:#888">ลายมือชื่อครู</div>
+      <div style="border-bottom:1px solid #ccc;width:80px;margin-top:16px"></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

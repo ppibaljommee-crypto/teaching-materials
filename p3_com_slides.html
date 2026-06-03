@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="th">
+<head><meta charset="UTF-8"><title>ป.3 คอมพิวเตอร์เพิ่มเติม – รายงานนักวิทยาศาสตร์น้อย</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Sarabun',sans-serif;background:#1a1a2e;overflow:hidden;height:100vh}
+  .slide{display:none;width:100vw;height:100vh;flex-direction:column;align-items:center;justify-content:center;padding:40px;position:relative}.slide.active{display:flex}
+  .s1{background:linear-gradient(135deg,#56CCF2,#2F80ED)}.s2{background:linear-gradient(135deg,#1CB5E0,#000046)}.s3{background:linear-gradient(135deg,#134e5e,#71b280)}.s4{background:linear-gradient(135deg,#2B579A,#1a3a6e)}.s5{background:linear-gradient(135deg,#56CCF2,#2F80ED)}.s6{background:linear-gradient(135deg,#11998e,#38ef7d)}.s7{background:linear-gradient(135deg,#56CCF2,#2F80ED)}
+  h1{font-size:clamp(28px,5.5vw,64px);font-weight:800;color:#fff;text-align:center;text-shadow:0 2px 10px rgba(0,0,0,.3);line-height:1.2}
+  h2{font-size:clamp(20px,3.8vw,46px);font-weight:700;color:#fff;text-align:center;line-height:1.3}
+  p.sub{font-size:clamp(13px,2.2vw,26px);color:rgba(255,255,255,.9);text-align:center;margin-top:10px}
+  .badge{background:rgba(255,255,255,.25);border-radius:50px;padding:8px 24px;font-size:clamp(12px,1.7vw,20px);color:#fff;font-weight:700;margin-bottom:14px}
+  .big-emoji{font-size:clamp(56px,11vw,120px);text-align:center;line-height:1}
+  .teacher-note{position:fixed;top:16px;right:16px;background:rgba(0,0,0,.5);border-radius:12px;padding:8px 14px;color:rgba(255,255,255,.7);font-size:13px;max-width:260px;text-align:right}
+  .step-list{list-style:none;margin-top:12px;max-width:750px;width:100%}
+  .step-list li{background:rgba(255,255,255,.2);border-radius:14px;padding:10px 18px;margin-bottom:9px;font-size:clamp(13px,2vw,22px);color:#fff;display:flex;align-items:center;gap:12px}
+  .sn{background:#fff;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex-shrink:0;color:#2F80ED}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;width:100%;max-width:860px;margin-top:12px}
+  .col{background:rgba(255,255,255,.15);backdrop-filter:blur(10px);border-radius:18px;padding:16px 20px}
+  .col h4{font-size:clamp(13px,2vw,22px);color:#FFD700;font-weight:800;margin-bottom:8px}
+  .col li,.col p{font-size:clamp(12px,1.7vw,20px);color:rgba(255,255,255,.9);padding:3px 0}
+  /* Word doc mockup */
+  .word-doc{background:#fff;border-radius:10px;padding:16px 20px;max-width:600px;width:100%;margin-top:12px;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+  .word-title{font-size:clamp(15px,2.5vw,24px);font-weight:800;color:#2B579A;text-align:center;border-bottom:2px solid #2B579A;padding-bottom:8px;margin-bottom:10px}
+  .word-section{margin-bottom:10px}
+  .word-section h5{font-size:clamp(12px,1.8vw,18px);font-weight:700;color:#333;margin-bottom:4px}
+  .word-line{height:14px;background:#E0E0E0;border-radius:3px;margin-bottom:4px}
+  .word-line.short{width:60%}
+  .word-line.medium{width:80%}
+  .word-line.full{width:100%}
+  .quiz-opt{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+  .quiz-btn{background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.5);border-radius:14px;padding:10px 20px;color:#fff;font-size:clamp(13px,1.9vw,22px);font-weight:700;cursor:pointer;transition:all .2s}.quiz-btn:hover{background:rgba(255,255,255,.35)}.quiz-btn.c{background:#4CAF50;border-color:#4CAF50}.quiz-btn.w{background:#f44336;border-color:#f44336;opacity:.7}
+  .reveal-text{font-size:clamp(13px,2vw,22px);color:#fff;font-weight:700;text-align:center;margin-top:10px;display:none}.reveal-text.show{display:block}
+  .nav{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:16px;z-index:100}
+  .nav-btn{background:rgba(255,255,255,.25);border:2px solid rgba(255,255,255,.4);color:#fff;border-radius:50%;width:52px;height:52px;font-size:22px;cursor:pointer}.nav-btn:hover{background:rgba(255,255,255,.4)}
+  .counter{background:rgba(0,0,0,.3);color:#fff;border-radius:20px;padding:6px 18px;font-size:16px;font-weight:700}
+  .format-tip{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.15);border-radius:12px;padding:10px 16px;margin-bottom:8px;font-size:clamp(12px,1.8vw,20px);color:#fff}
+  .format-icon{font-size:clamp(18px,2.5vw,28px);flex-shrink:0}
+</style>
+</head>
+<body>
+
+<div class="slide s1 active" id="s1">
+  <div class="teacher-note">👩‍🏫 ถาม: "นักเรียนเคยเขียนรายงานมาก่อนไหม? ใช้โปรแกรมอะไร?"</div>
+  <div class="badge">คอมพิวเตอร์เพิ่มเติม • ป.3 • หน่วยที่ 1</div>
+  <div class="big-emoji">🧪</div>
+  <h1>รายงาน<br>นักวิทยาศาสตร์น้อย</h1>
+  <p class="sub">วันนี้เราเรียนรู้การสร้างรายงานด้วย Microsoft Word</p>
+</div>
+
+<div class="slide s2" id="s2">
+  <div class="teacher-note">👩‍🏫 สาธิตเปิด Word บนจอ projector</div>
+  <h2>📄 รายงานที่ดีต้องมีอะไรบ้าง?</h2>
+  <ul class="step-list">
+    <li><span class="sn">1</span><strong style="color:#FFD700">หน้าปก</strong> — ชื่อเรื่อง, ชื่อผู้ทำ, วันที่</li>
+    <li><span class="sn">2</span><strong style="color:#FFD700">ที่มาและความสำคัญ</strong> — ทำไมถึงสนใจเรื่องนี้?</li>
+    <li><span class="sn">3</span><strong style="color:#FFD700">เนื้อหาสาระ</strong> — ข้อมูลที่ค้นคว้ามา</li>
+    <li><span class="sn">4</span><strong style="color:#FFD700">สรุป</strong> — ได้เรียนรู้อะไรบ้าง?</li>
+    <li><span class="sn">5</span><strong style="color:#FFD700">บรรณานุกรม</strong> — แหล่งข้อมูล</li>
+  </ul>
+</div>
+
+<div class="slide s4" id="s3">
+  <div class="teacher-note">👩‍🏫 สาธิตการตั้งค่า Font และ Format ใน Word จริงๆ</div>
+  <h2>⚙️ ตั้งค่า Word ให้ถูกต้อง</h2>
+  <div class="format-tip"><div class="format-icon">🔤</div><div><strong>ฟอนต์:</strong> TH Sarabun PSK หรือ Sarabun New — ขนาด 16pt</div></div>
+  <div class="format-tip"><div class="format-icon">📏</div><div><strong>ระยะบรรทัด:</strong> 1.5 — ไม่แน่นเกินไป อ่านง่าย</div></div>
+  <div class="format-tip"><div class="format-icon">📄</div><div><strong>ขอบกระดาษ:</strong> ทุกด้าน 2.5 cm</div></div>
+  <div class="format-tip"><div class="format-icon">🔢</div><div><strong>เลขหน้า:</strong> ใส่ที่ Footer (แทรก → เลขหน้า)</div></div>
+  <div class="format-tip"><div class="format-icon">📝</div><div><strong>หัวข้อ:</strong> ตัวหนา ขนาด 18pt — หัวข้อย่อย 16pt</div></div>
+</div>
+
+<div class="slide s5" id="s4">
+  <div class="teacher-note">👩‍🏫 สาธิตการค้นหาข้อมูลจาก browser ในห้อง</div>
+  <h2>🔍 หาข้อมูลจากที่ไหน?</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>✅ แหล่งที่น่าเชื่อถือ</h4>
+      <li>เว็บไซต์โรงเรียน / มหาวิทยาลัย</li>
+      <li>สารานุกรมออนไลน์</li>
+      <li>หนังสือในห้องสมุด</li>
+      <li>เว็บ .go.th (รัฐบาล)</li>
+    </div>
+    <div class="col">
+      <h4>⚠️ ระวัง!</h4>
+      <li>Copy ทั้งดุ้นไม่ได้ — ต้องเขียนใหม่ด้วยคำของตัวเอง</li>
+      <li>ต้องอ้างแหล่งที่มาเสมอ</li>
+      <li>ตรวจสอบข้อมูลก่อนใช้</li>
+    </div>
+  </div>
+</div>
+
+<div class="slide s5" id="s5">
+  <div class="teacher-note">👩‍🏫 ทดสอบ</div>
+  <h2>🧠 ทดสอบ: ขนาด Font ที่ถูกต้องคือเท่าไหร่?</h2>
+  <div class="quiz-opt">
+    <button class="quiz-btn" onclick="qa(this,false)">10pt</button>
+    <button class="quiz-btn" onclick="qa(this,false)">12pt</button>
+    <button class="quiz-btn" onclick="qa(this,true)">16pt</button>
+    <button class="quiz-btn" onclick="qa(this,false)">24pt</button>
+  </div>
+  <div id="qa-r" class="reveal-text"></div>
+</div>
+
+<div class="slide s6" id="s6">
+  <div class="teacher-note">👩‍🏫 แจกใบงานรายงาน หรือให้เด็กเปิด Word บนคอมพิวเตอร์</div>
+  <h2>✍️ งานชิ้นนี้: รายงาน 2 หน้า A4</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>📋 สิ่งที่ต้องส่ง</h4>
+      <li>หน้า 1: หน้าปก</li>
+      <li>หน้า 2: เนื้อหา + สรุป</li>
+      <li>มีรูปภาพอย่างน้อย 1 รูป</li>
+      <li>มีบรรณานุกรม</li>
+    </div>
+    <div class="col">
+      <h4>🎯 หัวข้อที่แนะนำ</h4>
+      <li>สัตว์ที่น่าสนใจ</li>
+      <li>ปรากฏการณ์ธรรมชาติ</li>
+      <li>พืชพันธุ์ไม้</li>
+      <li>สิ่งประดิษฐ์วิทยาศาสตร์</li>
+    </div>
+  </div>
+  <p class="sub" style="margin-top:12px">⏱️ ส่งภายในสัปดาห์หน้า</p>
+</div>
+
+<div class="slide s7" id="s7">
+  <div class="teacher-note">👩‍🏫 ถามทบทวนก่อนจบ</div>
+  <div class="badge">สรุปบทเรียน</div>
+  <h2>รายงานที่ดีต้องครบ 5 ส่วน ✨</h2>
+  <ul class="step-list">
+    <li><span class="sn">1</span>หน้าปก</li>
+    <li><span class="sn">2</span>ที่มาและความสำคัญ</li>
+    <li><span class="sn">3</span>เนื้อหาสาระ</li>
+    <li><span class="sn">4</span>สรุปและข้อเสนอแนะ</li>
+    <li><span class="sn">5</span>บรรณานุกรม</li>
+  </ul>
+</div>
+
+<div class="nav">
+  <button class="nav-btn" onclick="go(-1)">◀</button>
+  <span class="counter" id="counter">1 / 7</span>
+  <button class="nav-btn" onclick="go(1)">▶</button>
+</div>
+
+<script>
+  let cur=0;const slides=document.querySelectorAll('.slide');const total=slides.length;
+  function showSlide(n){slides[cur].classList.remove('active');cur=Math.max(0,Math.min(n,total-1));slides[cur].classList.add('active');document.getElementById('counter').textContent=(cur+1)+' / '+total;}
+  function go(d){showSlide(cur+d)}
+  document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')go(1);if(e.key==='ArrowLeft')go(-1);});
+  function qa(btn,c){btn.classList.add(c?'c':'w');const r=document.getElementById('qa-r');if(c){r.textContent='✅ ถูก! 16pt สำหรับเนื้อหา, 18pt สำหรับหัวข้อ';r.style.display='block';}else{r.textContent='❌ ลองอีกครั้ง! ขนาดมาตรฐานรายงานภาษาไทยคือ 16pt';r.style.display='block';}}
+</script>
+</body>
+</html>

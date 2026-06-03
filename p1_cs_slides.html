@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ป.1 วิทย์คำนวณ – ลองผิดลองถูก</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Sarabun',sans-serif;background:#1a1a2e;overflow:hidden;height:100vh}
+  .slide{display:none;width:100vw;height:100vh;flex-direction:column;align-items:center;justify-content:center;padding:40px;position:relative}
+  .slide.active{display:flex}
+
+  /* slide themes */
+  .s-orange{background:linear-gradient(135deg,#FF6B6B,#FF8E53)}
+  .s-yellow{background:linear-gradient(135deg,#f7971e,#ffd200)}
+  .s-blue{background:linear-gradient(135deg,#2193b0,#6dd5ed)}
+  .s-green{background:linear-gradient(135deg,#11998e,#38ef7d)}
+  .s-purple{background:linear-gradient(135deg,#667eea,#764ba2)}
+  .s-dark{background:linear-gradient(135deg,#1a1a2e,#16213e)}
+
+  h1{font-size:clamp(32px,6vw,72px);font-weight:800;color:#fff;text-align:center;text-shadow:0 2px 10px rgba(0,0,0,0.3);line-height:1.2}
+  h2{font-size:clamp(22px,4vw,52px);font-weight:700;color:#fff;text-align:center;line-height:1.3}
+  h3{font-size:clamp(18px,3vw,38px);font-weight:700;color:#fff;text-align:center}
+  p.sub{font-size:clamp(14px,2.5vw,28px);color:rgba(255,255,255,0.9);text-align:center;margin-top:10px}
+  .badge{background:rgba(255,255,255,0.25);backdrop-filter:blur(10px);border-radius:50px;padding:8px 24px;font-size:clamp(12px,1.8vw,22px);color:#fff;font-weight:700;margin-bottom:16px}
+  .big-emoji{font-size:clamp(60px,12vw,140px);text-align:center;line-height:1}
+  .card-row{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-top:20px}
+  .card{background:rgba(255,255,255,0.2);backdrop-filter:blur(10px);border-radius:20px;padding:20px 24px;text-align:center;min-width:160px;max-width:220px;flex:1}
+  .card .icon{font-size:clamp(30px,5vw,56px)}
+  .card p{font-size:clamp(12px,2vw,22px);color:#fff;font-weight:700;margin-top:8px}
+  .box-white{background:rgba(255,255,255,0.15);backdrop-filter:blur(10px);border-radius:24px;padding:28px 36px;max-width:900px;width:100%;margin-top:16px}
+  .reveal-btn{background:#fff;border:none;border-radius:50px;padding:12px 32px;font-size:clamp(14px,2.2vw,24px);font-weight:700;cursor:pointer;margin:10px;transition:transform 0.15s}
+  .reveal-btn:hover{transform:scale(1.05)}
+  .reveal-btn.orange{color:#FF6B6B}
+  .reveal-btn.blue{color:#2193b0}
+  .reveal-btn.green{color:#11998e}
+  .reveal-text{font-size:clamp(16px,2.5vw,28px);color:#fff;font-weight:700;text-align:center;margin-top:12px;display:none}
+  .reveal-text.show{display:block}
+  .step-list{list-style:none;margin-top:16px}
+  .step-list li{background:rgba(255,255,255,0.2);border-radius:14px;padding:12px 20px;margin-bottom:10px;font-size:clamp(14px,2.2vw,26px);color:#fff;display:flex;align-items:center;gap:12px}
+  .step-num{background:#fff;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;flex-shrink:0}
+  .nav{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:16px;z-index:100}
+  .nav-btn{background:rgba(255,255,255,0.25);backdrop-filter:blur(10px);border:2px solid rgba(255,255,255,0.4);color:#fff;border-radius:50%;width:52px;height:52px;font-size:22px;cursor:pointer;transition:all 0.2s}
+  .nav-btn:hover{background:rgba(255,255,255,0.4)}
+  .counter{background:rgba(0,0,0,0.3);color:#fff;border-radius:20px;padding:6px 18px;font-size:16px;font-weight:700}
+  .think-box{background:rgba(255,255,255,0.9);border-radius:20px;padding:20px 28px;margin-top:16px;max-width:800px;width:100%}
+  .think-box p{font-size:clamp(14px,2.2vw,24px);color:#333;text-align:center}
+  .think-box strong{color:#FF6B6B}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px;width:100%;max-width:900px;margin-top:16px}
+  .col-box{background:rgba(255,255,255,0.2);backdrop-filter:blur(10px);border-radius:20px;padding:20px}
+  .col-box h4{font-size:clamp(14px,2.2vw,24px);color:#fff;font-weight:800;margin-bottom:10px}
+  .col-box ul{list-style:none}
+  .col-box ul li{font-size:clamp(12px,1.8vw,20px);color:rgba(255,255,255,0.9);padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.15)}
+  .teacher-note{position:fixed;top:16px;right:16px;background:rgba(0,0,0,0.5);backdrop-filter:blur(10px);border-radius:12px;padding:8px 14px;color:rgba(255,255,255,0.7);font-size:13px;max-width:260px;text-align:right}
+  .quiz-opt{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+  .quiz-btn{background:rgba(255,255,255,0.2);border:2px solid rgba(255,255,255,0.5);border-radius:16px;padding:12px 24px;color:#fff;font-size:clamp(14px,2vw,22px);font-weight:700;cursor:pointer;transition:all 0.2s}
+  .quiz-btn:hover{background:rgba(255,255,255,0.35);transform:scale(1.03)}
+  .quiz-btn.correct{background:#4CAF50;border-color:#4CAF50}
+  .quiz-btn.wrong{background:#f44336;border-color:#f44336;opacity:0.7}
+  .confetti{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:200}
+</style>
+</head>
+<body>
+
+<!-- Slide 1: Title -->
+<div class="slide s-orange active" id="s1">
+  <div class="teacher-note">👩‍🏫 แนะนำตัวและถามว่าเคยทำอะไรพลาดบ้าง</div>
+  <div class="badge">วิทยาการคำนวณ • ป.1 • หน่วยที่ 1</div>
+  <div class="big-emoji">🔧</div>
+  <h1>ลองผิดลองถูก<br>เราแก้ได้!</h1>
+  <p class="sub">วันนี้เราจะเรียนรู้ว่า ทำไมการทำผิดถึงไม่น่ากลัว</p>
+</div>
+
+<!-- Slide 2: Hook question -->
+<div class="slide s-yellow" id="s2">
+  <div class="teacher-note">👩‍🏫 ชี้ทีละภาพ ให้เด็กยกมือตอบ</div>
+  <h2>เคยลองทำแล้วไม่ได้ผลไหม? 🤔</h2>
+  <div class="card-row">
+    <div class="card"><div class="icon">🚲</div><p>ขี่จักรยาน</p></div>
+    <div class="card"><div class="icon">✏️</div><p>เขียนหนังสือ</p></div>
+    <div class="card"><div class="icon">👟</div><p>ผูกเชือกรองเท้า</p></div>
+    <div class="card"><div class="icon">🎮</div><p>เล่นเกม</p></div>
+  </div>
+  <p class="sub" style="margin-top:20px">ถ้าทำครั้งแรกไม่ได้ — รู้สึกอย่างไรบ้าง?</p>
+</div>
+
+<!-- Slide 3: What is trial & error -->
+<div class="slide s-blue" id="s3">
+  <div class="teacher-note">👩‍🏫 กดปุ่ม "เฉลย" ทีละข้อ พร้อมอธิบาย</div>
+  <h2>ลองผิดลองถูก = ?</h2>
+  <div class="think-box">
+    <p>เวลาเราทำอะไรสักอย่าง <strong>แล้วไม่สำเร็จ</strong><br>
+    เราไม่ยอมแพ้ — แต่<strong>ลองวิธีใหม่</strong><br>
+    แล้วลองใหม่ไปเรื่อยๆ จนสำเร็จ!</p>
+  </div>
+  <div style="margin-top:20px;text-align:center">
+    <button class="reveal-btn blue" onclick="reveal('r3a')">🔍 ลองผิด หมายความว่า?</button>
+    <div id="r3a" class="reveal-text">= ทำแล้วยังไม่ถูก → โอเค ไม่เป็นไร!</div>
+    <button class="reveal-btn blue" onclick="reveal('r3b')">🔍 ลองถูก หมายความว่า?</button>
+    <div id="r3b" class="reveal-text">= ลองจนพบวิธีที่ได้ผล → สำเร็จ! 🎉</div>
+  </div>
+</div>
+
+<!-- Slide 4: Story example -->
+<div class="slide s-green" id="s4">
+  <div class="teacher-note">👩‍🏫 เล่านิทาน ให้เด็กร่วมพูด "ลองอีกครั้ง!"</div>
+  <h2>เรื่อง: น้องนิดกับจักรยาน 🚲</h2>
+  <ul class="step-list" style="max-width:700px;width:100%">
+    <li><span class="step-num" style="color:#11998e">1</span>น้องนิดขึ้นจักรยาน... <strong style="color:#FFD700">ล้มเลย!</strong></li>
+    <li><span class="step-num" style="color:#11998e">2</span>ลองอีกครั้ง ขาสั้นเกิน ปรับอานให้ต่ำ</li>
+    <li><span class="step-num" style="color:#11998e">3</span>ขี่ได้แล้ว แต่เลี้ยวซ้ายไม่ได้</li>
+    <li><span class="step-num" style="color:#11998e">4</span>ฝึกเลี้ยวทุกวัน... สำเร็จ! 🏆</li>
+  </ul>
+  <p class="sub">น้องนิดล้มกี่ครั้ง? — นับไม่ได้! แต่ไม่ยอมแพ้ 💪</p>
+</div>
+
+<!-- Slide 5: Interactive Quiz -->
+<div class="slide s-purple" id="s5">
+  <div class="teacher-note">👩‍🏫 ให้เด็กทั้งห้องโหวตโดยยกมือ แล้วกดดูเฉลย</div>
+  <h2>🧠 ทดสอบความเข้าใจ</h2>
+  <div class="box-white">
+    <p style="font-size:clamp(16px,2.5vw,28px);color:#fff;text-align:center">ถ้าหนูต้องการต่อบล็อก Lego แล้วมันหลุดตลอด หนูควรทำอย่างไร?</p>
+  </div>
+  <div class="quiz-opt">
+    <button class="quiz-btn" onclick="answer(this,false)">โยนบล็อกทิ้ง</button>
+    <button class="quiz-btn" onclick="answer(this,true)">ลองต่อวิธีอื่น</button>
+    <button class="quiz-btn" onclick="answer(this,false)">ร้องไห้แล้วเลิกเล่น</button>
+    <button class="quiz-btn" onclick="answer(this,true)">ขอให้ผู้ใหญ่ช่วยดู</button>
+  </div>
+  <div id="quiz-result" class="reveal-text" style="margin-top:16px;font-size:clamp(14px,2.2vw,26px)"></div>
+</div>
+
+<!-- Slide 6: Key message -->
+<div class="slide s-orange" id="s6">
+  <div class="teacher-note">👩‍🏫 อ่านพร้อมกันดังๆ 3 รอบ</div>
+  <div class="big-emoji">🌟</div>
+  <h1>"ล้มแล้วลุก<br>ผิดแล้วแก้<br>ไม่ยอมแพ้!"</h1>
+  <p class="sub">อ่านพร้อมกันดังๆ !</p>
+</div>
+
+<!-- Slide 7: Activity intro -->
+<div class="slide s-blue" id="s7">
+  <div class="teacher-note">👩‍🏫 แจกใบงานเขาวงกต — ให้เด็กทำ 10 นาที</div>
+  <h2>กิจกรรม: ผจญภัยในเขาวงกต! 🏃</h2>
+  <div class="two-col">
+    <div class="col-box">
+      <h4>📋 สิ่งที่ต้องทำ</h4>
+      <ul>
+        <li>วาดเส้นทางผ่านเขาวงกต</li>
+        <li>ถ้าตัน — ย้อนกลับ ลองทางใหม่</li>
+        <li>บันทึกว่าลองกี่ครั้ง</li>
+      </ul>
+    </div>
+    <div class="col-box">
+      <h4>⏱️ กติกา</h4>
+      <ul>
+        <li>เวลา 10 นาที</li>
+        <li>ห้ามลบ — ให้ขีดทับแทน</li>
+        <li>คนที่ลองเยอะที่สุด = เก่งที่สุด!</li>
+      </ul>
+    </div>
+  </div>
+  <p class="sub" style="margin-top:16px">💡 จำไว้ว่า: ยิ่งลองเยอะ = ยิ่งฉลาด!</p>
+</div>
+
+<!-- Slide 8: Summary -->
+<div class="slide s-green" id="s8">
+  <div class="teacher-note">👩‍🏫 ถามทบทวนก่อนจบ: "วันนี้เรียนรู้อะไร?"</div>
+  <div class="badge">สรุปบทเรียน</div>
+  <h2>วันนี้เราเรียนรู้ว่า... ✨</h2>
+  <ul class="step-list" style="max-width:700px;width:100%">
+    <li><span class="step-num" style="color:#11998e">✓</span>การทำผิด <strong style="color:#FFD700">ไม่ใช่เรื่องน่ากลัว</strong></li>
+    <li><span class="step-num" style="color:#11998e">✓</span>ทุกครั้งที่ล้มเหลว เราได้เรียนรู้สิ่งใหม่</li>
+    <li><span class="step-num" style="color:#11998e">✓</span>การ<strong style="color:#FFD700">ลองผิดลองถูก</strong>ช่วยให้เราแก้ปัญหาได้</li>
+    <li><span class="step-num" style="color:#11998e">✓</span>คอมพิวเตอร์ก็ใช้วิธีนี้เหมือนกัน!</li>
+  </ul>
+  <p class="sub">ครั้งหน้า: ใบงาน 1.1 — ลองผิดลองถูกในชีวิตจริง 📝</p>
+</div>
+
+<!-- Navigation -->
+<div class="nav">
+  <button class="nav-btn" onclick="go(-1)">◀</button>
+  <span class="counter" id="counter">1 / 8</span>
+  <button class="nav-btn" onclick="go(1)">▶</button>
+</div>
+
+<script>
+  let cur=0;
+  const slides=document.querySelectorAll('.slide');
+  const total=slides.length;
+  function showSlide(n){
+    slides[cur].classList.remove('active');
+    cur=Math.max(0,Math.min(n,total-1));
+    slides[cur].classList.add('active');
+    document.getElementById('counter').textContent=(cur+1)+' / '+total;
+  }
+  function go(d){showSlide(cur+d)}
+  document.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key===' ')go(1);
+    if(e.key==='ArrowLeft')go(-1);
+  });
+  function reveal(id){
+    const el=document.getElementById(id);
+    el.classList.toggle('show');
+  }
+  function answer(btn,correct){
+    btn.classList.add(correct?'correct':'wrong');
+    const r=document.getElementById('quiz-result');
+    if(correct){r.textContent='✅ ถูกต้อง! ลองหาวิธีใหม่ หรือขอความช่วยเหลือ = นักแก้ปัญหาตัวจริง!';r.style.display='block';}
+    else{r.textContent='❌ ลองคิดอีกครั้ง... การแก้ปัญหาที่ดีไม่ใช่การยอมแพ้';r.style.display='block';}
+  }
+</script>
+</body>
+</html>

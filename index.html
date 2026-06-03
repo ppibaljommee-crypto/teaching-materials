@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>สื่อการสอน หน่วยที่ 1 — ครู</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Sarabun',sans-serif;background:#0f0f1a;min-height:100vh;padding:24px}
+  .header{text-align:center;padding:32px 20px 24px;color:#fff}
+  .header h1{font-size:clamp(22px,4vw,44px);font-weight:800;background:linear-gradient(135deg,#56CCF2,#2F80ED,#f093fb);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .header p{color:rgba(255,255,255,.65);margin-top:8px;font-size:clamp(13px,1.8vw,18px)}
+  .how-to{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:16px 24px;max-width:800px;margin:0 auto 24px;color:rgba(255,255,255,.85);font-size:clamp(12px,1.6vw,15px)}
+  .how-to h3{color:#56CCF2;font-size:clamp(14px,1.8vw,18px);margin-bottom:10px}
+  .how-to ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+  .how-to li{background:rgba(255,255,255,.08);border-radius:8px;padding:6px 12px}
+  .how-to li strong{color:#FFD700}
+
+  .group-title{font-size:clamp(15px,2.2vw,22px);font-weight:800;color:#fff;margin:20px 0 10px;padding-left:12px;border-left:4px solid;display:flex;align-items:center;gap:10px}
+  .gt-cs{border-color:#4facfe;color:#4facfe}
+  .gt-com{border-color:#f093fb;color:#f093fb}
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-bottom:8px}
+  .card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:16px 18px;transition:all .2s;position:relative;overflow:hidden}
+  .card:hover{background:rgba(255,255,255,.1);transform:translateY(-2px);border-color:rgba(255,255,255,.25)}
+  .card-grade{font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;display:inline-block;margin-bottom:8px}
+  .card-title{font-size:clamp(14px,1.8vw,17px);font-weight:700;color:#fff;margin-bottom:4px}
+  .card-sub{font-size:12px;color:rgba(255,255,255,.55);margin-bottom:12px}
+  .btn-row{display:flex;gap:6px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:7px 14px;border-radius:8px;font-size:clamp(11px,1.4vw,13px);font-weight:700;text-decoration:none;cursor:pointer;border:none;transition:all .15s}
+  .btn:hover{filter:brightness(1.15);transform:scale(1.03)}
+  .btn-slides{background:#4facfe;color:#fff}
+  .btn-worksheet{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.25)}
+
+  /* Grade color badges */
+  .p1c{background:rgba(255,107,107,.25);color:#FF6B6B}
+  .p2c{background:rgba(102,126,234,.25);color:#a0b0ff}
+  .p3c{background:rgba(17,153,142,.25);color:#38ef7d}
+  .p6c{background:rgba(240,147,251,.25);color:#f5a7ff}
+  .m2c{background:rgba(30,30,60,.5);color:#7FDBFF;border:1px solid rgba(127,219,255,.3)}
+
+  .footer{text-align:center;padding:32px 20px 16px;color:rgba(255,255,255,.35);font-size:13px}
+  .footer kbd{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:4px;padding:2px 8px;color:rgba(255,255,255,.6);font-family:monospace}
+  .distrib{background:rgba(43,87,154,.15);border:1px solid rgba(43,87,154,.4);border-radius:16px;padding:16px 24px;max-width:800px;margin:0 auto 24px;color:rgba(255,255,255,.85);font-size:clamp(12px,1.6vw,15px)}
+  .distrib h3{color:#4facfe;margin-bottom:10px;font-size:clamp(14px,1.8vw,18px)}
+  .distrib code{background:rgba(79,172,254,.15);color:#7FDBFF;padding:2px 8px;border-radius:4px;font-family:'Courier New',monospace;font-size:clamp(11px,1.5vw,14px)}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🎓 สื่อการสอน หน่วยที่ 1</h1>
+  <p>วิทยาการคำนวณ &amp; คอมพิวเตอร์เพิ่มเติม | ป.1, ป.2, ป.3, ป.6, ม.2</p>
+</div>
+
+<div class="how-to">
+  <h3>🖥️ วิธีใช้งาน Slideshow</h3>
+  <ul>
+    <li>กดปุ่ม <strong>▶ Slideshow</strong> เพื่อเปิดสไลด์สอน</li>
+    <li>กด <strong>Space หรือ →</strong> เพื่อไปสไลด์ถัดไป</li>
+    <li>กด <strong>←</strong> เพื่อย้อนกลับ</li>
+    <li>มี <strong>Teacher Note</strong> มุมบนขวาทุกสไลด์</li>
+    <li>กดปุ่ม <strong>📝 ใบงาน</strong> เพื่อเปิดใบงาน (นักเรียนกรอกในคอม)</li>
+  </ul>
+</div>
+
+<div class="distrib">
+  <h3>📡 วิธีแจกไฟล์ให้นักเรียนโดยไม่ปริ้น</h3>
+  <p><strong>วิธีที่ 1 — Shared Folder บน LAN (ง่ายที่สุด)</strong></p>
+  <p>ขอให้ IT โรงเรียนแชร์โฟลเดอร์นี้ในวง LAN → นักเรียนเปิดจาก File Explorer</p>
+  <br>
+  <p><strong>วิธีที่ 2 — Local Web Server จากเครื่องครู (ไม่ต้องการ IT)</strong></p>
+  <p>1. เปิด Command Prompt ในโฟลเดอร์นี้<br>
+  2. พิมพ์: <code>python -m http.server 8080</code><br>
+  3. นักเรียนเปิดเบราว์เซอร์ พิมพ์: <code>http://[IP ครู]:8080</code><br>
+  4. ดู IP ครูได้จาก CMD: <code>ipconfig</code> → IPv4 Address</p>
+</div>
+
+<!-- วิทยาการคำนวณ -->
+<div class="group-title gt-cs">🧠 วิทยาการคำนวณ</div>
+<div class="cards">
+
+  <div class="card">
+    <span class="card-grade p1c">ป.1</span>
+    <div class="card-title">ลองผิดลองถูก เราแก้ได้</div>
+    <div class="card-sub">Trial &amp; Error • Debugging</div>
+    <div class="btn-row">
+      <a class="btn btn-slides" href="p1_cs_slides.html" target="_blank">▶ Slideshow</a>
+      <a class="btn btn-worksheet" href="p1_cs_maze.html" target="_blank">📝 เขาวงกต</a>
+      <a class="btn btn-worksheet" href="p1_cs_1-1.html" target="_blank">📝 ใบงาน 1.1</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="card-grade p2c">ป.2</span>
+    <div class="card-title">แยกงานใหญ่ให้เป็นงานย่อย</div>
+    <div class="card-sub">Decomposition • ระดับ 1</div>
+    <div class="btn-row">
+      <a class="btn btn-slides" href="p2_cs_slides.html" target="_blank">▶ Slideshow</a>
+      <a class="btn btn-worksheet" href="p2_cs_1-1.html" target="_blank">📝 ใบงาน 1.1</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="card-grade p3c">ป.3</span>
+    <div class="card-title">แตกปัญหาใหญ่ให้เล็กลง</div>
+    <div class="card-sub">Decomposition • ระดับ 2 ชั้น</div>
+    <div class="btn-row">
+      <a class="btn btn-slides" href="p3_cs_slides.html" target="_blank">▶ Slideshow</a>
+      <a class="btn btn-worksheet" href="p3_cs_1-1.html" target="_blank">📝 ใบงาน 1.1</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="card-grade p6c">ป.6</span>
+    <div class="card-title">แก้ปัญหาอย่างนักวิทย์</div>
+    <div class="card-sub">Computational Thinking • 4 ทักษะ</div>
+    <div class="btn-row">
+      <a class="btn btn-slides" href="p6_cs_slides.html" target="_blank">▶ Slideshow</a>
+      <a class="btn btn-worksheet" href="p6_cs_1-1.html" target="_blank">📝 ใบงาน 1.1</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="card-grade m2c">ม.2</span>
+    <div class="card-title">การคิดเชิงคำนวณและการแก้ปัญหา</div>
+    <div class="card-sub">Flowchart · Pseudocode · Algorithm</div>
+    <div class="btn-row">
+      <a class="btn btn-slides" href="m2_cs_slides.html" target="_blank">▶ Slideshow</a>
+      <a class="btn btn-worksheet" href="m2_cs_flowchart.html" target="_blank">📝 ใบงาน A3</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- คอมพิวเตอร์เพิ่มเติม -->
+<div class="group-title gt-com">💻 คอมพิวเตอร์เพิ่มเติม</div>
+<div class="cards">
+
+  <div class="card">
+    <span class="card-grade p1c">ป.1</span>
+    <div class="card-title">รู้จักและดูแลคอมพิวเตอร์</div>
+    <div class="card-sub">ส่วนประกอบ • กฎการดูแล</div>
+    <div class="btn-row">
+      <a class="btn btn-slides" href="p1_com_slides.html" target="_blank">▶ Slideshow</a>
+      <a class="btn btn-worksheet" href="p1_com_1-1.html" target="_blank">📝 ใบงาน 1.1</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="card-grade p2c">ป.2</span>
+    <div class="card-title">พิมพ์เก่งขึ้น เร็วขึ้น</div>
+    <div class="card-sub">Home Row Keys • Typing Skills</div>
+    <div class="btn-row">
+      <a class="btn btn-slides" href="p2_com_slides.html" target="_blank">▶ Slideshow</a>
+      <a class="btn btn-worksheet" href="p2_com_1-1.html" target="_blank">📝 ใบงาน 1.1</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="card-grade p3c">ป.3</span>
+    <div class="card-title">รายงานนักวิทยาศาสตร์น้อย</div>
+    <div class="card-sub">Microsoft Word • 2 หน้า A4</div>
+    <div class="btn-row">
+      <a class="btn btn-slides" href="p3_com_slides.html" target="_blank">▶ Slideshow</a>
+      <a class="btn btn-worksheet" href="p3_com_report.html" target="_blank">📝 แบบฟอร์ม</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="card-grade p6c">ป.6</span>
+    <div class="card-title">รายงานมืออาชีพ</div>
+    <div class="card-sub">Word + Excel • 3–4 หน้า</div>
+    <div class="btn-row">
+      <a class="btn btn-slides" href="p6_com_slides.html" target="_blank">▶ Slideshow</a>
+      <a class="btn btn-worksheet" href="p6_com_report.html" target="_blank">📝 แบบฟอร์ม</a>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p>Navigation: <kbd>Space</kbd> / <kbd>→</kbd> ถัดไป &nbsp;|&nbsp; <kbd>←</kbd> ย้อนกลับ &nbsp;|&nbsp; Teacher Notes: มุมบนขวาทุกสไลด์</p>
+  <p style="margin-top:8px">ไฟล์ทั้งหมดในโฟลเดอร์นี้ — เปิดจากเครื่องใดก็ได้ ไม่ต้องการอินเทอร์เน็ต</p>
+</div>
+
+</body>
+</html>
