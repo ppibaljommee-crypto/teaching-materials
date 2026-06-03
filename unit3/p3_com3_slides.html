@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ป.3 คอมพิวเตอร์เพิ่มเติม หน่วย 3 — บัญชีรายรับรายจ่าย (Excel)</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Sarabun',sans-serif;background:#001a15;overflow:hidden;height:100vh}
+.prog-bar{position:fixed;top:0;left:0;height:4px;background:linear-gradient(90deg,#0d9488,#14b8a6,#5eead4);transition:width .4s;z-index:300;box-shadow:0 0 10px rgba(13,148,136,.6)}
+.slide{display:none;width:100vw;height:100vh;flex-direction:column;align-items:center;justify-content:center;padding:40px 32px;position:relative}
+.slide.active{display:flex;animation:fadeUp .4s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.s1{background:linear-gradient(135deg,#001a15,#063030,#0d4b4b,#0d9488)}
+.s2{background:linear-gradient(135deg,#001010,#042a2a,#065f46,#059669)}
+.s3{background:linear-gradient(135deg,#001a10,#033a2a,#065f46,#0d9488)}
+.s4{background:linear-gradient(135deg,#000f0a,#022a20,#047857,#10b981)}
+.s5{background:linear-gradient(135deg,#001510,#033030,#0e7490,#0d9488)}
+.s6{background:linear-gradient(135deg,#001010,#03302a,#065f46,#14b8a6)}
+.s7{background:linear-gradient(135deg,#000a08,#022520,#047857,#0d9488)}
+.s8{background:linear-gradient(135deg,#001510,#033528,#065f46,#059669)}
+.s9{background:linear-gradient(135deg,#001010,#02282a,#0e7490,#14b8a6)}
+.s10{background:linear-gradient(135deg,#000f08,#022820,#047857,#10b981)}
+.s11{background:linear-gradient(135deg,#001a15,#063030,#0d4b4b,#0d9488)}
+h1{font-size:clamp(28px,5.5vw,62px);font-weight:800;color:#fff;text-align:center;line-height:1.15}
+h2{font-size:clamp(20px,3.8vw,44px);font-weight:700;color:#fff;text-align:center;line-height:1.3}
+p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:center;margin-top:12px}
+.badge{background:rgba(13,148,136,.3);border:1px solid rgba(13,148,136,.6);border-radius:50px;padding:8px 24px;font-size:clamp(12px,1.6vw,18px);color:#99f6e4;font-weight:700;margin-bottom:16px}
+.big-emoji{font-size:clamp(60px,12vw,120px);text-align:center;line-height:1;margin-bottom:8px}
+.box{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);backdrop-filter:blur(12px);border-radius:20px;padding:22px 30px;width:100%;max-width:880px;margin-top:14px}
+.step-list{list-style:none;width:100%;max-width:820px;margin-top:12px}
+.step-list li{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:12px 20px;margin-bottom:10px;font-size:clamp(14px,2.2vw,24px);color:#fff;display:flex;align-items:center;gap:14px;animation:slideIn .4s ease both}
+@keyframes slideIn{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
+.step-list li:nth-child(1){animation-delay:.1s}.step-list li:nth-child(2){animation-delay:.2s}.step-list li:nth-child(3){animation-delay:.3s}.step-list li:nth-child(4){animation-delay:.4s}.step-list li:nth-child(5){animation-delay:.5s}
+.sn{background:#0d9488;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px;flex-shrink:0;color:#fff}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;width:100%;max-width:880px;margin-top:14px}
+.col{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:18px 22px}
+.col h4{font-size:clamp(14px,2.2vw,22px);color:#5eead4;font-weight:800;margin-bottom:10px}
+.col p,.col li{font-size:clamp(12px,1.7vw,19px);color:rgba(255,255,255,.85);padding:4px 0;list-style:none}
+.quiz-opts{display:flex;flex-direction:column;gap:10px;width:100%;max-width:720px;margin-top:14px}
+.qbtn{background:rgba(255,255,255,.09);border:1.5px solid rgba(255,255,255,.2);border-radius:14px;padding:13px 20px;color:#fff;font-size:clamp(14px,2vw,22px);font-weight:700;cursor:pointer;text-align:left;font-family:'Sarabun',sans-serif;transition:all .2s}
+.qbtn:hover{background:rgba(255,255,255,.16)}
+.qbtn.correct{background:rgba(74,222,128,.2);border-color:#4ade80;color:#4ade80}
+.qbtn.wrong{background:rgba(248,113,113,.15);border-color:#f87171;opacity:.7}
+.result-msg{font-size:clamp(16px,2.5vw,28px);font-weight:800;text-align:center;margin-top:12px;display:none}
+.teacher-note{position:fixed;top:18px;right:18px;background:rgba(0,0,0,.65);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:10px 16px;color:rgba(255,255,255,.65);font-size:13px;max-width:280px;text-align:right;cursor:pointer;z-index:200;transition:opacity .2s}
+.timer-widget{position:fixed;top:18px;left:18px;z-index:200}
+.timer-btn{background:rgba(13,148,136,.2);border:1px solid rgba(13,148,136,.4);border-radius:10px;padding:8px 14px;color:#99f6e4;font-size:13px;font-weight:700;cursor:pointer;font-family:'Sarabun',sans-serif}
+.timer-display{background:rgba(0,0,0,.7);border:1px solid rgba(13,148,136,.4);border-radius:10px;padding:10px 18px;color:#14b8a6;font-size:28px;font-weight:800;text-align:center;margin-top:6px;display:none;font-family:monospace}
+.nav{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:14px;z-index:100}
+.nav-btn{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:50%;width:52px;height:52px;font-size:22px;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center}
+.nav-btn:hover{background:rgba(255,255,255,.25);transform:scale(1.1)}
+.counter{background:rgba(0,0,0,.5);color:#fff;border-radius:20px;padding:8px 20px;font-size:16px;font-weight:700;border:1px solid rgba(255,255,255,.15)}
+.dots{display:flex;gap:7px;align-items:center}
+.dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.25);transition:all .3s}
+.dot.on{background:#0d9488;transform:scale(1.5);box-shadow:0 0 8px #0d9488}
+.reveal-btn{background:rgba(13,148,136,.5);border:1px solid #0d9488;color:#fff;border-radius:50px;padding:11px 28px;font-size:clamp(13px,1.8vw,20px);font-weight:700;cursor:pointer;font-family:'Sarabun',sans-serif;transition:all .2s;margin-top:12px}
+.reveal-text{color:#5eead4;font-size:clamp(15px,2.3vw,26px);font-weight:800;text-align:center;margin-top:12px;display:none}
+.reveal-text.show{display:block;animation:fadeUp .4s ease}
+.activity-box{background:rgba(13,148,136,.1);border:2px solid rgba(13,148,136,.4);border-radius:20px;padding:20px 28px;width:100%;max-width:820px;margin-top:14px;text-align:center}
+.activity-box h3{color:#5eead4;font-size:clamp(16px,2.5vw,28px);font-weight:800;margin-bottom:10px}
+.excel-table{background:rgba(0,0,0,.3);border-collapse:collapse;border-radius:12px;overflow:hidden;width:100%;max-width:750px;margin-top:10px}
+.excel-table th{background:rgba(13,148,136,.4);color:#5eead4;padding:10px 16px;font-size:clamp(12px,1.6vw,17px);text-align:center;border:1px solid rgba(13,148,136,.3)}
+.excel-table td{padding:8px 16px;font-size:clamp(11px,1.5vw,16px);color:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.1);text-align:center}
+.excel-table tr:nth-child(even) td{background:rgba(255,255,255,.04)}
+.formula-box{background:rgba(0,0,0,.4);border:1px solid rgba(13,148,136,.4);border-radius:12px;padding:12px 20px;font-family:monospace;font-size:clamp(13px,1.8vw,20px);color:#5eead4;margin-top:10px;text-align:left;line-height:1.8}
+</style>
+</head>
+<body>
+<div class="prog-bar" id="prog"></div>
+<div class="timer-widget">
+  <button class="timer-btn" onclick="startTimer(10)">⏱ 10 นาที</button>
+  <div class="timer-display" id="timerDisplay">10:00</div>
+</div>
+
+<!-- S1 -->
+<div class="slide s1 active" id="s1">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ถามนักเรียน: "ที่บ้านมีใครจดรายรับรายจ่ายบ้าง? ทำไมต้องจด? วันนี้เราจะทำด้วยคอมพิวเตอร์!"</div>
+  <div class="badge">คอมพิวเตอร์เพิ่มเติม • ป.3 • หน่วยที่ 3</div>
+  <div class="big-emoji">📊</div>
+  <h1>บัญชีรายรับรายจ่าย<br>ด้วย Excel!</h1>
+  <p class="sub">Microsoft Excel • Cell • สูตร SUM/AVERAGE/MAX/MIN</p>
+</div>
+
+<!-- S2: Excel คืออะไร -->
+<div class="slide s2" id="s2">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 เปิด Excel บนคอมพิวเตอร์ แสดงว่า Excel คือตารางขนาดใหญ่ที่คำนวณได้</div>
+  <h2>📊 Microsoft Excel คืออะไร?</h2>
+  <div class="box" style="text-align:center">
+    <p style="font-size:clamp(14px,2vw,22px);color:#fff">Excel = โปรแกรม <span style="color:#5eead4">ตารางคำนวณ (Spreadsheet)</span><br>จัดเก็บข้อมูลเป็นตาราง + คำนวณสูตรอัตโนมัติ</p>
+  </div>
+  <div class="two-col">
+    <div class="col">
+      <h4>ใช้ Excel ทำอะไร?</h4>
+      <p>• จดรายรับรายจ่าย</p>
+      <p>• คำนวณค่าต่างๆ อัตโนมัติ</p>
+      <p>• สร้างกราฟแสดงข้อมูล</p>
+      <p>• จัดเก็บข้อมูลเป็นตาราง</p>
+    </div>
+    <div class="col">
+      <h4>ใครใช้ Excel?</h4>
+      <p>🏪 นักธุรกิจ — บัญชีร้านค้า</p>
+      <p>👨‍🏫 ครู — บันทึกคะแนน</p>
+      <p>🏥 พยาบาล — ข้อมูลผู้ป่วย</p>
+      <p>👨‍👩‍👧‍👦 ครอบครัว — งบประมาณ</p>
+    </div>
+  </div>
+</div>
+
+<!-- S3: Cell Row Column -->
+<div class="slide s3" id="s3">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ชี้ Cell A1, B2, C3 บน Excel จริง ให้นักเรียนบอกชื่อ Cell ตาม</div>
+  <h2>🗂️ Cell • Row • Column</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>🔲 Cell (ช่องข้อมูล)</h4>
+      <p>ช่องสี่เหลี่ยมเล็กๆ ในตาราง</p>
+      <p>ชื่อ Cell = <span style="color:#5eead4">คอลัมน์ + แถว</span></p>
+      <p>เช่น <strong style="color:#5eead4">A1</strong> = คอลัมน์ A แถว 1</p>
+      <p style="margin-top:6px;font-size:13px;color:rgba(255,255,255,.5)">คลิกเซลล์แล้วพิมพ์ข้อมูล</p>
+    </div>
+    <div class="col">
+      <h4>↔️ Row & Column</h4>
+      <p>📏 <span style="color:#5eead4">Row (แถว)</span> = แนวนอน (1, 2, 3...)</p>
+      <p>📏 <span style="color:#99f6e4">Column (คอลัมน์)</span> = แนวตั้ง (A, B, C...)</p>
+      <p style="margin-top:8px;color:#fde047">ตัวอย่าง Cell:</p>
+      <p>A1, B3, C10, D25...</p>
+    </div>
+  </div>
+  <div class="box" style="text-align:center;margin-top:10px">
+    <p style="color:#5eead4;font-size:clamp(13px,1.8vw,20px)">ลองคลิก Cell ต่างๆ — ดูที่ <strong>Name Box</strong> (มุมซ้ายบน) จะแสดงชื่อ Cell</p>
+  </div>
+</div>
+
+<!-- S4: พิมพ์ข้อมูล -->
+<div class="slide s4" id="s4">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สาธิตการพิมพ์ข้อมูลลงตาราง ให้นักเรียนทำตามทีละขั้น</div>
+  <h2>⌨️ พิมพ์ข้อมูลลงตาราง</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>วิธีพิมพ์ข้อมูล</h4>
+      <p>1. คลิกเซลล์ที่ต้องการ</p>
+      <p>2. พิมพ์ข้อมูล</p>
+      <p>3. กด <span style="color:#5eead4">Enter</span> = ไปแถวถัดไป</p>
+      <p>4. กด <span style="color:#99f6e4">Tab</span> = ไปคอลัมน์ถัดไป</p>
+    </div>
+    <div class="col">
+      <h4>ชนิดข้อมูล</h4>
+      <p>📝 <span style="color:#5eead4">ข้อความ</span> — ชื่อ รายการ</p>
+      <p>🔢 <span style="color:#99f6e4">ตัวเลข</span> — จำนวนเงิน</p>
+      <p>📅 <span style="color:#5eead4">วันที่</span> — วัน/เดือน/ปี</p>
+      <p style="margin-top:6px;color:rgba(255,255,255,.5);font-size:12px">ตัวเลขชิดขวา ข้อความชิดซ้าย</p>
+    </div>
+  </div>
+  <table class="excel-table" style="margin:14px auto 0">
+    <tr><th>A</th><th>B</th><th>C</th><th>D</th></tr>
+    <tr><td>วันที่</td><td>รายการ</td><td>รายรับ</td><td>รายจ่าย</td></tr>
+    <tr><td>1 มิ.ย.</td><td>รับค่าขนม</td><td>50</td><td></td></tr>
+    <tr><td>2 มิ.ย.</td><td>ซื้อขนม</td><td></td><td>20</td></tr>
+  </table>
+</div>
+
+<!-- S5: สูตร SUM -->
+<div class="slide s5" id="s5">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สาธิตพิมพ์ =SUM(C2:C10) ให้นักเรียนเห็นว่าคำนวณได้เอง แล้วลองเปลี่ยนตัวเลข</div>
+  <h2>➕ สูตร SUM — หาผลรวม</h2>
+  <div class="box" style="text-align:center">
+    <p style="font-size:clamp(14px,2vw,22px);color:#fff">สูตร Excel ต้องเริ่มด้วย <span style="color:#5eead4">=</span> เสมอ<br>Excel จะคำนวณให้อัตโนมัติ!</p>
+  </div>
+  <div class="formula-box">
+    =SUM(C2:C10)<br>
+    <span style="color:rgba(255,255,255,.4);font-size:13px">// บวกตัวเลขในช่อง C2 ถึง C10 ทั้งหมด</span><br><br>
+    =SUM(C2,C5,C8)<br>
+    <span style="color:rgba(255,255,255,.4);font-size:13px">// บวกเฉพาะ C2, C5, C8</span>
+  </div>
+  <p class="sub" style="margin-top:10px">ลองพิมพ์ <strong style="color:#5eead4">=SUM(</strong> แล้วลากเลือกช่วงเซลล์ แล้วกด Enter</p>
+</div>
+
+<!-- S6: สูตร AVERAGE MAX MIN -->
+<div class="slide s6" id="s6">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สาธิตแต่ละสูตร ให้นักเรียนลองพิมพ์บน Excel จริง</div>
+  <h2>📐 สูตร AVERAGE • MAX • MIN</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>=AVERAGE()</h4>
+      <div class="formula-box" style="font-size:13px">=AVERAGE(C2:C10)</div>
+      <p style="margin-top:6px;font-size:13px;color:rgba(255,255,255,.6)">หาค่าเฉลี่ย (ค่าเฉลี่ย = ผลรวม ÷ จำนวน)</p>
+      <p style="font-size:13px;color:#5eead4">เช่น ค่าใช้จ่ายเฉลี่ยต่อวัน</p>
+    </div>
+    <div class="col">
+      <h4>=MAX() และ =MIN()</h4>
+      <div class="formula-box" style="font-size:13px">=MAX(C2:C10)<br>=MIN(C2:C10)</div>
+      <p style="margin-top:6px;font-size:13px;color:rgba(255,255,255,.6)">MAX = หาค่ามากที่สุด<br>MIN = หาค่าน้อยที่สุด</p>
+    </div>
+  </div>
+  <div class="box" style="text-align:center;margin-top:10px">
+    <p style="color:#5eead4;font-size:clamp(13px,1.8vw,18px)">สูตรทั้งหมดใช้ได้กับช่วงตัวเลขใดก็ได้ แค่เปลี่ยน <strong>C2:C10</strong> ให้ตรงกับตาราง</p>
+  </div>
+</div>
+
+<!-- S7: สร้างตารางรายรับรายจ่าย -->
+<div class="slide s7" id="s7">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สาธิตสร้างตารางรายรับรายจ่ายทั้งหมด ให้นักเรียนสร้างตาม</div>
+  <h2>💰 ตารางรายรับรายจ่ายสมบูรณ์</h2>
+  <table class="excel-table" style="margin:10px auto 0">
+    <tr><th>A: วันที่</th><th>B: รายการ</th><th>C: รายรับ (บาท)</th><th>D: รายจ่าย (บาท)</th></tr>
+    <tr><td>1 มิ.ย.</td><td>รับค่าขนม</td><td style="color:#4ade80">50</td><td></td></tr>
+    <tr><td>2 มิ.ย.</td><td>ซื้อขนม</td><td></td><td style="color:#f87171">20</td></tr>
+    <tr><td>3 มิ.ย.</td><td>รับเงินพิเศษ</td><td style="color:#4ade80">30</td><td></td></tr>
+    <tr><td>4 มิ.ย.</td><td>ซื้อดินสอ</td><td></td><td style="color:#f87171">15</td></tr>
+    <tr><td colspan="2" style="color:#5eead4;font-weight:700">รวมทั้งหมด</td><td style="color:#4ade80;font-weight:700">=SUM(C2:C5)</td><td style="color:#f87171;font-weight:700">=SUM(D2:D5)</td></tr>
+    <tr><td colspan="2" style="color:#5eead4">คงเหลือ</td><td colspan="2" style="color:#fde047">=C6-D6</td></tr>
+  </table>
+</div>
+
+<!-- S8: Quiz -->
+<div class="slide s8" id="s8">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้นักเรียนคิดก่อนตอบ ไม่ต้องเปิดดูสไลด์</div>
+  <h2>🎯 ทดสอบ: สูตรอะไรใช้หาผลรวม?</h2>
+  <p class="sub">เลือกคำตอบที่ถูกต้อง</p>
+  <div class="quiz-opts">
+    <button class="qbtn" onclick="qa(this,false)">A. =AVERAGE(C2:C10)</button>
+    <button class="qbtn" onclick="qa(this,true)">B. =SUM(C2:C10)</button>
+    <button class="qbtn" onclick="qa(this,false)">C. =MAX(C2:C10)</button>
+    <button class="qbtn" onclick="qa(this,false)">D. =COUNT(C2:C10)</button>
+  </div>
+  <div id="qa-msg" class="result-msg"></div>
+</div>
+
+<!-- S9: จัดรูปแบบตาราง -->
+<div class="slide s9" id="s9">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สาธิตการจัดรูปแบบ ทำให้ตารางสวยและอ่านง่ายขึ้น</div>
+  <h2>🎨 จัดรูปแบบตารางให้สวย</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>จัดรูปแบบพื้นฐาน</h4>
+      <p>• <span style="color:#5eead4">Bold</span> หัวตาราง (Ctrl+B)</p>
+      <p>• เปลี่ยน <span style="color:#5eead4">สีพื้นหลัง Cell</span></p>
+      <p>• <span style="color:#5eead4">ขีดเส้นกรอบ</span> ตาราง</p>
+      <p>• <span style="color:#5eead4">กว้างคอลัมน์</span> (ดับเบิลคลิกขอบ)</p>
+    </div>
+    <div class="col">
+      <h4>จัดรูปแบบตัวเลข</h4>
+      <p>• เปลี่ยนเป็น <span style="color:#5eead4">รูปแบบเงินบาท</span></p>
+      <p>• ใส่ <span style="color:#99f6e4">จุดทศนิยม</span> กี่ตำแหน่ง</p>
+      <p>• จัดตาราง <span style="color:#5eead4">ชิดกลาง/ซ้าย/ขวา</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- S10: กิจกรรม -->
+<div class="slide s10" id="s10">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 แจกใบงาน Excel ป.3 ให้นักเรียน เปิด Excel ให้เริ่มสร้างตาราง</div>
+  <div class="big-emoji">📊</div>
+  <h2>กิจกรรม: สร้างบัญชีรายรับรายจ่าย</h2>
+  <div class="activity-box">
+    <h3>📋 โจทย์</h3>
+    <p style="color:rgba(255,255,255,.9);font-size:clamp(14px,2.2vw,22px)">สร้างตาราง <strong style="color:#5eead4">รายรับรายจ่ายประจำสัปดาห์</strong><br>บันทึก 7 วัน + หาผลรวม รายรับ-รายจ่าย + คงเหลือ</p>
+    <p style="margin-top:10px;color:rgba(255,255,255,.55);font-size:14px">ใช้สูตร: SUM, AVERAGE, MAX, MIN อย่างน้อย 2 สูตร</p>
+  </div>
+  <button class="timer-btn" onclick="startTimer(20)" style="margin-top:14px;font-size:15px;padding:10px 24px">⏱ 20 นาที</button>
+</div>
+
+<!-- S11: สรุป -->
+<div class="slide s11" id="s11">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สรุปบทเรียน ถามนักเรียนว่าสูตร SUM แตกต่างจาก AVERAGE อย่างไร</div>
+  <div class="badge">สรุปบทเรียน หน่วยที่ 3</div>
+  <h2>🎓 สรุป: บัญชีรายรับรายจ่ายด้วย Excel</h2>
+  <ul class="step-list">
+    <li><span class="sn">📊</span><strong style="color:#5eead4">Excel</strong> = โปรแกรมตารางคำนวณ จัดข้อมูลเป็นตาราง</li>
+    <li><span class="sn">🔲</span><strong style="color:#99f6e4">Cell</strong> = ช่องข้อมูล ชื่อ = คอลัมน์+แถว (A1, B2...)</li>
+    <li><span class="sn">➕</span><strong>=SUM()</strong> = ผลรวม | <strong>=AVERAGE()</strong> = ค่าเฉลี่ย</li>
+    <li><span class="sn">📈</span><strong>=MAX()</strong> = ค่าสูงสุด | <strong>=MIN()</strong> = ค่าต่ำสุด</li>
+    <li><span class="sn">💰</span>ตารางรายรับรายจ่าย = คำนวณคงเหลือได้อัตโนมัติ</li>
+  </ul>
+</div>
+
+<div class="nav">
+  <button class="nav-btn" onclick="go(-1)">◀</button>
+  <div class="dots" id="dots"></div>
+  <span class="counter" id="counter">1 / 11</span>
+  <button class="nav-btn" onclick="go(1)">▶</button>
+</div>
+
+<script>
+let cur=0;
+const slides=document.querySelectorAll('.slide');
+const total=slides.length;
+for(let i=0;i<total;i++){const d=document.createElement('div');d.className='dot'+(i===0?' on':'');document.getElementById('dots').appendChild(d);}
+function showSlide(n){slides[cur].classList.remove('active');document.querySelectorAll('.dot')[cur].classList.remove('on');cur=Math.max(0,Math.min(n,total-1));slides[cur].classList.add('active');document.querySelectorAll('.dot')[cur].classList.add('on');document.getElementById('counter').textContent=(cur+1)+' / '+total;document.getElementById('prog').style.width=((cur+1)/total*100)+'%';}
+function go(d){showSlide(cur+d)}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')go(1);if(e.key==='ArrowLeft')go(-1);});
+function rev(id){document.getElementById(id).classList.toggle('show')}
+function qa(btn,correct){document.querySelectorAll('.qbtn').forEach(b=>b.disabled=true);btn.classList.add(correct?'correct':'wrong');const msg=document.getElementById('qa-msg');msg.style.display='block';msg.style.color=correct?'#4ade80':'#f87171';msg.textContent=correct?'🎉 ถูกต้อง! =SUM() ใช้หาผลรวมของช่วงตัวเลข':'❌ ลองใหม่ — =SUM() คือสูตรหาผลรวม';}
+let timerInterval=null;
+function startTimer(min){clearInterval(timerInterval);let sec=min*60;const disp=document.getElementById('timerDisplay');disp.style.display='block';function tick(){const m=Math.floor(sec/60);const s=sec%60;disp.textContent=m+':'+(s<10?'0':'')+s;if(sec===0){clearInterval(timerInterval);disp.textContent='⏰ หมดเวลา!';}sec--;}tick();timerInterval=setInterval(tick,1000);}
+showSlide(0);
+</script>
+</body>
+</html>

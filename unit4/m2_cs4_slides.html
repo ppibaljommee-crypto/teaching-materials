@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ม.2 วิทยาการคำนวณ หน่วย 4 — โปรเจกต์ Python + Canva</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Sarabun',sans-serif;background:#000d00;overflow:hidden;height:100vh}
+.prog-bar{position:fixed;top:0;left:0;height:4px;background:linear-gradient(90deg,#22c55e,#86efac,#4ade80);transition:width .4s;z-index:300;box-shadow:0 0 12px rgba(34,197,94,.7)}
+.slide{display:none;width:100vw;height:100vh;flex-direction:column;align-items:center;justify-content:center;padding:32px;position:relative;overflow:hidden}
+.slide.active{display:flex;animation:fadeUp .4s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.s1{background:linear-gradient(135deg,#001a00,#003300,#14532d,#065f46)}
+.s2{background:linear-gradient(135deg,#000a05,#001a10,#052e16)}
+.s3{background:linear-gradient(135deg,#050005,#1a001a,#2d0045)}
+.s4{background:linear-gradient(135deg,#000510,#000a30,#001a50)}
+.s5{background:linear-gradient(135deg,#050a00,#0a1a00,#143305)}
+.s6{background:linear-gradient(135deg,#0a0500,#1a0a00,#331400)}
+.s7{background:linear-gradient(135deg,#000520,#000a40,#001060)}
+.s8{background:linear-gradient(135deg,#0a0000,#1a0505,#330a0a)}
+.s9{background:linear-gradient(135deg,#001005,#001a0a,#00331a)}
+.s10{background:linear-gradient(135deg,#050005,#0a001a,#14003d)}
+.s11{background:linear-gradient(135deg,#050a00,#0d1a00,#1a3300)}
+.s12{background:linear-gradient(135deg,#001a10,#002a1a,#003d25)}
+.s13{background:linear-gradient(135deg,#000a10,#00141a,#003333)}
+h1{font-size:clamp(24px,4.5vw,56px);font-weight:800;color:#fff;text-align:center;line-height:1.15}
+h2{font-size:clamp(17px,3vw,38px);font-weight:700;color:#fff;text-align:center;line-height:1.3}
+p.sub{font-size:clamp(12px,1.8vw,22px);color:rgba(255,255,255,.7);text-align:center;margin-top:10px}
+.badge{background:rgba(34,197,94,.2);border:1px solid rgba(34,197,94,.5);border-radius:50px;padding:7px 22px;font-size:clamp(11px,1.5vw,17px);color:#bbf7d0;font-weight:700;margin-bottom:14px}
+.big-emoji{font-size:clamp(50px,9vw,100px);text-align:center;line-height:1;margin-bottom:8px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;max-width:950px;margin-top:12px}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;width:100%;max-width:950px;margin-top:12px}
+.col{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:14px 18px}
+.col h4{font-size:clamp(12px,1.8vw,19px);color:#86efac;font-weight:800;margin-bottom:8px}
+.col p,.col li{font-size:clamp(11px,1.5vw,16px);color:rgba(255,255,255,.85);padding:3px 0;list-style:none}
+.box{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:18px 24px;width:100%;max-width:950px;margin-top:12px}
+.step-list{list-style:none;width:100%;max-width:880px;margin-top:10px}
+.step-list li{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:10px 16px;margin-bottom:8px;font-size:clamp(12px,1.8vw,20px);color:#fff;display:flex;align-items:center;gap:12px;animation:slideIn .4s ease both}
+@keyframes slideIn{from{opacity:0;transform:translateX(-18px)}to{opacity:1;transform:translateX(0)}}
+.step-list li:nth-child(1){animation-delay:.05s}.step-list li:nth-child(2){animation-delay:.12s}.step-list li:nth-child(3){animation-delay:.19s}.step-list li:nth-child(4){animation-delay:.26s}.step-list li:nth-child(5){animation-delay:.33s}.step-list li:nth-child(6){animation-delay:.4s}
+.sn{background:#22c55e;border-radius:50%;min-width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:#000}
+/* Terminal */
+.terminal-wrap{width:100%;max-width:950px;margin-top:12px}
+.terminal-bar{background:#2d2d2d;border-radius:10px 10px 0 0;padding:8px 14px;display:flex;align-items:center;gap:8px}
+.t-dot{width:12px;height:12px;border-radius:50%}
+.t-dot.red{background:#ff5f57}.t-dot.yellow{background:#febc2e}.t-dot.green{background:#28c840}
+.t-title{color:rgba(255,255,255,.5);font-size:12px;margin-left:8px;font-family:'JetBrains Mono',monospace}
+.terminal-body{background:#0d1117;border-radius:0 0 10px 10px;padding:14px 18px;font-family:'JetBrains Mono','Courier New',monospace;font-size:clamp(11px,1.5vw,15px);color:#e6edf3;line-height:1.8;min-height:140px;max-height:280px;overflow-y:auto;position:relative}
+.terminal-body .t-prompt{color:#57ab5a}
+.terminal-body .t-output{color:#79c0ff}
+.terminal-body .t-inp{color:#f8b800}
+.terminal-body .t-error{color:#f85149}
+.terminal-body .cursor{display:inline-block;width:8px;height:16px;background:#57ab5a;animation:blink .8s step-end infinite;vertical-align:text-bottom;margin-left:1px}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.t-line{display:block;min-height:1.8em}
+.run-btn{background:linear-gradient(135deg,#166534,#22c55e);border:none;color:#fff;border-radius:8px;padding:8px 20px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Sarabun',sans-serif;transition:all .2s;display:flex;align-items:center;gap:6px;margin-top:8px}
+.run-btn:hover{transform:scale(1.05);filter:brightness(1.15)}
+.run-btn:disabled{opacity:.5;cursor:default;transform:none}
+.code-static{background:#0d1117;border-radius:10px;padding:14px 18px;font-family:'JetBrains Mono','Courier New',monospace;font-size:clamp(11px,1.5vw,15px);color:#e6edf3;line-height:1.9;width:100%;margin-top:8px}
+.kw{color:#ff7b72}.fn{color:#79c0ff}.st{color:#a5d6ff}.nm{color:#f8b800}.cm{color:#8b949e}.vr{color:#ffa657}.op{color:#ff7b72}
+/* Quiz */
+.quiz-opts{display:flex;flex-direction:column;gap:8px;width:100%;max-width:780px;margin-top:12px}
+.qbtn{background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.18);border-radius:12px;padding:11px 18px;color:#fff;font-size:clamp(12px,1.7vw,19px);font-weight:700;cursor:pointer;text-align:left;font-family:'Sarabun',sans-serif;transition:all .2s}
+.qbtn:hover{background:rgba(255,255,255,.14)}
+.qbtn.correct{background:rgba(34,197,94,.2);border-color:#22c55e;color:#4ade80}
+.qbtn.wrong{background:rgba(248,113,113,.13);border-color:#f87171;opacity:.7}
+.result-msg{font-size:clamp(13px,2vw,22px);font-weight:800;text-align:center;margin-top:10px;display:none}
+.teacher-note{position:fixed;top:16px;right:16px;background:rgba(0,0,0,.7);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:8px 14px;color:rgba(255,255,255,.6);font-size:12px;max-width:260px;text-align:right;cursor:pointer;z-index:200;transition:opacity .2s}
+.teacher-note:hover{opacity:.4}
+.timer-widget{position:fixed;top:16px;left:16px;z-index:200}
+.timer-btn{background:rgba(34,197,94,.2);border:1px solid rgba(34,197,94,.4);border-radius:8px;padding:7px 12px;color:#bbf7d0;font-size:12px;font-weight:700;cursor:pointer;font-family:'Sarabun',sans-serif}
+.timer-display{background:rgba(0,0,0,.8);border:1px solid rgba(34,197,94,.4);border-radius:8px;padding:8px 16px;color:#4ade80;font-size:26px;font-weight:800;text-align:center;margin-top:5px;display:none;font-family:'JetBrains Mono',monospace}
+.nav{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:12px;z-index:100}
+.nav-btn{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);color:#fff;border-radius:50%;width:48px;height:48px;font-size:19px;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center}
+.nav-btn:hover{background:rgba(255,255,255,.22);transform:scale(1.1)}
+.counter{background:rgba(0,0,0,.6);color:#fff;border-radius:20px;padding:6px 16px;font-size:14px;font-weight:700;border:1px solid rgba(255,255,255,.15)}
+.dots{display:flex;gap:5px;align-items:center}
+.dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.22);transition:all .3s}
+.dot.on{background:#22c55e;transform:scale(1.6);box-shadow:0 0 7px #22c55e}
+.reveal-btn{background:rgba(34,197,94,.5);border:1px solid #22c55e;color:#fff;border-radius:50px;padding:9px 24px;font-size:clamp(12px,1.6vw,18px);font-weight:700;cursor:pointer;font-family:'Sarabun',sans-serif;transition:all .2s;margin-top:10px}
+.reveal-text{color:#86efac;font-size:clamp(13px,2vw,22px);font-weight:800;text-align:center;margin-top:10px;display:none;font-family:'JetBrains Mono',monospace}
+.reveal-text.show{display:block;animation:fadeUp .4s ease}
+.activity-box{background:rgba(34,197,94,.08);border:2px solid rgba(34,197,94,.35);border-radius:18px;padding:16px 24px;width:100%;max-width:880px;margin-top:12px;text-align:center}
+.activity-box h3{color:#86efac;font-size:clamp(14px,2.2vw,24px);font-weight:800;margin-bottom:8px}
+/* IPO Diagram */
+.ipo-box{display:flex;gap:10px;align-items:center;justify-content:center;width:100%;max-width:900px;margin-top:12px}
+.ipo-card{background:rgba(255,255,255,.07);border:2px solid;border-radius:14px;padding:14px 18px;text-align:center;flex:1}
+.ipo-card h4{font-size:clamp(13px,2vw,20px);font-weight:800;margin-bottom:8px}
+.ipo-card p{font-size:clamp(11px,1.5vw,15px);color:rgba(255,255,255,.8)}
+.ipo-arrow{color:rgba(255,255,255,.4);font-size:28px;flex-shrink:0}
+</style>
+</head>
+<body>
+<div class="prog-bar" id="prog"></div>
+<div class="timer-widget">
+  <button class="timer-btn" onclick="startTimer(10)">⏱ 10 นาที</button>
+  <div class="timer-display" id="timerDisplay">10:00</div>
+</div>
+
+<!-- S1: Title -->
+<div class="slide s1 active" id="s1">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 ถาม: "ใครเคยใช้ Canva ทำงานนำเสนอบ้าง? วันนี้จะรวม Python + Canva เข้าด้วยกัน!"</div>
+  <div class="badge">วิทยาการคำนวณ • ม.2 • หน่วยที่ 4</div>
+  <div class="big-emoji">🐍✨</div>
+  <h1>โปรเจกต์ Python + Canva</h1>
+  <p class="sub">IPO Diagram • Functions • Lists • Canva Presentation</p>
+</div>
+
+<!-- S2: IPO Diagram -->
+<div class="slide s2" id="s2">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 IPO เหมือนสูตรอาหาร: วัตถุดิบ (Input) → กระบวนการทำอาหาร (Process) → อาหารสำเร็จ (Output)</div>
+  <h2>📐 IPO Diagram คืออะไร?</h2>
+  <div class="ipo-box">
+    <div class="ipo-card" style="border-color:rgba(59,130,246,.5)">
+      <h4 style="color:#93c5fd">INPUT</h4>
+      <p>ข้อมูลที่โปรแกรมรับเข้า</p>
+      <p style="margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:12px;color:#93c5fd">input(), ค่าตั้งต้น, ไฟล์</p>
+    </div>
+    <div class="ipo-arrow">→</div>
+    <div class="ipo-card" style="border-color:rgba(34,197,94,.5)">
+      <h4 style="color:#86efac">PROCESS</h4>
+      <p>การประมวลผลข้อมูล</p>
+      <p style="margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:12px;color:#86efac">คำนวณ, เปรียบเทียบ, ตัดสินใจ</p>
+    </div>
+    <div class="ipo-arrow">→</div>
+    <div class="ipo-card" style="border-color:rgba(251,191,36,.5)">
+      <h4 style="color:#fde68a">OUTPUT</h4>
+      <p>ผลลัพธ์ที่แสดงออกมา</p>
+      <p style="margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:12px;color:#fde68a">print(), ไฟล์, กราฟ</p>
+    </div>
+  </div>
+  <div class="box" style="text-align:center;margin-top:12px">
+    <p style="font-size:clamp(12px,1.8vw,20px);color:#bbf7d0;font-weight:700">IPO Diagram ช่วยให้เราวางแผนโปรแกรมก่อนเขียนโค้ด</p>
+  </div>
+</div>
+
+<!-- S3: วางแผนด้วย IPO -->
+<div class="slide s3" id="s3">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 ให้นักเรียนช่วยกันคิด IPO ของโปรแกรมคิดเงินทอนจากร้านค้า</div>
+  <h2>📝 วางแผนโปรแกรมด้วย IPO Diagram</h2>
+  <p class="sub" style="margin-bottom:8px">ทำก่อนเขียนโค้ดทุกครั้ง!</p>
+  <ul class="step-list">
+    <li><span class="sn">1</span><strong style="color:#93c5fd">ระบุ INPUT:</strong> โปรแกรมต้องการข้อมูลอะไร? จากผู้ใช้หรือจากที่ไหน?</li>
+    <li><span class="sn">2</span><strong style="color:#86efac">ระบุ PROCESS:</strong> ต้องคำนวณ ตัดสินใจ หรือทำอะไรกับข้อมูล?</li>
+    <li><span class="sn">3</span><strong style="color:#fde68a">ระบุ OUTPUT:</strong> ผู้ใช้จะเห็นอะไร? แสดงผลอย่างไร?</li>
+    <li><span class="sn">4</span><strong style="color:#a78bfa">ตรวจสอบ:</strong> INPUT ทุกอันถูกใช้ใน PROCESS ไหม? OUTPUT ตอบโจทย์ไหม?</li>
+  </ul>
+</div>
+
+<!-- S4: ตัวอย่าง IPO: BMI -->
+<div class="slide s4" id="s4">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 ให้นักเรียนดู IPO นี้แล้วบอกว่า: ถ้าต้องการแสดงประเภท BMI ด้วย ต้องเพิ่มอะไรใน PROCESS?</div>
+  <h2>💡 ตัวอย่าง IPO: โปรแกรมคำนวณ BMI</h2>
+  <div class="ipo-box">
+    <div class="ipo-card" style="border-color:rgba(59,130,246,.5)">
+      <h4 style="color:#93c5fd">INPUT</h4>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#e6edf3;text-align:left;margin-top:6px">
+        weight = float(input())<br>
+        height = float(input())
+      </p>
+    </div>
+    <div class="ipo-arrow">→</div>
+    <div class="ipo-card" style="border-color:rgba(34,197,94,.5)">
+      <h4 style="color:#86efac">PROCESS</h4>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#e6edf3;text-align:left;margin-top:6px">
+        bmi = weight / (height**2)<br>
+        if bmi &lt; 18.5: ผอม<br>
+        elif bmi &lt;= 24.9: ปกติ<br>
+        else: อ้วน
+      </p>
+    </div>
+    <div class="ipo-arrow">→</div>
+    <div class="ipo-card" style="border-color:rgba(251,191,36,.5)">
+      <h4 style="color:#fde68a">OUTPUT</h4>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#e6edf3;text-align:left;margin-top:6px">
+        print(f"BMI: {bmi:.2f}")<br>
+        print(f"ผล: {result}")
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- S5: เขียน Python จาก IPO -->
+<div class="slide s5" id="s5">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 เน้น: เขียน IPO ก่อนเสมอ แล้วค่อยแปลงเป็นโค้ด ไม่ใช่เขียนโค้ดตรงๆ ทันที</div>
+  <h2>🔄 เขียน Python จาก IPO — ขั้นตอน</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>IPO → Code ทีละส่วน</h4>
+      <p>1. INPUT → เขียน <span style="color:#79c0ff;font-family:monospace">input()</span> และ <span style="color:#79c0ff;font-family:monospace">int()/float()</span></p>
+      <p>2. PROCESS → เขียน logic, คำนวณ, <span style="color:#ff7b72;font-family:monospace">if/elif/else</span></p>
+      <p>3. OUTPUT → เขียน <span style="color:#79c0ff;font-family:monospace">print()</span> หรือ f-string</p>
+      <p style="margin-top:10px;color:#86efac;font-weight:700">ลำดับเขียนโค้ด:</p>
+      <p>• นำเข้าไลบรารีก่อน (ถ้ามี)</p>
+      <p>• ส่วน INPUT</p>
+      <p>• ส่วน PROCESS</p>
+      <p>• ส่วน OUTPUT</p>
+    </div>
+    <div class="col">
+      <h4 style="color:#a5d6ff">Tips การเขียนโค้ด</h4>
+      <p>✅ ใส่ comment อธิบายแต่ละส่วน</p>
+      <p>✅ ตั้งชื่อตัวแปรให้สื่อความหมาย</p>
+      <p>✅ Test ทีละส่วน ไม่ต้องรอเขียนเสร็จ</p>
+      <p>✅ ถ้า Error ดู error message</p>
+      <p style="margin-top:8px;color:#f87171">❌ อย่าลืม indent 4 ช่องใน if/for/def</p>
+      <p style="color:#f87171">❌ อย่า Copy โค้ดโดยไม่เข้าใจ</p>
+    </div>
+  </div>
+</div>
+
+<!-- S6: Functions -->
+<div class="slide s6" id="s6">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 เปรียบ Function กับ "สูตรอาหาร" — สูตรเขียนครั้งเดียว ทำได้กี่ครั้งก็ได้</div>
+  <h2><span style="font-family:'JetBrains Mono',monospace;color:#79c0ff">def</span> — Functions ใน Python</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>Function คืออะไร?</h4>
+      <p>= กล่องรับคำสั่ง ทำงานแล้วส่งผลกลับ</p>
+      <p style="margin-top:8px;color:#86efac;font-weight:700">โครงสร้าง:</p>
+      <div class="code-static" style="font-size:12px;border-radius:8px;margin-top:4px">
+<span class="kw">def</span> <span class="fn">ชื่อ_ฟังก์ชัน</span>(<span class="vr">parameter</span>):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="cm"># โค้ดในฟังก์ชัน</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span> <span class="vr">ค่าที่ส่งกลับ</span>
+      </div>
+      <p style="margin-top:8px;font-size:13px">เรียกใช้: <span style="color:#79c0ff;font-family:monospace">ผลลัพธ์ = ชื่อ_ฟังก์ชัน(ค่า)</span></p>
+    </div>
+    <div class="col">
+      <h4>ทำไมต้องใช้ Function?</h4>
+      <p>✅ เขียนครั้งเดียว ใช้ได้หลายครั้ง</p>
+      <p>✅ โค้ดอ่านง่ายขึ้น</p>
+      <p>✅ แก้บั๊กที่เดียว แก้ได้ทุกที่</p>
+      <p>✅ แบ่งโปรแกรมใหญ่เป็นส่วนย่อยๆ</p>
+      <p style="margin-top:8px;color:#fde68a;font-weight:700">ตัวอย่าง:</p>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#e6edf3">แทนที่จะคำนวณ BMI 3 ครั้ง ก็สร้าง function calc_bmi() แค่ครั้งเดียว!</p>
+    </div>
+  </div>
+</div>
+
+<!-- S7: Function Demo Terminal -->
+<div class="slide s7" id="s7">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 กด Run ให้นักเรียนดูโค้ดที่พิมพ์ออกมาทีละบรรทัด อธิบายแต่ละบรรทัดระหว่างรัน</div>
+  <h2><span style="color:#79c0ff;font-family:'JetBrains Mono',monospace">def</span> Function — ตัวอย่างพร้อม Demo</h2>
+  <div class="two-col">
+    <div class="col" style="font-size:clamp(11px,1.4vw,14px)">
+      <h4>โค้ดตัวอย่าง: ฟังก์ชัน BMI</h4>
+      <div class="code-static" style="font-size:12px;border-radius:8px;margin-top:4px;max-height:220px;overflow-y:auto">
+<span class="cm"># สร้างฟังก์ชัน</span><br>
+<span class="kw">def</span> <span class="fn">calc_bmi</span>(<span class="vr">weight</span>, <span class="vr">height</span>):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="vr">bmi</span> = <span class="vr">weight</span> / (<span class="vr">height</span> ** <span class="nm">2</span>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span> <span class="fn">round</span>(<span class="vr">bmi</span>, <span class="nm">2</span>)<br><br>
+<span class="kw">def</span> <span class="fn">bmi_status</span>(<span class="vr">bmi</span>):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if</span> <span class="vr">bmi</span> &lt; <span class="nm">18.5</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span> <span class="st">"น้ำหนักน้อย"</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">elif</span> <span class="vr">bmi</span> &lt;= <span class="nm">24.9</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span> <span class="st">"ปกติ ✅"</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">else</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span> <span class="st">"น้ำหนักเกิน"</span><br><br>
+<span class="cm"># เรียกใช้ฟังก์ชัน</span><br>
+<span class="vr">b</span> = <span class="fn">calc_bmi</span>(<span class="nm">60</span>, <span class="nm">1.70</span>)<br>
+<span class="fn">print</span>(<span class="st">f"BMI: {b}"</span>)<br>
+<span class="fn">print</span>(<span class="fn">bmi_status</span>(<span class="vr">b</span>))
+      </div>
+    </div>
+    <div>
+      <button class="run-btn" onclick="runTerminal('t_func1')">▶ Run Demo</button>
+      <div class="terminal-wrap" style="margin-top:6px">
+        <div class="terminal-bar"><div class="t-dot red"></div><div class="t-dot yellow"></div><div class="t-dot green"></div><span class="t-title">bmi_function.py</span></div>
+        <div class="terminal-body" id="t_func1"><span class="cursor"></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S8: Lists -->
+<div class="slide s8" id="s8">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 เปรียบ List กับ "ตะกร้าผลไม้" — ใส่ได้หลายอย่าง เข้าถึงด้วยหมายเลข (index เริ่มที่ 0)</div>
+  <h2><span style="font-family:'JetBrains Mono',monospace;color:#a5d6ff">list</span> — รายการข้อมูล</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>List คืออะไร?</h4>
+      <p>= กล่องที่เก็บข้อมูลหลายชิ้นไว้ด้วยกัน</p>
+      <div class="code-static" style="font-size:12px;border-radius:8px;margin-top:6px">
+<span class="vr">fruits</span> = [<span class="st">"แอปเปิล"</span>, <span class="st">"มะม่วง"</span>, <span class="st">"กล้วย"</span>]<br>
+<span class="vr">scores</span> = [<span class="nm">85</span>, <span class="nm">90</span>, <span class="nm">78</span>, <span class="nm">92</span>]<br><br>
+<span class="cm"># เข้าถึงด้วย index (เริ่มที่ 0)</span><br>
+<span class="fn">print</span>(<span class="vr">fruits</span>[<span class="nm">0</span>])  <span class="cm"># แอปเปิล</span><br>
+<span class="fn">print</span>(<span class="vr">fruits</span>[<span class="nm">-1</span>]) <span class="cm"># กล้วย (ตัวสุดท้าย)</span>
+      </div>
+    </div>
+    <div class="col">
+      <h4>คำสั่งสำคัญของ List</h4>
+      <p><span style="color:#79c0ff;font-family:monospace">list.append(x)</span> — เพิ่มท้าย</p>
+      <p><span style="color:#79c0ff;font-family:monospace">list.remove(x)</span> — ลบออก</p>
+      <p><span style="color:#79c0ff;font-family:monospace">len(list)</span> — จำนวนสมาชิก</p>
+      <p><span style="color:#79c0ff;font-family:monospace">sum(list)</span> — ผลรวม</p>
+      <p><span style="color:#79c0ff;font-family:monospace">max(list)</span> — ค่าสูงสุด</p>
+      <p><span style="color:#79c0ff;font-family:monospace">min(list)</span> — ค่าต่ำสุด</p>
+      <p><span style="color:#ff7b72;font-family:monospace">for x in list:</span> — วนทุกสมาชิก</p>
+    </div>
+  </div>
+</div>
+
+<!-- S9: โปรแกรมตัวอย่าง -->
+<div class="slide s9" id="s9">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 กด Run ให้นักเรียนดู สังเกตว่า for loop วนกี่รอบ? ผลลัพธ์ตรงกับที่คาดไหม?</div>
+  <h2>🎓 โปรแกรมใช้ Function + List + Loop</h2>
+  <div class="two-col">
+    <div class="col" style="font-size:12px">
+      <h4>โค้ด: วิเคราะห์คะแนน</h4>
+      <div class="code-static" style="font-size:11px;border-radius:8px;margin-top:4px;max-height:220px;overflow-y:auto">
+<span class="kw">def</span> <span class="fn">analyze_scores</span>(<span class="vr">scores</span>):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="vr">avg</span> = <span class="fn">sum</span>(<span class="vr">scores</span>) / <span class="fn">len</span>(<span class="vr">scores</span>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="vr">highest</span> = <span class="fn">max</span>(<span class="vr">scores</span>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="vr">lowest</span> = <span class="fn">min</span>(<span class="vr">scores</span>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span> <span class="vr">avg</span>, <span class="vr">highest</span>, <span class="vr">lowest</span><br><br>
+<span class="vr">class_scores</span> = [<span class="nm">85</span>, <span class="nm">90</span>, <span class="nm">78</span>, <span class="nm">92</span>, <span class="nm">88</span>]<br><br>
+<span class="vr">avg</span>, <span class="vr">hi</span>, <span class="vr">lo</span> = <span class="fn">analyze_scores</span>(<span class="vr">class_scores</span>)<br>
+<span class="fn">print</span>(<span class="st">f"ค่าเฉลี่ย: {avg:.1f}"</span>)<br>
+<span class="fn">print</span>(<span class="st">f"สูงสุด: {hi} | ต่ำสุด: {lo}"</span>)<br><br>
+<span class="cm"># แสดงคะแนนแต่ละคน</span><br>
+<span class="kw">for</span> <span class="vr">i</span>, <span class="vr">s</span> <span class="kw">in</span> <span class="fn">enumerate</span>(<span class="vr">class_scores</span>, <span class="nm">1</span>):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="fn">print</span>(<span class="st">f"นักเรียน {i}: {s} คะแนน"</span>)
+      </div>
+    </div>
+    <div>
+      <button class="run-btn" onclick="runTerminal('t_list1')">▶ Run Demo</button>
+      <div class="terminal-wrap" style="margin-top:6px">
+        <div class="terminal-bar"><div class="t-dot red"></div><div class="t-dot yellow"></div><div class="t-dot green"></div><span class="t-title">analyze_scores.py</span></div>
+        <div class="terminal-body" id="t_list1"><span class="cursor"></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S10: Canva -->
+<div class="slide s10" id="s10">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 สาธิต Canva บนโปรเจกเตอร์: เปิด canva.com → Create → Presentation → เลือก template</div>
+  <h2>🎨 Canva — สร้าง Presentation สวยงาม</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>Canva คืออะไร?</h4>
+      <p>= เครื่องมือออกแบบออนไลน์ ใช้ฟรี ไม่ต้องติดตั้ง</p>
+      <p style="margin-top:8px;color:#86efac;font-weight:700">ทำได้:</p>
+      <p>✅ สร้าง Presentation สวยงาม</p>
+      <p>✅ มี Template พร้อมใช้หลายพัน</p>
+      <p>✅ แชร์ออนไลน์ได้ทันที</p>
+      <p>✅ ทำงานร่วมกันหลายคน</p>
+    </div>
+    <div class="col">
+      <h4>วิธีเริ่มต้น</h4>
+      <p>1. เปิด <span style="color:#60a5fa;font-family:monospace">canva.com</span></p>
+      <p>2. สมัครด้วย Google Account</p>
+      <p>3. คลิก <strong style="color:#fde68a">+ Create → Presentation</strong></p>
+      <p>4. เลือก Template ที่ชอบ</p>
+      <p>5. แก้ไขข้อความ รูป สี ได้เลย</p>
+      <p style="margin-top:8px;color:#a78bfa;font-weight:700">Share: คลิก Share → Copy Link</p>
+    </div>
+  </div>
+</div>
+
+<!-- S11: ออกแบบ Presentation -->
+<div class="slide s11" id="s11">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 แจกใบงาน m2_cs4_project.html ให้วางแผน 5 สไลด์ใน Canva ก่อนทำจริง</div>
+  <h2>🖼️ ออกแบบ Presentation นำเสนอโปรแกรม Python</h2>
+  <ul class="step-list">
+    <li><span class="sn">1</span><strong style="color:#93c5fd">Slide 1 — Title:</strong> ชื่อโปรแกรม + ผู้จัดทำ</li>
+    <li><span class="sn">2</span><strong style="color:#86efac">Slide 2 — IPO Diagram:</strong> แสดง Input / Process / Output</li>
+    <li><span class="sn">3</span><strong style="color:#fde68a">Slide 3 — โค้ดสำคัญ:</strong> Screenshot หรือพิมพ์โค้ดใน Canva</li>
+    <li><span class="sn">4</span><strong style="color:#a78bfa">Slide 4 — ผลลัพธ์:</strong> รูป Screenshot การรันโปรแกรม</li>
+    <li><span class="sn">5</span><strong style="color:#fb923c">Slide 5 — สรุป:</strong> สิ่งที่เรียนรู้ + ปัญหาที่พบ + วิธีแก้</li>
+  </ul>
+</div>
+
+<!-- S12: โจทย์โปรเจกต์ -->
+<div class="slide s12" id="s12">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 แบ่งกลุ่ม 2-3 คน เลือกโจทย์ 1 ข้อ วางแผน IPO แล้วเริ่มเขียนโค้ด ส่งทั้ง Python + Canva Link</div>
+  <div class="big-emoji">🚀</div>
+  <h2>โจทย์โปรเจกต์ — เลือก 1 ข้อ</h2>
+  <div class="three-col">
+    <div class="col" style="border-color:rgba(59,130,246,.4)">
+      <h4 style="color:#93c5fd">ระดับ 1 ⭐</h4>
+      <p>โปรแกรมคำนวณเกรด (A-F) จากคะแนนที่รับ ใช้ function + if/elif/else</p>
+    </div>
+    <div class="col" style="border-color:rgba(34,197,94,.4)">
+      <h4 style="color:#86efac">ระดับ 2 ⭐⭐</h4>
+      <p>โปรแกรมวิเคราะห์คะแนน 5 วิชา ใช้ List + Function คำนวณ Mean Max Min</p>
+    </div>
+    <div class="col" style="border-color:rgba(251,191,36,.4)">
+      <h4 style="color:#fde68a">ระดับ 3 ⭐⭐⭐</h4>
+      <p>โปรแกรมจัดการรายชื่อนักเรียน ใช้ List เพิ่ม/ลบ/ค้นหา + Function แต่ละ operation</p>
+    </div>
+  </div>
+  <div class="activity-box" style="margin-top:10px">
+    <p style="color:rgba(255,255,255,.9);font-size:clamp(12px,1.7vw,18px)">ส่ง: 1) ไฟล์ .py | 2) Canva Presentation Link | 3) ใบงาน</p>
+  </div>
+</div>
+
+<!-- S13: สรุป -->
+<div class="slide s13" id="s13">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 ถามนักเรียน: "Function ต่างจากการเขียนโค้ดปกติอย่างไร? IPO ช่วยอะไร?"</div>
+  <div class="badge">สรุปบทเรียน หน่วยที่ 4 — ม.2</div>
+  <h2>🎓 สรุป: โปรเจกต์ Python + Canva</h2>
+  <ul class="step-list">
+    <li><span class="sn">📐</span><strong style="color:#93c5fd">IPO Diagram</strong> = วางแผนก่อนเขียน Input→Process→Output</li>
+    <li><span class="sn">def</span><strong style="color:#86efac;font-family:'JetBrains Mono',monospace"> def function()</strong> = กล่องโค้ดที่เรียกใช้ซ้ำได้</li>
+    <li><span class="sn">[ ]</span><strong style="color:#a5d6ff;font-family:'JetBrains Mono',monospace"> list</span> = รายการข้อมูลหลายชิ้น เข้าถึงด้วย index</li>
+    <li><span class="sn">🔄</span><strong style="color:#fde68a">for x in list</strong> = วนทำงานกับทุก element ใน List</li>
+    <li><span class="sn">🎨</span><strong style="color:#a78bfa">Canva</strong> = สร้าง Presentation นำเสนอโปรแกรมอย่างมืออาชีพ</li>
+  </ul>
+</div>
+
+<!-- Navigation -->
+<div class="nav">
+  <button class="nav-btn" onclick="go(-1)">◀</button>
+  <div class="dots" id="dots"></div>
+  <span class="counter" id="counter">1 / 13</span>
+  <button class="nav-btn" onclick="go(1)">▶</button>
+</div>
+
+<script>
+let cur = 0;
+const slides = document.querySelectorAll('.slide');
+const total = slides.length;
+const dotsEl = document.getElementById('dots');
+for (let i = 0; i < total; i++) {
+  const d = document.createElement('div');
+  d.className = 'dot' + (i === 0 ? ' on' : '');
+  dotsEl.appendChild(d);
+}
+function showSlide(n) {
+  slides[cur].classList.remove('active');
+  document.querySelectorAll('.dot')[cur].classList.remove('on');
+  cur = Math.max(0, Math.min(n, total - 1));
+  slides[cur].classList.add('active');
+  document.querySelectorAll('.dot')[cur].classList.add('on');
+  document.getElementById('counter').textContent = (cur + 1) + ' / ' + total;
+  document.getElementById('prog').style.width = ((cur + 1) / total * 100) + '%';
+}
+function go(d) { showSlide(cur + d); }
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === ' ') go(1);
+  if (e.key === 'ArrowLeft') go(-1);
+});
+function rev(id) { document.getElementById(id).classList.toggle('show'); }
+function toggleNote(el) { el.style.opacity = el.style.opacity === '.2' ? '1' : '.2'; }
+
+/* ---- Terminal System ---- */
+const TERMINALS = {
+  t_func1: {
+    lines: [
+      { t: 'code', c: '>>> def calc_bmi(weight, height):' },
+      { t: 'code', c: '...     bmi = weight / (height ** 2)' },
+      { t: 'code', c: '...     return round(bmi, 2)' },
+      { t: 'code', c: '>>> def bmi_status(bmi):' },
+      { t: 'code', c: '...     if bmi < 18.5: return "น้ำหนักน้อย"' },
+      { t: 'code', c: '...     elif bmi <= 24.9: return "ปกติ ✅"' },
+      { t: 'code', c: '...     else: return "น้ำหนักเกิน"' },
+      { t: 'code', c: '>>> b = calc_bmi(60, 1.70)' },
+      { t: 'code', c: '>>> print(f"BMI: {b}")' },
+      { t: 'out',  c: 'BMI: 20.76' },
+      { t: 'code', c: '>>> print(bmi_status(b))' },
+      { t: 'out',  c: 'ปกติ ✅' },
+    ]
+  },
+  t_list1: {
+    lines: [
+      { t: 'code', c: '>>> class_scores = [85, 90, 78, 92, 88]' },
+      { t: 'code', c: '>>> avg, hi, lo = analyze_scores(class_scores)' },
+      { t: 'code', c: '>>> print(f"ค่าเฉลี่ย: {avg:.1f}")' },
+      { t: 'out',  c: 'ค่าเฉลี่ย: 86.6' },
+      { t: 'code', c: '>>> print(f"สูงสุด: {hi} | ต่ำสุด: {lo}")' },
+      { t: 'out',  c: 'สูงสุด: 92 | ต่ำสุด: 78' },
+      { t: 'code', c: '>>> for i, s in enumerate(class_scores, 1):' },
+      { t: 'code', c: '...     print(f"นักเรียน {i}: {s} คะแนน")' },
+      { t: 'out',  c: 'นักเรียน 1: 85 คะแนน' },
+      { t: 'out',  c: 'นักเรียน 2: 90 คะแนน' },
+      { t: 'out',  c: 'นักเรียน 3: 78 คะแนน' },
+      { t: 'out',  c: 'นักเรียน 4: 92 คะแนน' },
+      { t: 'out',  c: 'นักเรียน 5: 88 คะแนน' },
+    ]
+  }
+};
+
+const activeTimers = {};
+
+function runTerminal(id) {
+  if (activeTimers[id]) {
+    activeTimers[id].forEach(t => clearTimeout(t));
+    activeTimers[id] = [];
+  }
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.innerHTML = '<span class="cursor"></span>';
+  const btn = el.closest('.slide') ? el.closest('.slide').querySelector('.run-btn[onclick*="' + id + '"]') : null;
+  if (btn) btn.disabled = true;
+  const data = TERMINALS[id];
+  if (!data) return;
+  const timers = [];
+  let delay = 300;
+
+  data.lines.forEach((line) => {
+    const t = setTimeout(() => {
+      const cursor = el.querySelector('.cursor');
+      if (cursor) cursor.remove();
+      const span = document.createElement('span');
+      span.className = 't-line';
+      if (line.t === 'code') {
+        span.innerHTML = '<span class="t-prompt">&gt;&gt;&gt; </span><span class="t-code"></span>';
+      } else if (line.t === 'out') {
+        span.innerHTML = '<span class="t-output"></span>';
+      } else if (line.t === 'inp') {
+        span.innerHTML = '<span class="t-inp"></span>';
+      }
+      el.appendChild(span);
+      el.scrollTop = el.scrollHeight;
+
+      const target = span.querySelector('.t-code, .t-output, .t-inp');
+      if (target) typeWriter(target, line.c, 18);
+    }, delay);
+    timers.push(t);
+    delay += line.t === 'code' ? 600 : 400;
+  });
+
+  const finalT = setTimeout(() => {
+    const cur2 = document.createElement('span');
+    cur2.className = 'cursor';
+    el.appendChild(cur2);
+    el.scrollTop = el.scrollHeight;
+    if (btn) btn.disabled = false;
+  }, delay + 200);
+  timers.push(finalT);
+  activeTimers[id] = timers;
+}
+
+function typeWriter(el, text, speed) {
+  let i = 0;
+  function type() {
+    if (i < text.length) {
+      el.textContent += text[i++];
+      setTimeout(type, speed);
+    }
+  }
+  type();
+}
+
+let timerInterval = null;
+function startTimer(min) {
+  if (timerInterval) clearInterval(timerInterval);
+  let secs = min * 60;
+  const disp = document.getElementById('timerDisplay');
+  disp.style.display = 'block';
+  function tick() {
+    const m = Math.floor(secs / 60), s = secs % 60;
+    disp.textContent = m + ':' + (s < 10 ? '0' : '') + s;
+    if (secs <= 0) { clearInterval(timerInterval); disp.textContent = '⏰ หมดเวลา!'; return; }
+    secs--;
+  }
+  tick();
+  timerInterval = setInterval(tick, 1000);
+}
+</script>
+</body>
+</html>

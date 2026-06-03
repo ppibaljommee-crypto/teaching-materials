@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"><title>ป.6 วิทยาการคำนวณ ใบงาน 4.1 — วิเคราะห์ข้อมูลโรงเรียน</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Sarabun',sans-serif;background:#fff;padding:16px}
+.page{max-width:800px;margin:0 auto}
+.header{background:linear-gradient(135deg,#4c1d95,#7c3aed);border-radius:16px;padding:14px 20px;display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.header-icon{font-size:38px}
+.header-text h1{color:#fff;font-size:19px;font-weight:800}
+.header-text p{color:rgba(255,255,255,.85);font-size:12px}
+.badge{background:#2e1065;color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;display:inline-block;margin-bottom:4px}
+.info-row{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:8px;margin-bottom:14px}
+.info-box{border:1.5px solid #ddd;border-radius:8px;padding:6px 10px;font-size:13px}
+.info-box label{font-size:11px;color:#888;display:block}
+.info-box .line{border-bottom:1px solid #ccc;margin-top:8px}
+.section{margin-bottom:22px}
+.section h2{font-size:15px;font-weight:800;color:#4c1d95;border-left:4px solid #7c3aed;padding-left:10px;margin-bottom:12px}
+.write-line{border-bottom:1.5px solid #ddd6fe;margin-bottom:8px;min-height:22px}
+/* Data table */
+.data-table{width:100%;border-collapse:collapse;font-size:12px}
+.data-table th{background:#7c3aed;color:#fff;padding:7px;border:1px solid #ddd;text-align:center}
+.data-table td{padding:7px;border:1px solid #ddd;text-align:center}
+.data-table tr:nth-child(even) td{background:#f5f3ff}
+.data-table td.fill{background:#faf7ff;cursor:pointer}
+/* Stats section */
+.stats-section{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+.stat-box{border:2px solid #ddd6fe;border-radius:10px;padding:12px;background:#f5f3ff}
+.stat-box h4{font-size:13px;font-weight:700;color:#4c1d95;margin-bottom:8px}
+.stat-row{display:flex;justify-content:space-between;align-items:center;padding:4px 0;border-bottom:1px solid #e9d5ff;font-size:13px}
+.stat-row span:last-child{border-bottom:1px solid #7c3aed;display:inline-block;width:70px;text-align:center}
+/* Correlation */
+.corr-box{border:2px solid #c4b5fd;border-radius:10px;padding:12px;background:#f5f3ff;margin-top:8px}
+/* Rubric */
+.rubric{width:100%;border-collapse:collapse;font-size:12px}
+.rubric th{background:#7c3aed;color:#fff;padding:7px;border:1px solid #ddd;text-align:center}
+.rubric td{padding:7px;border:1px solid #ddd;text-align:center}
+.rubric tr:nth-child(even) td{background:#f5f3ff}
+.score-row{display:flex;justify-content:space-between;align-items:center;border-top:2px solid #ddd6fe;padding-top:12px;margin-top:12px}
+@media print{body{padding:8px}@page{size:A4;margin:10mm}.header{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div class="header-icon">📊</div>
+    <div class="header-text">
+      <div class="badge">วิทยาการคำนวณ • ป.6 • หน่วย 4</div>
+      <h1>ใบงาน 4.1 — วิเคราะห์ข้อมูลนักเรียน</h1>
+      <p>Descriptive Statistics • Data Cleaning • Correlation</p>
+    </div>
+  </div>
+  <div class="info-row">
+    <div class="info-box"><label>ชื่อ-นามสกุล</label><div class="line"></div></div>
+    <div class="info-box"><label>ชั้น/ห้อง</label><div class="line"></div></div>
+    <div class="info-box"><label>เลขที่</label><div class="line"></div></div>
+    <div class="info-box"><label>วันที่</label><div class="line"></div></div>
+  </div>
+
+  <!-- ข้อ 1: ตารางข้อมูล -->
+  <div class="section">
+    <h2>ข้อ 1: ตารางข้อมูลนักเรียน 15 คน (4 คะแนน)</h2>
+    <p style="font-size:12px;color:#555;margin-bottom:8px">ระบุชนิดข้อมูลแต่ละคอลัมน์: Qualitative (Q) หรือ Quantitative (N) และทำเครื่องหมาย X ที่ข้อมูลผิดปกติ (Outlier)</p>
+    <table class="data-table">
+      <tr>
+        <th>ลำดับ</th>
+        <th>เพศ<br><small>(Q/N?___)</small></th>
+        <th>ส่วนสูง (ซม.)<br><small>(Q/N?___)</small></th>
+        <th>น้ำหนัก (กก.)<br><small>(Q/N?___)</small></th>
+        <th>คะแนนคณิต<br><small>(Q/N?___)</small></th>
+        <th>คะแนนวิทย์<br><small>(Q/N?___)</small></th>
+      </tr>
+      <tr><td>1</td><td>ช</td><td>142</td><td>38</td><td>85</td><td>78</td></tr>
+      <tr><td>2</td><td>ญ</td><td>138</td><td>35</td><td>90</td><td>88</td></tr>
+      <tr><td>3</td><td>ช</td><td>145</td><td>42</td><td>72</td><td>75</td></tr>
+      <tr><td>4</td><td>ญ</td><td>136</td><td>33</td><td>95</td><td>92</td></tr>
+      <tr><td>5</td><td>ช</td><td>150</td><td>45</td><td>68</td><td>70</td></tr>
+      <tr><td>6</td><td>ญ</td><td>140</td><td>36</td><td>88</td><td>85</td></tr>
+      <tr><td>7</td><td>ช</td><td>143</td><td>40</td><td>150</td><td>82</td></tr><!-- outlier -->
+      <tr><td>8</td><td>ญ</td><td>137</td><td>34</td><td>82</td><td>80</td></tr>
+      <tr><td>9</td><td>ช</td><td>148</td><td>44</td><td>75</td><td>72</td></tr>
+      <tr><td>10</td><td>ญ</td><td>139</td><td>35</td><td>92</td><td>90</td></tr>
+      <tr><td>11</td><td>ช</td><td>144</td><td>41</td><td>80</td><td>78</td></tr>
+      <tr><td>12</td><td>ญ</td><td>135</td><td></td><td>87</td><td>84</td></tr><!-- missing -->
+      <tr><td>13</td><td>ช</td><td>147</td><td>43</td><td>70</td><td>68</td></tr>
+      <tr><td>14</td><td>ญ</td><td>141</td><td>37</td><td>93</td><td>91</td></tr>
+      <tr><td>15</td><td>ช</td><td>146</td><td>42</td><td>78</td><td>76</td></tr>
+    </table>
+    <p style="font-size:12px;margin-top:8px;color:#555">ข้อมูลที่มีปัญหา: 1) ช่องว่าง (Missing Value) ที่แถว ___ คอลัมน์ ___ 2) Outlier ที่แถว ___ ค่า ___</p>
+  </div>
+
+  <!-- ข้อ 2: คำนวณสถิติ -->
+  <div class="section">
+    <h2>ข้อ 2: คำนวณ Descriptive Statistics (8 คะแนน)</h2>
+    <p style="font-size:12px;color:#555;margin-bottom:8px">คำนวณโดยไม่รวม Outlier (แถวที่ 7) และแทนที่ Missing Value ด้วยค่าเฉลี่ย</p>
+    <div class="stats-section">
+      <div class="stat-box">
+        <h4>ส่วนสูง (ซม.) — 15 คน</h4>
+        <div class="stat-row"><span>Mean =</span><span></span></div>
+        <div class="stat-row"><span>Median =</span><span></span></div>
+        <div class="stat-row"><span>Max =</span><span></span></div>
+        <div class="stat-row"><span>Min =</span><span></span></div>
+        <div class="stat-row"><span>Range =</span><span></span></div>
+      </div>
+      <div class="stat-box">
+        <h4>คะแนนคณิต (ไม่รวม Outlier)</h4>
+        <div class="stat-row"><span>Mean =</span><span></span></div>
+        <div class="stat-row"><span>Median =</span><span></span></div>
+        <div class="stat-row"><span>Max =</span><span></span></div>
+        <div class="stat-row"><span>Min =</span><span></span></div>
+        <div class="stat-row"><span>Range =</span><span></span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ข้อ 3: เลือกกราฟ -->
+  <div class="section">
+    <h2>ข้อ 3: เลือกกราฟที่เหมาะสม (4 คะแนน)</h2>
+    <table class="rubric">
+      <tr><th>ต้องการแสดง</th><th>กราฟที่เลือก (Bar/Line/Pie/Scatter)</th><th>เหตุผล</th></tr>
+      <tr><td>เปรียบเทียบคะแนนเฉลี่ย 2 วิชา</td><td style="height:30px"></td><td></td></tr>
+      <tr><td>สัดส่วนนักเรียนชาย-หญิง</td><td style="height:30px"></td><td></td></tr>
+      <tr><td>ส่วนสูง vs น้ำหนัก</td><td style="height:30px"></td><td></td></tr>
+    </table>
+  </div>
+
+  <!-- ข้อ 4: Correlation -->
+  <div class="section">
+    <h2>ข้อ 4: วิเคราะห์ Correlation (4 คะแนน)</h2>
+    <div class="corr-box">
+      <p style="font-size:13px;font-weight:700;margin-bottom:8px">ดูความสัมพันธ์ระหว่างตัวแปร:</p>
+      <p style="font-size:13px;margin-bottom:6px">1. ส่วนสูง กับ น้ำหนัก: มีความสัมพันธ์แบบ ____________ (Positive/Negative/ไม่มี)<br>
+      เพราะ: <span style="border-bottom:1px solid #ccc;display:inline-block;width:300px"></span></p>
+      <p style="font-size:13px;margin-bottom:6px">2. คะแนนคณิต กับ คะแนนวิทย์: มีความสัมพันธ์แบบ ____________<br>
+      เพราะ: <span style="border-bottom:1px solid #ccc;display:inline-block;width:300px"></span></p>
+      <p style="font-size:13px;margin-top:8px;font-weight:700">สรุป: Correlation ≠ Causation หมายความว่าอะไร? อธิบายด้วยตัวอย่าง</p>
+      <div class="write-line"></div>
+      <div class="write-line"></div>
+    </div>
+  </div>
+
+  <!-- Rubric -->
+  <div class="section">
+    <h2>เกณฑ์การให้คะแนน (รวม 20 คะแนน)</h2>
+    <table class="rubric">
+      <tr><th>ข้อ</th><th>เนื้อหา</th><th>คะแนนเต็ม</th><th>คะแนนที่ได้</th></tr>
+      <tr><td>1</td><td>ระบุชนิดข้อมูล + พบ Missing Value และ Outlier</td><td>4</td><td></td></tr>
+      <tr><td>2</td><td>คำนวณ Mean Median Max Min Range ถูกต้องทั้ง 2 ตัวแปร</td><td>8</td><td></td></tr>
+      <tr><td>3</td><td>เลือกกราฟถูกต้องและอธิบายเหตุผลได้ทั้ง 3 ข้อ</td><td>4</td><td></td></tr>
+      <tr><td>4</td><td>วิเคราะห์ Correlation และอธิบาย Correlation ≠ Causation</td><td>4</td><td></td></tr>
+    </table>
+    <div class="score-row">
+      <p style="font-size:13px">ความคิดเห็นครู: <span style="border-bottom:1px solid #ccc;display:inline-block;width:260px"></span></p>
+      <p style="font-size:15px;font-weight:800">รวม: _____ / 20 คะแนน</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

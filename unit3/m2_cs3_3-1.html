@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>ม.2 วิทยาการคำนวณ หน่วย 3 — ใบงาน Python ขั้นกลาง</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Sarabun',sans-serif; background:#fff; font-size:14px; }
+
+.page {
+  width:420mm; min-height:297mm; padding:10mm 12mm;
+  margin:0 auto; background:#fff;
+}
+
+/* Header */
+.header {
+  background:linear-gradient(135deg,#001a00,#003d00,#14532d);
+  border-radius:14px; padding:12px 18px;
+  display:flex; align-items:center; gap:14px;
+  margin-bottom:10px;
+}
+.header-icon { font-size:38px; }
+.header-text h1 { color:#fff; font-size:19px; font-weight:800; }
+.header-text p { color:rgba(255,255,255,0.75); font-size:12px; margin-top:2px; }
+.subject-badge {
+  background:#22c55e; color:#000; font-size:11px; font-weight:800;
+  padding:2px 10px; border-radius:20px; display:inline-block; margin-bottom:4px;
+}
+
+/* Info row */
+.info-row {
+  display:grid; grid-template-columns:2.5fr 1fr 1fr 1fr; gap:7px;
+  margin-bottom:10px;
+}
+.info-box { border:1.5px solid #ccc; border-radius:8px; padding:6px 10px; font-size:13px; }
+.info-box label { font-size:10px; color:#888; display:block; margin-bottom:4px; }
+.info-line { border-bottom:1px solid #bbb; min-height:16px; }
+
+/* Main grid */
+.main-grid {
+  display:grid; grid-template-columns:1fr 1fr; gap:10px;
+}
+
+/* Section panels */
+.panel {
+  border:2px solid #ddd; border-radius:12px; padding:10px 12px;
+  background:#FAFAFA; display:flex; flex-direction:column; gap:7px;
+}
+.panel.full-width {
+  grid-column: 1 / -1;
+}
+.panel-title {
+  font-size:14px; font-weight:800;
+  display:flex; align-items:center; gap:7px;
+  margin-bottom:2px;
+}
+.badge-green { background:#14532d; color:#bbf7d0; font-size:10px; font-weight:700; padding:2px 9px; border-radius:20px; }
+.badge-blue  { background:#1e3a5f; color:#bae6fd; font-size:10px; font-weight:700; padding:2px 9px; border-radius:20px; }
+.badge-purple{ background:#3b0764; color:#e9d5ff; font-size:10px; font-weight:700; padding:2px 9px; border-radius:20px; }
+.badge-orange{ background:#7c2d12; color:#fed7aa; font-size:10px; font-weight:700; padding:2px 9px; border-radius:20px; }
+
+/* Code areas */
+.code-area {
+  background:#0d1117; border-radius:8px; padding:8px 12px;
+  font-family:'JetBrains Mono','Courier New',monospace;
+  font-size:11.5px; color:#e6edf3; line-height:1.9;
+}
+.code-area .kw  { color:#ff7b72; }
+.code-area .fn  { color:#79c0ff; }
+.code-area .st  { color:#a5d6ff; }
+.code-area .nm  { color:#f8b800; }
+.code-area .cm  { color:#8b949e; }
+.code-area .vr  { color:#ffa657; }
+.code-area .blank {
+  display:inline-block; min-width:60px; border-bottom:1.5px solid #57ab5a;
+  vertical-align:bottom; margin:0 3px;
+}
+
+/* Write area */
+.write-box {
+  border:1.5px dashed #22c55e; border-radius:8px;
+  background:#f0fdf4; padding:8px 10px; min-height:55px;
+  font-family:'JetBrains Mono',monospace; font-size:11px; color:#111;
+  line-height:2.1;
+}
+.write-box.tall { min-height:80px; }
+.write-box.very-tall { min-height:110px; }
+.write-line { border-bottom:1px dashed #86efac; min-height:22px; margin-bottom:2px; }
+
+/* Output box */
+.output-box {
+  border:1.5px solid #374151; border-radius:8px;
+  background:#111827; padding:7px 10px; min-height:40px;
+  font-family:'JetBrains Mono',monospace; font-size:11px; color:#6ee7b7;
+  line-height:2;
+}
+.output-line { border-bottom:1px dashed #374151; min-height:20px; margin-bottom:2px; }
+
+/* Trace table */
+.trace-table {
+  width:100%; border-collapse:collapse; font-size:11px;
+}
+.trace-table th {
+  background:#14532d; color:#bbf7d0; padding:5px 8px;
+  font-weight:700; text-align:center; border:1px solid #166534;
+}
+.trace-table td {
+  border:1px solid #d1d5db; padding:5px 8px; text-align:center;
+  background:#fff; min-height:20px;
+}
+.trace-table td.label { background:#f0fdf4; font-weight:700; color:#166534; text-align:left; }
+
+/* Mini project */
+.project-steps { list-style:none; }
+.project-steps li {
+  display:flex; align-items:flex-start; gap:8px; margin-bottom:5px;
+  font-size:12px; color:#374151;
+}
+.step-num {
+  background:#22c55e; color:#000; border-radius:50%;
+  min-width:20px; height:20px; display:flex; align-items:center;
+  justify-content:center; font-weight:800; font-size:10px; flex-shrink:0; margin-top:1px;
+}
+
+/* Two-col inside panel */
+.two-col-inner { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+
+.note-box {
+  background:#fef9c3; border:1px solid #fde047; border-radius:8px;
+  padding:6px 10px; font-size:11px; color:#713f12;
+}
+.note-box strong { color:#92400e; }
+
+/* Score box */
+.score-area {
+  display:flex; justify-content:flex-end; align-items:center; gap:8px;
+  margin-top:8px;
+}
+.score-box {
+  border:2px solid #22c55e; border-radius:10px; padding:4px 12px;
+  font-size:12px; font-weight:700; color:#166534;
+  display:flex; align-items:center; gap:6px;
+}
+.score-blank {
+  border-bottom:2px solid #22c55e; min-width:40px; display:inline-block;
+}
+
+@media print {
+  body { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .page { margin:0; padding:8mm 10mm; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-icon">🐍</div>
+    <div class="header-text">
+      <div class="subject-badge">วิทยาการคำนวณ • ม.2 • หน่วยที่ 3</div>
+      <h1>ใบงาน 3.1 — Python ขั้นกลาง</h1>
+      <p>Functions &nbsp;•&nbsp; Lists &nbsp;•&nbsp; String Methods &nbsp;•&nbsp; Mini Project</p>
+    </div>
+  </div>
+
+  <!-- Info row -->
+  <div class="info-row">
+    <div class="info-box">
+      <label>ชื่อ – นามสกุล</label>
+      <div class="info-line"></div>
+    </div>
+    <div class="info-box">
+      <label>ชั้น / ห้อง</label>
+      <div class="info-line"></div>
+    </div>
+    <div class="info-box">
+      <label>เลขที่</label>
+      <div class="info-line"></div>
+    </div>
+    <div class="info-box">
+      <label>วันที่</label>
+      <div class="info-line"></div>
+    </div>
+  </div>
+
+  <!-- Main 2-column grid -->
+  <div class="main-grid">
+
+    <!-- Panel 1: Functions -->
+    <div class="panel">
+      <div class="panel-title" style="color:#166534;">
+        🔧 ส่วนที่ 1 — Functions
+        <span class="badge-green">def / return</span>
+      </div>
+
+      <div class="note-box">
+        <strong>จำไว้:</strong> def ตั้งชื่อ Function → เรียกใช้ได้บ่อยครั้ง → return ส่งค่ากลับ
+      </div>
+
+      <!-- 1.1 Fill in the blank -->
+      <p style="font-size:12px;font-weight:700;color:#374151;">1.1 เติมคำในช่องว่างให้ถูกต้อง</p>
+      <div class="code-area">
+<span class="cm"># Function คำนวณพื้นที่สี่เหลี่ยม</span>
+<span class="kw"><span class="blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span> <span class="fn">area</span>(w, h):
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span> <span class="blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+
+<span class="cm"># เรียกใช้ Function</span>
+result = <span class="fn"><span class="blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>(<span class="nm">5</span>, <span class="nm">4</span>)
+<span class="fn">print</span>(result)  <span class="cm"># ได้ผลลัพธ์: <span class="blank">&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+      </div>
+
+      <!-- 1.2 Write your own -->
+      <p style="font-size:12px;font-weight:700;color:#374151;">1.2 เขียน Function ที่รับชื่อ แล้วทักทายว่า "สวัสดี [ชื่อ]! ยินดีต้อนรับ"</p>
+      <div class="write-box tall">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+      </div>
+
+      <!-- 1.3 Trace -->
+      <p style="font-size:12px;font-weight:700;color:#374151;">1.3 Trace โค้ด — ผลลัพธ์คืออะไร?</p>
+      <div class="code-area" style="font-size:11px;">
+<span class="kw">def</span> <span class="fn">triple</span>(n):
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span> n * <span class="nm">3</span>
+
+x = <span class="fn">triple</span>(<span class="nm">4</span>)
+y = <span class="fn">triple</span>(x)
+<span class="fn">print</span>(x, y)
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;margin-top:2px;">
+        <span style="font-size:12px;color:#374151;">ผลลัพธ์:</span>
+        <div class="output-box" style="flex:1;min-height:28px;padding:4px 10px;">
+          <div class="output-line"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel 2: Lists -->
+    <div class="panel">
+      <div class="panel-title" style="color:#1e3a5f;">
+        📋 ส่วนที่ 2 — Lists
+        <span class="badge-blue">[ ] / Methods</span>
+      </div>
+
+      <div class="note-box" style="background:#eff6ff;border-color:#93c5fd;color:#1e3a5f;">
+        <strong>จำไว้:</strong> Index เริ่มที่ 0 &nbsp;|&nbsp; lst[0] = ตัวแรก &nbsp;|&nbsp; lst[-1] = ตัวสุดท้าย
+      </div>
+
+      <!-- 2.1 Index -->
+      <p style="font-size:12px;font-weight:700;color:#374151;">2.1 เติม index และผลลัพธ์</p>
+      <div class="code-area" style="font-size:11.5px;">
+fruits = [<span class="st">"มะม่วง"</span>, <span class="st">"ส้ม"</span>, <span class="st">"แอปเปิล"</span>, <span class="st">"กล้วย"</span>]
+<span class="fn">print</span>(fruits[<span class="blank">&nbsp;&nbsp;&nbsp;</span>])  <span class="cm"># → "มะม่วง"</span>
+<span class="fn">print</span>(fruits[<span class="blank">&nbsp;&nbsp;&nbsp;</span>])  <span class="cm"># → "กล้วย"</span>
+<span class="fn">print</span>(<span class="fn">len</span>(fruits))   <span class="cm"># → <span class="blank">&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+      </div>
+
+      <!-- 2.2 Trace table -->
+      <p style="font-size:12px;font-weight:700;color:#374151;">2.2 Trace ทีละขั้น — เติมค่าของ nums หลังรัน</p>
+      <div class="code-area" style="font-size:11px;margin-bottom:4px;">
+nums = [<span class="nm">5</span>, <span class="nm">2</span>, <span class="nm">8</span>, <span class="nm">1</span>]
+nums.<span class="fn">append</span>(<span class="nm">6</span>)
+nums.<span class="fn">remove</span>(<span class="nm">2</span>)
+nums.<span class="fn">sort</span>()
+      </div>
+      <table class="trace-table">
+        <tr>
+          <th>หลัง</th>
+          <th>nums = ?</th>
+        </tr>
+        <tr>
+          <td class="label">append(6)</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="label">remove(2)</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="label">sort()</td>
+          <td></td>
+        </tr>
+      </table>
+
+      <!-- 2.3 for loop -->
+      <p style="font-size:12px;font-weight:700;color:#374151;">2.3 เขียนโค้ดหาค่าเฉลี่ยจาก List scores = [70, 85, 90, 60, 75]</p>
+      <div class="write-box tall">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <span style="font-size:12px;color:#374151;">ค่าเฉลี่ย =</span>
+        <div class="output-box" style="flex:1;min-height:28px;padding:4px 10px;">
+          <div class="output-line"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel 3: String Methods -->
+    <div class="panel">
+      <div class="panel-title" style="color:#4c1d95;">
+        💬 ส่วนที่ 3 — String Methods
+        <span class="badge-purple">.strip() .split() .replace()</span>
+      </div>
+
+      <!-- 3.1 Match -->
+      <p style="font-size:12px;font-weight:700;color:#374151;">3.1 โยงคำสั่งกับผลลัพธ์</p>
+      <div class="two-col-inner">
+        <div class="code-area" style="font-size:11px;">
+s = <span class="st">"  Hello Python  "</span>
+
+A: s.<span class="fn">strip</span>()
+B: s.<span class="fn">upper</span>()
+C: s.<span class="fn">replace</span>(<span class="st">"Hello"</span>,<span class="st">"Hi"</span>)
+D: s.<span class="fn">split</span>(<span class="st">" "</span>)
+        </div>
+        <div style="font-size:11.5px;display:flex;flex-direction:column;gap:5px;justify-content:center;">
+          <div style="border:1px solid #d1d5db;border-radius:6px;padding:4px 8px;background:#fff;">
+            1. <code style="font-size:10px;">"  HELLO PYTHON  "</code> → <span style="border-bottom:1px solid #a855f7;min-width:16px;display:inline-block;">&nbsp;&nbsp;</span>
+          </div>
+          <div style="border:1px solid #d1d5db;border-radius:6px;padding:4px 8px;background:#fff;">
+            2. <code style="font-size:10px;">"Hello Python"</code> → <span style="border-bottom:1px solid #a855f7;min-width:16px;display:inline-block;">&nbsp;&nbsp;</span>
+          </div>
+          <div style="border:1px solid #d1d5db;border-radius:6px;padding:4px 8px;background:#fff;">
+            3. <code style="font-size:10px;">['', '', 'Hello', 'Python', '', '']</code> → <span style="border-bottom:1px solid #a855f7;min-width:16px;display:inline-block;">&nbsp;&nbsp;</span>
+          </div>
+          <div style="border:1px solid #d1d5db;border-radius:6px;padding:4px 8px;background:#fff;">
+            4. <code style="font-size:10px;">"  Hi Python  "</code> → <span style="border-bottom:1px solid #a855f7;min-width:16px;display:inline-block;">&nbsp;&nbsp;</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3.2 Fill blank -->
+      <p style="font-size:12px;font-weight:700;color:#374151;">3.2 เติม method ที่เหมาะสมในช่องว่าง</p>
+      <div class="code-area" style="font-size:11px;">
+name = <span class="st">"  แพรพลอย  "</span>
+<span class="cm"># ต้องการตัดช่องว่างหัว-ท้าย</span>
+clean = name.<span class="blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>()
+
+sentence = <span class="st">"วันนี้อากาศดีมาก"</span>
+<span class="cm"># ต้องการเปลี่ยน "ดี" → "สดใส"</span>
+new_s = sentence.<span class="blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>(<span class="st">"ดี"</span>, <span class="st">"สดใส"</span>)
+
+words = <span class="st">"Python is fun"</span>
+<span class="cm"># ต้องการแยกเป็น List โดยใช้ช่องว่าง</span>
+lst = words.<span class="blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>(<span class="st">" "</span>)
+      </div>
+    </div>
+
+    <!-- Panel 4: Mini Project -->
+    <div class="panel">
+      <div class="panel-title" style="color:#7c2d12;">
+        🚀 ส่วนที่ 4 — Mini Project
+        <span class="badge-orange">ระบบเก็บคะแนนของฉัน</span>
+      </div>
+
+      <div class="note-box" style="background:#fff7ed;border-color:#fdba74;color:#7c2d12;">
+        <strong>โจทย์:</strong> เขียนโปรแกรม Python ที่มี List คะแนน 5 วิชา<br>
+        พร้อม Function ที่แสดง: คะแนนเฉลี่ย, สูงสุด, ต่ำสุด และเกรด
+      </div>
+
+      <ol class="project-steps">
+        <li>
+          <span class="step-num">1</span>
+          <span>สร้าง List คะแนน 5 วิชาของตัวเอง (ตั้งเอง)</span>
+        </li>
+        <li>
+          <span class="step-num">2</span>
+          <span>เขียน Function <code>get_grade(score)</code> คืนเกรด A/B/C/D/F</span>
+        </li>
+        <li>
+          <span class="step-num">3</span>
+          <span>เขียน Function <code>show_summary(scores)</code> แสดงสรุปผล</span>
+        </li>
+        <li>
+          <span class="step-num">4</span>
+          <span>เรียก Function แสดงผลคะแนนแต่ละวิชาพร้อมเกรด</span>
+        </li>
+      </ol>
+
+      <div class="write-box very-tall">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+      </div>
+
+      <p style="font-size:12px;font-weight:700;color:#374151;margin-top:4px;">ผลลัพธ์ที่โปรแกรมแสดง (เขียนสรุป)</p>
+      <div class="output-box" style="min-height:48px;">
+        <div class="output-line"></div>
+        <div class="output-line"></div>
+        <div class="output-line"></div>
+      </div>
+
+      <!-- Score -->
+      <div class="score-area">
+        <div class="score-box">
+          คะแนนที่ได้: <span class="score-blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> / 20
+        </div>
+        <div style="font-size:11px;color:#6b7280;">ตรวจโดย ________</div>
+      </div>
+    </div>
+
+    <!-- Panel 5 (full width): Bonus -->
+    <div class="panel full-width" style="background:#f0fdf4;border-color:#22c55e;">
+      <div class="panel-title" style="color:#14532d;">
+        ⭐ โบนัส — รวมทุกทักษะ
+        <span class="badge-green">คิด + เขียน + ตรวจ</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
+        <div>
+          <p style="font-size:12px;font-weight:700;color:#374151;margin-bottom:4px;">ก. เขียน Function ที่รับ List แล้ว return เฉพาะตัวที่ > 70</p>
+          <div class="write-box" style="min-height:70px;">
+            <div class="write-line"></div>
+            <div class="write-line"></div>
+            <div class="write-line"></div>
+            <div class="write-line"></div>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:12px;font-weight:700;color:#374151;margin-bottom:4px;">ข. Trace โค้ด — เติมผลลัพธ์แต่ละบรรทัด</p>
+          <div class="code-area" style="font-size:11px;margin-bottom:4px;">
+words = <span class="st">"hello world"</span>
+w = words.<span class="fn">upper</span>()
+parts = w.<span class="fn">split</span>(<span class="st">" "</span>)
+<span class="fn">print</span>(parts[<span class="nm">0</span>])
+<span class="fn">print</span>(<span class="fn">len</span>(parts))
+          </div>
+          <div class="output-box" style="min-height:38px;">
+            <div class="output-line"></div>
+            <div class="output-line"></div>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:12px;font-weight:700;color:#374151;margin-bottom:4px;">ค. อธิบาย: return ต่างจาก print อย่างไร?</p>
+          <div class="write-box" style="min-height:70px;background:#fff;">
+            <div class="write-line"></div>
+            <div class="write-line"></div>
+            <div class="write-line"></div>
+            <div class="write-line"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end main-grid -->
+
+  <!-- Footer -->
+  <div style="text-align:center;margin-top:8px;color:#9ca3af;font-size:10px;border-top:1px solid #e5e7eb;padding-top:5px;">
+    สื่อการสอน หน่วยที่ 3 | โรงเรียนเซนต์โยเซฟระยอง | ครูแพรพลอย ภิบาลจอมมี
+  </div>
+
+</div>
+</body>
+</html>

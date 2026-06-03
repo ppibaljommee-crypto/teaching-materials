@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>สื่อการสอน หน่วยที่ 3</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Sarabun',sans-serif;background:#05050f;min-height:100vh;overflow-x:hidden}
+.orb{position:fixed;border-radius:50%;filter:blur(80px);opacity:.32;animation:float 10s ease-in-out infinite;pointer-events:none}
+.orb1{width:500px;height:500px;background:radial-gradient(circle,#f43f5e,transparent);top:-150px;left:-100px;animation-delay:0s}
+.orb2{width:400px;height:400px;background:radial-gradient(circle,#06b6d4,transparent);top:40%;right:-100px;animation-delay:-4s}
+.orb3{width:450px;height:450px;background:radial-gradient(circle,#a855f7,transparent);bottom:-150px;left:30%;animation-delay:-8s}
+@keyframes float{0%,100%{transform:translate(0,0)}33%{transform:translate(40px,-40px)}66%{transform:translate(-30px,30px)}}
+.content{position:relative;z-index:1;padding:24px;max-width:1200px;margin:0 auto}
+.header{text-align:center;padding:48px 20px 36px}
+.unit-badge{display:inline-block;padding:8px 24px;background:linear-gradient(135deg,#f43f5e,#a855f7);border-radius:50px;font-size:13px;font-weight:800;color:#fff;margin-bottom:20px;letter-spacing:2px;box-shadow:0 0 30px rgba(244,63,94,.4)}
+.header h1{font-size:clamp(30px,6vw,64px);font-weight:800;background:linear-gradient(135deg,#fff 0%,#fda4af 30%,#c4b5fd 60%,#67e8f9 90%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.15;margin-bottom:14px;background-size:200% auto;animation:shimmer 4s ease infinite}
+@keyframes shimmer{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.header p{color:rgba(255,255,255,.55);font-size:clamp(14px,2vw,18px)}
+.how-to{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:18px 28px;max-width:820px;margin:0 auto 32px;backdrop-filter:blur(10px)}
+.how-to h3{color:#fda4af;font-size:15px;font-weight:700;margin-bottom:10px}
+.how-to ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+.how-to li{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:6px 14px;font-size:13px;color:rgba(255,255,255,.8)}
+.how-to li strong{color:#fcd34d}
+.section-title{font-size:clamp(16px,2.5vw,22px);font-weight:800;margin:28px 0 14px;padding-left:16px;border-left:4px solid;display:flex;align-items:center;gap:10px}
+.cs-title{color:#fda4af;border-color:#f43f5e}
+.com-title{color:#6ee7b7;border-color:#10b981}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:8px}
+.card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:20px 22px;transition:all .3s ease;backdrop-filter:blur(8px)}
+.card:hover{transform:translateY(-5px);border-color:rgba(255,255,255,.2);box-shadow:0 24px 48px rgba(0,0,0,.4)}
+.grade-badge{font-size:11px;font-weight:800;padding:4px 14px;border-radius:20px;display:inline-block;margin-bottom:12px;letter-spacing:.5px}
+.p1b{background:rgba(251,146,60,.2);color:#fb923c;border:1px solid rgba(251,146,60,.3)}
+.p2b{background:rgba(6,182,212,.2);color:#22d3ee;border:1px solid rgba(6,182,212,.3)}
+.p3b{background:rgba(163,230,53,.2);color:#a3e635;border:1px solid rgba(163,230,53,.3)}
+.p6b{background:rgba(168,85,247,.2);color:#c084fc;border:1px solid rgba(168,85,247,.3)}
+.m2b{background:rgba(34,197,94,.15);color:#4ade80;border:1px solid rgba(34,197,94,.3)}
+.card-title{font-size:clamp(14px,1.8vw,17px);font-weight:700;color:#fff;margin-bottom:4px}
+.card-sub{font-size:12px;color:rgba(255,255,255,.4);margin-bottom:16px}
+.btn-row{display:flex;gap:8px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:10px;font-size:12px;font-weight:700;text-decoration:none;cursor:pointer;border:none;transition:all .2s;font-family:'Sarabun',sans-serif}
+.btn:hover{transform:scale(1.06);filter:brightness(1.2)}
+.btn-cs{background:linear-gradient(135deg,#f43f5e,#ec4899);color:#fff;box-shadow:0 4px 16px rgba(244,63,94,.35)}
+.btn-com{background:linear-gradient(135deg,#059669,#34d399);color:#fff;box-shadow:0 4px 16px rgba(5,150,105,.35)}
+.btn-ws{background:rgba(255,255,255,.08);color:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.15)}
+.footer{text-align:center;padding:48px 20px 24px;color:rgba(255,255,255,.25);font-size:13px}
+.footer kbd{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:5px;padding:2px 8px;color:rgba(255,255,255,.5);font-family:monospace;font-size:12px}
+</style>
+</head>
+<body>
+<div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div>
+<div class="content">
+  <div class="header">
+    <div class="unit-badge">✦ หน่วยที่ 3 ✦</div>
+    <h1>สื่อการสอน หน่วยที่ 3</h1>
+    <p>วิทยาการคำนวณ &amp; คอมพิวเตอร์เพิ่มเติม | ป.1, ป.2, ป.3, ป.6, ม.2</p>
+  </div>
+  <div class="how-to">
+    <h3>🖥️ วิธีใช้งาน</h3>
+    <ul>
+      <li>กด <strong>▶ สไลด์</strong> เพื่อเปิดสไลด์สอน</li>
+      <li>กด <strong>→ / Space</strong> ไปสไลด์ถัดไป</li>
+      <li>กด <strong>📝 ใบงาน/คู่มือ</strong> เพื่อเปิดใบงาน</li>
+      <li>มี <strong>⏱ Timer</strong> และ <strong>Teacher Note</strong> ทุกสไลด์</li>
+    </ul>
+  </div>
+
+  <div class="section-title cs-title">🧠 วิทยาการคำนวณ — หน่วยที่ 3</div>
+  <div class="cards">
+    <div class="card">
+      <span class="grade-badge p1b">ป.1</span>
+      <div class="card-title">คิดก่อนทำ แก้ปัญหาได้</div>
+      <div class="card-sub">Problem Solving • วางแผนก่อนลงมือ</div>
+      <div class="btn-row">
+        <a class="btn btn-cs" href="p1_cs3_slides.html" target="_blank">▶ สไลด์</a>
+        <a class="btn btn-ws" href="p1_cs3_3-1.html" target="_blank">📝 ใบงาน 3.1</a>
+      </div>
+    </div>
+    <div class="card">
+      <span class="grade-badge p2b">ป.2</span>
+      <div class="card-title">สร้างการ์ตูนสั้นของตัวเอง</div>
+      <div class="card-sub">ScratchJr • Animation • ตัวละคร</div>
+      <div class="btn-row">
+        <a class="btn btn-cs" href="p2_cs3_slides.html" target="_blank">▶ สไลด์</a>
+        <a class="btn btn-ws" href="p2_cs3_scratchjr.html" target="_blank">📝 คู่มือ ScratchJr</a>
+      </div>
+    </div>
+    <div class="card">
+      <span class="grade-badge p3b">ป.3</span>
+      <div class="card-title">สร้างเกมจับผิดภาพ</div>
+      <div class="card-sub">Scratch • Sprite • Script • Game</div>
+      <div class="btn-row">
+        <a class="btn btn-cs" href="p3_cs3_slides.html" target="_blank">▶ สไลด์</a>
+        <a class="btn btn-ws" href="p3_cs3_scratch.html" target="_blank">📝 คู่มือ Scratch</a>
+      </div>
+    </div>
+    <div class="card">
+      <span class="grade-badge p6b">ป.6</span>
+      <div class="card-title">Coding ด้วย Code.org ขั้นสูง</div>
+      <div class="card-sub">Conditional • Loop ซ้อน • Function</div>
+      <div class="btn-row">
+        <a class="btn btn-cs" href="p6_cs3_slides.html" target="_blank">▶ สไลด์</a>
+        <a class="btn btn-ws" href="p6_cs3_codeorg.html" target="_blank">📝 ใบงาน</a>
+      </div>
+    </div>
+    <div class="card">
+      <span class="grade-badge m2b">ม.2</span>
+      <div class="card-title">Python ขั้นกลาง</div>
+      <div class="card-sub">Functions • Lists • String Methods</div>
+      <div class="btn-row">
+        <a class="btn btn-cs" href="m2_cs3_slides.html" target="_blank">▶ สไลด์</a>
+        <a class="btn btn-ws" href="m2_cs3_3-1.html" target="_blank">📝 ใบงาน 3.1</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title com-title">💻 คอมพิวเตอร์เพิ่มเติม — หน่วยที่ 3</div>
+  <div class="cards">
+    <div class="card">
+      <span class="grade-badge p1b">ป.1</span>
+      <div class="card-title">การจัดการไฟล์และโฟลเดอร์</div>
+      <div class="card-sub">File Explorer • สร้าง ย้าย ลบ ตั้งชื่อ</div>
+      <div class="btn-row">
+        <a class="btn btn-com" href="p1_com3_slides.html" target="_blank">▶ สไลด์</a>
+        <a class="btn btn-ws" href="p1_com3_3-1.html" target="_blank">📝 ใบงาน 3.1</a>
+      </div>
+    </div>
+    <div class="card">
+      <span class="grade-badge p2b">ป.2</span>
+      <div class="card-title">สร้างโปสเตอร์สัตว์โปรด</div>
+      <div class="card-sub">Microsoft Paint • วาดภาพ • ตกแต่ง</div>
+      <div class="btn-row">
+        <a class="btn btn-com" href="p2_com3_slides.html" target="_blank">▶ สไลด์</a>
+        <a class="btn btn-ws" href="p2_com3_poster.html" target="_blank">📝 ใบงาน</a>
+      </div>
+    </div>
+    <div class="card">
+      <span class="grade-badge p3b">ป.3</span>
+      <div class="card-title">บัญชีรายรับรายจ่ายของฉัน</div>
+      <div class="card-sub">Microsoft Excel • SUM • AVERAGE</div>
+      <div class="btn-row">
+        <a class="btn btn-com" href="p3_com3_slides.html" target="_blank">▶ สไลด์</a>
+        <a class="btn btn-ws" href="p3_com3_excel.html" target="_blank">📝 ใบงาน Excel</a>
+      </div>
+    </div>
+    <div class="card">
+      <span class="grade-badge p6b">ป.6</span>
+      <div class="card-title">จัดการข้อมูลอย่างมีระบบ</div>
+      <div class="card-sub">Sort • Filter • PivotTable เบื้องต้น</div>
+      <div class="btn-row">
+        <a class="btn btn-com" href="p6_com3_slides.html" target="_blank">▶ สไลด์</a>
+        <a class="btn btn-ws" href="p6_com3_3-1.html" target="_blank">📝 ใบงาน 3.1</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>Navigation: <kbd>Space</kbd> / <kbd>→</kbd> ถัดไป &nbsp;|&nbsp; <kbd>←</kbd> ย้อนกลับ</p>
+    <p style="margin-top:8px">สื่อการสอน หน่วยที่ 3 | โรงเรียนเซนต์โยเซฟระยอง | ครูแพรพลอย</p>
+  </div>
+</div>
+</body>
+</html>

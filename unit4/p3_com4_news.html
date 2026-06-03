@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"><title>ป.3 คอมเพิ่มเติม ใบงานเขียนข่าว — นักข่าวตัวน้อย</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Sarabun',sans-serif;background:#fff;padding:16px}
+.page{max-width:800px;margin:0 auto}
+.header{background:linear-gradient(135deg,#7f1d1d,#dc2626);border-radius:16px;padding:14px 20px;display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.header-icon{font-size:38px}
+.header-text h1{color:#fff;font-size:19px;font-weight:800}
+.header-text p{color:rgba(255,255,255,.85);font-size:12px}
+.badge{background:#450a0a;color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;display:inline-block;margin-bottom:4px}
+.info-row{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:8px;margin-bottom:14px}
+.info-box{border:1.5px solid #ddd;border-radius:8px;padding:6px 10px;font-size:13px}
+.info-box label{font-size:11px;color:#888;display:block}
+.info-box .line{border-bottom:1px solid #ccc;margin-top:8px}
+.section{margin-bottom:22px}
+.section h2{font-size:15px;font-weight:800;color:#7f1d1d;border-left:4px solid #dc2626;padding-left:10px;margin-bottom:12px}
+.write-line{border-bottom:1.5px solid #fecaca;margin-bottom:8px;min-height:22px}
+/* 5W1H Table */
+.w5h1-table{width:100%;border-collapse:collapse;font-size:13px}
+.w5h1-table th{background:#dc2626;color:#fff;padding:8px;border:1px solid #ddd;text-align:center;width:80px}
+.w5h1-table td{padding:8px;border:1px solid #ddd;vertical-align:top;height:36px}
+.w5h1-table td:first-child{font-weight:800;background:#fff5f5;color:#7f1d1d;text-align:center;width:80px}
+/* Headline box */
+.headline-box{border:3px solid #dc2626;border-radius:10px;padding:14px;background:#fff5f5;margin-top:8px}
+.headline-box h4{font-size:13px;font-weight:700;color:#7f1d1d;margin-bottom:8px}
+.headline-input{border:2px solid #dc2626;border-radius:6px;width:100%;font-size:16px;font-weight:700;font-family:'Sarabun',sans-serif;padding:8px;background:#fff;min-height:32px}
+.char-count{font-size:11px;color:#888;margin-top:4px;text-align:right}
+/* Article sections */
+.article-section{border:2px solid #fecaca;border-radius:10px;padding:12px;margin-top:8px;background:#fff5f5}
+.article-section h4{font-size:13px;font-weight:800;color:#7f1d1d;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+/* Source box */
+.source-box{border:2px solid #fca5a5;border-radius:10px;padding:10px;background:#fff5f5;margin-top:8px}
+/* Checklist */
+.checklist{list-style:none}
+.checklist li{display:flex;align-items:center;gap:8px;font-size:12px;padding:4px 0}
+.checklist li::before{content:"☐";font-size:14px;color:#dc2626;flex-shrink:0}
+/* Rubric */
+.rubric{width:100%;border-collapse:collapse;font-size:12px}
+.rubric th{background:#dc2626;color:#fff;padding:7px;border:1px solid #ddd;text-align:center}
+.rubric td{padding:7px;border:1px solid #ddd;text-align:center}
+.rubric tr:nth-child(even) td{background:#fff5f5}
+.score-row{display:flex;justify-content:space-between;align-items:center;border-top:2px solid #fecaca;padding-top:12px;margin-top:12px}
+@media print{body{padding:8px}@page{size:A4;margin:10mm}.header{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div class="header-icon">📰</div>
+    <div class="header-text">
+      <div class="badge">คอมพิวเตอร์เพิ่มเติม • ป.3 • หน่วย 4</div>
+      <h1>ใบงาน — นักข่าวตัวน้อย: เขียนข่าวจริง</h1>
+      <p>5W1H • หัวข้อข่าว • Lead • เนื้อหาข่าว • แหล่งข้อมูล</p>
+    </div>
+  </div>
+  <div class="info-row">
+    <div class="info-box"><label>ชื่อ-นามสกุล</label><div class="line"></div></div>
+    <div class="info-box"><label>ชั้น/ห้อง</label><div class="line"></div></div>
+    <div class="info-box"><label>เลขที่</label><div class="line"></div></div>
+    <div class="info-box"><label>วันที่</label><div class="line"></div></div>
+  </div>
+  <p style="font-size:13px;margin-bottom:12px;background:#fff5f5;border:1px solid #fca5a5;border-radius:8px;padding:8px">
+    <strong>คำชี้แจง:</strong> เลือกเหตุการณ์จริงที่เกิดขึ้นในโรงเรียนหรือชีวิตประจำวัน แล้วเขียนเป็นข่าว โดยผ่านขั้นตอนทุกข้อตามลำดับ
+  </p>
+
+  <!-- ข้อ 1: 5W1H -->
+  <div class="section">
+    <h2>ขั้นที่ 1: กรอกตาราง 5W1H (5 คะแนน)</h2>
+    <table class="w5h1-table">
+      <tr><td><strong>WHO</strong><br>ใคร</td><td></td></tr>
+      <tr><td><strong>WHAT</strong><br>ทำอะไร</td><td></td></tr>
+      <tr><td><strong>WHEN</strong><br>เมื่อไหร่</td><td></td></tr>
+      <tr><td><strong>WHERE</strong><br>ที่ไหน</td><td></td></tr>
+      <tr><td><strong>WHY</strong><br>ทำไม</td><td></td></tr>
+      <tr><td><strong>HOW</strong><br>อย่างไร</td><td></td></tr>
+    </table>
+  </div>
+
+  <!-- ข้อ 2: หัวข้อข่าว -->
+  <div class="section">
+    <h2>ขั้นที่ 2: เขียนหัวข้อข่าว (3 คะแนน)</h2>
+    <div class="headline-box">
+      <h4>หัวข้อข่าวของฉัน (ไม่เกิน 12 คำ):</h4>
+      <div class="headline-input" contenteditable="true" style="min-height:40px"></div>
+      <div class="char-count">กฎ: สั้น ชัด บอก Who + What ได้ทันที</div>
+    </div>
+  </div>
+
+  <!-- ข้อ 3: Lead -->
+  <div class="section">
+    <h2>ขั้นที่ 3: เขียนย่อหน้าแรก — Lead (4 คะแนน)</h2>
+    <div class="article-section">
+      <h4>📝 Lead = ตอบ 5W1H ใน 1-2 ประโยค (สำคัญที่สุด)</h4>
+      <div class="write-line"></div>
+      <div class="write-line"></div>
+      <div class="write-line"></div>
+    </div>
+  </div>
+
+  <!-- ข้อ 4: เนื้อหา -->
+  <div class="section">
+    <h2>ขั้นที่ 4: เนื้อหาข่าว (5 คะแนน)</h2>
+    <div class="article-section">
+      <h4>📄 ย่อหน้าที่ 2 — รายละเอียดเพิ่มเติม</h4>
+      <div class="write-line"></div>
+      <div class="write-line"></div>
+      <div class="write-line"></div>
+    </div>
+    <div class="article-section" style="margin-top:8px">
+      <h4>💬 ย่อหน้าที่ 3 — คำพูดหรือความคิดเห็นผู้เกี่ยวข้อง</h4>
+      <p style="font-size:12px;color:#666;margin-bottom:6px">ใช้เครื่องหมาย "..." เมื่อยกคำพูดตรงๆ</p>
+      <div class="write-line"></div>
+      <div class="write-line"></div>
+      <div class="write-line"></div>
+    </div>
+    <div class="article-section" style="margin-top:8px">
+      <h4>📌 ย่อหน้าที่ 4 — บทสรุป / สิ่งที่เกิดขึ้นต่อ</h4>
+      <div class="write-line"></div>
+      <div class="write-line"></div>
+    </div>
+  </div>
+
+  <!-- ข้อ 5: แหล่งข้อมูล -->
+  <div class="section">
+    <h2>ขั้นที่ 5: แหล่งข้อมูล (3 คะแนน)</h2>
+    <div class="source-box">
+      <p style="font-size:13px;font-weight:700;margin-bottom:8px">ข้อมูลในข่าวนี้มาจาก:</p>
+      <p style="font-size:13px">1. ชื่อผู้ให้สัมภาษณ์/แหล่งข้อมูล: <span style="border-bottom:1px solid #ccc;display:inline-block;width:280px"></span></p>
+      <p style="font-size:13px;margin-top:6px">2. ฉันได้ข้อมูลโดยวิธี: <span style="border-bottom:1px solid #ccc;display:inline-block;width:250px"></span></p>
+      <p style="font-size:13px;margin-top:6px">3. ข้อมูลทั้งหมดถูกต้องและตรวจสอบแล้ว: <input type="checkbox"> ใช่</p>
+    </div>
+  </div>
+
+  <!-- Checklist ตรวจเอง -->
+  <div class="section">
+    <h2>Checklist — ตรวจงานก่อนส่ง</h2>
+    <ul class="checklist">
+      <li>กรอก 5W1H ครบทุกข้อ</li>
+      <li>หัวข้อข่าวไม่เกิน 12 คำ และบอก Who + What</li>
+      <li>Lead ย่อหน้าแรกตอบ 5W1H ใน 1-2 ประโยค</li>
+      <li>มีเนื้อหาข่าวอย่างน้อย 3 ย่อหน้า</li>
+      <li>มีแหล่งข้อมูลอ้างอิง</li>
+      <li>ตรวจสะกดคำแล้ว</li>
+    </ul>
+  </div>
+
+  <!-- Rubric -->
+  <div class="section">
+    <h2>เกณฑ์การให้คะแนน (รวม 20 คะแนน)</h2>
+    <table class="rubric">
+      <tr><th>ขั้นตอน</th><th>เนื้อหา</th><th>คะแนนเต็ม</th><th>คะแนนที่ได้</th></tr>
+      <tr><td>1. 5W1H</td><td>ครบ 6 ข้อ ชัดเจน ถูกต้อง</td><td>5</td><td></td></tr>
+      <tr><td>2. หัวข้อ</td><td>สั้น ชัด น่าสนใจ ตามกฎ</td><td>3</td><td></td></tr>
+      <tr><td>3. Lead</td><td>ตอบ 5W1H ใน 1-2 ประโยค</td><td>4</td><td></td></tr>
+      <tr><td>4. เนื้อหา</td><td>ครบ 3 ย่อหน้า มีรายละเอียด คำพูด สรุป</td><td>5</td><td></td></tr>
+      <tr><td>5. แหล่ง</td><td>ระบุแหล่งข้อมูลและยืนยันความถูกต้อง</td><td>3</td><td></td></tr>
+    </table>
+    <div class="score-row">
+      <p style="font-size:13px">ความคิดเห็นครู: <span style="border-bottom:1px solid #ccc;display:inline-block;width:270px"></span></p>
+      <p style="font-size:15px;font-weight:800">รวม: _____ / 20 คะแนน</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

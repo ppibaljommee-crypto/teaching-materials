@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"><title>ป.2 คอมพิวเตอร์เพิ่มเติม ใบงานโปสเตอร์</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Sarabun',sans-serif;background:#fff;padding:16px}
+.page{max-width:800px;margin:0 auto}
+.header{background:linear-gradient(135deg,#881337,#be123c,#f43f5e);border-radius:16px;padding:14px 20px;display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.header-icon{font-size:38px}
+.header-text h1{color:#fff;font-size:19px;font-weight:800}
+.header-text p{color:rgba(255,255,255,.85);font-size:12px}
+.badge{background:#4c0519;color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;display:inline-block;margin-bottom:4px}
+.info-row{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:8px;margin-bottom:14px}
+.info-box{border:1.5px solid #ddd;border-radius:8px;padding:6px 10px;font-size:13px}
+.info-box label{font-size:11px;color:#888;display:block}
+.info-box .line{border-bottom:1px solid #ccc;margin-top:8px}
+.section{margin-bottom:22px}
+.section h2{font-size:15px;font-weight:800;color:#881337;border-left:4px solid #f43f5e;padding-left:10px;margin-bottom:12px}
+/* fill */
+.fill-item{display:flex;align-items:baseline;gap:6px;font-size:13px;margin-bottom:8px;flex-wrap:wrap;padding:6px 10px;background:#fff5f5;border-radius:8px}
+.blank{border:none;border-bottom:2px solid #f43f5e;width:110px;font-family:'Sarabun',sans-serif;font-size:13px;background:transparent;color:#881337;font-weight:700}
+/* poster planning */
+.poster-plan{background:#fff5f5;border:2px solid #fecdd3;border-radius:14px;padding:16px;margin-bottom:14px}
+.poster-plan h3{font-size:14px;font-weight:700;color:#881337;margin-bottom:12px}
+.plan-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.plan-field label{font-size:12px;font-weight:700;color:#be123c;display:block;margin-bottom:4px}
+.plan-field input{border:none;border-bottom:1.5px solid #fecdd3;width:100%;font-family:'Sarabun',sans-serif;font-size:13px;padding:2px 0;background:transparent;margin-bottom:4px}
+/* drawing area */
+.draw-area{border:2px dashed #fecdd3;border-radius:12px;background:#fff5f5;padding:12px;text-align:center;margin-bottom:10px}
+.draw-canvas{border:1px solid #fda4af;border-radius:8px;width:100%;height:200px;background:#fff;display:block;margin:8px auto}
+/* tools reference */
+.tools-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px}
+.tool-card{border:1.5px solid #fecdd3;border-radius:8px;padding:8px;text-align:center;background:#fff5f5}
+.tool-icon{font-size:22px;display:block;margin-bottom:4px}
+.tool-name{font-size:12px;font-weight:700;color:#881337}
+.tool-desc{font-size:10px;color:#888}
+/* checklist */
+.check-table{width:100%;border-collapse:collapse;font-size:13px}
+.check-table th{background:#fef2f2;color:#881337;padding:8px;border:1px solid #fecdd3;text-align:left}
+.check-table td{padding:7px 10px;border:1px solid #fecdd3;font-size:13px}
+/* score */
+.score-row{display:flex;justify-content:space-between;align-items:center;border-top:2px solid #fecdd3;padding-top:12px}
+.rubric{border:1.5px solid #fecdd3;border-radius:10px;padding:10px 14px;background:#fff5f5;font-size:12px}
+@media print{body{padding:8px}@page{size:A4;margin:10mm}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div class="header-icon">🎨</div>
+    <div class="header-text">
+      <div class="badge">คอมพิวเตอร์เพิ่มเติม • ป.2 • หน่วย 3</div>
+      <h1>ใบงานโปสเตอร์สัตว์โปรด — Microsoft Paint</h1>
+      <p>Paint • วาดรูป • ตกแต่ง • บันทึกผลงาน</p>
+    </div>
+  </div>
+  <div class="info-row">
+    <div class="info-box"><label>ชื่อ-นามสกุล</label><div class="line"></div></div>
+    <div class="info-box"><label>ชั้น/ห้อง</label><div class="line"></div></div>
+    <div class="info-box"><label>เลขที่</label><div class="line"></div></div>
+    <div class="info-box"><label>วันที่</label><div class="line"></div></div>
+  </div>
+
+  <!-- ส่วนที่ 1: ความรู้เบื้องต้น -->
+  <div class="section">
+    <h2>ส่วนที่ 1: ความรู้เครื่องมือ Paint (8 คะแนน)</h2>
+    <div class="fill-item">1. โปรแกรม Paint ใช้สำหรับ <input class="blank" placeholder=".............................................................."></div>
+    <div class="fill-item">2. เครื่องมือที่ใช้เทสีเต็มพื้นที่เรียกว่า <input class="blank" placeholder="...................."> (รูปถัง)</div>
+    <div class="fill-item">3. คีย์ลัดสำหรับ Undo (ย้อนกลับ) คือ <input class="blank" placeholder=".............."></div>
+    <div class="fill-item">4. คีย์ลัดสำหรับบันทึกไฟล์ คือ <input class="blank" placeholder=".............."></div>
+    <div class="fill-item">5. การวาดวงกลมสมบูรณ์ ใช้ Oval + กดปุ่ม <input class="blank" placeholder="..............."> ค้างไว้</div>
+    <div class="fill-item">6. เครื่องมือ Text (A) ใช้สำหรับ <input class="blank" placeholder=".............................................................."></div>
+    <div class="fill-item">7. ควร Save ทุกๆ <input class="blank" placeholder="......"> นาที เพื่อป้องกันงานหาย</div>
+    <div class="fill-item">8. บันทึกรูปภาพคุณภาพสูงควรบันทึกเป็นไฟล์นามสกุล <input class="blank" placeholder="......"></div>
+  </div>
+
+  <!-- ส่วนที่ 2: เครื่องมืออ้างอิง -->
+  <div class="section">
+    <h2>ส่วนที่ 2: เครื่องมือ Paint (อ้างอิง)</h2>
+    <div class="tools-grid">
+      <div class="tool-card"><span class="tool-icon">✏️</span><div class="tool-name">Pencil</div><div class="tool-desc">วาดเส้นบางๆ ลายเส้น</div></div>
+      <div class="tool-card"><span class="tool-icon">🖌️</span><div class="tool-name">Brush</div><div class="tool-desc">แปรงเลือกขนาดได้</div></div>
+      <div class="tool-card"><span class="tool-icon">🪣</span><div class="tool-name">Fill</div><div class="tool-desc">เทสีเต็มพื้นที่</div></div>
+      <div class="tool-card"><span class="tool-icon">🧹</span><div class="tool-name">Eraser</div><div class="tool-desc">ยางลบสิ่งที่วาด</div></div>
+      <div class="tool-card"><span class="tool-icon">📏</span><div class="tool-name">Line</div><div class="tool-desc">วาดเส้นตรง</div></div>
+      <div class="tool-card"><span class="tool-icon">▭</span><div class="tool-name">Rectangle</div><div class="tool-desc">สี่เหลี่ยม</div></div>
+      <div class="tool-card"><span class="tool-icon">⭕</span><div class="tool-name">Oval</div><div class="tool-desc">วงรีและวงกลม</div></div>
+      <div class="tool-card"><span class="tool-icon">✍️</span><div class="tool-name">Text (A)</div><div class="tool-desc">พิมพ์ข้อความ</div></div>
+    </div>
+  </div>
+
+  <!-- ส่วนที่ 3: วางแผนโปสเตอร์ -->
+  <div class="section">
+    <h2>ส่วนที่ 3: วางแผนโปสเตอร์สัตว์โปรด (12 คะแนน)</h2>
+    <div class="poster-plan">
+      <h3>📋 แผนโปสเตอร์ของฉัน</h3>
+      <div class="plan-row">
+        <div class="plan-field">
+          <label>สัตว์โปรดที่จะวาด:</label>
+          <input type="text" placeholder="เช่น แมว สุนัข ช้าง">
+          <label style="margin-top:8px">ที่อยู่อาศัย:</label>
+          <input type="text" placeholder="เช่น ป่า บ้าน ทะเล">
+          <label style="margin-top:8px">อาหารที่กิน:</label>
+          <input type="text" placeholder="เช่น ปลา เนื้อ ผัก">
+          <label style="margin-top:8px">ทำไมถึงชอบ:</label>
+          <input type="text" placeholder="เช่น น่ารัก ฉลาด ใจดี">
+          <label style="margin-top:8px">สีพื้นหลังที่จะใช้:</label>
+          <input type="text" placeholder="เช่น สีฟ้า สีเขียว">
+        </div>
+        <div>
+          <label style="font-size:12px;font-weight:700;color:#be123c;display:block;margin-bottom:4px">ร่างภาพโปสเตอร์ (Thumbnail):</label>
+          <div class="draw-area" style="min-height:180px">
+            <p style="color:#888;font-size:12px">วาดภาพร่างโปสเตอร์ตรงนี้</p>
+            <p style="color:#888;font-size:11px;margin-top:4px">ระบุตำแหน่ง: รูปสัตว์ / ชื่อ / ข้อมูล</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ส่วนที่ 4: ตรวจสอบผลงาน -->
+  <div class="section">
+    <h2>ส่วนที่ 4: ตรวจสอบผลงาน</h2>
+    <table class="check-table">
+      <tr><th>รายการตรวจสอบ</th><th style="width:70px;text-align:center">ทำได้</th><th style="width:70px;text-align:center">ยังไม่ได้</th><th style="width:120px;text-align:center">คะแนน</th></tr>
+      <tr><td>1. มีรูปสัตว์ที่วาดด้วย Paint ชัดเจน</td><td style="text-align:center">☐</td><td style="text-align:center">☐</td><td style="text-align:center">____/5</td></tr>
+      <tr style="background:#fff5f5"><td>2. มีชื่อสัตว์ (ภาษาไทยหรืออังกฤษ)</td><td style="text-align:center">☐</td><td style="text-align:center">☐</td><td style="text-align:center">____/3</td></tr>
+      <tr><td>3. มีข้อมูลสัตว์อย่างน้อย 2 อย่าง</td><td style="text-align:center">☐</td><td style="text-align:center">☐</td><td style="text-align:center">____/4</td></tr>
+      <tr style="background:#fff5f5"><td>4. ตกแต่งโปสเตอร์สวยงาม มีสีสัน</td><td style="text-align:center">☐</td><td style="text-align:center">☐</td><td style="text-align:center">____/4</td></tr>
+      <tr><td>5. บันทึกไฟล์ถูกต้อง ตั้งชื่อไฟล์ดี</td><td style="text-align:center">☐</td><td style="text-align:center">☐</td><td style="text-align:center">____/4</td></tr>
+    </table>
+    <div style="margin-top:10px">
+      <p style="font-size:13px;font-weight:700;color:#881337;margin-bottom:4px">ชื่อไฟล์ที่บันทึก:</p>
+      <div style="border-bottom:1.5px solid #fecdd3;height:22px"></div>
+    </div>
+  </div>
+
+  <div class="rubric" style="margin-bottom:12px">
+    <p style="font-weight:700;color:#881337;margin-bottom:4px">เกณฑ์ตรวจสอบ:</p>
+    <p>20 คะแนน = ยอดเยี่ยม | 16–19 = ดีมาก | 12–15 = ดี | 8–11 = พอใช้ | ต่ำกว่า 8 = ต้องพัฒนา</p>
+  </div>
+
+  <div class="score-row">
+    <div style="font-size:13px;color:#888">ลายเซ็นครูผู้ตรวจ: ________________</div>
+    <div style="text-align:right"><div style="font-size:13px;color:#888">คะแนน</div><div style="font-size:22px;font-weight:800;color:#881337">______ / 20</div></div>
+  </div>
+</div>
+</body>
+</html>

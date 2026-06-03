@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"><title>ป.1 CS ใบวางแผนโปรเจกต์การ์ตูน ScratchJr</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Sarabun',sans-serif;background:#fff;padding:16px}
+.page{max-width:800px;margin:0 auto}
+.header{background:linear-gradient(135deg,#ea580c,#fbbf24);border-radius:16px;padding:14px 20px;display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.header-icon{font-size:38px}
+.header-text h1{color:#fff;font-size:19px;font-weight:800}
+.header-text p{color:rgba(255,255,255,.85);font-size:12px}
+.badge{background:#7c2d12;color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;display:inline-block;margin-bottom:4px}
+.info-row{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:8px;margin-bottom:14px}
+.info-box{border:1.5px solid #ddd;border-radius:8px;padding:6px 10px;font-size:13px}
+.info-box label{font-size:11px;color:#888;display:block}
+.info-box .line{border-bottom:1px solid #ccc;margin-top:8px}
+.section{margin-bottom:22px}
+.section h2{font-size:15px;font-weight:800;color:#ea580c;border-left:4px solid #fbbf24;padding-left:10px;margin-bottom:12px}
+.write-line{border-bottom:1.5px solid #ddd;margin-bottom:8px;min-height:22px;padding-bottom:2px}
+/* Character box */
+.char-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px}
+.char-card{border:2px solid #fed7aa;border-radius:12px;padding:12px}
+.char-card h4{font-size:13px;font-weight:800;color:#c2410c;margin-bottom:8px}
+.draw-area{border:1.5px dashed #f97316;border-radius:8px;min-height:80px;background:#fff7ed;margin-bottom:8px;display:flex;align-items:center;justify-content:center;color:#f97316;font-size:12px}
+/* Scene script table */
+.script-table{width:100%;border-collapse:collapse;margin-top:8px}
+.script-table th{background:#f97316;color:#fff;padding:8px;font-size:13px;border:1px solid #ddd;text-align:left}
+.script-table td{padding:8px;border:1px solid #ddd;vertical-align:top;font-size:13px}
+.script-table td:first-child{width:80px;text-align:center;font-weight:700;color:#c2410c}
+.script-table td:nth-child(2){width:180px}
+.script-table .tall{height:70px}
+/* Checklist */
+.checklist{list-style:none;margin-top:8px}
+.checklist li{display:flex;align-items:center;gap:10px;font-size:13px;padding:5px 0;border-bottom:1px solid #fed7aa}
+.checklist li::before{content:"☐";font-size:16px;color:#f97316;flex-shrink:0}
+.checklist li.done::before{content:"☑";color:#22c55e}
+/* Rubric */
+.rubric{width:100%;border-collapse:collapse;font-size:12px}
+.rubric th{background:#f97316;color:#fff;padding:7px;border:1px solid #ddd;text-align:center}
+.rubric td{padding:7px;border:1px solid #ddd;text-align:center}
+.rubric tr:nth-child(even) td{background:#fff7ed}
+.score-row{display:flex;justify-content:space-between;align-items:center;border-top:2px solid #fed7aa;padding-top:12px;margin-top:12px}
+@media print{body{padding:8px}@page{size:A4;margin:10mm}.header{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div class="header-icon">🎬</div>
+    <div class="header-text">
+      <div class="badge">วิทยาการคำนวณ • ป.1 • หน่วย 4</div>
+      <h1>แบบฟอร์มโปรเจกต์ — การ์ตูน ScratchJr</h1>
+      <p>วางแผนก่อนสร้าง • Story Script • Checklist</p>
+    </div>
+  </div>
+  <div class="info-row">
+    <div class="info-box"><label>ชื่อ-นามสกุล</label><div class="line"></div></div>
+    <div class="info-box"><label>ชั้น/ห้อง</label><div class="line"></div></div>
+    <div class="info-box"><label>เลขที่</label><div class="line"></div></div>
+    <div class="info-box"><label>วันที่</label><div class="line"></div></div>
+  </div>
+
+  <!-- ส่วน 1: แผนโปรเจกต์ -->
+  <div class="section">
+    <h2>ส่วนที่ 1: ข้อมูลโปรเจกต์</h2>
+    <p style="font-size:13px;margin-bottom:6px"><strong>ชื่อเรื่องการ์ตูน:</strong></p>
+    <div class="write-line"></div>
+    <p style="font-size:13px;margin-bottom:6px;margin-top:8px"><strong>แนวเรื่อง / ประเภท:</strong> (เลือก 1 อัน)</p>
+    <div style="display:flex;gap:16px;flex-wrap:wrap">
+      <label style="font-size:13px"><input type="checkbox"> การผจญภัย</label>
+      <label style="font-size:13px"><input type="checkbox"> ชีวิตสัตว์</label>
+      <label style="font-size:13px"><input type="checkbox"> ชีวิตประจำวัน</label>
+      <label style="font-size:13px"><input type="checkbox"> ตลก/ขำขัน</label>
+      <label style="font-size:13px"><input type="checkbox"> อื่นๆ: <span style="border-bottom:1px solid #ccc;display:inline-block;width:100px"></span></label>
+    </div>
+    <p style="font-size:13px;margin-top:10px;margin-bottom:6px"><strong>เรื่องย่อ:</strong> (เล่าเรื่องสั้นๆ 2-3 ประโยค)</p>
+    <div class="write-line"></div>
+    <div class="write-line"></div>
+    <div class="write-line"></div>
+  </div>
+
+  <!-- ส่วน 2: ตัวละคร -->
+  <div class="section">
+    <h2>ส่วนที่ 2: ตัวละครในเรื่อง</h2>
+    <div class="char-grid">
+      <div class="char-card">
+        <h4>ตัวละครที่ 1 (ตัวเอก)</h4>
+        <div class="draw-area">วาดหรือเขียนชื่อตัวละคร</div>
+        <p style="font-size:12px"><strong>ชื่อตัวละคร:</strong> <span style="border-bottom:1px solid #ccc;display:inline-block;width:120px"></span></p>
+        <p style="font-size:12px;margin-top:4px"><strong>บทบาทในเรื่อง:</strong></p>
+        <div style="border-bottom:1px solid #ddd;height:16px"></div>
+      </div>
+      <div class="char-card">
+        <h4>ตัวละครที่ 2 (ถ้ามี)</h4>
+        <div class="draw-area">วาดหรือเขียนชื่อตัวละคร</div>
+        <p style="font-size:12px"><strong>ชื่อตัวละคร:</strong> <span style="border-bottom:1px solid #ccc;display:inline-block;width:120px"></span></p>
+        <p style="font-size:12px;margin-top:4px"><strong>บทบาทในเรื่อง:</strong></p>
+        <div style="border-bottom:1px solid #ddd;height:16px"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ส่วน 3: Script แต่ละฉาก -->
+  <div class="section">
+    <h2>ส่วนที่ 3: Script — บทของแต่ละฉาก</h2>
+    <table class="script-table">
+      <tr>
+        <th>ฉาก</th>
+        <th>ฉากหลัง (พื้นหลัง)</th>
+        <th>ตัวละครทำอะไร</th>
+        <th>บทพูด (ถ้ามี)</th>
+        <th>บล็อกที่ใช้</th>
+      </tr>
+      <tr>
+        <td>1<br>เริ่มต้น</td>
+        <td class="tall"></td>
+        <td class="tall"></td>
+        <td class="tall"></td>
+        <td class="tall"></td>
+      </tr>
+      <tr>
+        <td>2<br>กลาง</td>
+        <td class="tall"></td>
+        <td class="tall"></td>
+        <td class="tall"></td>
+        <td class="tall"></td>
+      </tr>
+      <tr>
+        <td>3<br>จบ</td>
+        <td class="tall"></td>
+        <td class="tall"></td>
+        <td class="tall"></td>
+        <td class="tall"></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- ส่วน 4: Checklist -->
+  <div class="section">
+    <h2>ส่วนที่ 4: Checklist — สิ่งที่ต้องมีในโปรเจกต์</h2>
+    <ul class="checklist">
+      <li>อย่างน้อย 3 ฉาก (ฉาก 1 เริ่ม, ฉาก 2 กลาง, ฉาก 3 จบ)</li>
+      <li>ตัวละครอย่างน้อย 1 ตัว มีการเคลื่อนที่</li>
+      <li>ตัวละครพูดด้วย Say block อย่างน้อย 1 ครั้ง</li>
+      <li>มี Event block (When Green Flag หรือ When Tapped)</li>
+      <li>มีเสียงหรือดนตรีประกอบ</li>
+      <li>ใช้ Loop (Repeat) อย่างน้อย 1 ครั้ง</li>
+      <li>โปรแกรมรันได้โดยไม่ติด</li>
+    </ul>
+  </div>
+
+  <!-- Rubric -->
+  <div class="section">
+    <h2>เกณฑ์การให้คะแนน (รวม 20 คะแนน)</h2>
+    <table class="rubric">
+      <tr><th>หัวข้อ</th><th>เกณฑ์</th><th>คะแนนเต็ม</th><th>คะแนนที่ได้</th></tr>
+      <tr><td>ความสมบูรณ์</td><td>ครบ 3 ฉาก มีตัวละคร พูดได้ มีเสียง</td><td>8</td><td></td></tr>
+      <tr><td>การใช้บล็อก</td><td>ใช้ Event, Motion, Looks, Sound, Loop ได้</td><td>6</td><td></td></tr>
+      <tr><td>ความคิดสร้างสรรค์</td><td>เรื่องราวน่าสนใจ มีความคิดเป็นตัวเอง</td><td>4</td><td></td></tr>
+      <tr><td>การทำงาน</td><td>โปรแกรมรันได้ ไม่ติดขัด</td><td>2</td><td></td></tr>
+    </table>
+    <div class="score-row">
+      <p style="font-size:13px">ความคิดเห็นครู: <span style="border-bottom:1px solid #ccc;display:inline-block;width:280px"></span></p>
+      <p style="font-size:15px;font-weight:800">รวม: _____ / 20 คะแนน</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

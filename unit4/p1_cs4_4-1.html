@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"><title>ป.1 วิทยาการคำนวณ ใบงาน 4.1 — ScratchJr</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Sarabun',sans-serif;background:#fff;padding:16px}
+.page{max-width:800px;margin:0 auto}
+.header{background:linear-gradient(135deg,#c2410c,#f97316);border-radius:16px;padding:14px 20px;display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.header-icon{font-size:38px}
+.header-text h1{color:#fff;font-size:19px;font-weight:800}
+.header-text p{color:rgba(255,255,255,.85);font-size:12px}
+.badge{background:#7c2d12;color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;display:inline-block;margin-bottom:4px}
+.info-row{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:8px;margin-bottom:14px}
+.info-box{border:1.5px solid #ddd;border-radius:8px;padding:6px 10px;font-size:13px}
+.info-box label{font-size:11px;color:#888;display:block}
+.info-box .line{border-bottom:1px solid #ccc;margin-top:8px}
+.section{margin-bottom:22px}
+.section h2{font-size:15px;font-weight:800;color:#c2410c;border-left:4px solid #f97316;padding-left:10px;margin-bottom:12px}
+/* Block matching */
+.block-row{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.scratch-block{border-radius:8px;padding:7px 14px;font-size:13px;font-weight:700;color:#fff;min-width:150px}
+.block-event{background:#c2870f}.block-motion{background:#4c97ff}.block-looks{background:#9966ff}.block-sound{background:#cf63cf}.block-control{background:#ffab19}
+.blank{border-bottom:2px solid #f97316;display:inline-block;width:180px;font-size:13px;color:#333;margin-left:8px}
+/* Order exercise */
+.order-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px}
+.order-card{border:2px solid #fed7aa;border-radius:10px;padding:10px;text-align:center;background:#fff7ed}
+.order-card .num{width:28px;height:28px;background:#f97316;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;margin:0 auto 6px}
+.order-card p{font-size:12px;color:#431407}
+/* Draw area */
+.draw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:8px}
+.draw-box{border:2px solid #fed7aa;border-radius:12px;min-height:100px;padding:8px;background:#fff7ed}
+.draw-box h4{font-size:12px;font-weight:700;color:#9a3412;margin-bottom:6px}
+.draw-space{border:1px dashed #f97316;border-radius:6px;height:70px;background:#fff;margin-top:4px}
+/* Rubric */
+.rubric{width:100%;border-collapse:collapse;margin-top:8px;font-size:12px}
+.rubric th{background:#f97316;color:#fff;padding:7px;text-align:center;border:1px solid #ddd}
+.rubric td{padding:7px;border:1px solid #ddd;text-align:center}
+.rubric tr:nth-child(even) td{background:#fff7ed}
+.score-row{display:flex;justify-content:space-between;align-items:center;border-top:2px solid #fed7aa;padding-top:12px;margin-top:12px}
+@media print{body{padding:8px}@page{size:A4;margin:10mm}.header{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div class="header-icon">🎮</div>
+    <div class="header-text">
+      <div class="badge">วิทยาการคำนวณ • ป.1 • หน่วย 4</div>
+      <h1>ใบงาน 4.1 — สั่งงานได้ด้วยโปรแกรม ScratchJr</h1>
+      <p>บล็อกคำสั่ง • ลำดับ • วางแผนการ์ตูน</p>
+    </div>
+  </div>
+  <div class="info-row">
+    <div class="info-box"><label>ชื่อ-นามสกุล</label><div class="line"></div></div>
+    <div class="info-box"><label>ชั้น/ห้อง</label><div class="line"></div></div>
+    <div class="info-box"><label>เลขที่</label><div class="line"></div></div>
+    <div class="info-box"><label>วันที่</label><div class="line"></div></div>
+  </div>
+
+  <!-- ข้อ 1: เติมคำ -->
+  <div class="section">
+    <h2>ข้อ 1: เติมความหมายของบล็อก ScratchJr (5 คะแนน)</h2>
+    <p style="font-size:13px;color:#555;margin-bottom:10px">เขียนความหมายของบล็อกแต่ละสีให้ถูกต้อง</p>
+    <div class="block-row">
+      <div class="scratch-block block-event">🟢 When Green Flag</div>
+      <span>→</span>
+      <span class="blank"></span>
+    </div>
+    <div class="block-row">
+      <div class="scratch-block block-motion">➡️ Move Right [2]</div>
+      <span>→</span>
+      <span class="blank"></span>
+    </div>
+    <div class="block-row">
+      <div class="scratch-block block-looks">💬 Say [สวัสดี]</div>
+      <span>→</span>
+      <span class="blank"></span>
+    </div>
+    <div class="block-row">
+      <div class="scratch-block block-sound">🔊 Play Sound</div>
+      <span>→</span>
+      <span class="blank"></span>
+    </div>
+    <div class="block-row">
+      <div class="scratch-block block-control">🔁 Repeat [3]</div>
+      <span>→</span>
+      <span class="blank"></span>
+    </div>
+  </div>
+
+  <!-- ข้อ 2: เรียงลำดับ -->
+  <div class="section">
+    <h2>ข้อ 2: เรียงลำดับคำสั่งให้ถูกต้อง (5 คะแนน)</h2>
+    <p style="font-size:13px;color:#555;margin-bottom:8px">ตัวละครจะต้องทำตามลำดับนี้: ปรากฏตัว → พูดทักทาย → เดินไปข้างหน้า → กระโดด → จบ<br>ใส่ตัวเลข 1-5 ในช่องว่างหน้าบล็อกแต่ละอัน</p>
+    <div class="order-grid">
+      <div class="order-card">
+        <div class="num">___</div>
+        <div class="scratch-block block-motion" style="font-size:11px">Jump Up [2]</div>
+        <p>กระโดดขึ้น</p>
+      </div>
+      <div class="order-card">
+        <div class="num">___</div>
+        <div class="scratch-block block-looks" style="font-size:11px">Appear</div>
+        <p>ปรากฏตัว</p>
+      </div>
+      <div class="order-card">
+        <div class="num">___</div>
+        <div class="scratch-block block-looks" style="font-size:11px">Say [สวัสดี]</div>
+        <p>พูดทักทาย</p>
+      </div>
+      <div class="order-card">
+        <div class="num">___</div>
+        <div class="scratch-block block-looks" style="font-size:11px">Hide</div>
+        <p>จบ (ซ่อน)</p>
+      </div>
+      <div class="order-card">
+        <div class="num">___</div>
+        <div class="scratch-block block-motion" style="font-size:11px">Move Right [3]</div>
+        <p>เดินไปหน้า</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ข้อ 3: วาดแผนการ์ตูน -->
+  <div class="section">
+    <h2>ข้อ 3: วาดแผนการ์ตูน 3 ฉาก (10 คะแนน)</h2>
+    <p style="font-size:13px;color:#555;margin-bottom:8px">วางแผนการ์ตูน ScratchJr ของตัวเอง วาดภาพแต่ละฉากและเขียนว่าตัวละครทำอะไร</p>
+    <div class="draw-grid">
+      <div class="draw-box">
+        <h4>ฉากที่ 1: เริ่มต้น</h4>
+        <p style="font-size:11px;color:#888">ตัวละครทำอะไร?</p>
+        <div class="draw-space"></div>
+        <div style="border-bottom:1px solid #ddd;margin-top:8px;height:16px"></div>
+      </div>
+      <div class="draw-box">
+        <h4>ฉากที่ 2: กลาง</h4>
+        <p style="font-size:11px;color:#888">เกิดอะไรขึ้น?</p>
+        <div class="draw-space"></div>
+        <div style="border-bottom:1px solid #ddd;margin-top:8px;height:16px"></div>
+      </div>
+      <div class="draw-box">
+        <h4>ฉากที่ 3: จบ</h4>
+        <p style="font-size:11px;color:#888">จบอย่างไร?</p>
+        <div class="draw-space"></div>
+        <div style="border-bottom:1px solid #ddd;margin-top:8px;height:16px"></div>
+      </div>
+    </div>
+    <div style="margin-top:10px">
+      <p style="font-size:13px;font-weight:700">ชื่อเรื่องการ์ตูนของฉัน: <span style="border-bottom:1px solid #ccc;display:inline-block;width:300px"></span></p>
+      <p style="font-size:13px;font-weight:700;margin-top:8px">ตัวละครในเรื่องมี: <span style="border-bottom:1px solid #ccc;display:inline-block;width:280px"></span></p>
+    </div>
+  </div>
+
+  <!-- Rubric -->
+  <div class="section">
+    <h2>เกณฑ์การให้คะแนน (รวม 20 คะแนน)</h2>
+    <table class="rubric">
+      <tr><th>ข้อ</th><th>เนื้อหา</th><th>คะแนนเต็ม</th><th>คะแนนที่ได้</th></tr>
+      <tr><td>1</td><td>เติมความหมายบล็อก ScratchJr ถูกต้องครบ 5 บล็อก</td><td>5</td><td></td></tr>
+      <tr><td>2</td><td>เรียงลำดับคำสั่งได้ถูกต้องทั้ง 5 อัน</td><td>5</td><td></td></tr>
+      <tr><td>3</td><td>วาดแผนการ์ตูนครบ 3 ฉาก มีเนื้อเรื่องและรายละเอียด</td><td>10</td><td></td></tr>
+    </table>
+    <div class="score-row">
+      <p style="font-size:13px">หมายเหตุ: <span style="border-bottom:1px solid #ccc;display:inline-block;width:300px"></span></p>
+      <p style="font-size:15px;font-weight:800">รวม: _____ / 20 คะแนน</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

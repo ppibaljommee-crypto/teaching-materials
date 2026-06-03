@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"><title>ป.1 วิทยาการคำนวณ ใบงาน 3.1 — เขาวงกต + 4 ขั้นตอนแก้ปัญหา</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Sarabun',sans-serif;background:#fff;padding:16px}
+.page{max-width:800px;margin:0 auto}
+.header{background:linear-gradient(135deg,#be123c,#f43f5e);border-radius:16px;padding:14px 20px;display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.header-icon{font-size:38px}
+.header-text h1{color:#fff;font-size:19px;font-weight:800}
+.header-text p{color:rgba(255,255,255,.85);font-size:12px}
+.badge{background:#7f1d1d;color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;display:inline-block;margin-bottom:4px}
+.info-row{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:8px;margin-bottom:14px}
+.info-box{border:1.5px solid #ddd;border-radius:8px;padding:6px 10px;font-size:13px}
+.info-box label{font-size:11px;color:#888;display:block}
+.info-box .line{border-bottom:1px solid #ccc;margin-top:8px}
+.section{margin-bottom:22px}
+.section h2{font-size:15px;font-weight:800;color:#be123c;border-left:4px solid #f43f5e;padding-left:10px;margin-bottom:12px}
+.section h2.blue{color:#1d4ed8;border-color:#3b82f6}
+.section h2.green{color:#047857;border-color:#10b981}
+.section h2.purple{color:#6d28d9;border-color:#7c3aed}
+/* ข้อ 1: วาดเส้นทาง */
+.maze-box{border:2px solid #fda4af;border-radius:12px;padding:16px;background:#fff5f5;margin-bottom:10px}
+.maze-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;max-width:350px;margin:0 auto}
+.maze-cell{width:44px;height:44px;border:1px solid #ddd;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:20px;background:#fff}
+.maze-cell.wall{background:#374151}
+.maze-cell.start{background:#dcfce7;border-color:#4ade80}
+.maze-cell.end{background:#fef9c3;border-color:#fbbf24}
+.maze-cell.path{background:rgba(248,113,113,.15)}
+/* ข้อ 2: 4 ขั้นตอน */
+.steps-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.step-card{border:2px solid;border-radius:12px;padding:14px}
+.step-card.s1{border-color:#f43f5e;background:#fff5f5}
+.step-card.s2{border-color:#3b82f6;background:#eff6ff}
+.step-card.s3{border-color:#10b981;background:#f0fdf4}
+.step-card.s4{border-color:#f59e0b;background:#fffbeb}
+.step-card h3{font-size:14px;font-weight:800;margin-bottom:8px}
+.step-card.s1 h3{color:#be123c}.step-card.s2 h3{color:#1d4ed8}.step-card.s3 h3{color:#047857}.step-card.s4 h3{color:#b45309}
+.write-area{border-bottom:1.5px solid #ccc;margin-bottom:6px;height:20px;width:100%}
+/* ข้อ 3: จับคู่ */
+.match-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:start}
+.match-col{display:flex;flex-direction:column;gap:8px}
+.match-item{border:1.5px solid #ddd;border-radius:8px;padding:8px 12px;font-size:13px;font-weight:600}
+.match-item.left{background:#fef2f2;border-color:#fca5a5;color:#be123c}
+.match-item.right{background:#f0fdf4;border-color:#86efac;color:#047857}
+.match-line{display:flex;flex-direction:column;justify-content:space-around;padding-top:10px}
+.match-ans{border:none;border-bottom:1.5px solid #f87171;width:28px;text-align:center;font-family:'Sarabun',sans-serif;font-size:13px;font-weight:700;color:#be123c;background:transparent}
+/* Score */
+.score-row{display:flex;justify-content:space-between;align-items:center;border-top:2px solid #fda4af;padding-top:12px}
+@media print{body{padding:8px}@page{size:A4;margin:10mm}.header{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div class="header-icon">🧩</div>
+    <div class="header-text">
+      <div class="badge">วิทยาการคำนวณ • ป.1 • หน่วย 3</div>
+      <h1>ใบงาน 3.1 — คิดก่อนทำ: เขาวงกต + 4 ขั้นตอนแก้ปัญหา</h1>
+      <p>Problem Solving • 4 ขั้นตอน • วางแผนก่อนลงมือ</p>
+    </div>
+  </div>
+  <div class="info-row">
+    <div class="info-box"><label>ชื่อ-นามสกุล</label><div class="line"></div></div>
+    <div class="info-box"><label>ชั้น/ห้อง</label><div class="line"></div></div>
+    <div class="info-box"><label>เลขที่</label><div class="line"></div></div>
+    <div class="info-box"><label>วันที่</label><div class="line"></div></div>
+  </div>
+
+  <!-- ข้อ 1: วาดเส้นทางออกจากเขาวงกต -->
+  <div class="section">
+    <h2>ข้อ 1: วาดเส้นทางออกจากเขาวงกต (8 คะแนน)</h2>
+    <p style="font-size:13px;color:#555;margin-bottom:10px">ใช้ดินสอวาดเส้นทางจาก 🐱 (เริ่ม) ไปถึง 🏠 (บ้าน) ห้ามผ่านกำแพง ■</p>
+    <div class="maze-box">
+      <div class="maze-grid">
+        <!-- Row 0 -->
+        <div class="maze-cell start">🐱</div>
+        <div class="maze-cell"></div>
+        <div class="maze-cell wall"></div>
+        <div class="maze-cell"></div>
+        <div class="maze-cell"></div>
+        <div class="maze-cell wall"></div>
+        <div class="maze-cell"></div>
+        <!-- Row 1 -->
+        <div class="maze-cell wall"></div>
+        <div class="maze-cell"></div>
+        <div class="maze-cell wall"></div>
+        <div class="maze-cell"></div>
+        <div class="maze-cell wall"></div>
+        <div class="maze-cell"></div>
+        <div class="maze-cell"></div>
+        <!-- Row 2 -->
+        <div class="maze-cell"></div>
+        <div class="maze-cell"></div>
+        <div class="maze-cell"></div>
+        <div class="maze-cell"></div>
+        <div class="maze-cell wall"></div>
+        <div class="maze-cell"></div>
+        <div class="maze-cell wall"></div>
+        <!-- Row 3 -->
+        <div class="maze-cell wall"></div>
+        <div class="maze-cell wall"></div>
+        <div class="maze-cell wall"></div>
+        <div class="maze-cell"></div>
+        <div class="maze-cell"></div>
+        <div class="maze-cell"></div>
+        <div class="maze-cell"></div>
+        <!-- Row 4 -->
+        <div class="maze-cell"></div>
+        <div class="maze-cell"></div>
+        <div class="maze-cell wall"></div>
+        <div class="maze-cell wall"></div>
+        <div class="maze-cell wall"></div>
+        <div class="maze-cell wall"></div>
+        <div class="maze-cell"></div>
+        <!-- Row 5 -->
+        <div class="maze-cell"></div>
+        <div class="maze-cell wall"></div>
+        <div class="maze-cell"></div>
+        <div class="maze-cell"></div>
+        <div class="maze-cell"></div>
+        <div class="maze-cell wall"></div>
+        <div class="maze-cell"></div>
+        <!-- Row 6 -->
+        <div class="maze-cell"></div>
+        <div class="maze-cell"></div>
+        <div class="maze-cell"></div>
+        <div class="maze-cell wall"></div>
+        <div class="maze-cell"></div>
+        <div class="maze-cell"></div>
+        <div class="maze-cell end">🏠</div>
+      </div>
+      <p style="text-align:center;margin-top:10px;font-size:12px;color:#888">■ = กำแพง (ห้ามผ่าน) | 🐱 = จุดเริ่ม | 🏠 = บ้าน</p>
+    </div>
+    <div style="background:#fef2f2;border:1.5px solid #fca5a5;border-radius:10px;padding:10px 14px;margin-top:8px">
+      <p style="font-size:13px;color:#be123c;font-weight:700">บันทึกเส้นทาง: เขียนทิศทางที่ใช้ (→ ขวา, ← ซ้าย, ↑ บน, ↓ ล่าง)</p>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px">
+        <span style="font-size:13px">ขั้นที่ 1:</span>
+        <div style="border-bottom:1.5px solid #fca5a5;width:50px"></div>
+        <span style="font-size:13px">ขั้นที่ 2:</span>
+        <div style="border-bottom:1.5px solid #fca5a5;width:50px"></div>
+        <span style="font-size:13px">ขั้นที่ 3:</span>
+        <div style="border-bottom:1.5px solid #fca5a5;width:50px"></div>
+        <span style="font-size:13px">ขั้นที่ 4:</span>
+        <div style="border-bottom:1.5px solid #fca5a5;width:50px"></div>
+        <span style="font-size:13px">ขั้นที่ 5:</span>
+        <div style="border-bottom:1.5px solid #fca5a5;width:50px"></div>
+        <span style="font-size:13px">ขั้นที่ 6:</span>
+        <div style="border-bottom:1.5px solid #fca5a5;width:50px"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ข้อ 2: 4 ขั้นตอนแก้ปัญหา -->
+  <div class="section">
+    <h2>ข้อ 2: เขียน 4 ขั้นตอนแก้ปัญหา (8 คะแนน)</h2>
+    <p style="font-size:13px;color:#555;margin-bottom:10px">โจทย์: <strong>"ลืมนำสมุดการบ้านมาโรงเรียน จะทำอย่างไร?"</strong> เขียนขั้นตอนแก้ปัญหาในแต่ละขั้น</p>
+    <div class="steps-grid">
+      <div class="step-card s1">
+        <h3>ขั้นที่ 1: 🎯 เข้าใจปัญหา</h3>
+        <p style="font-size:12px;color:#888;margin-bottom:8px">ปัญหาคืออะไร?</p>
+        <div class="write-area"></div>
+        <div class="write-area"></div>
+        <div class="write-area"></div>
+      </div>
+      <div class="step-card s2">
+        <h3>ขั้นที่ 2: 💡 วางแผน</h3>
+        <p style="font-size:12px;color:#888;margin-bottom:8px">จะทำอะไรก่อน-หลัง?</p>
+        <div class="write-area"></div>
+        <div class="write-area"></div>
+        <div class="write-area"></div>
+      </div>
+      <div class="step-card s3">
+        <h3>ขั้นที่ 3: ✅ ลงมือทำ</h3>
+        <p style="font-size:12px;color:#888;margin-bottom:8px">ทำตามแผนอย่างไร?</p>
+        <div class="write-area"></div>
+        <div class="write-area"></div>
+        <div class="write-area"></div>
+      </div>
+      <div class="step-card s4">
+        <h3>ขั้นที่ 4: 🔍 ตรวจสอบ</h3>
+        <p style="font-size:12px;color:#888;margin-bottom:8px">ได้ผลอย่างไร? แก้ดีไหม?</p>
+        <div class="write-area"></div>
+        <div class="write-area"></div>
+        <div class="write-area"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ข้อ 3: จับคู่ -->
+  <div class="section">
+    <h2 class="purple">ข้อ 3: จับคู่คำกับความหมาย (4 คะแนน)</h2>
+    <div class="match-grid">
+      <div class="match-col">
+        <div class="match-item left">A. เข้าใจปัญหา</div>
+        <div class="match-item left">B. วางแผน</div>
+        <div class="match-item left">C. ลงมือทำ</div>
+        <div class="match-item left">D. ตรวจสอบ</div>
+      </div>
+      <div class="match-line">
+        <div><input class="match-ans" placeholder="?"> →</div>
+        <div><input class="match-ans" placeholder="?"> →</div>
+        <div><input class="match-ans" placeholder="?"> →</div>
+        <div><input class="match-ans" placeholder="?"> →</div>
+      </div>
+      <div class="match-col">
+        <div class="match-item right">1. ปฏิบัติตามแผนที่วางไว้</div>
+        <div class="match-item right">2. รู้ว่าอยากได้อะไร มีอุปสรรคอะไร</div>
+        <div class="match-item right">3. ดูว่าผลที่ได้ตรงกับที่ต้องการไหม</div>
+        <div class="match-item right">4. คิดวิธีแก้ไข ลำดับขั้นตอน</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="score-row">
+    <div style="font-size:13px;color:#888">ลายเซ็นครูผู้ตรวจ: ________________</div>
+    <div style="text-align:right"><div style="font-size:13px;color:#888">คะแนน</div><div style="font-size:22px;font-weight:800;color:#be123c">______ / 20</div></div>
+  </div>
+</div>
+</body>
+</html>

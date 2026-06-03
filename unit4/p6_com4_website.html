@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"><title>ป.6 คอมเพิ่มเติม ใบงานเว็บไซต์ — Google Sites</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Sarabun',sans-serif;background:#fff;padding:16px}
+.page{max-width:800px;margin:0 auto}
+.header{background:linear-gradient(135deg,#0c4a6e,#0ea5e9);border-radius:16px;padding:14px 20px;display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.header-icon{font-size:38px}
+.header-text h1{color:#fff;font-size:19px;font-weight:800}
+.header-text p{color:rgba(255,255,255,.85);font-size:12px}
+.badge{background:#082f49;color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;display:inline-block;margin-bottom:4px}
+.info-row{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:8px;margin-bottom:14px}
+.info-box{border:1.5px solid #ddd;border-radius:8px;padding:6px 10px;font-size:13px}
+.info-box label{font-size:11px;color:#888;display:block}
+.info-box .line{border-bottom:1px solid #ccc;margin-top:8px}
+.section{margin-bottom:22px}
+.section h2{font-size:15px;font-weight:800;color:#0c4a6e;border-left:4px solid #0ea5e9;padding-left:10px;margin-bottom:12px}
+.write-line{border-bottom:1.5px solid #bae6fd;margin-bottom:8px;min-height:22px}
+/* Planning box */
+.plan-box{border:2px solid #bae6fd;border-radius:12px;padding:14px;background:#f0f9ff;margin-top:8px}
+.plan-row{display:grid;grid-template-columns:120px 1fr;gap:8px;align-items:center;margin-bottom:8px;font-size:13px}
+.plan-row label{font-weight:700;color:#0c4a6e}
+/* Wireframe grid */
+.wireframe-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:8px}
+.wireframe-box{border:2px solid #bae6fd;border-radius:10px;padding:10px;background:#f0f9ff}
+.wireframe-box h4{font-size:12px;font-weight:800;color:#0c4a6e;margin-bottom:8px;text-align:center}
+.wf-header{background:#bae6fd;height:20px;border-radius:4px;margin-bottom:6px}
+.wf-nav{background:#93c5fd;height:16px;border-radius:4px;margin-bottom:6px}
+.wf-img{border:1.5px dashed #7dd3fc;height:60px;border-radius:4px;margin-bottom:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:#0ea5e9}
+.wf-text{background:#e0f2fe;height:10px;border-radius:2px;margin-bottom:3px}
+.wf-text.short{width:70%}
+.wf-label{font-size:10px;color:#666;text-align:center;margin-top:4px}
+.wf-note{border:1px dashed #7dd3fc;border-radius:4px;padding:4px;min-height:50px;margin-top:4px;font-size:11px;color:#555}
+/* Page plan table */
+.page-table{width:100%;border-collapse:collapse;font-size:13px}
+.page-table th{background:#0ea5e9;color:#fff;padding:8px;border:1px solid #ddd;text-align:left}
+.page-table td{padding:8px;border:1px solid #ddd;height:40px;vertical-align:top}
+.page-table tr:nth-child(even) td{background:#f0f9ff}
+/* Checklist */
+.checklist{list-style:none;margin-top:8px}
+.checklist li{display:flex;align-items:flex-start;gap:8px;font-size:13px;padding:5px 0;border-bottom:1px solid #bae6fd}
+.checklist li input[type="checkbox"]{width:16px;height:16px;margin-top:2px;flex-shrink:0;accent-color:#0ea5e9}
+/* Rubric */
+.rubric{width:100%;border-collapse:collapse;font-size:12px}
+.rubric th{background:#0ea5e9;color:#fff;padding:7px;border:1px solid #ddd;text-align:center}
+.rubric td{padding:7px;border:1px solid #ddd;text-align:center}
+.rubric tr:nth-child(even) td{background:#f0f9ff}
+.rubric td.desc{text-align:left}
+.score-row{display:flex;justify-content:space-between;align-items:center;border-top:2px solid #bae6fd;padding-top:12px;margin-top:12px}
+@media print{body{padding:8px}@page{size:A4;margin:10mm}.header{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div class="header-icon">🌐</div>
+    <div class="header-text">
+      <div class="badge">คอมพิวเตอร์เพิ่มเติม • ป.6 • หน่วย 4</div>
+      <h1>ใบงานเว็บไซต์ — สร้างด้วย Google Sites</h1>
+      <p>วางแผน • Wireframe • Checklist • แชร์ลิงก์</p>
+    </div>
+  </div>
+  <div class="info-row">
+    <div class="info-box"><label>ชื่อ-นามสกุล</label><div class="line"></div></div>
+    <div class="info-box"><label>ชั้น/ห้อง</label><div class="line"></div></div>
+    <div class="info-box"><label>เลขที่</label><div class="line"></div></div>
+    <div class="info-box"><label>วันที่</label><div class="line"></div></div>
+  </div>
+
+  <!-- ส่วน 1: วางแผนเว็บ -->
+  <div class="section">
+    <h2>ส่วนที่ 1: วางแผนเว็บไซต์ (4 คะแนน)</h2>
+    <div class="plan-box">
+      <div class="plan-row">
+        <label>ชื่อเว็บไซต์:</label>
+        <div class="write-line"></div>
+      </div>
+      <div class="plan-row">
+        <label>URL (จะตั้งชื่อว่า):</label>
+        <div style="display:flex;align-items:center;gap:4px;font-size:12px;color:#0c4a6e">
+          sites.google.com/view/<span class="write-line" style="flex:1;min-width:150px"></span>
+        </div>
+      </div>
+      <div class="plan-row">
+        <label>หัวข้อ/เนื้อหา:</label>
+        <div class="write-line"></div>
+      </div>
+      <div class="plan-row">
+        <label>ธีมสี:</label>
+        <div class="write-line"></div>
+      </div>
+      <div class="plan-row">
+        <label>ผู้ชมคือ:</label>
+        <div class="write-line"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ส่วน 2: แผนหน้าทั้งหมด -->
+  <div class="section">
+    <h2>ส่วนที่ 2: แผนหน้าเว็บทั้งหมด (4 คะแนน)</h2>
+    <table class="page-table">
+      <tr><th>หน้าที่</th><th>ชื่อหน้า</th><th>เนื้อหาหลัก</th><th>มีรูป/Media?</th></tr>
+      <tr><td>1 (หน้าแรก)</td><td></td><td></td><td></td></tr>
+      <tr><td>2</td><td></td><td></td><td></td></tr>
+      <tr><td>3</td><td></td><td></td><td></td></tr>
+      <tr><td>4 (ถ้ามี)</td><td></td><td></td><td></td></tr>
+    </table>
+  </div>
+
+  <!-- ส่วน 3: Wireframe -->
+  <div class="section">
+    <h2>ส่วนที่ 3: Wireframe — วาดหน้าตาเว็บ 3 หน้า (6 คะแนน)</h2>
+    <p style="font-size:12px;color:#555;margin-bottom:8px">วาดหน้าตาโดยประมาณของแต่ละหน้า (ไม่ต้องสวยงาม แค่บอกว่าอะไรอยู่ตรงไหน)</p>
+    <div class="wireframe-grid">
+      <div class="wireframe-box">
+        <h4>หน้า 1: ___________</h4>
+        <div class="wf-header"></div>
+        <div class="wf-nav"></div>
+        <div class="wf-img">รูปภาพ</div>
+        <div class="wf-text"></div>
+        <div class="wf-text short"></div>
+        <div class="wf-label">วาดและเขียนอธิบายเพิ่มในกล่องนี้</div>
+        <div class="wf-note"></div>
+      </div>
+      <div class="wireframe-box">
+        <h4>หน้า 2: ___________</h4>
+        <div class="wf-header"></div>
+        <div class="wf-nav"></div>
+        <div class="wf-img">Media</div>
+        <div class="wf-text"></div>
+        <div class="wf-text short"></div>
+        <div class="wf-label">วาดและเขียนอธิบายเพิ่มในกล่องนี้</div>
+        <div class="wf-note"></div>
+      </div>
+      <div class="wireframe-box">
+        <h4>หน้า 3: ___________</h4>
+        <div class="wf-header"></div>
+        <div class="wf-nav"></div>
+        <div class="wf-img">เนื้อหา</div>
+        <div class="wf-text"></div>
+        <div class="wf-text short"></div>
+        <div class="wf-label">วาดและเขียนอธิบายเพิ่มในกล่องนี้</div>
+        <div class="wf-note"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ส่วน 4: Checklist -->
+  <div class="section">
+    <h2>ส่วนที่ 4: Checklist — ตรวจงานก่อนส่ง (3 คะแนน)</h2>
+    <ul class="checklist">
+      <li><input type="checkbox"> มีอย่างน้อย 3 หน้า แต่ละหน้ามีเนื้อหาที่แตกต่างกัน</li>
+      <li><input type="checkbox"> หน้าแรกบอกชัดเจนว่าเว็บนี้เกี่ยวกับอะไร</li>
+      <li><input type="checkbox"> มีรูปภาพอย่างน้อย 2 รูป ที่ไม่ละเมิดลิขสิทธิ์</li>
+      <li><input type="checkbox"> มี Media อย่างน้อย 1 อย่าง (YouTube, Maps, หรือ Drive)</li>
+      <li><input type="checkbox"> Navigation menu แสดงทุกหน้าและคลิกได้</li>
+      <li><input type="checkbox"> เลือก Theme ที่อ่านง่าย สีตัวอักษรชัดเจน</li>
+      <li><input type="checkbox"> ตรวจสะกดคำทุกหน้าแล้ว</li>
+      <li><input type="checkbox"> กด Publish แล้ว เปิดด้วย Incognito ได้</li>
+      <li><input type="checkbox"> Copy URL และทดสอบว่าคนอื่นเปิดได้</li>
+    </ul>
+  </div>
+
+  <!-- ส่วน 5: แชร์ลิงก์ -->
+  <div class="section">
+    <h2>ส่วนที่ 5: ส่งลิงก์เว็บไซต์ (3 คะแนน)</h2>
+    <div class="plan-box">
+      <p style="font-size:13px;font-weight:700;margin-bottom:8px">URL เว็บไซต์ที่ Publish แล้ว:</p>
+      <div class="write-line" style="font-size:14px"></div>
+      <p style="font-size:13px;margin-top:10px;font-weight:700">ฉันได้ทดสอบโดย:</p>
+      <label style="font-size:13px;display:block;margin:4px 0"><input type="checkbox"> เปิดใน Incognito mode แล้วได้ผล</label>
+      <label style="font-size:13px;display:block;margin:4px 0"><input type="checkbox"> ส่ง URL ให้เพื่อนทดสอบแล้วเปิดได้</label>
+      <p style="font-size:13px;margin-top:10px;font-weight:700">สิ่งที่ฉันภูมิใจมากที่สุดในเว็บนี้คือ:</p>
+      <div class="write-line"></div>
+      <div class="write-line"></div>
+    </div>
+  </div>
+
+  <!-- Rubric -->
+  <div class="section">
+    <h2>เกณฑ์การให้คะแนน (รวม 20 คะแนน)</h2>
+    <table class="rubric">
+      <tr><th>ส่วน</th><th class="desc">เกณฑ์</th><th>เต็ม</th><th>ที่ได้</th></tr>
+      <tr><td>1. วางแผน</td><td class="desc">ครบทุก field ชื่อเว็บ URL ธีม เนื้อหา ผู้ชม</td><td>4</td><td></td></tr>
+      <tr><td>2. แผนหน้า</td><td class="desc">มีอย่างน้อย 3 หน้า ระบุเนื้อหาชัดเจน</td><td>4</td><td></td></tr>
+      <tr><td>3. Wireframe</td><td class="desc">วาดครบ 3 หน้า แสดง Layout ที่เข้าใจได้</td><td>6</td><td></td></tr>
+      <tr><td>4. Checklist</td><td class="desc">ติ๊กครบ มีหลักฐานการตรวจสอบจริง</td><td>3</td><td></td></tr>
+      <tr><td>5. URL</td><td class="desc">ส่ง URL ที่ใช้งานได้จริง เปิดได้โดยทุกคน</td><td>3</td><td></td></tr>
+    </table>
+    <div class="score-row">
+      <p style="font-size:13px">ความคิดเห็นครู: <span style="border-bottom:1px solid #ccc;display:inline-block;width:260px"></span></p>
+      <p style="font-size:15px;font-weight:800">รวม: _____ / 20 คะแนน</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

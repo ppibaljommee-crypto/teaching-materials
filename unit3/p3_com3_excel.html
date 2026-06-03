@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"><title>ป.3 คอมพิวเตอร์เพิ่มเติม ใบงาน Excel ตารางรายรับรายจ่าย</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Sarabun',sans-serif;background:#fff;padding:16px}
+.page{max-width:800px;margin:0 auto}
+.header{background:linear-gradient(135deg,#065f46,#0d9488,#14b8a6);border-radius:16px;padding:14px 20px;display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.header-icon{font-size:38px}
+.header-text h1{color:#fff;font-size:19px;font-weight:800}
+.header-text p{color:rgba(255,255,255,.85);font-size:12px}
+.badge{background:#022c22;color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;display:inline-block;margin-bottom:4px}
+.info-row{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:8px;margin-bottom:14px}
+.info-box{border:1.5px solid #ddd;border-radius:8px;padding:6px 10px;font-size:13px}
+.info-box label{font-size:11px;color:#888;display:block}
+.info-box .line{border-bottom:1px solid #ccc;margin-top:8px}
+.section{margin-bottom:22px}
+.section h2{font-size:15px;font-weight:800;color:#065f46;border-left:4px solid #14b8a6;padding-left:10px;margin-bottom:12px}
+/* fill */
+.fill-item{display:flex;align-items:baseline;gap:6px;font-size:13px;margin-bottom:8px;flex-wrap:wrap;padding:6px 10px;background:#f0fdf4;border-radius:8px}
+.blank{border:none;border-bottom:2px solid #14b8a6;width:100px;font-family:'Sarabun',sans-serif;font-size:13px;background:transparent;color:#065f46;font-weight:700}
+/* Excel table exercise */
+.excel-task{background:#f0fdf4;border:2px solid #86efac;border-radius:12px;padding:14px;margin-bottom:10px}
+.excel-task h3{font-size:14px;font-weight:700;color:#065f46;margin-bottom:10px}
+.ex-table{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:8px}
+.ex-table .col-head{background:#047857;color:#fff;padding:7px 8px;border:1px solid #86efac;text-align:center;font-weight:700}
+.ex-table .row-num{background:#d1fae5;padding:7px 6px;border:1px solid #86efac;text-align:center;font-weight:700;color:#065f46}
+.ex-table td{border:1px solid #86efac;padding:2px}
+.ex-table input{border:none;width:100%;font-family:'Sarabun',sans-serif;font-size:12px;padding:4px;background:transparent;color:#065f46}
+.ex-table .formula-cell{background:#d1fae5}
+.ex-table .formula-cell input{color:#047857;font-weight:700}
+/* formula ref */
+.formula-ref{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.formula-card{border:1.5px solid #86efac;border-radius:8px;padding:10px 12px;background:#f0fdf4}
+.formula-card h4{font-size:12px;font-weight:800;color:#065f46;margin-bottom:6px}
+.formula-card p{font-size:12px;color:#444;margin-bottom:4px}
+.formula-code{font-family:monospace;background:#047857;color:#fff;border-radius:5px;padding:2px 8px;font-size:12px;display:inline-block;margin-bottom:4px}
+/* score rubric */
+.score-row{display:flex;justify-content:space-between;align-items:center;border-top:2px solid #86efac;padding-top:12px}
+.rubric{border:1.5px solid #86efac;border-radius:10px;padding:10px 14px;background:#f0fdf4;font-size:12px}
+@media print{body{padding:8px}@page{size:A4;margin:10mm}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div class="header-icon">📊</div>
+    <div class="header-text">
+      <div class="badge">คอมพิวเตอร์เพิ่มเติม • ป.3 • หน่วย 3</div>
+      <h1>ใบงาน Excel — บัญชีรายรับรายจ่ายประจำสัปดาห์</h1>
+      <p>Cell • Row • Column • SUM • AVERAGE • MAX • MIN</p>
+    </div>
+  </div>
+  <div class="info-row">
+    <div class="info-box"><label>ชื่อ-นามสกุล</label><div class="line"></div></div>
+    <div class="info-box"><label>ชั้น/ห้อง</label><div class="line"></div></div>
+    <div class="info-box"><label>เลขที่</label><div class="line"></div></div>
+    <div class="info-box"><label>วันที่</label><div class="line"></div></div>
+  </div>
+
+  <!-- ข้อ 1: เติมคำ -->
+  <div class="section">
+    <h2>ข้อ 1: เติมคำในช่องว่าง (6 คะแนน)</h2>
+    <div class="fill-item">1. Excel คือโปรแกรม <input class="blank" placeholder=".............."> ใช้จัดเก็บข้อมูลเป็นตาราง</div>
+    <div class="fill-item">2. Cell คือ <input class="blank" placeholder=".............."> ในตาราง Excel</div>
+    <div class="fill-item">3. Cell ที่อยู่คอลัมน์ C แถวที่ 5 เรียกว่า <input class="blank" placeholder="......"></div>
+    <div class="fill-item">4. สูตรที่ใช้หาผลรวมคือ <input class="blank" placeholder="=..........(...)"></div>
+    <div class="fill-item">5. สูตรที่ใช้หาค่าเฉลี่ยคือ <input class="blank" placeholder="=..........(...)"></div>
+    <div class="fill-item">6. Row คือแนว <input class="blank" placeholder="......"> ส่วน Column คือแนว <input class="blank" placeholder="......"></div>
+  </div>
+
+  <!-- ข้อ 2: สูตรอ้างอิง -->
+  <div class="section">
+    <h2>ข้อ 2: สูตรที่ต้องใช้ (อ้างอิง)</h2>
+    <div class="formula-ref">
+      <div class="formula-card">
+        <h4>➕ SUM — ผลรวม</h4>
+        <span class="formula-code">=SUM(C2:C8)</span>
+        <p>บวกตัวเลขทุกค่า ใน C2 ถึง C8</p>
+      </div>
+      <div class="formula-card">
+        <h4>📊 AVERAGE — ค่าเฉลี่ย</h4>
+        <span class="formula-code">=AVERAGE(C2:C8)</span>
+        <p>คำนวณค่าเฉลี่ยของช่วงข้อมูล</p>
+      </div>
+      <div class="formula-card">
+        <h4>📈 MAX — ค่ามากสุด</h4>
+        <span class="formula-code">=MAX(C2:C8)</span>
+        <p>หาตัวเลขที่มากที่สุดในช่วง</p>
+      </div>
+      <div class="formula-card">
+        <h4>📉 MIN — ค่าน้อยสุด</h4>
+        <span class="formula-code">=MIN(C2:C8)</span>
+        <p>หาตัวเลขที่น้อยที่สุดในช่วง</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ข้อ 3: ตารางรายรับรายจ่าย -->
+  <div class="section">
+    <h2>ข้อ 3: สร้างตารางรายรับรายจ่ายประจำสัปดาห์ (14 คะแนน)</h2>
+    <p style="font-size:13px;color:#555;margin-bottom:10px">กรอกข้อมูลรายรับรายจ่ายสัปดาห์นี้จริงๆ แล้วเขียนสูตรในช่องสีเขียว</p>
+    <div class="excel-task">
+      <h3>📊 ตารางรายรับรายจ่ายประจำสัปดาห์</h3>
+      <table class="ex-table">
+        <tr>
+          <td class="col-head">A: วันที่</td>
+          <td class="col-head">B: รายการ</td>
+          <td class="col-head">C: รายรับ (บาท)</td>
+          <td class="col-head">D: รายจ่าย (บาท)</td>
+        </tr>
+        <tr>
+          <td class="row-num">2</td>
+          <td><input placeholder="เช่น 1 มิ.ย."></td>
+          <td><input placeholder="รายการ"></td>
+          <td><input placeholder="ยอดเงิน" type="number" min="0"></td>
+          <td><input placeholder="ยอดเงิน" type="number" min="0"></td>
+        </tr>
+        <tr style="background:#f0fdf4">
+          <td class="row-num">3</td>
+          <td><input placeholder="วันที่"></td>
+          <td><input placeholder="รายการ"></td>
+          <td><input placeholder="ยอดเงิน" type="number" min="0"></td>
+          <td><input placeholder="ยอดเงิน" type="number" min="0"></td>
+        </tr>
+        <tr>
+          <td class="row-num">4</td>
+          <td><input placeholder="วันที่"></td>
+          <td><input placeholder="รายการ"></td>
+          <td><input placeholder="ยอดเงิน" type="number" min="0"></td>
+          <td><input placeholder="ยอดเงิน" type="number" min="0"></td>
+        </tr>
+        <tr style="background:#f0fdf4">
+          <td class="row-num">5</td>
+          <td><input placeholder="วันที่"></td>
+          <td><input placeholder="รายการ"></td>
+          <td><input placeholder="ยอดเงิน" type="number" min="0"></td>
+          <td><input placeholder="ยอดเงิน" type="number" min="0"></td>
+        </tr>
+        <tr>
+          <td class="row-num">6</td>
+          <td><input placeholder="วันที่"></td>
+          <td><input placeholder="รายการ"></td>
+          <td><input placeholder="ยอดเงิน" type="number" min="0"></td>
+          <td><input placeholder="ยอดเงิน" type="number" min="0"></td>
+        </tr>
+        <tr style="background:#f0fdf4">
+          <td class="row-num">7</td>
+          <td><input placeholder="วันที่"></td>
+          <td><input placeholder="รายการ"></td>
+          <td><input placeholder="ยอดเงิน" type="number" min="0"></td>
+          <td><input placeholder="ยอดเงิน" type="number" min="0"></td>
+        </tr>
+        <tr>
+          <td class="row-num">8</td>
+          <td><input placeholder="วันที่"></td>
+          <td><input placeholder="รายการ"></td>
+          <td><input placeholder="ยอดเงิน" type="number" min="0"></td>
+          <td><input placeholder="ยอดเงิน" type="number" min="0"></td>
+        </tr>
+        <tr>
+          <td class="row-num" style="background:#bbf7d0">9</td>
+          <td colspan="2" class="formula-cell" style="font-weight:700;color:#065f46;padding:4px 8px">รวมทั้งหมด</td>
+          <td class="formula-cell"><input placeholder="=SUM(C2:C8)" style="color:#047857;font-weight:700"></td>
+          <td class="formula-cell"><input placeholder="=SUM(D2:D8)" style="color:#047857;font-weight:700"></td>
+        </tr>
+        <tr>
+          <td class="row-num" style="background:#bbf7d0">10</td>
+          <td colspan="2" class="formula-cell" style="font-weight:700;color:#065f46;padding:4px 8px">ค่าเฉลี่ยต่อวัน</td>
+          <td class="formula-cell"><input placeholder="=AVERAGE(C2:C8)" style="color:#047857;font-weight:700"></td>
+          <td class="formula-cell"><input placeholder="=AVERAGE(D2:D8)" style="color:#047857;font-weight:700"></td>
+        </tr>
+        <tr>
+          <td class="row-num" style="background:#bbf7d0">11</td>
+          <td colspan="2" class="formula-cell" style="font-weight:700;color:#065f46;padding:4px 8px">ยอดสูงสุดใน 1 วัน</td>
+          <td class="formula-cell"><input placeholder="=MAX(C2:C8)" style="color:#047857;font-weight:700"></td>
+          <td class="formula-cell"><input placeholder="=MAX(D2:D8)" style="color:#047857;font-weight:700"></td>
+        </tr>
+        <tr>
+          <td class="row-num" style="background:#bbf7d0">12</td>
+          <td colspan="3" class="formula-cell" style="font-weight:700;color:#065f46;padding:4px 8px">เงินคงเหลือ = รายรับรวม - รายจ่ายรวม</td>
+          <td class="formula-cell"><input placeholder="=C9-D9" style="color:#047857;font-weight:700"></td>
+        </tr>
+      </table>
+      <p style="font-size:11px;color:#888;margin-top:4px">* ช่องสีเขียว = ใส่สูตร Excel (เริ่มด้วย =)</p>
+    </div>
+  </div>
+
+  <!-- ข้อ 4: วิเคราะห์ -->
+  <div class="section">
+    <h2>ข้อ 4: วิเคราะห์ผลตาราง (5 คะแนน)</h2>
+    <div class="fill-item">สัปดาห์นี้มีรายรับรวม ____________ บาท รายจ่ายรวม ____________ บาท</div>
+    <div class="fill-item">เงินคงเหลือ = ____________ บาท (ถ้าลบแล้วติดลบ แปลว่า ____________)</div>
+    <div class="fill-item">วันที่ใช้จ่ายมากที่สุดคือ ____________ ใช้ไป ____________ บาท</div>
+    <div class="fill-item" style="height:40px;align-items:flex-start">ข้อคิดจากตารางนี้: เดือนหน้าควรลดค่าใช้จ่ายเรื่อง ____________</div>
+  </div>
+
+  <div class="rubric" style="margin-bottom:12px">
+    <p style="font-weight:700;color:#065f46;margin-bottom:4px">เกณฑ์ตรวจสอบ:</p>
+    <p>25 คะแนน = ยอดเยี่ยม | 20–24 = ดีมาก | 15–19 = ดี | 10–14 = พอใช้ | ต่ำกว่า 10 = ต้องพัฒนา</p>
+  </div>
+  <div class="score-row">
+    <div style="font-size:13px;color:#888">ลายเซ็นครูผู้ตรวจ: ________________</div>
+    <div style="text-align:right"><div style="font-size:13px;color:#888">คะแนน</div><div style="font-size:22px;font-weight:800;color:#065f46">______ / 25</div></div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ป.2 วิทยาการคำนวณ หน่วย 3 — สร้างการ์ตูนสั้น (ScratchJr)</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Sarabun',sans-serif;background:#001a2e;overflow:hidden;height:100vh}
+.prog-bar{position:fixed;top:0;left:0;height:4px;background:linear-gradient(90deg,#06b6d4,#38bdf8,#7dd3fc);transition:width .4s;z-index:300;box-shadow:0 0 10px rgba(6,182,212,.6)}
+.slide{display:none;width:100vw;height:100vh;flex-direction:column;align-items:center;justify-content:center;padding:40px 32px;position:relative}
+.slide.active{display:flex;animation:fadeUp .4s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.s1{background:linear-gradient(135deg,#001a2e,#0c4a6e,#0369a1,#0891b2)}
+.s2{background:linear-gradient(135deg,#00101a,#082f49,#0c4a6e)}
+.s3{background:linear-gradient(135deg,#001020,#0a3055,#075985,#0e7490)}
+.s4{background:linear-gradient(135deg,#050015,#1e1b4b,#2563eb,#0ea5e9)}
+.s5{background:linear-gradient(135deg,#001a10,#064e3b,#0891b2)}
+.s6{background:linear-gradient(135deg,#0a0020,#1e1b4b,#1d4ed8,#06b6d4)}
+.s7{background:linear-gradient(135deg,#001020,#083344,#0e7490,#06b6d4)}
+.s8{background:linear-gradient(135deg,#100010,#312e81,#3730a3,#0ea5e9)}
+.s9{background:linear-gradient(135deg,#001a08,#14532d,#0369a1)}
+.s10{background:linear-gradient(135deg,#001020,#0c4a6e,#0891b2)}
+.s11{background:linear-gradient(135deg,#0a0020,#1e1b4b,#0ea5e9)}
+.s12{background:linear-gradient(135deg,#001a2e,#0f172a,#0c4a6e,#06b6d4)}
+h1{font-size:clamp(28px,5.5vw,62px);font-weight:800;color:#fff;text-align:center;line-height:1.15}
+h2{font-size:clamp(20px,3.8vw,44px);font-weight:700;color:#fff;text-align:center;line-height:1.3}
+p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:center;margin-top:12px}
+.badge{background:rgba(6,182,212,.3);border:1px solid rgba(6,182,212,.6);border-radius:50px;padding:8px 24px;font-size:clamp(12px,1.6vw,18px);color:#a5f3fc;font-weight:700;margin-bottom:16px}
+.big-emoji{font-size:clamp(60px,12vw,120px);text-align:center;line-height:1;margin-bottom:8px}
+.box{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);backdrop-filter:blur(12px);border-radius:20px;padding:22px 30px;width:100%;max-width:880px;margin-top:14px}
+.step-list{list-style:none;width:100%;max-width:820px;margin-top:12px}
+.step-list li{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:12px 20px;margin-bottom:10px;font-size:clamp(14px,2.2vw,24px);color:#fff;display:flex;align-items:center;gap:14px;animation:slideIn .4s ease both}
+@keyframes slideIn{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
+.step-list li:nth-child(1){animation-delay:.1s}.step-list li:nth-child(2){animation-delay:.2s}.step-list li:nth-child(3){animation-delay:.3s}.step-list li:nth-child(4){animation-delay:.4s}.step-list li:nth-child(5){animation-delay:.5s}
+.sn{background:#06b6d4;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px;flex-shrink:0;color:#fff}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;width:100%;max-width:880px;margin-top:14px}
+.col{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:18px 22px}
+.col h4{font-size:clamp(14px,2.2vw,22px);color:#7dd3fc;font-weight:800;margin-bottom:10px}
+.col p,.col li{font-size:clamp(12px,1.7vw,19px);color:rgba(255,255,255,.85);padding:4px 0;list-style:none}
+.quiz-opts{display:flex;flex-direction:column;gap:10px;width:100%;max-width:720px;margin-top:14px}
+.qbtn{background:rgba(255,255,255,.09);border:1.5px solid rgba(255,255,255,.2);border-radius:14px;padding:13px 20px;color:#fff;font-size:clamp(14px,2vw,22px);font-weight:700;cursor:pointer;text-align:left;font-family:'Sarabun',sans-serif;transition:all .2s}
+.qbtn:hover{background:rgba(255,255,255,.16)}
+.qbtn.correct{background:rgba(74,222,128,.2);border-color:#4ade80;color:#4ade80}
+.qbtn.wrong{background:rgba(248,113,113,.15);border-color:#f87171;opacity:.7}
+.result-msg{font-size:clamp(16px,2.5vw,28px);font-weight:800;text-align:center;margin-top:12px;display:none}
+.teacher-note{position:fixed;top:18px;right:18px;background:rgba(0,0,0,.65);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:10px 16px;color:rgba(255,255,255,.65);font-size:13px;max-width:280px;text-align:right;cursor:pointer;z-index:200;transition:opacity .2s}
+.timer-widget{position:fixed;top:18px;left:18px;z-index:200}
+.timer-btn{background:rgba(6,182,212,.2);border:1px solid rgba(6,182,212,.4);border-radius:10px;padding:8px 14px;color:#a5f3fc;font-size:13px;font-weight:700;cursor:pointer;font-family:'Sarabun',sans-serif}
+.timer-display{background:rgba(0,0,0,.7);border:1px solid rgba(6,182,212,.4);border-radius:10px;padding:10px 18px;color:#38bdf8;font-size:28px;font-weight:800;text-align:center;margin-top:6px;display:none;font-family:monospace}
+.nav{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:14px;z-index:100}
+.nav-btn{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:50%;width:52px;height:52px;font-size:22px;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center}
+.nav-btn:hover{background:rgba(255,255,255,.25);transform:scale(1.1)}
+.counter{background:rgba(0,0,0,.5);color:#fff;border-radius:20px;padding:8px 20px;font-size:16px;font-weight:700;border:1px solid rgba(255,255,255,.15)}
+.dots{display:flex;gap:7px;align-items:center}
+.dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.25);transition:all .3s}
+.dot.on{background:#06b6d4;transform:scale(1.5);box-shadow:0 0 8px #06b6d4}
+.reveal-btn{background:rgba(6,182,212,.5);border:1px solid #06b6d4;color:#fff;border-radius:50px;padding:11px 28px;font-size:clamp(13px,1.8vw,20px);font-weight:700;cursor:pointer;font-family:'Sarabun',sans-serif;transition:all .2s;margin-top:12px}
+.reveal-text{color:#7dd3fc;font-size:clamp(15px,2.3vw,26px);font-weight:800;text-align:center;margin-top:12px;display:none}
+.reveal-text.show{display:block;animation:fadeUp .4s ease}
+.activity-box{background:rgba(6,182,212,.1);border:2px solid rgba(6,182,212,.4);border-radius:20px;padding:20px 28px;width:100%;max-width:820px;margin-top:14px;text-align:center}
+.activity-box h3{color:#7dd3fc;font-size:clamp(16px,2.5vw,28px);font-weight:800;margin-bottom:10px}
+.cmd-block{background:rgba(0,0,0,.3);border:1px solid rgba(6,182,212,.3);border-radius:14px;padding:14px 20px;margin-top:10px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.cmd-pill{background:rgba(6,182,212,.25);border:1px solid rgba(6,182,212,.5);border-radius:30px;padding:8px 20px;font-size:clamp(13px,1.8vw,20px);color:#a5f3fc;font-weight:700}
+.cmd-pill.move{background:rgba(59,130,246,.3);border-color:#3b82f6;color:#93c5fd}
+.cmd-pill.turn{background:rgba(168,85,247,.3);border-color:#a855f7;color:#d8b4fe}
+.cmd-pill.say{background:rgba(234,179,8,.3);border-color:#eab308;color:#fde047}
+.cmd-pill.when{background:rgba(239,68,68,.3);border-color:#ef4444;color:#fca5a5}
+</style>
+</head>
+<body>
+<div class="prog-bar" id="prog"></div>
+<div class="timer-widget">
+  <button class="timer-btn" onclick="startTimer(10)">⏱ 10 นาที</button>
+  <div class="timer-display" id="timerDisplay">10:00</div>
+</div>
+
+<!-- S1: Title -->
+<div class="slide s1 active" id="s1">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 เริ่มด้วยการถามนักเรียน: "ใครเคยดูการ์ตูนบ้าง? อยากสร้างการ์ตูนเองไหม?"</div>
+  <div class="badge">วิทยาการคำนวณ • ป.2 • หน่วยที่ 3</div>
+  <div class="big-emoji">🎬</div>
+  <h1>สร้างการ์ตูนสั้น<br>ของตัวเอง!</h1>
+  <p class="sub">ScratchJr • ตัวละคร • ฉาก • คำสั่ง</p>
+</div>
+
+<!-- S2: ScratchJr คืออะไร -->
+<div class="slide s2" id="s2">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 เปิด ScratchJr บน iPad/แท็บเล็ตให้นักเรียนดู หรือแสดงบนจอใหญ่</div>
+  <h2>🐱 ScratchJr คืออะไร?</h2>
+  <div class="box" style="text-align:center">
+    <p style="font-size:clamp(15px,2.5vw,28px);color:#fff">ScratchJr = โปรแกรม <span style="color:#7dd3fc">สร้างการ์ตูนและเกม</span><br>สำหรับเด็กอายุ 5–8 ปี ใช้ <span style="color:#fde047">บล็อกคำสั่ง</span> แทนการพิมพ์โค้ด</p>
+  </div>
+  <div class="two-col">
+    <div class="col">
+      <h4>✅ ทำอะไรได้บ้าง?</h4>
+      <p>• สร้างตัวละครเคลื่อนไหว</p>
+      <p>• วาดฉากสวยงาม</p>
+      <p>• ใส่เสียงและข้อความ</p>
+      <p>• แชร์การ์ตูนให้เพื่อนดูได้</p>
+    </div>
+    <div class="col">
+      <h4 style="color:#fde047">📱 ใช้งานบนอะไร?</h4>
+      <p>• iPad / Tablet</p>
+      <p>• โทรศัพท์ Android</p>
+      <p>• คอมพิวเตอร์ (ดาวน์โหลดได้)</p>
+      <p style="color:rgba(255,255,255,.5);font-size:13px;margin-top:6px">ฟรี! ไม่มีค่าใช้จ่าย</p>
+    </div>
+  </div>
+</div>
+
+<!-- S3: ส่วนประกอบของ ScratchJr -->
+<div class="slide s3" id="s3">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ชี้แต่ละส่วนบนหน้าจอจริง ให้นักเรียนบอกชื่อตาม</div>
+  <h2>🖥️ ส่วนประกอบของ ScratchJr</h2>
+  <ul class="step-list">
+    <li><span class="sn">1</span><strong style="color:#7dd3fc">Stage (เวที)</strong> — พื้นที่แสดงการ์ตูน ตัวละครเดินบนเวที</li>
+    <li><span class="sn">2</span><strong style="color:#a5f3fc">Sprite (ตัวละคร)</strong> — ตัวละครที่เราสั่งให้เคลื่อนไหว</li>
+    <li><span class="sn">3</span><strong style="color:#fde047">Block Area (บล็อกคำสั่ง)</strong> — ที่เก็บคำสั่งสีต่างๆ</li>
+    <li><span class="sn">4</span><strong style="color:#d8b4fe">Script Area (พื้นที่โค้ด)</strong> — ลากบล็อกมาต่อกันที่นี่</li>
+    <li><span class="sn">5</span><strong style="color:#fca5a5">Background (ฉาก)</strong> — พื้นหลังของเวที</li>
+  </ul>
+</div>
+
+<!-- S4: หมวดคำสั่งพื้นฐาน -->
+<div class="slide s4" id="s4">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 อธิบายทีละสีช้าๆ ให้นักเรียนบอกว่าแต่ละสีทำอะไร</div>
+  <h2>🎨 หมวดคำสั่ง (บล็อกสีต่างๆ)</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4 style="color:#fca5a5">🔴 Triggering (เริ่มต้น)</h4>
+      <p>บล็อกสีเหลือง/แดง — เริ่มโปรแกรม</p>
+      <p>เช่น "เมื่อกดธงเขียว"</p>
+      <div style="margin-top:8px">
+        <span class="cmd-pill when">เมื่อกด ▶</span>
+      </div>
+    </div>
+    <div class="col">
+      <h4 style="color:#93c5fd">🔵 Motion (เคลื่อนที่)</h4>
+      <p>บล็อกสีน้ำเงิน — สั่งให้เดิน หมุน</p>
+      <p>เช่น "เดิน 3 ก้าว"</p>
+      <div style="margin-top:8px">
+        <span class="cmd-pill move">เดิน →</span>
+        <span class="cmd-pill turn">หมุน ↺</span>
+      </div>
+    </div>
+    <div class="col">
+      <h4 style="color:#fde047">🟡 Looks (รูปร่าง)</h4>
+      <p>บล็อกสีม่วง — พูด ซ่อน แสดง เปลี่ยนขนาด</p>
+      <div style="margin-top:8px">
+        <span class="cmd-pill say">พูดว่า "..."</span>
+      </div>
+    </div>
+    <div class="col">
+      <h4 style="color:#86efac">🟢 Control (ควบคุม)</h4>
+      <p>บล็อกสีส้ม — รอ วนซ้ำ จบโปรแกรม</p>
+      <p>เช่น "รอ 1 วินาที"</p>
+    </div>
+  </div>
+</div>
+
+<!-- S5: คำสั่ง Move -->
+<div class="slide s5" id="s5">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สาธิตการลากบล็อก Move แล้วกด ▶ ให้ตัวละครเดิน ให้นักเรียนลองทำตาม</div>
+  <h2>🚶 คำสั่ง Move (เดิน)</h2>
+  <div class="box" style="text-align:center">
+    <span class="cmd-pill move" style="font-size:clamp(16px,2.5vw,28px);padding:12px 32px">เดิน → (จำนวนก้าว)</span>
+    <p style="color:rgba(255,255,255,.8);margin-top:14px;font-size:clamp(14px,2vw,22px)">บล็อกสีน้ำเงิน — ตัวละครเดินไปข้างหน้าตามจำนวนก้าวที่กำหนด</p>
+  </div>
+  <div class="two-col">
+    <div class="col">
+      <h4>ทดลองทำ</h4>
+      <p>1. เลือกตัวละคร</p>
+      <p>2. ลากบล็อก <span style="color:#93c5fd">เดิน 3 ก้าว</span></p>
+      <p>3. กด ▶ ดูผล</p>
+      <p style="color:#fde047;margin-top:6px">เปลี่ยนตัวเลขดูผลต่างกันไหม?</p>
+    </div>
+    <div class="col">
+      <h4>ทิศทางการเดิน</h4>
+      <p>→ เดินไปขวา</p>
+      <p>← เดินไปซ้าย</p>
+      <p>↑ เดินขึ้น</p>
+      <p>↓ เดินลง</p>
+    </div>
+  </div>
+</div>
+
+<!-- S6: คำสั่ง Turn/Say -->
+<div class="slide s6" id="s6">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 แสดงคำสั่ง Turn และ Say พร้อมกัน ให้นักเรียนลองต่อบล็อก 3 คำสั่งต่อกัน</div>
+  <h2>↺ Turn และ 💬 Say</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>↺ Turn (หมุน)</h4>
+      <p>หมุนตัวละครซ้าย/ขวา</p>
+      <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+        <span class="cmd-pill turn">หมุนซ้าย</span>
+        <span class="cmd-pill turn">หมุนขวา</span>
+      </div>
+      <p style="margin-top:10px;font-size:13px;color:rgba(255,255,255,.6)">ใส่ตัวเลข = จำนวนองศาที่หมุน<br>(90 = หมุน 1 ครั้ง เป็นมุมฉาก)</p>
+    </div>
+    <div class="col">
+      <h4>💬 Say (พูด)</h4>
+      <p>ให้ตัวละครพูดข้อความ</p>
+      <div style="margin-top:10px">
+        <span class="cmd-pill say">พูดว่า "สวัสดี!"</span>
+      </div>
+      <p style="margin-top:10px;font-size:13px;color:rgba(255,255,255,.6)">กรอกข้อความที่ต้องการให้ตัวละครพูด<br>ใส่ได้ทั้งภาษาไทยและอังกฤษ</p>
+    </div>
+  </div>
+  <div class="box" style="text-align:center;margin-top:14px">
+    <p style="color:#7dd3fc;font-size:clamp(14px,2vw,22px)">ลองต่อบล็อก: <span style="color:#fca5a5">กด ▶</span> → <span style="color:#93c5fd">เดิน 3 ก้าว</span> → <span style="color:#fde047">พูด "สวัสดี!"</span></p>
+  </div>
+</div>
+
+<!-- S7: คำสั่ง When (Trigger) -->
+<div class="slide s7" id="s7">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 เน้น: บล็อก When ต้องอยู่ต้นสุดเสมอ ไม่มี When = ไม่มีอะไรเกิดขึ้น</div>
+  <h2>▶ คำสั่ง When (เมื่อ...ทำ)</h2>
+  <div class="box" style="text-align:center">
+    <p style="font-size:clamp(14px,2vw,22px);color:#fff">บล็อก <span style="color:#fca5a5">When</span> = กำหนดว่า "เมื่อเกิดอะไร → ให้ทำอะไร"</p>
+    <p style="color:rgba(255,255,255,.6);font-size:14px;margin-top:6px">ต้องวางบล็อก When ไว้ที่หัวสุดของสคริปต์เสมอ</p>
+  </div>
+  <ul class="step-list" style="margin-top:12px">
+    <li><span class="cmd-pill when" style="padding:5px 14px;font-size:14px">เมื่อกด ▶</span> — เริ่มเมื่อกดปุ่มเล่น</li>
+    <li><span class="cmd-pill when" style="padding:5px 14px;font-size:14px">เมื่อแตะตัวละคร</span> — เริ่มเมื่อผู้ใช้แตะตัวละคร</li>
+    <li><span class="cmd-pill when" style="padding:5px 14px;font-size:14px">เมื่อได้รับข้อความ</span> — เริ่มเมื่อได้รับสัญญาณ</li>
+  </ul>
+</div>
+
+<!-- S8: สร้างตัวละคร -->
+<div class="slide s8" id="s8">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้นักเรียนเลือกตัวละครที่ชอบจาก Library แล้วตั้งชื่อ — ใช้เวลาประมาณ 5 นาที</div>
+  <h2>🐱 สร้างตัวละคร (Sprite)</h2>
+  <ul class="step-list">
+    <li><span class="sn">1</span>กดปุ่ม <strong style="color:#7dd3fc">+ เพิ่มตัวละคร</strong> ที่มุมล่างซ้าย</li>
+    <li><span class="sn">2</span>เลือกจาก <strong style="color:#fde047">Library</strong> (คลังตัวละคร) หรือ <strong style="color:#fde047">วาดเอง</strong></li>
+    <li><span class="sn">3</span>สามารถ <strong style="color:#d8b4fe">แก้ไข</strong> ตัวละครในโปรแกรมวาดรูปได้</li>
+    <li><span class="sn">4</span>ลากตัวละครไป <strong style="color:#86efac">วางบน Stage</strong> ในตำแหน่งที่ต้องการ</li>
+    <li><span class="sn">5</span>เพิ่มได้ <strong style="color:#fca5a5">หลายตัวละคร</strong> ในโปรเจกต์เดียว</li>
+  </ul>
+</div>
+
+<!-- S9: สร้างฉาก -->
+<div class="slide s9" id="s9">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สาธิตการเปลี่ยนฉาก ให้นักเรียนเลือกฉากที่เหมาะกับเรื่องที่อยากเล่า</div>
+  <h2>🌄 สร้างและเปลี่ยนฉาก (Background)</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>วิธีเปลี่ยนฉาก</h4>
+      <p>1. กดที่ <span style="color:#7dd3fc">รูปภาพ Stage</span> ด้านซ้าย</p>
+      <p>2. เลือก <span style="color:#fde047">Background Library</span></p>
+      <p>3. เลือกฉากที่ต้องการ</p>
+      <p>4. หรือกด <span style="color:#86efac">วาดเอง</span></p>
+    </div>
+    <div class="col">
+      <h4>ฉากที่มีใน Library</h4>
+      <p>🏠 บ้าน / ห้อง</p>
+      <p>🌳 ป่า / สวน</p>
+      <p>🏫 โรงเรียน</p>
+      <p>🌊 ทะเล / ชายหาด</p>
+      <p>🌆 เมือง / ถนน</p>
+    </div>
+  </div>
+  <div class="box" style="text-align:center;margin-top:10px">
+    <p style="color:#7dd3fc;font-size:clamp(14px,2vw,20px)">เลือกฉากให้เข้ากับเรื่องราวที่อยากเล่า<br>ฉากดี = การ์ตูนน่าดูยิ่งขึ้น!</p>
+  </div>
+</div>
+
+<!-- S10: Quiz -->
+<div class="slide s10" id="s10">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้นักเรียนช่วยกันตอบ ไม่ต้องเร่ง</div>
+  <h2>🎯 ทดสอบ: บล็อกสีน้ำเงินใน ScratchJr ใช้ทำอะไร?</h2>
+  <p class="sub">คิดดูว่าบล็อกสีน้ำเงินสัมพันธ์กับอะไร</p>
+  <div class="quiz-opts">
+    <button class="qbtn" onclick="qa(this,false)">A. ให้ตัวละครพูดข้อความ</button>
+    <button class="qbtn" onclick="qa(this,true)">B. สั่งให้ตัวละครเดินและเคลื่อนที่</button>
+    <button class="qbtn" onclick="qa(this,false)">C. เปลี่ยนสีฉากหลัง</button>
+    <button class="qbtn" onclick="qa(this,false)">D. บันทึกโปรเจกต์</button>
+  </div>
+  <div id="qa-msg" class="result-msg"></div>
+</div>
+
+<!-- S11: กิจกรรม -->
+<div class="slide s11" id="s11">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 แจกใบงาน คู่มือ ScratchJr ให้นักเรียน ให้เวลา 20 นาที</div>
+  <div class="big-emoji">🎬</div>
+  <h2>กิจกรรม: สร้างการ์ตูนสั้น 3 ฉาก</h2>
+  <div class="activity-box">
+    <h3>📋 โจทย์</h3>
+    <p style="color:rgba(255,255,255,.9);font-size:clamp(14px,2.2vw,22px)">สร้างการ์ตูนสั้นเรื่อง <strong style="color:#7dd3fc">"วันสนุกของฉัน"</strong><br>ต้องมี: ตัวละครอย่างน้อย 1 ตัว + เดิน + พูดอย่างน้อย 1 ประโยค</p>
+    <p style="margin-top:10px;color:rgba(255,255,255,.55);font-size:14px">ใช้คำสั่ง: เมื่อกด ▶ → เดิน → พูด → เปลี่ยนฉาก</p>
+  </div>
+  <button class="timer-btn" onclick="startTimer(20)" style="margin-top:14px;font-size:15px;padding:10px 24px">⏱ 20 นาที</button>
+</div>
+
+<!-- S12: สรุป -->
+<div class="slide s12" id="s12">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สรุปบทเรียน ให้นักเรียนบอกว่าวันนี้เรียนรู้อะไรบ้าง</div>
+  <div class="badge">สรุปบทเรียน หน่วยที่ 3</div>
+  <h2>🎓 สรุป: สร้างการ์ตูนสั้นด้วย ScratchJr</h2>
+  <ul class="step-list">
+    <li><span class="sn">📱</span><strong style="color:#7dd3fc">ScratchJr</strong> = โปรแกรมสร้างการ์ตูนสำหรับเด็ก ใช้บล็อกคำสั่ง</li>
+    <li><span class="sn">🎭</span><strong style="color:#a5f3fc">Sprite</strong> = ตัวละคร | <strong style="color:#fde047">Stage</strong> = เวทีแสดง</li>
+    <li><span class="sn">🔵</span>บล็อก <strong style="color:#93c5fd">Move</strong> = เดิน | <strong style="color:#d8b4fe">Turn</strong> = หมุน</li>
+    <li><span class="sn">💬</span>บล็อก <strong style="color:#fde047">Say</strong> = พูด | <strong style="color:#fca5a5">When</strong> = เริ่มต้นเมื่อ...</li>
+    <li><span class="sn">🌄</span><strong style="color:#86efac">Background</strong> = ฉาก เปลี่ยนได้ตามเรื่องราว</li>
+  </ul>
+</div>
+
+<div class="nav">
+  <button class="nav-btn" onclick="go(-1)">◀</button>
+  <div class="dots" id="dots"></div>
+  <span class="counter" id="counter">1 / 12</span>
+  <button class="nav-btn" onclick="go(1)">▶</button>
+</div>
+
+<script>
+let cur=0;
+const slides=document.querySelectorAll('.slide');
+const total=slides.length;
+for(let i=0;i<total;i++){const d=document.createElement('div');d.className='dot'+(i===0?' on':'');document.getElementById('dots').appendChild(d);}
+function showSlide(n){slides[cur].classList.remove('active');document.querySelectorAll('.dot')[cur].classList.remove('on');cur=Math.max(0,Math.min(n,total-1));slides[cur].classList.add('active');document.querySelectorAll('.dot')[cur].classList.add('on');document.getElementById('counter').textContent=(cur+1)+' / '+total;document.getElementById('prog').style.width=((cur+1)/total*100)+'%';}
+function go(d){showSlide(cur+d)}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')go(1);if(e.key==='ArrowLeft')go(-1);});
+function rev(id){document.getElementById(id).classList.toggle('show')}
+function qa(btn,correct){document.querySelectorAll('.qbtn').forEach(b=>b.disabled=true);btn.classList.add(correct?'correct':'wrong');const msg=document.getElementById('qa-msg');msg.style.display='block';msg.style.color=correct?'#4ade80':'#f87171';msg.textContent=correct?'🎉 ถูกต้อง! บล็อกสีน้ำเงิน = Motion สั่งให้ตัวละครเคลื่อนที่':'❌ ลองใหม่ — บล็อกสีน้ำเงิน = Motion (การเคลื่อนที่)';}
+let timerInterval=null;
+function startTimer(min){clearInterval(timerInterval);let sec=min*60;const disp=document.getElementById('timerDisplay');disp.style.display='block';function tick(){const m=Math.floor(sec/60);const s=sec%60;disp.textContent=m+':'+(s<10?'0':'')+s;if(sec===0){clearInterval(timerInterval);disp.textContent='⏰ หมดเวลา!';}sec--;}tick();timerInterval=setInterval(tick,1000);}
+showSlide(0);
+</script>
+</body>
+</html>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ป.1 วิทยาการคำนวณ หน่วย 4 — สั่งงานได้ด้วยโปรแกรม</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Sarabun',sans-serif;background:#1a0800;overflow:hidden;height:100vh}
+.prog-bar{position:fixed;top:0;left:0;height:4px;background:linear-gradient(90deg,#f97316,#fbbf24,#fde68a);transition:width .4s;z-index:300;box-shadow:0 0 10px rgba(249,115,22,.6)}
+.slide{display:none;width:100vw;height:100vh;flex-direction:column;align-items:center;justify-content:center;padding:36px 32px;position:relative;overflow:hidden}
+.slide.active{display:flex;animation:fadeUp .4s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.s1{background:linear-gradient(135deg,#431407,#9a3412,#c2410c,#ea580c)}
+.s2{background:linear-gradient(135deg,#1c0a00,#431407,#7c2d12)}
+.s3{background:linear-gradient(135deg,#1a0500,#78350f,#b45309)}
+.s4{background:linear-gradient(135deg,#0f0500,#451a03,#92400e)}
+.s5{background:linear-gradient(135deg,#0a0a00,#365314,#4d7c0f)}
+.s6{background:linear-gradient(135deg,#1a0a00,#7c3a12,#d97706)}
+.s7{background:linear-gradient(135deg,#1a0010,#5b21b6,#7c3aed)}
+.s8{background:linear-gradient(135deg,#001a10,#065f46,#0f766e)}
+.s9{background:linear-gradient(135deg,#1a0000,#7f1d1d,#b91c1c)}
+.s10{background:linear-gradient(135deg,#060c0a,#134e4a,#0f766e)}
+.s11{background:linear-gradient(135deg,#1a0800,#7c2d12,#c2410c)}
+.s12{background:linear-gradient(135deg,#0a1a00,#14532d,#166534)}
+h1{font-size:clamp(28px,5.5vw,62px);font-weight:800;color:#fff;text-align:center;line-height:1.15}
+h2{font-size:clamp(20px,3.8vw,44px);font-weight:700;color:#fff;text-align:center;line-height:1.3}
+p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:center;margin-top:12px}
+.badge{background:rgba(249,115,22,.3);border:1px solid rgba(249,115,22,.6);border-radius:50px;padding:8px 24px;font-size:clamp(12px,1.6vw,18px);color:#fed7aa;font-weight:700;margin-bottom:16px}
+.big-emoji{font-size:clamp(60px,12vw,120px);text-align:center;line-height:1;margin-bottom:8px}
+.box{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);backdrop-filter:blur(12px);border-radius:20px;padding:22px 30px;width:100%;max-width:880px;margin-top:14px}
+.step-list{list-style:none;width:100%;max-width:820px;margin-top:12px}
+.step-list li{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:12px 20px;margin-bottom:10px;font-size:clamp(14px,2.2vw,24px);color:#fff;display:flex;align-items:center;gap:14px;animation:slideIn .4s ease both}
+@keyframes slideIn{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
+.step-list li:nth-child(1){animation-delay:.1s}.step-list li:nth-child(2){animation-delay:.2s}.step-list li:nth-child(3){animation-delay:.3s}.step-list li:nth-child(4){animation-delay:.4s}.step-list li:nth-child(5){animation-delay:.5s}
+.sn{background:#f97316;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px;flex-shrink:0;color:#fff}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;width:100%;max-width:880px;margin-top:14px}
+.col{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:18px 22px}
+.col h4{font-size:clamp(14px,2.2vw,22px);color:#fed7aa;font-weight:800;margin-bottom:10px}
+.col p{font-size:clamp(12px,1.7vw,19px);color:rgba(255,255,255,.85);padding:4px 0}
+.quiz-opts{display:flex;flex-direction:column;gap:10px;width:100%;max-width:720px;margin-top:14px}
+.qbtn{background:rgba(255,255,255,.09);border:1.5px solid rgba(255,255,255,.2);border-radius:14px;padding:13px 20px;color:#fff;font-size:clamp(14px,2vw,22px);font-weight:700;cursor:pointer;text-align:left;font-family:'Sarabun',sans-serif;transition:all .2s}
+.qbtn:hover{background:rgba(255,255,255,.16)}
+.qbtn.correct{background:rgba(74,222,128,.2);border-color:#4ade80;color:#4ade80}
+.qbtn.wrong{background:rgba(248,113,113,.15);border-color:#f87171;opacity:.7}
+.result-msg{font-size:clamp(16px,2.5vw,28px);font-weight:800;text-align:center;margin-top:12px;display:none}
+.teacher-note{position:fixed;top:18px;right:18px;background:rgba(0,0,0,.65);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:10px 16px;color:rgba(255,255,255,.65);font-size:13px;max-width:280px;text-align:right;cursor:pointer;z-index:200;transition:opacity .2s}
+.teacher-note:hover{opacity:.3}
+.timer-widget{position:fixed;top:18px;left:18px;z-index:200}
+.timer-btn{background:rgba(249,115,22,.2);border:1px solid rgba(249,115,22,.4);border-radius:10px;padding:8px 14px;color:#fed7aa;font-size:13px;font-weight:700;cursor:pointer;font-family:'Sarabun',sans-serif}
+.timer-display{background:rgba(0,0,0,.7);border:1px solid rgba(249,115,22,.4);border-radius:10px;padding:10px 18px;color:#fb923c;font-size:28px;font-weight:800;text-align:center;margin-top:6px;display:none;font-family:monospace}
+.nav{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:14px;z-index:100}
+.nav-btn{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:50%;width:52px;height:52px;font-size:22px;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center}
+.nav-btn:hover{background:rgba(255,255,255,.25);transform:scale(1.1)}
+.counter{background:rgba(0,0,0,.5);color:#fff;border-radius:20px;padding:8px 20px;font-size:16px;font-weight:700;border:1px solid rgba(255,255,255,.15)}
+.dots{display:flex;gap:7px;align-items:center}
+.dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.25);transition:all .3s}
+.dot.on{background:#f97316;transform:scale(1.5);box-shadow:0 0 8px #f97316}
+.reveal-btn{background:rgba(249,115,22,.5);border:1px solid #f97316;color:#fff;border-radius:50px;padding:11px 28px;font-size:clamp(13px,1.8vw,20px);font-weight:700;cursor:pointer;font-family:'Sarabun',sans-serif;transition:all .2s;margin-top:12px}
+.reveal-text{color:#fed7aa;font-size:clamp(15px,2.3vw,26px);font-weight:800;text-align:center;margin-top:12px;display:none}
+.reveal-text.show{display:block;animation:fadeUp .4s ease}
+.activity-box{background:rgba(249,115,22,.1);border:2px solid rgba(249,115,22,.4);border-radius:20px;padding:20px 28px;width:100%;max-width:820px;margin-top:14px;text-align:center}
+.activity-box h3{color:#fed7aa;font-size:clamp(16px,2.5vw,28px);font-weight:800;margin-bottom:10px}
+.block-demo{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:12px}
+.scratch-block{border-radius:8px;padding:8px 16px;font-size:clamp(12px,1.7vw,18px);font-weight:800;color:#fff;display:flex;align-items:center;gap:6px}
+.block-event{background:#c2870f}
+.block-motion{background:#4c97ff}
+.block-looks{background:#9966ff}
+.block-sound{background:#cf63cf}
+.block-control{background:#ffab19}
+</style>
+</head>
+<body>
+<div class="prog-bar" id="prog"></div>
+<div class="timer-widget"><button class="timer-btn" onclick="startTimer(10)">⏱ 10 นาที</button><div class="timer-display" id="timerDisplay">10:00</div></div>
+
+<!-- S1: Title -->
+<div class="slide s1 active" id="s1">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 เปิดด้วยคำถาม: "ถ้าเราอยากให้ตัวละครในเกมเดินไปข้างหน้า เราต้องทำอะไร?"</div>
+  <div class="badge">วิทยาการคำนวณ • ป.1 • หน่วยที่ 4</div>
+  <div class="big-emoji">🎮</div>
+  <h1>สั่งงานได้ด้วยโปรแกรม</h1>
+  <p class="sub">ScratchJr โปรเจกต์ • คำสั่ง • ลำดับขั้นตอน • การ์ตูนสั้น</p>
+</div>
+
+<!-- S2: ทบทวน ScratchJr -->
+<div class="slide s2" id="s2">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ทบทวนจากหน่วย 3: นักเรียนเคยทำอะไรใน ScratchJr บ้าง? ให้ยกมือเล่าให้ฟัง</div>
+  <h2>🔄 จำ ScratchJr จากหน่วย 3 ได้ไหม?</h2>
+  <ul class="step-list">
+    <li><span class="sn">1</span>ScratchJr คือแอปสร้างการ์ตูนและเกมง่ายๆ บนแท็บเล็ต</li>
+    <li><span class="sn">2</span>เราใช้ <strong style="color:#fde68a">บล็อกสี</strong> ต่อกันเหมือนตัวต่อเลโก้</li>
+    <li><span class="sn">3</span>แต่ละบล็อกคือ <strong style="color:#fb923c">คำสั่ง</strong> ที่บอกให้ตัวละครทำ</li>
+    <li><span class="sn">4</span>ตัวละครเรียกว่า <strong style="color:#fde68a">Sprite</strong></li>
+    <li><span class="sn">5</span>หน่วย 4 นี้เราจะสร้าง <strong style="color:#4ade80">การ์ตูนสั้น 3 ฉาก!</strong></li>
+  </ul>
+</div>
+
+<!-- S3: การสั่งงานคืออะไร -->
+<div class="slide s3" id="s3">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 เปรียบ: เหมือนบอกนักเรียนให้ "ลุกขึ้น" "เดินไปหน้าห้อง" "หยิบหนังสือ" — แต่ละประโยคคือคำสั่ง</div>
+  <h2>💡 การสั่งงาน (Command) คืออะไร?</h2>
+  <div class="box" style="text-align:center">
+    <p style="font-size:clamp(16px,2.8vw,32px);color:#fff">คำสั่ง = <span style="color:#fde68a">สิ่งที่เราบอกให้คอมพิวเตอร์ทำ</span></p>
+  </div>
+  <div class="two-col">
+    <div class="col">
+      <h4>🧑 คำสั่งในชีวิตจริง</h4>
+      <p>• "ลุกขึ้น" → ลุกขึ้น</p>
+      <p>• "เดินไปข้างหน้า" → เดิน</p>
+      <p>• "หยุด" → หยุดทันที</p>
+      <p>• "กลับบ้าน" → เดินกลับ</p>
+    </div>
+    <div class="col">
+      <h4>🐱 คำสั่งใน ScratchJr</h4>
+      <p>• "เดินไป 2 ก้าว" → ตัวละครเดิน</p>
+      <p>• "หมุน 90 องศา" → ตัวละครหมุน</p>
+      <p>• "พูดว่า สวัสดี" → ตัวละครพูด</p>
+      <p>• "เล่นเสียง" → มีเสียงออกมา</p>
+    </div>
+  </div>
+</div>
+
+<!-- S4: ลำดับคำสั่ง -->
+<div class="slide s4" id="s4">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ยกตัวอย่าง: ถ้าสั่ง "ใส่รองเท้า" ก่อน "ใส่ถุงเท้า" จะเกิดอะไรขึ้น? สนุกมาก!</div>
+  <h2>⚠️ ลำดับคำสั่งสำคัญมาก!</h2>
+  <div class="two-col">
+    <div class="col" style="border-color:rgba(248,113,113,.4)">
+      <h4 style="color:#f87171">❌ ลำดับผิด</h4>
+      <p>1. กระโดด</p>
+      <p>2. เดินไปหน้า</p>
+      <p>3. เปลี่ยนฉาก</p>
+      <p>4. <strong>พูด "สวัสดี"</strong></p>
+      <p style="margin-top:8px;font-size:13px;color:#f87171">→ ตัวละครพูดหลังเปลี่ยนฉากแล้ว ดูแปลก!</p>
+    </div>
+    <div class="col" style="border-color:rgba(74,222,128,.4)">
+      <h4 style="color:#4ade80">✅ ลำดับถูกต้อง</h4>
+      <p>1. <strong>พูด "สวัสดี"</strong></p>
+      <p>2. เดินไปหน้า</p>
+      <p>3. กระโดด</p>
+      <p>4. เปลี่ยนฉาก</p>
+      <p style="margin-top:8px;font-size:13px;color:#4ade80">→ เรื่องเล่าสมเหตุสมผล น่าดู!</p>
+    </div>
+  </div>
+  <div class="box" style="text-align:center;margin-top:12px">
+    <p style="font-size:clamp(14px,2.2vw,24px);color:#fde68a;font-weight:800">💡 คอมพิวเตอร์ทำตามลำดับจากบนลงล่างเสมอ</p>
+  </div>
+</div>
+
+<!-- S5: Event Blocks -->
+<div class="slide s5" id="s5">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สาธิตบน ScratchJr จริง: กดธงเขียว → ตัวละครเริ่มทำงาน</div>
+  <h2>🚩 Event Blocks ใน ScratchJr</h2>
+  <p class="sub" style="margin-bottom:8px">บล็อก "เหตุการณ์" — เริ่มต้นการทำงาน</p>
+  <div class="block-demo">
+    <div class="scratch-block block-event">🟢 When Green Flag Tapped — เมื่อกดธงเขียว</div>
+    <div class="scratch-block block-event">👆 When Tapped — เมื่อแตะตัวละคร</div>
+    <div class="scratch-block block-event">💬 When Message Received — เมื่อรับข้อความ</div>
+  </div>
+  <div class="two-col" style="margin-top:14px">
+    <div class="col">
+      <h4>🟢 When Green Flag</h4>
+      <p>• กดธงเขียว → โปรแกรมเริ่มทำงาน</p>
+      <p>• ใช้เริ่มต้น<strong style="color:#fde68a">โปรแกรมหลัก</strong></p>
+      <p>• ทุกโปรเจกต์ควรมีบล็อกนี้</p>
+    </div>
+    <div class="col">
+      <h4>👆 When Tapped</h4>
+      <p>• แตะตัวละคร → เริ่มทำงาน</p>
+      <p>• ใช้ทำ<strong style="color:#fde68a">ปุ่มกด</strong>หรือ<strong style="color:#fde68a">อินเทอร์แอคทีฟ</strong></p>
+      <p>• แตะกี่ครั้งก็ได้ ทำงานทุกครั้ง</p>
+    </div>
+  </div>
+</div>
+
+<!-- S6: Motion Blocks -->
+<div class="slide s6" id="s6">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้นักเรียนทดลองเปลี่ยนตัวเลขในบล็อก เช่น Move 1 → Move 5 ต่างกันอย่างไร?</div>
+  <h2>🏃 Motion Blocks — เคลื่อนที่</h2>
+  <div class="block-demo" style="margin-bottom:14px">
+    <div class="scratch-block block-motion">➡️ Move Right [1]</div>
+    <div class="scratch-block block-motion">⬅️ Move Left [1]</div>
+    <div class="scratch-block block-motion">⬆️ Move Up [1]</div>
+    <div class="scratch-block block-motion">⬇️ Move Down [1]</div>
+    <div class="scratch-block block-motion">🔄 Turn Left [1]</div>
+    <div class="scratch-block block-motion">🔄 Turn Right [1]</div>
+    <div class="scratch-block block-motion">⬆️ Jump Up [1]</div>
+    <div class="scratch-block block-motion">🏠 Go Home</div>
+  </div>
+  <div class="box" style="text-align:center">
+    <p style="font-size:clamp(14px,2vw,22px);color:#fff">ตัวเลขในวงเล็บ <span style="color:#fde68a;font-weight:800">[1], [2], [5]</span> = จำนวนหน่วยที่เคลื่อนที่</p>
+    <p style="margin-top:8px;font-size:clamp(12px,1.7vw,18px);color:rgba(255,255,255,.8)">เลขมาก = เดินไวและไกลกว่า</p>
+  </div>
+</div>
+
+<!-- S7: Looks Blocks -->
+<div class="slide s7" id="s7">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สาธิต Say block: ตัวละครพูดว่า "สวัสดีครับ" แล้วให้นักเรียนลองพิมพ์ข้อความตัวเอง</div>
+  <h2>👀 Looks Blocks — รูปร่าง</h2>
+  <div class="block-demo" style="margin-bottom:12px">
+    <div class="scratch-block block-looks">💬 Say [สวัสดี]</div>
+    <div class="scratch-block block-looks">🙈 Hide — ซ่อนตัวละคร</div>
+    <div class="scratch-block block-looks">👁️ Appear — แสดงตัวละคร</div>
+    <div class="scratch-block block-looks">🔼 Grow — ตัวใหญ่ขึ้น</div>
+    <div class="scratch-block block-looks">🔽 Shrink — ตัวเล็กลง</div>
+    <div class="scratch-block block-looks">🔄 Reset Size — คืนขนาดปกติ</div>
+    <div class="scratch-block block-looks">🎨 Change Scene</div>
+  </div>
+  <div class="two-col">
+    <div class="col">
+      <h4>💬 Say Block</h4>
+      <p>• ตัวละครจะแสดงกล่องข้อความ</p>
+      <p>• พิมพ์ข้อความที่ต้องการ</p>
+      <p>• ใช้บอกเรื่องราวหรือบทพูด</p>
+    </div>
+    <div class="col">
+      <h4>🎨 Change Scene</h4>
+      <p>• เปลี่ยนพื้นหลัง = เปลี่ยนฉาก</p>
+      <p>• ใช้เริ่ม<strong style="color:#fde68a">ฉากต่อไป</strong>ในเรื่อง</p>
+      <p>• สร้างฉากได้หลายฉาก</p>
+    </div>
+  </div>
+</div>
+
+<!-- S8: Sound Blocks -->
+<div class="slide s8" id="s8">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้นักเรียนอัดเสียงตัวเองพูดชื่อของตัวเองลงใน ScratchJr แล้วลองเล่นเสียงนั้น</div>
+  <h2>🔊 Sound Blocks — เสียง</h2>
+  <div class="block-demo" style="margin-bottom:14px">
+    <div class="scratch-block block-sound">🔊 Play Sound — เล่นเสียง</div>
+    <div class="scratch-block block-sound">🎵 Play "Pop" Sound</div>
+    <div class="scratch-block block-sound">🎤 Record Sound — อัดเสียง</div>
+  </div>
+  <div class="two-col">
+    <div class="col">
+      <h4>🔊 Play Sound</h4>
+      <p>• เล่นเสียงที่บันทึกไว้</p>
+      <p>• ScratchJr มีเสียงสำเร็จรูปให้เลือก</p>
+      <p>• เสียงเล่นพร้อมกับการเคลื่อนที่ได้</p>
+    </div>
+    <div class="col">
+      <h4>🎤 Record Sound</h4>
+      <p>• กดปุ่มแดงเพื่ออัดเสียง</p>
+      <p>• อัดได้หลายคลิปในโปรเจกต์เดียว</p>
+      <p>• ใช้เสียงตัวเองทำให้การ์ตูนมีชีวิตชีวา!</p>
+    </div>
+  </div>
+  <div class="activity-box" style="margin-top:12px">
+    <h3>🎯 ลองทำ!</h3>
+    <p style="color:rgba(255,255,255,.9);font-size:clamp(13px,1.8vw,20px)">อัดเสียงพูดว่า "สวัสดีครับ/ค่ะ วันนี้ฉันชื่อ..." แล้วเพิ่มใน ScratchJr</p>
+  </div>
+</div>
+
+<!-- S9: Loop -->
+<div class="slide s9" id="s9">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 อธิบาย Loop = ทำซ้ำ เปรียบกับ "กระโดดเชือก 10 ครั้ง" ถ้าไม่มี Loop ต้องต่อบล็อก 10 บล็อก!</div>
+  <h2>🔁 Loop ใน ScratchJr — ทำซ้ำ</h2>
+  <div class="block-demo" style="margin-bottom:12px">
+    <div class="scratch-block block-control">🔁 Repeat [2] — ทำซ้ำ 2 ครั้ง</div>
+    <div class="scratch-block block-control">∞ Repeat Forever — ทำซ้ำตลอดไป</div>
+  </div>
+  <div class="two-col">
+    <div class="col">
+      <h4>🔁 ไม่ใช้ Loop</h4>
+      <p>Move Right [1]</p>
+      <p>Move Right [1]</p>
+      <p>Move Right [1]</p>
+      <p style="color:#f87171">→ บล็อกเยอะ วุ่นวาย!</p>
+    </div>
+    <div class="col">
+      <h4>✅ ใช้ Loop</h4>
+      <p>Repeat [3]</p>
+      <p>&nbsp;&nbsp;Move Right [1]</p>
+      <p style="color:#4ade80">→ แค่ 2 บล็อก สะอาดกว่า!</p>
+      <p style="color:rgba(255,255,255,.7)">อยากทำซ้ำกี่ครั้งก็เปลี่ยนตัวเลข</p>
+    </div>
+  </div>
+</div>
+
+<!-- S10: ออกแบบโปรเจกต์ -->
+<div class="slide s10" id="s10">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 แจกใบงาน p1_cs4_project.html ให้นักเรียนวางแผนก่อนเริ่มสร้างใน ScratchJr</div>
+  <h2>🎬 ออกแบบโปรเจกต์การ์ตูน 3 ฉาก</h2>
+  <ul class="step-list">
+    <li><span class="sn">1</span><strong style="color:#fde68a">คิดเรื่อง:</strong> โปรเจกต์ของเราพูดถึงอะไร? (สัตว์, ผจญภัย, ชีวิตประจำวัน)</li>
+    <li><span class="sn">2</span><strong style="color:#fb923c">วางแผนฉาก:</strong> ฉาก 1 = เริ่มต้น | ฉาก 2 = กลาง | ฉาก 3 = จบ</li>
+    <li><span class="sn">3</span><strong style="color:#4ade80">เลือกตัวละคร:</strong> มีกี่ตัว? แต่ละตัวทำอะไร?</li>
+    <li><span class="sn">4</span><strong style="color:#a78bfa">เขียน Script:</strong> ตัวละครพูดว่าอะไร? เคลื่อนที่อย่างไร?</li>
+    <li><span class="sn">5</span><strong style="color:#fde68a">ลงมือสร้าง:</strong> ต่อบล็อกตามที่วางแผน</li>
+  </ul>
+</div>
+
+<!-- S11: งาน -->
+<div class="slide s11" id="s11">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 เดินดูการทำงานของนักเรียน ช่วยแก้ปัญหาเมื่อบล็อกไม่ทำงาน ชม: "โปรเจกต์ดูน่าสนใจมาก!"</div>
+  <div class="big-emoji">👩‍💻</div>
+  <h2>งาน: โปรเจกต์ ScratchJr การ์ตูนสั้น</h2>
+  <div class="activity-box">
+    <h3>📋 สิ่งที่ต้องมีในโปรเจกต์</h3>
+    <p style="font-size:clamp(13px,1.8vw,20px);color:rgba(255,255,255,.9)">
+      ✅ อย่างน้อย 3 ฉาก (ฉากเริ่ม กลาง จบ)<br>
+      ✅ ตัวละครอย่างน้อย 1 ตัว มีการเคลื่อนที่<br>
+      ✅ ตัวละครพูดด้วย Say block<br>
+      ✅ มีเสียงหรือดนตรีประกอบ<br>
+      ✅ ใช้ Event block (Green Flag หรือ When Tapped)
+    </p>
+  </div>
+  <button class="timer-btn" onclick="startTimer(25)" style="margin-top:14px;font-size:16px;padding:12px 28px">⏱ เริ่มจับเวลา 25 นาที</button>
+</div>
+
+<!-- S12: สรุป -->
+<div class="slide s12" id="s12">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้นักเรียนแต่ละคนอธิบายโปรเจกต์ตัวเองสั้นๆ 1 นาที</div>
+  <div class="badge">สรุปบทเรียน หน่วยที่ 4 — ป.1</div>
+  <h2>🎓 สิ่งที่เรียนรู้วันนี้</h2>
+  <ul class="step-list">
+    <li><span class="sn">🎮</span><strong style="color:#fde68a">คำสั่ง</strong> = สิ่งที่บอกให้คอมพิวเตอร์ทำ</li>
+    <li><span class="sn">📋</span><strong style="color:#fb923c">ลำดับคำสั่ง</strong> สำคัญมาก ผิดลำดับ = ผิดพลาด</li>
+    <li><span class="sn">🚩</span><strong style="color:#4ade80">Event Blocks</strong> = เริ่มต้นโปรแกรม (Green Flag / Tapped)</li>
+    <li><span class="sn">🏃</span><strong style="color:#a78bfa">Motion / Looks / Sound</strong> = ควบคุมตัวละคร</li>
+    <li><span class="sn">🔁</span><strong style="color:#fde68a">Loop (Repeat)</strong> = ทำซ้ำโดยไม่ต้องต่อบล็อกเพิ่ม</li>
+  </ul>
+</div>
+
+<!-- Navigation -->
+<div class="nav">
+  <button class="nav-btn" onclick="go(-1)">◀</button>
+  <div class="dots" id="dots"></div>
+  <span class="counter" id="counter">1 / 12</span>
+  <button class="nav-btn" onclick="go(1)">▶</button>
+</div>
+
+<script>
+let cur = 0;
+const slides = document.querySelectorAll('.slide');
+const total = slides.length;
+const dotsEl = document.getElementById('dots');
+for (let i = 0; i < total; i++) {
+  const d = document.createElement('div');
+  d.className = 'dot' + (i === 0 ? ' on' : '');
+  dotsEl.appendChild(d);
+}
+function showSlide(n) {
+  slides[cur].classList.remove('active');
+  document.querySelectorAll('.dot')[cur].classList.remove('on');
+  cur = Math.max(0, Math.min(n, total - 1));
+  slides[cur].classList.add('active');
+  document.querySelectorAll('.dot')[cur].classList.add('on');
+  document.getElementById('counter').textContent = (cur + 1) + ' / ' + total;
+  document.getElementById('prog').style.width = ((cur + 1) / total * 100) + '%';
+}
+function go(d) { showSlide(cur + d); }
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === ' ') go(1);
+  if (e.key === 'ArrowLeft') go(-1);
+});
+
+let timerInterval = null;
+function startTimer(min) {
+  if (timerInterval) clearInterval(timerInterval);
+  let secs = min * 60;
+  const disp = document.getElementById('timerDisplay');
+  disp.style.display = 'block';
+  function tick() {
+    const m = Math.floor(secs / 60), s = secs % 60;
+    disp.textContent = m + ':' + (s < 10 ? '0' : '') + s;
+    if (secs <= 0) { clearInterval(timerInterval); disp.textContent = '⏰ หมดเวลา!'; return; }
+    secs--;
+  }
+  tick();
+  timerInterval = setInterval(tick, 1000);
+}
+
+function qa(btn, correct) {
+  const opts = btn.parentElement.querySelectorAll('.qbtn');
+  opts.forEach(b => b.disabled = true);
+  if (correct) {
+    btn.classList.add('correct');
+    const msg = btn.parentElement.nextElementSibling;
+    if (msg) { msg.textContent = '🎉 ถูกต้อง!'; msg.style.color = '#4ade80'; msg.style.display = 'block'; }
+  } else {
+    btn.classList.add('wrong');
+    const msg = btn.parentElement.nextElementSibling;
+    if (msg) { msg.textContent = '❌ ลองคิดใหม่นะ'; msg.style.color = '#f87171'; msg.style.display = 'block'; }
+  }
+}
+</script>
+</body>
+</html>

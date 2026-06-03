@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ม.2 วิทยาการคำนวณ หน่วย 3 — Python ขั้นกลาง</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Sarabun',sans-serif;background:#000d00;overflow:hidden;height:100vh}
+.prog-bar{position:fixed;top:0;left:0;height:4px;background:linear-gradient(90deg,#22c55e,#86efac,#4ade80);transition:width .4s;z-index:300;box-shadow:0 0 12px rgba(34,197,94,.7)}
+.slide{display:none;width:100vw;height:100vh;flex-direction:column;align-items:center;justify-content:center;padding:32px;position:relative;overflow:hidden}
+.slide.active{display:flex;animation:fadeUp .4s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.s1{background:linear-gradient(135deg,#001a00,#003d00,#14532d,#065f46)}
+.s2{background:linear-gradient(135deg,#000d00,#001a00,#052e16)}
+.s3{background:linear-gradient(135deg,#050020,#1e1b4b,#312e81)}
+.s4{background:linear-gradient(135deg,#000a05,#0d2600,#1a4d00)}
+.s5{background:linear-gradient(135deg,#0a0010,#2e1065,#4c1d95)}
+.s6{background:linear-gradient(135deg,#001a0a,#003322,#004d33)}
+.s7{background:linear-gradient(135deg,#050a00,#0f1f00,#1a3a00)}
+.s8{background:linear-gradient(135deg,#050020,#12004d,#200080)}
+.s9{background:linear-gradient(135deg,#001505,#002e10,#004d1a)}
+.s10{background:linear-gradient(135deg,#0a0800,#201a00,#3d3300)}
+.s11{background:linear-gradient(135deg,#050005,#0d001a,#1a0033)}
+.s12{background:linear-gradient(135deg,#001a00,#003300,#065f46)}
+.s13{background:linear-gradient(135deg,#000d00,#001a00,#003300)}
+.s14{background:linear-gradient(135deg,#001a00,#003d00,#14532d)}
+h1{font-size:clamp(24px,4.5vw,56px);font-weight:800;color:#fff;text-align:center;line-height:1.15}
+h2{font-size:clamp(17px,3vw,38px);font-weight:700;color:#fff;text-align:center;line-height:1.3}
+p.sub{font-size:clamp(12px,1.8vw,22px);color:rgba(255,255,255,.7);text-align:center;margin-top:10px}
+.badge{background:rgba(34,197,94,.2);border:1px solid rgba(34,197,94,.5);border-radius:50px;padding:7px 22px;font-size:clamp(11px,1.5vw,17px);color:#bbf7d0;font-weight:700;margin-bottom:14px}
+.big-emoji{font-size:clamp(50px,9vw,100px);text-align:center;line-height:1;margin-bottom:8px}
+.box{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(10px);border-radius:18px;padding:18px 24px;width:100%;max-width:950px;margin-top:12px}
+.step-list{list-style:none;width:100%;max-width:820px;margin-top:10px}
+.step-list li{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:10px 16px;margin-bottom:8px;font-size:clamp(12px,1.8vw,20px);color:#fff;display:flex;align-items:center;gap:12px;animation:slideIn .4s ease both}
+@keyframes slideIn{from{opacity:0;transform:translateX(-18px)}to{opacity:1;transform:translateX(0)}}
+.step-list li:nth-child(1){animation-delay:.05s}.step-list li:nth-child(2){animation-delay:.12s}.step-list li:nth-child(3){animation-delay:.19s}.step-list li:nth-child(4){animation-delay:.26s}.step-list li:nth-child(5){animation-delay:.33s}.step-list li:nth-child(6){animation-delay:.40s}
+.sn{background:#22c55e;border-radius:50%;min-width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:#000}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;max-width:950px;margin-top:12px}
+.col{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:14px 18px}
+.col h4{font-size:clamp(12px,1.8vw,19px);color:#86efac;font-weight:800;margin-bottom:8px}
+.col p{font-size:clamp(11px,1.5vw,16px);color:rgba(255,255,255,.85);padding:3px 0}
+/* Terminal */
+.terminal-wrap{width:100%;max-width:950px;margin-top:10px}
+.terminal-bar{background:#2d2d2d;border-radius:10px 10px 0 0;padding:8px 14px;display:flex;align-items:center;gap:8px}
+.t-dot{width:12px;height:12px;border-radius:50%}
+.t-dot.red{background:#ff5f57}.t-dot.yellow{background:#febc2e}.t-dot.green{background:#28c840}
+.t-title{color:rgba(255,255,255,.5);font-size:12px;margin-left:8px;font-family:'JetBrains Mono',monospace}
+.terminal-body{background:#0d1117;border-radius:0 0 10px 10px;padding:14px 18px;font-family:'JetBrains Mono','Courier New',monospace;font-size:clamp(11px,1.5vw,15px);color:#e6edf3;line-height:1.8;min-height:140px;max-height:260px;overflow-y:auto;position:relative}
+.t-line{display:block;min-height:1.8em}
+.cursor{display:inline-block;width:8px;height:16px;background:#57ab5a;animation:blink .8s step-end infinite;vertical-align:text-bottom;margin-left:1px}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.run-btn{background:linear-gradient(135deg,#166534,#22c55e);border:none;color:#fff;border-radius:8px;padding:8px 20px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Sarabun',sans-serif;transition:all .2s;display:flex;align-items:center;gap:6px;margin-top:8px}
+.run-btn:hover{transform:scale(1.05);filter:brightness(1.15)}
+.code-static{background:#0d1117;border-radius:10px;padding:14px 18px;font-family:'JetBrains Mono','Courier New',monospace;font-size:clamp(11px,1.5vw,15px);color:#e6edf3;line-height:1.9;width:100%;margin-top:8px}
+.kw{color:#ff7b72}.fn{color:#79c0ff}.st{color:#a5d6ff}.nm{color:#f8b800}.cm{color:#8b949e}.vr{color:#ffa657}
+/* Quiz */
+.quiz-opts{display:flex;flex-direction:column;gap:8px;width:100%;max-width:780px;margin-top:12px}
+.qbtn{background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.18);border-radius:12px;padding:11px 18px;color:#fff;font-size:clamp(12px,1.7vw,19px);font-weight:700;cursor:pointer;text-align:left;font-family:'Sarabun',sans-serif;transition:all .2s}
+.qbtn:hover{background:rgba(255,255,255,.14)}
+.qbtn.correct{background:rgba(34,197,94,.2);border-color:#22c55e;color:#4ade80}
+.qbtn.wrong{background:rgba(248,113,113,.13);border-color:#f87171;opacity:.7}
+.result-msg{font-size:clamp(13px,2vw,22px);font-weight:800;text-align:center;margin-top:10px;display:none}
+.teacher-note{position:fixed;top:16px;right:16px;background:rgba(0,0,0,.7);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:8px 14px;color:rgba(255,255,255,.6);font-size:12px;max-width:260px;text-align:right;cursor:pointer;z-index:200;transition:opacity .2s}
+.teacher-note:hover{opacity:.3}
+.timer-widget{position:fixed;top:16px;left:16px;z-index:200}
+.timer-btn{background:rgba(34,197,94,.2);border:1px solid rgba(34,197,94,.4);border-radius:8px;padding:7px 12px;color:#bbf7d0;font-size:12px;font-weight:700;cursor:pointer;font-family:'Sarabun',sans-serif}
+.timer-display{background:rgba(0,0,0,.8);border:1px solid rgba(34,197,94,.4);border-radius:8px;padding:8px 16px;color:#4ade80;font-size:26px;font-weight:800;text-align:center;margin-top:5px;display:none;font-family:'JetBrains Mono',monospace}
+.nav{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:12px;z-index:100}
+.nav-btn{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);color:#fff;border-radius:50%;width:48px;height:48px;font-size:19px;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center}
+.nav-btn:hover{background:rgba(255,255,255,.22);transform:scale(1.1)}
+.counter{background:rgba(0,0,0,.6);color:#fff;border-radius:20px;padding:6px 16px;font-size:14px;font-weight:700;border:1px solid rgba(255,255,255,.15)}
+.dots{display:flex;gap:5px;align-items:center}
+.dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.22);transition:all .3s}
+.dot.on{background:#22c55e;transform:scale(1.6);box-shadow:0 0 7px #22c55e}
+.reveal-btn{background:rgba(34,197,94,.5);border:1px solid #22c55e;color:#fff;border-radius:50px;padding:9px 24px;font-size:clamp(12px,1.6vw,18px);font-weight:700;cursor:pointer;font-family:'Sarabun',sans-serif;transition:all .2s;margin-top:10px}
+.reveal-text{color:#86efac;font-size:clamp(13px,2vw,22px);font-weight:800;text-align:center;margin-top:10px;display:none;font-family:'JetBrains Mono',monospace}
+.reveal-text.show{display:block;animation:fadeUp .4s ease}
+.activity-box{background:rgba(34,197,94,.08);border:2px solid rgba(34,197,94,.35);border-radius:18px;padding:16px 24px;width:100%;max-width:880px;margin-top:12px;text-align:center}
+.activity-box h3{color:#86efac;font-size:clamp(14px,2.2vw,24px);font-weight:800;margin-bottom:8px}
+/* Road map */
+.roadmap{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:14px;width:100%;max-width:900px}
+.rm-box{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:10px 16px;text-align:center;font-size:clamp(11px,1.5vw,15px)}
+.rm-box .rm-num{color:#22c55e;font-weight:800;font-size:clamp(10px,1.3vw,13px);margin-bottom:4px}
+.rm-box .rm-title{color:#fff;font-weight:700}
+.rm-box .rm-sub{color:rgba(255,255,255,.55);font-size:clamp(10px,1.2vw,13px)}
+.rm-arrow{color:rgba(255,255,255,.3);font-size:20px}
+.rm-box.current{border-color:#22c55e;background:rgba(34,197,94,.12)}
+.rm-box.done{border-color:rgba(34,197,94,.4);opacity:.7}
+</style>
+</head>
+<body>
+<div class="prog-bar" id="prog"></div>
+<div class="timer-widget"><button class="timer-btn" onclick="startTimer(10)">⏱ 10 นาที</button><div class="timer-display" id="timerDisplay">10:00</div></div>
+
+<!-- S1: Title -->
+<div class="slide s1 active" id="s1">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.2'?'1':'.2'">👩‍🏫 ถาม: "หน่วย 2 เราเรียน Python อะไรไปบ้าง?" ทบทวนก่อนเริ่ม</div>
+  <div class="badge">วิทยาการคำนวณ • ม.2 • หน่วยที่ 3</div>
+  <div class="big-emoji">🐍</div>
+  <h1>Python ขั้นกลาง</h1>
+  <p class="sub">Functions • Lists • String Methods • Mini Projects</p>
+</div>
+
+<!-- S2: Roadmap -->
+<div class="slide s2" id="s2">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.2'?'1':'.2'">👩‍🏫 แสดง Roadmap เพื่อให้นักเรียนเห็นภาพรวมของการเรียน Python ทั้งหมด</div>
+  <h2>🗺️ Python Learning Roadmap</h2>
+  <div class="roadmap">
+    <div class="rm-box done">
+      <div class="rm-num">หน่วย 2</div>
+      <div class="rm-title">Python พื้นฐาน</div>
+      <div class="rm-sub">var • input • print<br>if • for • while</div>
+    </div>
+    <div class="rm-arrow">→</div>
+    <div class="rm-box current">
+      <div class="rm-num">หน่วย 3 ← ตอนนี้</div>
+      <div class="rm-title">Python ขั้นกลาง</div>
+      <div class="rm-sub">Functions • Lists<br>String Methods</div>
+    </div>
+    <div class="rm-arrow">→</div>
+    <div class="rm-box">
+      <div class="rm-num">หน่วย 4</div>
+      <div class="rm-title">Python โปรเจกต์</div>
+      <div class="rm-sub">IPO Diagram<br>สร้างโปรแกรมจริง + Canva</div>
+    </div>
+  </div>
+  <p class="sub" style="margin-top:16px">หน่วย 3 คือ <strong style="color:#86efac">สะพาน</strong> จากพื้นฐาน → โปรเจกต์จริง</p>
+</div>
+
+<!-- S3: ทบทวน + Function คืออะไร -->
+<div class="slide s3" id="s3">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.2'?'1':'.2'">👩‍🏫 เปรียบ Function กับ "สูตรอาหาร" — เขียนครั้งเดียว ใช้ได้หลายครั้ง</div>
+  <h2><span style="font-family:'JetBrains Mono',monospace;color:#79c0ff">def</span> — Function คืออะไร?</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>Function = ชุดคำสั่งที่ตั้งชื่อได้</h4>
+      <p>• เขียนครั้งเดียว เรียกใช้ได้บ่อยครั้ง</p>
+      <p>• ลดการเขียนโค้ดซ้ำ</p>
+      <p>• ทำให้โค้ดอ่านง่ายขึ้น</p>
+      <p>• แก้ไขที่เดียว ทำงานทั้งโปรแกรม</p>
+      <div style="margin-top:10px;background:rgba(0,0,0,.3);border-radius:8px;padding:10px;font-family:'JetBrains Mono',monospace;font-size:12px;color:#e6edf3;line-height:1.9">
+        <span class="kw">def</span> <span class="fn">ชื่อ_function</span>():<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="cm"># คำสั่งภายใน</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="cm"># indent 4 ช่อง</span>
+      </div>
+    </div>
+    <div>
+      <button class="run-btn" onclick="runTerminal('t_func_intro')">▶ Run ตัวอย่าง</button>
+      <div class="terminal-wrap" style="margin-top:6px">
+        <div class="terminal-bar"><div class="t-dot red"></div><div class="t-dot yellow"></div><div class="t-dot green"></div><span class="t-title">function_intro.py</span></div>
+        <div class="terminal-body" id="t_func_intro"><span class="cursor"></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S4: Function with Parameters -->
+<div class="slide s4" id="s4">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.2'?'1':'.2'">👩‍🏫 Parameter คือ "input" ของ Function — เหมือนช่องใส่วัตถุดิบในสูตรอาหาร</div>
+  <h2>Function พร้อม <span style="font-family:'JetBrains Mono',monospace;color:#ffa657">Parameter</span></h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>ส่งข้อมูลเข้า Function</h4>
+      <div class="code-static" style="font-size:clamp(11px,1.4vw,14px)">
+<span class="cm"># Function รับ parameter</span>
+<span class="kw">def</span> <span class="fn">greet</span>(name):
+    <span class="fn">print</span>(<span class="st">f"สวัสดี {name}!"</span>)
+
+<span class="fn">greet</span>(<span class="st">"มาย"</span>)    <span class="cm"># สวัสดี มาย!</span>
+<span class="fn">greet</span>(<span class="st">"ครูแพร"</span>) <span class="cm"># สวัสดี ครูแพร!</span>
+
+<span class="cm"># หลาย parameter</span>
+<span class="kw">def</span> <span class="fn">add</span>(a, b):
+    <span class="fn">print</span>(a + b)
+
+<span class="fn">add</span>(<span class="nm">5</span>, <span class="nm">3</span>)  <span class="cm"># 8</span>
+<span class="fn">add</span>(<span class="nm">10</span>, <span class="nm">20</span>) <span class="cm"># 30</span>
+      </div>
+    </div>
+    <div>
+      <button class="run-btn" onclick="runTerminal('t_param')">▶ Run</button>
+      <div class="terminal-wrap" style="margin-top:6px">
+        <div class="terminal-bar"><div class="t-dot red"></div><div class="t-dot yellow"></div><div class="t-dot green"></div><span class="t-title">parameters.py</span></div>
+        <div class="terminal-body" id="t_param"><span class="cursor"></span></div>
+      </div>
+      <div class="col" style="margin-top:8px">
+        <h4>ตัวอย่างที่ 2: Function คำนวณ</h4>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#e6edf3;line-height:1.9">
+          <span class="kw">def</span> <span class="fn">area</span>(w, h):<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<span class="fn">print</span>(w * h)<br>
+          <span class="fn">area</span>(<span class="nm">5</span>, <span class="nm">4</span>)  <span class="cm"># 20</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S5: return -->
+<div class="slide s5" id="s5">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.2'?'1':'.2'">👩‍🏫 return ทำให้ Function "ส่งค่ากลับ" — ต่างจาก print ตรงที่เก็บค่าไว้ใช้ต่อได้</div>
+  <h2><span style="font-family:'JetBrains Mono',monospace;color:#ff7b72">return</span> — ส่งค่ากลับ</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>print vs return</h4>
+      <div class="code-static" style="font-size:clamp(11px,1.4vw,14px)">
+<span class="cm"># print — แสดงผล ใช้ต่อไม่ได้</span>
+<span class="kw">def</span> <span class="fn">double_print</span>(x):
+    <span class="fn">print</span>(x * <span class="nm">2</span>)
+
+<span class="cm"># return — ส่งค่ากลับ เก็บไว้ใช้ต่อได้</span>
+<span class="kw">def</span> <span class="fn">double</span>(x):
+    <span class="kw">return</span> x * <span class="nm">2</span>
+
+result = <span class="fn">double</span>(<span class="nm">5</span>)   <span class="cm"># result = 10</span>
+<span class="fn">print</span>(result + <span class="nm">3</span>)     <span class="cm"># 13</span>
+      </div>
+    </div>
+    <div>
+      <button class="run-btn" onclick="runTerminal('t_return')">▶ Run</button>
+      <div class="terminal-wrap" style="margin-top:6px">
+        <div class="terminal-bar"><div class="t-dot red"></div><div class="t-dot yellow"></div><div class="t-dot green"></div><span class="t-title">return_demo.py</span></div>
+        <div class="terminal-body" id="t_return"><span class="cursor"></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S6: Lists -->
+<div class="slide s6" id="s6">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.2'?'1':'.2'">👩‍🏫 เปรียบ List กับ "รายการสิ่งของ" — กล่องหลายช่องในกล่องเดียว, index เริ่มที่ 0</div>
+  <h2><span style="font-family:'JetBrains Mono',monospace;color:#86efac">list</span> — รายการข้อมูล</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>List คืออะไร?</h4>
+      <p>• เก็บข้อมูลหลายค่าในตัวแปรเดียว</p>
+      <p>• เข้าถึงด้วย index (เริ่มจาก 0)</p>
+      <p>• แก้ไข เพิ่ม ลบได้</p>
+      <div style="margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:12px;color:#e6edf3;background:rgba(0,0,0,.3);border-radius:6px;padding:8px;line-height:1.9">
+        scores = [<span class="nm">80</span>, <span class="nm">75</span>, <span class="nm">90</span>]<br>
+        scores[<span class="nm">0</span>] → <span class="nm">80</span> (ตัวแรก)<br>
+        scores[<span class="nm">-1</span>] → <span class="nm">90</span> (ตัวสุดท้าย)<br>
+        <span class="fn">len</span>(scores) → <span class="nm">3</span>
+      </div>
+      <p style="margin-top:8px;font-size:12px;color:#fbbf24">⚠️ Index เริ่มที่ 0 เสมอ!</p>
+    </div>
+    <div>
+      <button class="run-btn" onclick="runTerminal('t_list')">▶ Run ตัวอย่าง</button>
+      <div class="terminal-wrap" style="margin-top:6px">
+        <div class="terminal-bar"><div class="t-dot red"></div><div class="t-dot yellow"></div><div class="t-dot green"></div><span class="t-title">lists_demo.py</span></div>
+        <div class="terminal-body" id="t_list"><span class="cursor"></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S7: List Methods -->
+<div class="slide s7" id="s7">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.2'?'1':'.2'">👩‍🏫 Demo .append() .remove() .sort() ให้ดูใน terminal จริง</div>
+  <h2>List Methods — คำสั่งสำหรับ List</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>Methods ที่ใช้บ่อย</h4>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#e6edf3;line-height:2">
+        lst = [<span class="nm">3</span>, <span class="nm">1</span>, <span class="nm">4</span>, <span class="nm">1</span>, <span class="nm">5</span>]<br>
+        lst.<span class="fn">append</span>(<span class="nm">9</span>)  <span class="cm"># เพิ่มท้าย</span><br>
+        lst.<span class="fn">remove</span>(<span class="nm">1</span>)  <span class="cm"># ลบตัวแรกที่เจอ</span><br>
+        lst.<span class="fn">sort</span>()      <span class="cm"># เรียงน้อย→มาก</span><br>
+        lst.<span class="fn">reverse</span>()  <span class="cm"># กลับด้าน</span><br>
+        <span class="fn">sum</span>(lst)       <span class="cm"># รวมทั้งหมด</span><br>
+        <span class="fn">max</span>(lst)       <span class="cm"># ค่าสูงสุด</span><br>
+        <span class="fn">min</span>(lst)       <span class="cm"># ค่าต่ำสุด</span>
+      </div>
+    </div>
+    <div>
+      <button class="run-btn" onclick="runTerminal('t_listmethods')">▶ Run</button>
+      <div class="terminal-wrap" style="margin-top:6px">
+        <div class="terminal-bar"><div class="t-dot red"></div><div class="t-dot yellow"></div><div class="t-dot green"></div><span class="t-title">list_methods.py</span></div>
+        <div class="terminal-body" id="t_listmethods"><span class="cursor"></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S8: for loop กับ List -->
+<div class="slide s8" id="s8">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.2'?'1':'.2'">👩‍🏫 for loop + list เป็นคู่ที่ใช้บ่อยมาก — ให้นักเรียน trace ทีละขั้น</div>
+  <h2><span style="font-family:'JetBrains Mono',monospace;color:#ff7b72">for</span> loop + List</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>วนลูปบน List</h4>
+      <div class="code-static" style="font-size:clamp(11px,1.4vw,14px)">
+<span class="cm"># วนแสดงทุกตัว</span>
+fruits = [<span class="st">"แอปเปิล"</span>, <span class="st">"มะม่วง"</span>, <span class="st">"ส้ม"</span>]
+<span class="kw">for</span> fruit <span class="kw">in</span> fruits:
+    <span class="fn">print</span>(fruit)
+
+<span class="cm"># วนแสดงพร้อม index</span>
+<span class="kw">for</span> i, fruit <span class="kw">in</span> <span class="fn">enumerate</span>(fruits):
+    <span class="fn">print</span>(<span class="st">f"{i+1}. {fruit}"</span>)
+
+<span class="cm"># หาค่าเฉลี่ยจาก List</span>
+scores = [<span class="nm">80</span>, <span class="nm">75</span>, <span class="nm">90</span>, <span class="nm">85</span>]
+avg = <span class="fn">sum</span>(scores) / <span class="fn">len</span>(scores)
+<span class="fn">print</span>(<span class="st">f"เฉลี่ย: {avg}"</span>)
+      </div>
+    </div>
+    <div>
+      <button class="run-btn" onclick="runTerminal('t_forlist')">▶ Run</button>
+      <div class="terminal-wrap" style="margin-top:6px">
+        <div class="terminal-bar"><div class="t-dot red"></div><div class="t-dot yellow"></div><div class="t-dot green"></div><span class="t-title">for_list.py</span></div>
+        <div class="terminal-body" id="t_forlist"><span class="cursor"></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S9: String Methods -->
+<div class="slide s9" id="s9">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.2'?'1':'.2'">👩‍🏫 String Methods ใช้บ่อยมากในโปรแกรมจริง — เน้น .strip() .split() .replace()</div>
+  <h2>String Methods — คำสั่งสำหรับข้อความ</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>Methods ที่ใช้บ่อย</h4>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#e6edf3;line-height:2">
+        s = <span class="st">" Hello Python "</span><br>
+        s.<span class="fn">strip</span>()    <span class="cm"># ลบช่องว่างหัว-ท้าย</span><br>
+        s.<span class="fn">upper</span>()    <span class="cm"># ตัวพิมพ์ใหญ่ทั้งหมด</span><br>
+        s.<span class="fn">lower</span>()    <span class="cm"># ตัวพิมพ์เล็กทั้งหมด</span><br>
+        s.<span class="fn">replace</span>(<span class="st">"Hello"</span>,<span class="st">"Hi"</span>)<br>
+        s.<span class="fn">split</span>(<span class="st">" "</span>)   <span class="cm"># แยกเป็น List</span><br>
+        s.<span class="fn">startswith</span>(<span class="st">"H"</span>)<span class="cm"># True/False</span><br>
+        s.<span class="fn">count</span>(<span class="st">"l"</span>)   <span class="cm"># นับจำนวน</span>
+      </div>
+    </div>
+    <div>
+      <button class="run-btn" onclick="runTerminal('t_strmethod')">▶ Run</button>
+      <div class="terminal-wrap" style="margin-top:6px">
+        <div class="terminal-bar"><div class="t-dot red"></div><div class="t-dot yellow"></div><div class="t-dot green"></div><span class="t-title">string_methods.py</span></div>
+        <div class="terminal-body" id="t_strmethod"><span class="cursor"></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S10: รวมทุกอย่าง -->
+<div class="slide s10" id="s10">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.2'?'1':'.2'">👩‍🏫 Demo โปรแกรมนี้ให้ดู แล้วให้นักเรียน trace ทีละบรรทัด</div>
+  <h2>🚀 โปรแกรมรวม: ระบบเก็บคะแนน</h2>
+  <div class="two-col">
+    <div>
+      <p style="color:#86efac;font-size:13px;font-weight:700;margin-bottom:4px">score_system.py</p>
+      <div class="code-static" style="font-size:clamp(10px,1.3vw,13px);max-height:240px;overflow-y:auto">
+<span class="cm"># ระบบเก็บและวิเคราะห์คะแนน</span>
+<span class="kw">def</span> <span class="fn">get_grade</span>(score):
+    <span class="kw">if</span> score >= <span class="nm">80</span>: <span class="kw">return</span> <span class="st">"A"</span>
+    <span class="kw">elif</span> score >= <span class="nm">70</span>: <span class="kw">return</span> <span class="st">"B"</span>
+    <span class="kw">elif</span> score >= <span class="nm">60</span>: <span class="kw">return</span> <span class="st">"C"</span>
+    <span class="kw">else</span>: <span class="kw">return</span> <span class="st">"F"</span>
+
+<span class="kw">def</span> <span class="fn">analyze</span>(scores):
+    avg = <span class="fn">sum</span>(scores) / <span class="fn">len</span>(scores)
+    <span class="fn">print</span>(<span class="st">f"เฉลี่ย: {avg:.1f}"</span>)
+    <span class="fn">print</span>(<span class="st">f"สูงสุด: {max(scores)}"</span>)
+    <span class="fn">print</span>(<span class="st">f"ต่ำสุด: {min(scores)}"</span>)
+    <span class="kw">return</span> avg
+
+scores = [<span class="nm">85</span>, <span class="nm">72</span>, <span class="nm">90</span>, <span class="nm">68</span>, <span class="nm">78</span>]
+<span class="kw">for</span> s <span class="kw">in</span> scores:
+    <span class="fn">print</span>(<span class="st">f"{s} → เกรด {get_grade(s)}"</span>)
+
+avg = <span class="fn">analyze</span>(scores)
+<span class="fn">print</span>(<span class="st">f"เกรดเฉลี่ย: {get_grade(avg)}"</span>)
+      </div>
+    </div>
+    <div>
+      <button class="run-btn" onclick="runTerminal('t_full')">▶ ดูผลลัพธ์</button>
+      <div class="terminal-wrap" style="margin-top:6px">
+        <div class="terminal-bar"><div class="t-dot red"></div><div class="t-dot yellow"></div><div class="t-dot green"></div><span class="t-title">score_system.py</span></div>
+        <div class="terminal-body" id="t_full" style="min-height:200px"><span class="cursor"></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S11: Quiz -->
+<div class="slide s11" id="s11">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.2'?'1':'.2'">👩‍🏫 ให้ trace ก่อนตอบ อย่าเดา</div>
+  <h2>🎯 Quiz: ผลลัพธ์คืออะไร?</h2>
+  <div style="background:#0d1117;border-radius:10px;padding:14px;font-family:'JetBrains Mono',monospace;font-size:clamp(12px,1.7vw,17px);color:#e6edf3;line-height:1.9;max-width:700px;width:100%">
+    <span style="color:#ff7b72">def</span> <span style="color:#79c0ff">double</span>(x):
+        <span style="color:#ff7b72">return</span> x * <span style="color:#f8b800">2</span><br>
+    nums = [<span style="color:#f8b800">1</span>, <span style="color:#f8b800">2</span>, <span style="color:#f8b800">3</span>]<br>
+    result = []<br>
+    <span style="color:#ff7b72">for</span> n <span style="color:#ff7b72">in</span> nums:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;result.<span style="color:#79c0ff">append</span>(<span style="color:#79c0ff">double</span>(n))<br>
+    <span style="color:#79c0ff">print</span>(result)
+  </div>
+  <div class="quiz-opts" style="max-width:700px">
+    <button class="qbtn" onclick="qa(this,false)">A. [1, 2, 3]</button>
+    <button class="qbtn" onclick="qa(this,false)">B. [2, 4, 6, 8]</button>
+    <button class="qbtn" onclick="qa(this,true)">C. [2, 4, 6]</button>
+    <button class="qbtn" onclick="qa(this,false)">D. 12</button>
+  </div>
+  <div id="qa-msg" class="result-msg"></div>
+  <button class="reveal-btn" onclick="rev('r11')">🔍 Trace ทีละขั้น</button>
+  <div id="r11" class="reveal-text">n=1→double(1)=2 | n=2→double(2)=4 | n=3→double(3)=6 → result=[2,4,6]</div>
+</div>
+
+<!-- S12: Mini Project -->
+<div class="slide s12" id="s12">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.2'?'1':'.2'">👩‍🏫 งานนี้ให้ทำคนเดียว ใช้ทักษะทั้งหมดที่เรียนมา — แจกใบงาน 3.1</div>
+  <div class="big-emoji">💻</div>
+  <h2>Mini Project: เลือกหัวข้อสร้างโปรแกรม</h2>
+  <div class="activity-box">
+    <h3>📋 เลือก 1 โปรแกรม</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;text-align:left">
+      <div style="background:rgba(255,255,255,.07);border-radius:10px;padding:12px 16px;font-size:13px">
+        🏆 <strong style="color:#fbbf24">ระดับ 1 (ง่าย)</strong><br>
+        สร้างโปรแกรมคำนวณเกรด<br>รับคะแนน 5 วิชา → Function → ผลลัพธ์
+      </div>
+      <div style="background:rgba(255,255,255,.07);border-radius:10px;padding:12px 16px;font-size:13px">
+        🚀 <strong style="color:#86efac">ระดับ 2 (กลาง)</strong><br>
+        สร้างโปรแกรมสมุดโน้ต<br>เพิ่ม ลบ แสดงรายการ (List + Function)
+      </div>
+    </div>
+  </div>
+  <button class="timer-btn" onclick="startTimer(25)" style="margin-top:14px;font-size:15px;padding:10px 24px">⏱ 25 นาที</button>
+</div>
+
+<!-- S13: เชื่อมสู่หน่วย 4 -->
+<div class="slide s13" id="s13">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.2'?'1':'.2'">👩‍🏫 Preview หน่วย 4 ให้นักเรียนเห็นว่าจะได้ใช้ทักษะทั้งหมดสร้างโปรแกรมจริง</div>
+  <h2>🔭 หน่วย 4 จะสร้างอะไร?</h2>
+  <div class="two-col">
+    <div class="col" style="border-color:rgba(34,197,94,.3)">
+      <h4>ทักษะที่มีตอนนี้</h4>
+      <p>✅ Variables, Types</p>
+      <p>✅ Input / Output</p>
+      <p>✅ if/elif/else</p>
+      <p>✅ for / while</p>
+      <p>✅ <strong style="color:#86efac">Functions</strong> ← ใหม่!</p>
+      <p>✅ <strong style="color:#86efac">Lists</strong> ← ใหม่!</p>
+      <p>✅ <strong style="color:#86efac">String Methods</strong> ← ใหม่!</p>
+    </div>
+    <div class="col" style="border-color:rgba(121,192,255,.3)">
+      <h4 style="color:#79c0ff">หน่วย 4: นำมาสร้างโปรแกรมจริง</h4>
+      <p>📋 วางแผนด้วย IPO Diagram</p>
+      <p>🐍 เขียน Python โปรแกรมสมบูรณ์</p>
+      <p>🎨 สร้าง Presentation ด้วย Canva</p>
+      <p>🎤 นำเสนอหน้าชั้นเรียน</p>
+      <p style="margin-top:8px;color:#fbbf24;font-size:13px">โปรเจกต์ชิ้นนี้ใช้ทุกอย่างที่เรียนมา!</p>
+    </div>
+  </div>
+</div>
+
+<!-- S14: สรุป -->
+<div class="slide s14" id="s14">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.2'?'1':'.2'">👩‍🏫 สรุปบทเรียน ถาม: "Function กับ List ต่างจาก if/while อย่างไร?"</div>
+  <div class="badge">สรุปบทเรียน หน่วยที่ 3 — ม.2</div>
+  <h2>🎓 สรุป: Python ขั้นกลาง</h2>
+  <ul class="step-list" style="max-width:820px">
+    <li><span class="sn">def</span><strong style="color:#79c0ff;font-family:monospace">Function</strong> = ชุดคำสั่งที่ตั้งชื่อได้ เรียกใช้ซ้ำได้</li>
+    <li><span class="sn">()→</span><strong style="color:#ffa657;font-family:monospace">Parameter</strong> = ข้อมูลที่ส่งเข้า Function</li>
+    <li><span class="sn">↩</span><strong style="color:#ff7b72;font-family:monospace">return</strong> = ส่งค่ากลับจาก Function</li>
+    <li><span class="sn">[]</span><strong style="color:#86efac;font-family:monospace">List</strong> = เก็บหลายค่า | index เริ่มที่ 0</li>
+    <li><span class="sn">📝</span><strong style="color:#a5d6ff;font-family:monospace">String Methods</strong> = .strip() .split() .replace() .upper()</li>
+    <li><span class="sn">🔄</span><strong style="color:#fbbf24">for loop + list</strong> = คู่ที่ใช้บ่อยที่สุด!</li>
+  </ul>
+</div>
+
+<div class="nav">
+  <button class="nav-btn" onclick="go(-1)">◀</button>
+  <div class="dots" id="dots"></div>
+  <span class="counter" id="counter">1 / 14</span>
+  <button class="nav-btn" onclick="go(1)">▶</button>
+</div>
+
+<script>
+let cur=0;
+const slides=document.querySelectorAll('.slide');
+const total=slides.length;
+for(let i=0;i<total;i++){const d=document.createElement('div');d.className='dot'+(i===0?' on':'');document.getElementById('dots').appendChild(d);}
+function showSlide(n){slides[cur].classList.remove('active');document.querySelectorAll('.dot')[cur].classList.remove('on');cur=Math.max(0,Math.min(n,total-1));slides[cur].classList.add('active');document.querySelectorAll('.dot')[cur].classList.add('on');document.getElementById('counter').textContent=(cur+1)+' / '+total;document.getElementById('prog').style.width=((cur+1)/total*100)+'%';}
+function go(d){showSlide(cur+d)}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')go(1);if(e.key==='ArrowLeft')go(-1);});
+function rev(id){document.getElementById(id).classList.toggle('show')}
+function qa(btn,correct){document.querySelectorAll('.qbtn').forEach(b=>b.disabled=true);btn.classList.add(correct?'correct':'wrong');if(!correct)document.querySelectorAll('.qbtn').forEach(b=>{if(b.textContent.includes('[2, 4, 6]'))b.classList.add('correct')});const msg=document.getElementById('qa-msg');msg.style.display='block';msg.style.color=correct?'#4ade80':'#f87171';msg.textContent=correct?'🎉 ถูก! double(1)=2, double(2)=4, double(3)=6 → [2,4,6]':'❌ trace: n=1→2 | n=2→4 | n=3→6 → result=[2,4,6]';}
+let timerInterval=null;
+function startTimer(min){clearInterval(timerInterval);let sec=min*60;const disp=document.getElementById('timerDisplay');disp.style.display='block';disp.style.color='#4ade80';function tick(){const m=Math.floor(sec/60);const s=sec%60;disp.textContent=m+':'+(s<10?'0':'')+s;if(sec<=10)disp.style.color='#f87171';if(sec===0){clearInterval(timerInterval);disp.textContent='⏰ หมดเวลา!';}sec--;}tick();timerInterval=setInterval(tick,1000);}
+
+/* Terminal System */
+const TERMINALS={
+  t_func_intro:{lines:[
+    {t:'code',c:'>>> def greet():'},
+    {t:'code',c:'...     print("สวัสดีทุกคน!")'},
+    {t:'code',c:'...'},
+    {t:'code',c:'>>> greet()'},
+    {t:'out',c:'สวัสดีทุกคน!'},
+    {t:'code',c:'>>> greet()'},
+    {t:'out',c:'สวัสดีทุกคน!'},
+    {t:'code',c:'>>> greet()'},
+    {t:'out',c:'สวัสดีทุกคน!'},
+    {t:'out',c:'# เรียกครั้งเดียว ใช้ได้ทุกครั้ง!'},
+  ]},
+  t_param:{lines:[
+    {t:'code',c:'>>> def greet(name):'},
+    {t:'code',c:'...     print(f"สวัสดี {name}!")'},
+    {t:'code',c:'...'},
+    {t:'code',c:'>>> greet("มาย")'},
+    {t:'out',c:'สวัสดี มาย!'},
+    {t:'code',c:'>>> greet("ครูแพร")'},
+    {t:'out',c:'สวัสดี ครูแพร!'},
+    {t:'code',c:'>>> def add(a, b):'},
+    {t:'code',c:'...     print(a + b)'},
+    {t:'code',c:'...'},
+    {t:'code',c:'>>> add(5, 3)'},
+    {t:'out',c:'8'},
+  ]},
+  t_return:{lines:[
+    {t:'code',c:'>>> def double(x):'},
+    {t:'code',c:'...     return x * 2'},
+    {t:'code',c:'...'},
+    {t:'code',c:'>>> result = double(5)'},
+    {t:'code',c:'>>> print(result)'},
+    {t:'out',c:'10'},
+    {t:'code',c:'>>> print(result + 3)'},
+    {t:'out',c:'13'},
+    {t:'code',c:'>>> print(double(7) * 2)'},
+    {t:'out',c:'28'},
+  ]},
+  t_list:{lines:[
+    {t:'code',c:'>>> scores = [80, 75, 90, 68]'},
+    {t:'code',c:'>>> print(scores[0])'},
+    {t:'out',c:'80'},
+    {t:'code',c:'>>> print(scores[-1])'},
+    {t:'out',c:'68'},
+    {t:'code',c:'>>> print(len(scores))'},
+    {t:'out',c:'4'},
+    {t:'code',c:'>>> print(sum(scores))'},
+    {t:'out',c:'313'},
+    {t:'code',c:'>>> print(max(scores))'},
+    {t:'out',c:'90'},
+  ]},
+  t_listmethods:{lines:[
+    {t:'code',c:'>>> lst = [3, 1, 4, 1, 5]'},
+    {t:'code',c:'>>> lst.append(9)'},
+    {t:'code',c:'>>> print(lst)'},
+    {t:'out',c:'[3, 1, 4, 1, 5, 9]'},
+    {t:'code',c:'>>> lst.sort()'},
+    {t:'code',c:'>>> print(lst)'},
+    {t:'out',c:'[1, 1, 3, 4, 5, 9]'},
+    {t:'code',c:'>>> lst.reverse()'},
+    {t:'code',c:'>>> print(lst)'},
+    {t:'out',c:'[9, 5, 4, 3, 1, 1]'},
+  ]},
+  t_forlist:{lines:[
+    {t:'code',c:'>>> fruits = ["แอปเปิล", "มะม่วง", "ส้ม"]'},
+    {t:'code',c:'>>> for fruit in fruits:'},
+    {t:'code',c:'...     print(fruit)'},
+    {t:'code',c:'...'},
+    {t:'out',c:'แอปเปิล'},
+    {t:'out',c:'มะม่วง'},
+    {t:'out',c:'ส้ม'},
+    {t:'code',c:'>>> scores = [80, 75, 90, 85]'},
+    {t:'code',c:'>>> avg = sum(scores) / len(scores)'},
+    {t:'code',c:'>>> print(f"เฉลี่ย: {avg:.1f}")'},
+    {t:'out',c:'เฉลี่ย: 82.5'},
+  ]},
+  t_strmethod:{lines:[
+    {t:'code',c:'>>> s = "  Hello Python  "'},
+    {t:'code',c:'>>> print(s.strip())'},
+    {t:'out',c:'Hello Python'},
+    {t:'code',c:'>>> print(s.upper())'},
+    {t:'out',c:'  HELLO PYTHON  '},
+    {t:'code',c:'>>> print(s.replace("Hello", "Hi"))'},
+    {t:'out',c:'  Hi Python  '},
+    {t:'code',c:'>>> words = "a,b,c".split(",")'},
+    {t:'code',c:'>>> print(words)'},
+    {t:'out',c:"['a', 'b', 'c']"},
+  ]},
+  t_full:{lines:[
+    {t:'out',c:'85 → เกรด A'},
+    {t:'out',c:'72 → เกรด B'},
+    {t:'out',c:'90 → เกรด A'},
+    {t:'out',c:'68 → เกรด F'},
+    {t:'out',c:'78 → เกรด C'},
+    {t:'out',c:''},
+    {t:'out',c:'เฉลี่ย: 78.6'},
+    {t:'out',c:'สูงสุด: 90'},
+    {t:'out',c:'ต่ำสุด: 68'},
+    {t:'out',c:'เกรดเฉลี่ย: C'},
+  ]},
+};
+
+function runTerminal(id){
+  const data=TERMINALS[id];
+  if(!data)return;
+  const container=document.getElementById(id);
+  container.innerHTML='';
+  let delay=0;
+  data.lines.forEach(line=>{
+    const dur=line.t==='code'?600:line.t==='inp'?700:400;
+    setTimeout(()=>{
+      const div=document.createElement('div');div.className='t-line';
+      if(line.t==='code'){
+        div.innerHTML='<span style="color:#57ab5a"></span><span class="t-code"></span>';
+        container.appendChild(div);container.scrollTop=container.scrollHeight;
+        typeWriter(div.querySelector('.t-code'),line.c,0);
+      }else if(line.t==='inp'){
+        div.innerHTML=`<span style="color:#fbbf24">${esc(line.c)}</span>`;
+        container.appendChild(div);container.scrollTop=container.scrollHeight;
+      }else{
+        div.innerHTML=`<span style="color:#79c0ff">${esc(line.c)}</span>`;
+        container.appendChild(div);container.scrollTop=container.scrollHeight;
+      }
+    },delay);
+    delay+=dur;
+  });
+  setTimeout(()=>{const c=document.createElement('span');c.className='cursor';container.appendChild(c);},delay+200);
+}
+function typeWriter(el,text,i){
+  if(i<text.length){el.textContent+=text[i];el.closest('.terminal-body')?.scrollTo(0,9999);setTimeout(()=>typeWriter(el,text,i+1),22);}
+}
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+</script>
+</body>
+</html>

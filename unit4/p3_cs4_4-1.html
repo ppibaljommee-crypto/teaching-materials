@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"><title>ป.3 วิทยาการคำนวณ ใบงาน 4.1 — นักวิทย์ข้อมูล</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Sarabun',sans-serif;background:#fff;padding:16px}
+.page{max-width:800px;margin:0 auto}
+.header{background:linear-gradient(135deg,#1e3a8a,#3b82f6);border-radius:16px;padding:14px 20px;display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.header-icon{font-size:38px}
+.header-text h1{color:#fff;font-size:19px;font-weight:800}
+.header-text p{color:rgba(255,255,255,.85);font-size:12px}
+.badge{background:#1e3a8a;color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;display:inline-block;margin-bottom:4px}
+.info-row{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:8px;margin-bottom:14px}
+.info-box{border:1.5px solid #ddd;border-radius:8px;padding:6px 10px;font-size:13px}
+.info-box label{font-size:11px;color:#888;display:block}
+.info-box .line{border-bottom:1px solid #ccc;margin-top:8px}
+.section{margin-bottom:22px}
+.section h2{font-size:15px;font-weight:800;color:#1e3a8a;border-left:4px solid #3b82f6;padding-left:10px;margin-bottom:12px}
+.write-line{border-bottom:1.5px solid #bfdbfe;margin-bottom:8px;min-height:22px}
+/* Data table */
+.data-table{width:100%;border-collapse:collapse;font-size:13px}
+.data-table th{background:#3b82f6;color:#fff;padding:8px;border:1px solid #ddd;text-align:center}
+.data-table td{padding:8px;border:1px solid #ddd;text-align:center;height:32px}
+.data-table tr:nth-child(even) td{background:#eff6ff}
+/* Stats box */
+.stats-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;margin-top:10px}
+.stat-card{border:2px solid #bfdbfe;border-radius:10px;padding:10px;text-align:center;background:#eff6ff}
+.stat-card h4{font-size:12px;font-weight:700;color:#1e3a8a;margin-bottom:8px}
+.stat-card .answer{border-bottom:2px solid #3b82f6;min-height:24px;font-size:15px;font-weight:700;text-align:center}
+/* Graph grid */
+.graph-box{border:2px solid #3b82f6;border-radius:10px;padding:14px;background:#eff6ff;margin-top:8px}
+.mini-graph{height:120px;border-left:2px solid #3b82f6;border-bottom:2px solid #3b82f6;display:flex;align-items:flex-end;gap:12px;padding:6px;margin-top:8px}
+.mini-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px}
+.mini-bar{width:32px;border:1.5px dashed #93c5fd;background:rgba(59,130,246,.1);border-radius:2px 2px 0 0;align-self:flex-end}
+.mini-label{font-size:10px;color:#555;margin-top:4px;text-align:center}
+/* Summary */
+.summary-box{border:2px solid #bfdbfe;border-radius:10px;padding:12px;background:#eff6ff;margin-top:8px}
+/* Rubric */
+.rubric{width:100%;border-collapse:collapse;font-size:12px}
+.rubric th{background:#3b82f6;color:#fff;padding:7px;border:1px solid #ddd;text-align:center}
+.rubric td{padding:7px;border:1px solid #ddd;text-align:center}
+.rubric tr:nth-child(even) td{background:#eff6ff}
+.score-row{display:flex;justify-content:space-between;align-items:center;border-top:2px solid #bfdbfe;padding-top:12px;margin-top:12px}
+@media print{body{padding:8px}@page{size:A4;margin:10mm}.header{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div class="header-icon">🔬</div>
+    <div class="header-text">
+      <div class="badge">วิทยาการคำนวณ • ป.3 • หน่วย 4</div>
+      <h1>ใบงาน 4.1 — นักวิทยาศาสตร์ข้อมูลตัวน้อย</h1>
+      <p>Data Science • ตั้งคำถาม • เก็บข้อมูล • วิเคราะห์ • สรุป</p>
+    </div>
+  </div>
+  <div class="info-row">
+    <div class="info-box"><label>ชื่อ-นามสกุล</label><div class="line"></div></div>
+    <div class="info-box"><label>ชั้น/ห้อง</label><div class="line"></div></div>
+    <div class="info-box"><label>เลขที่</label><div class="line"></div></div>
+    <div class="info-box"><label>วันที่</label><div class="line"></div></div>
+  </div>
+
+  <!-- ขั้น 1: ตั้งคำถาม -->
+  <div class="section">
+    <h2>ขั้นที่ 1: ตั้งคำถาม (3 คะแนน)</h2>
+    <p style="font-size:13px;color:#555;margin-bottom:8px">เขียนคำถาม Data Science ที่อยากหาคำตอบ (ต้องตอบได้ด้วยตัวเลข)</p>
+    <p style="font-size:13px;font-weight:700">คำถามของฉัน: </p>
+    <div class="write-line"></div>
+    <div class="write-line"></div>
+    <p style="font-size:13px;color:#555;margin-top:8px">สิ่งที่ต้องวัด/เก็บข้อมูล: <span style="border-bottom:1px solid #ccc;display:inline-block;width:250px"></span></p>
+  </div>
+
+  <!-- ขั้น 2: เก็บข้อมูล -->
+  <div class="section">
+    <h2>ขั้นที่ 2: เก็บข้อมูล (5 คะแนน)</h2>
+    <p style="font-size:13px;color:#555;margin-bottom:8px">เก็บข้อมูลจากเพื่อน 5 คน กรอกลงตาราง</p>
+    <table class="data-table">
+      <tr>
+        <th>ลำดับ</th>
+        <th>ชื่อ (หรือรหัส)</th>
+        <th>ข้อมูลที่ 1: _____________</th>
+        <th>ข้อมูลที่ 2: _____________</th>
+      </tr>
+      <tr><td>1</td><td></td><td></td><td></td></tr>
+      <tr><td>2</td><td></td><td></td><td></td></tr>
+      <tr><td>3</td><td></td><td></td><td></td></tr>
+      <tr><td>4</td><td></td><td></td><td></td></tr>
+      <tr><td>5</td><td></td><td></td><td></td></tr>
+    </table>
+  </div>
+
+  <!-- ขั้น 3: วิเคราะห์ -->
+  <div class="section">
+    <h2>ขั้นที่ 3: วิเคราะห์ข้อมูล (6 คะแนน)</h2>
+    <p style="font-size:13px;color:#555;margin-bottom:8px">คำนวณค่าสถิติจากข้อมูลที่ 1</p>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <h4>ค่าเฉลี่ย (Mean)<br>ผลรวม ÷ 5</h4>
+        <div class="answer"></div>
+      </div>
+      <div class="stat-card">
+        <h4>ค่าสูงสุด (Max)</h4>
+        <div class="answer"></div>
+      </div>
+      <div class="stat-card">
+        <h4>ค่าต่ำสุด (Min)</h4>
+        <div class="answer"></div>
+      </div>
+      <div class="stat-card">
+        <h4>พิสัย (Range)<br>Max - Min</h4>
+        <div class="answer"></div>
+      </div>
+    </div>
+    <p style="font-size:13px;margin-top:10px;font-weight:700">วิธีคำนวณค่าเฉลี่ย (แสดงการคำนวณ):</p>
+    <div class="write-line"></div>
+    <div class="write-line"></div>
+  </div>
+
+  <!-- ขั้น 4: วาดกราฟ -->
+  <div class="section">
+    <h2>ขั้นที่ 4: แสดงผลด้วยกราฟ (3 คะแนน)</h2>
+    <div class="graph-box">
+      <p style="font-size:13px;font-weight:700">ชื่อกราฟ: <span style="border-bottom:1px solid #3b82f6;display:inline-block;width:250px"></span></p>
+      <div class="mini-graph">
+        <div class="mini-col"><div class="mini-bar" style="height:20px"></div><div class="mini-label">คน 1</div></div>
+        <div class="mini-col"><div class="mini-bar" style="height:20px"></div><div class="mini-label">คน 2</div></div>
+        <div class="mini-col"><div class="mini-bar" style="height:20px"></div><div class="mini-label">คน 3</div></div>
+        <div class="mini-col"><div class="mini-bar" style="height:20px"></div><div class="mini-label">คน 4</div></div>
+        <div class="mini-col"><div class="mini-bar" style="height:20px"></div><div class="mini-label">คน 5</div></div>
+      </div>
+      <p style="font-size:11px;color:#666;margin-top:6px">วาดแท่งสูงตามข้อมูลที่เก็บได้ ระบายสีให้สวยงาม</p>
+    </div>
+  </div>
+
+  <!-- ขั้น 5: สรุป -->
+  <div class="section">
+    <h2>ขั้นที่ 5: สรุปผล (3 คะแนน)</h2>
+    <div class="summary-box">
+      <p style="font-size:13px;font-weight:700;margin-bottom:8px">จากข้อมูลที่เก็บได้ ฉันค้นพบว่า...</p>
+      <div class="write-line"></div>
+      <div class="write-line"></div>
+      <p style="font-size:13px;font-weight:700;margin-top:8px;margin-bottom:8px">ข้อมูลนี้ตอบคำถามต้นของฉันได้ไหม?</p>
+      <div class="write-line"></div>
+      <p style="font-size:13px;font-weight:700;margin-top:8px;margin-bottom:8px">สิ่งที่อยากรู้เพิ่มเติมคือ...</p>
+      <div class="write-line"></div>
+    </div>
+  </div>
+
+  <!-- Rubric -->
+  <div class="section">
+    <h2>เกณฑ์การให้คะแนน (รวม 20 คะแนน)</h2>
+    <table class="rubric">
+      <tr><th>ขั้นตอน</th><th>เนื้อหา</th><th>คะแนนเต็ม</th><th>คะแนนที่ได้</th></tr>
+      <tr><td>1. ตั้งคำถาม</td><td>คำถามชัดเจน ตอบด้วยตัวเลขได้</td><td>3</td><td></td></tr>
+      <tr><td>2. เก็บข้อมูล</td><td>เก็บข้อมูลครบ 5 คน ถูกต้อง</td><td>5</td><td></td></tr>
+      <tr><td>3. วิเคราะห์</td><td>คำนวณ Mean Max Min Range ถูกต้อง</td><td>6</td><td></td></tr>
+      <tr><td>4. กราฟ</td><td>วาดกราฟถูกต้อง มีชื่อ แกน</td><td>3</td><td></td></tr>
+      <tr><td>5. สรุป</td><td>สรุปผลเชื่อมโยงกับคำถามต้น</td><td>3</td><td></td></tr>
+    </table>
+    <div class="score-row">
+      <p style="font-size:13px">ความคิดเห็นครู: <span style="border-bottom:1px solid #ccc;display:inline-block;width:280px"></span></p>
+      <p style="font-size:15px;font-weight:800">รวม: _____ / 20 คะแนน</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>
