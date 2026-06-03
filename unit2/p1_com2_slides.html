@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ป.1 คอมเพิ่มเติม หน่วย 2 — พิมพ์และสร้างงาน</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Sarabun',sans-serif;background:#1a0a00;overflow:hidden;height:100vh}
+.prog-bar{position:fixed;top:0;left:0;height:4px;background:linear-gradient(90deg,#f97316,#fb923c,#fdba74);transition:width .4s;z-index:300;box-shadow:0 0 10px rgba(249,115,22,.6)}
+.slide{display:none;width:100vw;height:100vh;flex-direction:column;align-items:center;justify-content:center;padding:40px 32px;position:relative}
+.slide.active{display:flex;animation:fadeUp .4s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.s1{background:linear-gradient(135deg,#1a0500,#7c1d0c,#c2410c,#ea580c)}
+.s2{background:linear-gradient(135deg,#0a0800,#451a03,#92400e)}
+.s3{background:linear-gradient(135deg,#150500,#7c2d12,#c2410c)}
+.s4{background:linear-gradient(135deg,#0a0500,#431407,#9a3412)}
+.s5{background:linear-gradient(135deg,#1a0500,#6c2a10,#c05218)}
+.s6{background:linear-gradient(135deg,#0a0300,#5c1d08,#b45309)}
+.s7{background:linear-gradient(135deg,#050520,#1e1b4b,#312e81)}
+.s8{background:linear-gradient(135deg,#0a0800,#3d2000,#b45309)}
+.s9{background:linear-gradient(135deg,#020f0a,#022c22,#047857)}
+.s10{background:linear-gradient(135deg,#1a0500,#7c1d0c,#c2410c)}
+h1{font-size:clamp(28px,5.5vw,62px);font-weight:800;color:#fff;text-align:center;line-height:1.15}
+h2{font-size:clamp(20px,3.8vw,44px);font-weight:700;color:#fff;text-align:center;line-height:1.3}
+p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:center;margin-top:12px}
+.badge{background:rgba(249,115,22,.3);border:1px solid rgba(249,115,22,.6);border-radius:50px;padding:8px 24px;font-size:clamp(12px,1.6vw,18px);color:#fed7aa;font-weight:700;margin-bottom:16px}
+.big-emoji{font-size:clamp(60px,12vw,120px);text-align:center;line-height:1;margin-bottom:8px}
+.box{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);backdrop-filter:blur(12px);border-radius:20px;padding:22px 30px;width:100%;max-width:880px;margin-top:14px}
+.step-list{list-style:none;width:100%;max-width:800px;margin-top:12px}
+.step-list li{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:12px 20px;margin-bottom:10px;font-size:clamp(14px,2.2vw,24px);color:#fff;display:flex;align-items:center;gap:14px;animation:slideIn .4s ease both}
+@keyframes slideIn{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
+.step-list li:nth-child(1){animation-delay:.1s}.step-list li:nth-child(2){animation-delay:.2s}.step-list li:nth-child(3){animation-delay:.3s}.step-list li:nth-child(4){animation-delay:.4s}.step-list li:nth-child(5){animation-delay:.5s}
+.sn{background:#f97316;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px;flex-shrink:0;color:#fff}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;width:100%;max-width:880px;margin-top:14px}
+.col{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:18px 22px}
+.col h4{font-size:clamp(14px,2.2vw,22px);color:#fdba74;font-weight:800;margin-bottom:10px}
+.col p{font-size:clamp(12px,1.7vw,19px);color:rgba(255,255,255,.85);padding:4px 0}
+/* Keyboard visual */
+.keyboard{display:flex;flex-direction:column;gap:6px;margin-top:14px;align-items:center}
+.key-row{display:flex;gap:5px}
+.key{background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.25);border-radius:6px;padding:6px 10px;font-size:clamp(12px,1.5vw,16px);font-weight:700;color:#fff;min-width:36px;text-align:center;font-family:monospace}
+.key.highlight{background:rgba(249,115,22,.4);border-color:#f97316;color:#fde68a;animation:pulse 1.5s ease infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+.key.wide{min-width:80px}
+.key.wider{min-width:120px}
+/* Quiz */
+.quiz-opts{display:flex;flex-direction:column;gap:10px;width:100%;max-width:720px;margin-top:14px}
+.qbtn{background:rgba(255,255,255,.09);border:1.5px solid rgba(255,255,255,.2);border-radius:14px;padding:13px 20px;color:#fff;font-size:clamp(14px,2vw,22px);font-weight:700;cursor:pointer;text-align:left;font-family:'Sarabun',sans-serif;transition:all .2s}
+.qbtn:hover{background:rgba(255,255,255,.16)}
+.qbtn.correct{background:rgba(74,222,128,.2);border-color:#4ade80;color:#4ade80}
+.qbtn.wrong{background:rgba(248,113,113,.15);border-color:#f87171;opacity:.7}
+.result-msg{font-size:clamp(16px,2.5vw,28px);font-weight:800;text-align:center;margin-top:12px;display:none}
+.teacher-note{position:fixed;top:18px;right:18px;background:rgba(0,0,0,.65);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:10px 16px;color:rgba(255,255,255,.65);font-size:13px;max-width:280px;text-align:right;cursor:pointer;z-index:200}
+.timer-widget{position:fixed;top:18px;left:18px;z-index:200}
+.timer-btn{background:rgba(249,115,22,.2);border:1px solid rgba(249,115,22,.4);border-radius:10px;padding:8px 14px;color:#fed7aa;font-size:13px;font-weight:700;cursor:pointer;font-family:'Sarabun',sans-serif}
+.timer-display{background:rgba(0,0,0,.7);border:1px solid rgba(249,115,22,.4);border-radius:10px;padding:10px 18px;color:#fbbf24;font-size:28px;font-weight:800;text-align:center;margin-top:6px;display:none;font-family:monospace}
+.nav{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:14px;z-index:100}
+.nav-btn{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:50%;width:52px;height:52px;font-size:22px;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center}
+.nav-btn:hover{background:rgba(255,255,255,.25);transform:scale(1.1)}
+.counter{background:rgba(0,0,0,.5);color:#fff;border-radius:20px;padding:8px 20px;font-size:16px;font-weight:700;border:1px solid rgba(255,255,255,.15)}
+.dots{display:flex;gap:7px;align-items:center}
+.dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.25);transition:all .3s}
+.dot.on{background:#f97316;transform:scale(1.5);box-shadow:0 0 8px #f97316}
+.activity-box{background:rgba(249,115,22,.1);border:2px solid rgba(249,115,22,.4);border-radius:20px;padding:20px 28px;width:100%;max-width:820px;margin-top:14px;text-align:center}
+.activity-box h3{color:#fbbf24;font-size:clamp(16px,2.5vw,28px);font-weight:800;margin-bottom:10px}
+</style>
+</head>
+<body>
+<div class="prog-bar" id="prog"></div>
+<div class="timer-widget"><button class="timer-btn" onclick="startTimer(10)">⏱ 10 นาที</button><div class="timer-display" id="timerDisplay">10:00</div></div>
+
+<!-- S1 -->
+<div class="slide s1 active" id="s1">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ถาม: "ใครเคยพิมพ์งานด้วยคอมพิวเตอร์บ้าง?"</div>
+  <div class="badge">คอมพิวเตอร์เพิ่มเติม • ป.1 • หน่วยที่ 2</div>
+  <div class="big-emoji">⌨️</div>
+  <h1>พิมพ์และสร้างงาน<br>ด้วยคอมพิวเตอร์</h1>
+  <p class="sub">Keyboard • Microsoft Word เบื้องต้น</p>
+</div>
+
+<!-- S2 -->
+<div class="slide s2" id="s2">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ทบทวนส่วนประกอบคอมพิวเตอร์จาก Unit 1 — เน้นแป้นพิมพ์</div>
+  <h2>🔄 ทบทวน: ส่วนประกอบที่รู้จักแล้ว</h2>
+  <ul class="step-list">
+    <li><span class="sn">1</span>หน่วย 1: รู้จักส่วนประกอบคอมพิวเตอร์ทั้งหมด</li>
+    <li><span class="sn">2</span>วันนี้เราจะ<strong style="color:#fdba74">ใช้งาน</strong>แป้นพิมพ์จริงๆ</li>
+    <li><span class="sn">3</span>แล้วสร้างงานด้วย <strong style="color:#fbbf24">Microsoft Word</strong></li>
+  </ul>
+</div>
+
+<!-- S3: แป้นพิมพ์ -->
+<div class="slide s3" id="s3">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้นักเรียนมองแป้นพิมพ์จริง ชี้ตำแหน่งแต่ละปุ่ม</div>
+  <h2>⌨️ รู้จักแป้นพิมพ์</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>ปุ่มสำคัญที่ต้องรู้</h4>
+      <p>🔤 <strong style="color:#fdba74">ตัวอักษร A-Z</strong> — พิมพ์ข้อความ</p>
+      <p>🔢 <strong style="color:#fdba74">ตัวเลข 0-9</strong> — พิมพ์ตัวเลข</p>
+      <p>↵ <strong style="color:#fdba74">Enter</strong> — ขึ้นบรรทัดใหม่</p>
+      <p>⌫ <strong style="color:#fdba74">Backspace</strong> — ลบตัวหลัง</p>
+      <p>⎵ <strong style="color:#fdba74">Spacebar</strong> — เว้นวรรค</p>
+    </div>
+    <div class="col">
+      <h4>ปุ่มพิเศษ</h4>
+      <p>⇧ <strong style="color:#fbbf24">Shift</strong> — พิมพ์ตัวพิมพ์ใหญ่</p>
+      <p>Ctrl+<strong style="color:#fbbf24">C</strong> — คัดลอก</p>
+      <p>Ctrl+<strong style="color:#fbbf24">V</strong> — วาง</p>
+      <p>Ctrl+<strong style="color:#fbbf24">Z</strong> — เลิกทำ (Undo)</p>
+      <p>Ctrl+<strong style="color:#fbbf24">S</strong> — บันทึก</p>
+    </div>
+  </div>
+</div>
+
+<!-- S4: Home Row -->
+<div class="slide s4" id="s4">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้นักเรียนวางมือตรง Home Row ก่อนพิมพ์ทุกครั้ง</div>
+  <h2>🏠 Home Row Keys — ตำแหน่งพักมือ</h2>
+  <div class="box" style="text-align:center">
+    <p style="font-size:clamp(14px,2.2vw,24px);color:#fff;margin-bottom:14px">วางนิ้วที่ <strong style="color:#fbbf24">A S D F</strong> (มือซ้าย) และ <strong style="color:#fbbf24">J K L ;</strong> (มือขวา)</p>
+    <div class="keyboard">
+      <div class="key-row">
+        <div class="key">Q</div><div class="key">W</div><div class="key">E</div><div class="key">R</div><div class="key">T</div><div class="key">Y</div><div class="key">U</div><div class="key">I</div><div class="key">O</div><div class="key">P</div>
+      </div>
+      <div class="key-row">
+        <div class="key highlight">A</div><div class="key highlight">S</div><div class="key highlight">D</div><div class="key highlight">F</div><div class="key">G</div><div class="key">H</div><div class="key highlight">J</div><div class="key highlight">K</div><div class="key highlight">L</div><div class="key highlight">;</div>
+      </div>
+      <div class="key-row">
+        <div class="key">Z</div><div class="key">X</div><div class="key">C</div><div class="key">V</div><div class="key">B</div><div class="key">N</div><div class="key">M</div>
+      </div>
+      <div class="key-row">
+        <div class="key wider">Spacebar</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S5: Word -->
+<div class="slide s5" id="s5">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 เปิด Word ให้ดู อธิบาย Ribbon toolbar ทีละส่วน</div>
+  <h2>📄 Microsoft Word คืออะไร?</h2>
+  <div class="box" style="text-align:center">
+    <p style="font-size:clamp(15px,2.5vw,26px);color:#fff">Word = โปรแกรม<strong style="color:#79c0ff">พิมพ์เอกสาร</strong>ที่ใช้กันทั่วโลก<br>สร้างรายงาน จดหมาย ใบงาน ทำได้ง่ายๆ</p>
+  </div>
+  <div class="two-col">
+    <div class="col">
+      <h4>ส่วนประกอบ Word</h4>
+      <p>🔵 <strong style="color:#fdba74">Title Bar</strong> — ชื่อไฟล์</p>
+      <p>🎨 <strong style="color:#fdba74">Ribbon</strong> — เครื่องมือต่างๆ</p>
+      <p>📄 <strong style="color:#fdba74">Document</strong> — พื้นที่พิมพ์</p>
+      <p>📊 <strong style="color:#fdba74">Status Bar</strong> — ข้อมูลเอกสาร</p>
+    </div>
+    <div class="col">
+      <h4>แท็บสำคัญใน Ribbon</h4>
+      <p>🏠 <strong style="color:#fbbf24">Home</strong> — ตัวอักษร ขนาด สี</p>
+      <p>📥 <strong style="color:#fbbf24">Insert</strong> — รูปภาพ ตาราง</p>
+      <p>📐 <strong style="color:#fbbf24">Layout</strong> — หน้ากระดาษ</p>
+      <p>💾 <strong style="color:#fbbf24">File → Save</strong> — บันทึก</p>
+    </div>
+  </div>
+</div>
+
+<!-- S6: ฝึกพิมพ์ -->
+<div class="slide s6" id="s6">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้นักเรียนพิมพ์ตามที่สอน ตรวจดูท่าทางการพิมพ์</div>
+  <h2>🎯 ฝึกพิมพ์: ข้อความแนะนำตัว</h2>
+  <div class="activity-box">
+    <h3>📋 ให้นักเรียนพิมพ์</h3>
+    <div style="background:rgba(0,0,0,.3);border-radius:10px;padding:14px 20px;margin-top:8px;text-align:left;font-size:clamp(14px,2vw,20px);color:rgba(255,255,255,.9);line-height:2">
+      <p>ชื่อของฉันคือ ......................</p>
+      <p>ฉันเรียนอยู่ชั้น ป.1 ห้อง .........</p>
+      <p>ฉันชอบ ......................</p>
+    </div>
+  </div>
+  <button class="timer-btn" onclick="startTimer(10)" style="margin-top:14px;font-size:15px;padding:10px 24px">⏱ 10 นาที</button>
+</div>
+
+<!-- S7: ตกแต่งข้อความ -->
+<div class="slide s7" id="s7">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 Demo การตกแต่งข้อความ Bold, Italic, สี, ขนาดฟอนต์</div>
+  <h2>🎨 ตกแต่งข้อความใน Word</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>เปลี่ยนรูปแบบตัวอักษร</h4>
+      <p><strong>B</strong> Ctrl+B = <strong>ตัวหนา</strong></p>
+      <p><em>I</em> Ctrl+I = <em>ตัวเอียง</em></p>
+      <p><u>U</u> Ctrl+U = <u>ขีดเส้นใต้</u></p>
+    </div>
+    <div class="col">
+      <h4>เปลี่ยนขนาดและสี</h4>
+      <p>• ขนาดฟอนต์: 12, 14, 16, 24...</p>
+      <p>• ฟอนต์ภาษาไทย: TH Sarabun</p>
+      <p>• สีตัวอักษร: ปุ่ม A สีแดง</p>
+      <p>• Highlight: ปุ่มดินสอเน้นสี</p>
+    </div>
+  </div>
+</div>
+
+<!-- S8: บันทึกไฟล์ -->
+<div class="slide s8" id="s8">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สอนนักเรียนบันทึกไฟล์ในโฟลเดอร์ที่กำหนด — ตั้งชื่อไฟล์ให้เป็น</div>
+  <h2>💾 การบันทึกไฟล์</h2>
+  <ul class="step-list">
+    <li><span class="sn">1</span>กด <strong style="color:#fbbf24">Ctrl + S</strong> หรือไปที่ File → Save As</li>
+    <li><span class="sn">2</span>เลือก <strong style="color:#fbbf24">โฟลเดอร์</strong> ที่ต้องการบันทึก</li>
+    <li><span class="sn">3</span>ตั้ง<strong style="color:#fbbf24">ชื่อไฟล์</strong>: ชื่อ_นามสกุล_ใบงาน</li>
+    <li><span class="sn">4</span>เลือกประเภท: <strong style="color:#fbbf24">Word Document (.docx)</strong></li>
+    <li><span class="sn">5</span>กด <strong style="color:#fbbf24">Save</strong></li>
+  </ul>
+</div>
+
+<!-- S9: Quiz -->
+<div class="slide s9" id="s9">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 Quiz ทบทวนก่อนนักเรียนทำใบงาน</div>
+  <h2>🎯 ทดสอบ: Ctrl + Z ทำอะไร?</h2>
+  <div class="quiz-opts">
+    <button class="qbtn" onclick="qa(this,false)">A. คัดลอกข้อความ</button>
+    <button class="qbtn" onclick="qa(this,false)">B. บันทึกไฟล์</button>
+    <button class="qbtn" onclick="qa(this,true)">C. เลิกทำ (Undo) — ย้อนกลับการกระทำล่าสุด</button>
+    <button class="qbtn" onclick="qa(this,false)">D. วางข้อความ</button>
+  </div>
+  <div id="qa-msg" class="result-msg"></div>
+</div>
+
+<!-- S10: สรุป -->
+<div class="slide s10" id="s10">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สรุปบทเรียน แจกใบงาน 2.1 ให้นักเรียนพิมพ์แนะนำตัวใน Word</div>
+  <div class="badge">สรุปบทเรียน หน่วยที่ 2</div>
+  <h2>🎓 สรุป: พิมพ์และสร้างงานด้วยคอม</h2>
+  <ul class="step-list">
+    <li><span class="sn">⌨️</span><strong style="color:#fdba74">Home Row</strong> = A S D F | J K L ; ตำแหน่งพักมือ</li>
+    <li><span class="sn">📄</span><strong style="color:#79c0ff">Word</strong> = โปรแกรมพิมพ์เอกสาร</li>
+    <li><span class="sn">B</span><strong>Bold</strong>, <em>Italic</em>, <u>Underline</u> = ตกแต่งตัวอักษร</li>
+    <li><span class="sn">💾</span>Ctrl+S = บันทึกไฟล์ทุกครั้ง</li>
+  </ul>
+</div>
+
+<div class="nav">
+  <button class="nav-btn" onclick="go(-1)">◀</button>
+  <div class="dots" id="dots"></div>
+  <span class="counter" id="counter">1 / 10</span>
+  <button class="nav-btn" onclick="go(1)">▶</button>
+</div>
+<script>
+let cur=0;const slides=document.querySelectorAll('.slide');const total=slides.length;
+for(let i=0;i<total;i++){const d=document.createElement('div');d.className='dot'+(i===0?' on':'');document.getElementById('dots').appendChild(d);}
+function showSlide(n){slides[cur].classList.remove('active');document.querySelectorAll('.dot')[cur].classList.remove('on');cur=Math.max(0,Math.min(n,total-1));slides[cur].classList.add('active');document.querySelectorAll('.dot')[cur].classList.add('on');document.getElementById('counter').textContent=(cur+1)+' / '+total;document.getElementById('prog').style.width=((cur+1)/total*100)+'%';}
+function go(d){showSlide(cur+d)}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')go(1);if(e.key==='ArrowLeft')go(-1);});
+function qa(btn,correct){document.querySelectorAll('.qbtn').forEach(b=>b.disabled=true);btn.classList.add(correct?'correct':'wrong');if(!correct)document.querySelectorAll('.qbtn').forEach(b=>{if(b.textContent.includes('เลิกทำ'))b.classList.add('correct')});const msg=document.getElementById('qa-msg');msg.style.display='block';msg.style.color=correct?'#4ade80':'#f87171';msg.textContent=correct?'🎉 ถูก! Ctrl+Z คือ Undo ย้อนกลับ':'❌ Ctrl+Z = Undo (เลิกทำ) ย้อนกลับการกระทำ';}
+let timerInterval=null;
+function startTimer(min){clearInterval(timerInterval);let sec=min*60;const disp=document.getElementById('timerDisplay');disp.style.display='block';function tick(){const m=Math.floor(sec/60);const s=sec%60;disp.textContent=m+':'+(s<10?'0':'')+s;if(sec===0){clearInterval(timerInterval);disp.textContent='⏰ หมดเวลา!';}sec--;}tick();timerInterval=setInterval(tick,1000);}
+</script>
+</body>
+</html>

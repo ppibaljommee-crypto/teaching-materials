@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"><title>ป.1 คอมเพิ่มเติม ใบงาน 2.1</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Sarabun',sans-serif;background:#fff;padding:16px}
+.page{max-width:780px;margin:0 auto}
+.header{background:linear-gradient(135deg,#c2410c,#ea580c);border-radius:16px;padding:14px 20px;display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.header-icon{font-size:38px}
+.header-text h1{color:#fff;font-size:18px;font-weight:800}
+.header-text p{color:rgba(255,255,255,.85);font-size:12px}
+.badge{background:#9a3412;color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;display:inline-block;margin-bottom:4px}
+.info-row{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:8px;margin-bottom:14px}
+.info-box{border:1.5px solid #ddd;border-radius:8px;padding:6px 10px}
+.info-box label{font-size:11px;color:#888;display:block}
+.info-box .line{border-bottom:1px solid #ccc;margin-top:8px}
+.section{margin-bottom:18px}
+.section h2{font-size:14px;font-weight:800;color:#c2410c;border-left:4px solid #ea580c;padding-left:10px;margin-bottom:10px}
+/* Keyboard matching */
+.key-match{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:12px}
+.key-item{display:flex;align-items:center;gap:10px;background:#fff7ed;border-radius:8px;padding:8px 12px;font-size:13px}
+.key-badge{background:#ea580c;color:#fff;border-radius:6px;padding:4px 10px;font-weight:800;font-family:monospace;font-size:14px;min-width:40px;text-align:center}
+.blank-ans{border:none;border-bottom:2px solid #f97316;font-family:'Sarabun',sans-serif;font-size:13px;width:150px;background:transparent}
+/* Typing practice */
+.type-box{background:#1e1e1e;border-radius:8px;padding:12px;font-family:'Courier New',monospace;font-size:14px;color:#a5d6ff;margin-bottom:8px;line-height:2}
+.type-blank{border:none;border-bottom:2px solid #fbbf24;background:transparent;color:#fbbf24;font-family:'Courier New',monospace;font-size:14px;width:80px;text-align:center}
+/* Steps */
+.step-q{background:#fff7ed;border-radius:8px;padding:10px 14px;margin-bottom:8px;font-size:13px}
+.step-q strong{color:#c2410c}
+.step-ans{border:none;border-bottom:1.5px solid #fed7aa;width:100%;margin-top:6px;font-family:'Sarabun',sans-serif;font-size:13px;background:transparent;display:block;padding:2px}
+/* Screenshot task */
+.screenshot-task{background:#fff7ed;border:2px dashed #fb923c;border-radius:10px;padding:14px;min-height:200px;text-align:center;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px}
+.screenshot-task p{color:#9a3412;font-size:13px}
+@media print{body{padding:8px}@page{size:A4;margin:10mm}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div class="header-icon">⌨️</div>
+    <div class="header-text">
+      <div class="badge">คอมพิวเตอร์เพิ่มเติม • ป.1 • หน่วย 2</div>
+      <h1>ใบงาน 2.1 — พิมพ์และสร้างงานด้วยคอมพิวเตอร์</h1>
+      <p>Keyboard • Microsoft Word เบื้องต้น</p>
+    </div>
+  </div>
+  <div class="info-row">
+    <div class="info-box"><label>ชื่อ-นามสกุล</label><div class="line"></div></div>
+    <div class="info-box"><label>ชั้น/ห้อง</label><div class="line"></div></div>
+    <div class="info-box"><label>เลขที่</label><div class="line"></div></div>
+    <div class="info-box"><label>วันที่</label><div class="line"></div></div>
+  </div>
+
+  <div class="section">
+    <h2>ข้อ 1: ปุ่มนี้ทำอะไร? (5 คะแนน)</h2>
+    <div class="key-match">
+      <div class="key-item"><div class="key-badge">Ctrl+S</div> = <input class="blank-ans" placeholder="..............."></div>
+      <div class="key-item"><div class="key-badge">Ctrl+Z</div> = <input class="blank-ans" placeholder="..............."></div>
+      <div class="key-item"><div class="key-badge">Ctrl+C</div> = <input class="blank-ans" placeholder="..............."></div>
+      <div class="key-item"><div class="key-badge">Enter</div> = <input class="blank-ans" placeholder="..............."></div>
+      <div class="key-item"><div class="key-badge">Backspace</div> = <input class="blank-ans" placeholder="..............."></div>
+      <div class="key-item"><div class="key-badge">Ctrl+B</div> = <input class="blank-ans" placeholder="..............."></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>ข้อ 2: Home Row คืออะไร? (3 คะแนน)</h2>
+    <p style="font-size:13px;margin-bottom:8px">เขียนปุ่ม Home Row ที่ถูกต้องสำหรับมือซ้ายและมือขวา:</p>
+    <div style="display:flex;gap:20px;flex-wrap:wrap">
+      <div style="font-size:14px">มือซ้าย: <input style="border:none;border-bottom:2px solid #f97316;width:120px;font-size:14px;font-family:monospace;background:transparent" placeholder="__ __ __ __"> (นิ้วก้อย→นิ้วชี้)</div>
+      <div style="font-size:14px">มือขวา: <input style="border:none;border-bottom:2px solid #f97316;width:120px;font-size:14px;font-family:monospace;background:transparent" placeholder="__ __ __ __"> (นิ้วชี้→นิ้วก้อย)</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>ข้อ 3: ขั้นตอนการบันทึกไฟล์ใน Word (4 คะแนน)</h2>
+    <p style="font-size:13px;margin-bottom:8px">เรียงขั้นตอนการบันทึกไฟล์ใน Word (ใส่หมายเลข 1-4):</p>
+    <div style="display:flex;flex-direction:column;gap:7px">
+      <div class="step-q"><span style="border:1.5px solid #f97316;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;color:#c2410c;font-weight:700;font-size:12px;margin-right:6px">__</span> ตั้งชื่อไฟล์</div>
+      <div class="step-q"><span style="border:1.5px solid #f97316;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;color:#c2410c;font-weight:700;font-size:12px;margin-right:6px">__</span> กด Save</div>
+      <div class="step-q"><span style="border:1.5px solid #f97316;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;color:#c2410c;font-weight:700;font-size:12px;margin-right:6px">__</span> กด Ctrl+S หรือ File → Save As</div>
+      <div class="step-q"><span style="border:1.5px solid #f97316;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;color:#c2410c;font-weight:700;font-size:12px;margin-right:6px">__</span> เลือกโฟลเดอร์ที่ต้องการ</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>ข้อ 4: ปฏิบัติ — พิมพ์แนะนำตัวใน Word (8 คะแนน)</h2>
+    <p style="font-size:13px;margin-bottom:10px">เปิด Word พิมพ์ข้อมูลต่อไปนี้ ตกแต่งให้สวยงาม แล้วบันทึกไฟล์ในชื่อ "ชื่อ_แนะนำตัว.docx"</p>
+    <div style="background:#f9fafb;border:1.5px solid #ddd;border-radius:8px;padding:12px;margin-bottom:12px;font-size:13px;line-height:2">
+      <strong>ต้องมีเนื้อหา:</strong><br>
+      1. ชื่อของฉัน: .................. <br>
+      2. ฉันเรียนอยู่ชั้น ป.1 ห้อง .......<br>
+      3. สัตว์ที่ฉันชอบคือ ................<br>
+      4. อาหารที่ฉันชอบคือ ................<br>
+      5. ฉันชอบเรียนวิชา .................
+    </div>
+    <div class="screenshot-task">
+      <p style="font-size:28px">📸</p>
+      <p><strong>ติดรูปหน้าจอ Word ที่พิมพ์เสร็จแล้ว</strong><br>(Print Screen แล้ว Paste ที่นี่ หรือพิมพ์ออกมา)</p>
+    </div>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:center;border-top:2px solid #fed7aa;padding-top:12px">
+    <div style="font-size:13px;color:#888">ลายเซ็นครูผู้ตรวจ: ________________</div>
+    <div style="text-align:right"><div style="font-size:13px;color:#888">คะแนน</div><div style="font-size:22px;font-weight:800;color:#c2410c">______ / 20</div></div>
+  </div>
+</div>
+</body>
+</html>

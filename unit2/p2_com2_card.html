@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"><title>ป.2 บัตรอวยพรดิจิทัล</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Sarabun',sans-serif;background:#fff;padding:16px}
+.page{max-width:780px;margin:0 auto}
+.header{background:linear-gradient(135deg,#9d174d,#db2777);border-radius:16px;padding:14px 20px;display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.header-icon{font-size:38px}
+.header-text h1{color:#fff;font-size:18px;font-weight:800}
+.header-text p{color:rgba(255,255,255,.85);font-size:12px}
+.badge{background:#831843;color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;display:inline-block;margin-bottom:4px}
+.info-row{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:8px;margin-bottom:14px}
+.info-box{border:1.5px solid #ddd;border-radius:8px;padding:6px 10px}
+.info-box label{font-size:11px;color:#888;display:block}
+.info-box .line{border-bottom:1px solid #ccc;margin-top:8px}
+.section{margin-bottom:18px}
+.section h2{font-size:14px;font-weight:800;color:#9d174d;border-left:4px solid #db2777;padding-left:10px;margin-bottom:10px}
+/* Card template */
+.card-template{border:3px solid #f9a8d4;border-radius:16px;padding:20px;min-height:280px;background:linear-gradient(135deg,#fdf2ff,#fce7f3);text-align:center;margin-bottom:12px;position:relative}
+.card-template h3{font-size:20px;font-weight:800;color:#9d174d;margin-bottom:10px}
+.card-line{border:none;border-bottom:2px solid #f9a8d4;width:100%;margin-bottom:12px;font-family:'Sarabun',sans-serif;font-size:16px;background:transparent;text-align:center;color:#831843;display:block;padding:4px}
+.card-textarea{border:none;border-bottom:2px solid #f9a8d4;width:100%;font-family:'Sarabun',sans-serif;font-size:14px;background:transparent;text-align:center;color:#4c1d95;resize:none;line-height:1.8}
+.emoji-row{font-size:32px;margin:10px 0}
+/* Checklist */
+.checklist{background:#fdf2ff;border:1.5px solid #f9a8d4;border-radius:10px;padding:12px 16px}
+.check-item{display:flex;align-items:center;gap:8px;margin-bottom:7px;font-size:13px}
+.check-box{width:18px;height:18px;border:2px solid #db2777;border-radius:4px;flex-shrink:0}
+/* Steps guide */
+.steps-guide{background:#fdf4ff;border:1px solid #f0abfc;border-radius:10px;padding:12px 16px;margin-bottom:14px}
+.steps-guide h3{color:#9d174d;font-size:14px;font-weight:700;margin-bottom:8px}
+.step-item{display:flex;gap:10px;align-items:flex-start;margin-bottom:7px;font-size:13px}
+.step-n{background:#db2777;color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;flex-shrink:0;margin-top:1px}
+/* Rubric */
+.rubric{width:100%;border-collapse:collapse;font-size:12px}
+.rubric th{background:#9d174d;color:#fff;padding:6px 8px;text-align:center}
+.rubric td{border:1px solid #ddd;padding:6px 8px;text-align:center;font-size:12px}
+.rubric tr:nth-child(even) td{background:#fdf2ff}
+@media print{body{padding:8px}@page{size:A4;margin:10mm}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div class="header-icon">💌</div>
+    <div class="header-text">
+      <div class="badge">คอมพิวเตอร์เพิ่มเติม • ป.2 • หน่วย 2</div>
+      <h1>ใบงาน — ทำบัตรอวยพรดิจิทัล</h1>
+      <p>WordArt • รูปภาพ • ตกแต่งเอกสาร Microsoft Word</p>
+    </div>
+  </div>
+  <div class="info-row">
+    <div class="info-box"><label>ชื่อ-นามสกุล</label><div class="line"></div></div>
+    <div class="info-box"><label>ชั้น/ห้อง</label><div class="line"></div></div>
+    <div class="info-box"><label>เลขที่</label><div class="line"></div></div>
+    <div class="info-box"><label>วันที่</label><div class="line"></div></div>
+  </div>
+
+  <!-- วางแผน -->
+  <div class="section">
+    <h2>ขั้นตอนที่ 1: วางแผนบัตรอวยพร</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div style="background:#fdf2ff;border:1px solid #f0abfc;border-radius:8px;padding:10px 14px">
+        <p style="font-size:13px;font-weight:700;color:#9d174d;margin-bottom:6px">โอกาสที่จะทำบัตร:</p>
+        <div style="display:flex;flex-direction:column;gap:4px;font-size:13px">
+          <label><input type="radio" name="occasion"> วันเกิด</label>
+          <label><input type="radio" name="occasion"> ปีใหม่</label>
+          <label><input type="radio" name="occasion"> วันแม่/พ่อ</label>
+          <label><input type="radio" name="occasion"> อื่นๆ: <input style="border:none;border-bottom:1px solid #db2777;font-size:13px;width:80px"></label>
+        </div>
+      </div>
+      <div style="background:#fdf2ff;border:1px solid #f0abfc;border-radius:8px;padding:10px 14px">
+        <p style="font-size:13px;font-weight:700;color:#9d174d;margin-bottom:6px">ส่งให้ใคร:</p>
+        <input style="border:none;border-bottom:2px solid #db2777;width:100%;font-size:13px;background:transparent;display:block;margin-bottom:8px">
+        <p style="font-size:13px;font-weight:700;color:#9d174d;margin-bottom:4px">สีธีมบัตร:</p>
+        <input style="border:none;border-bottom:2px solid #db2777;width:100%;font-size:13px;background:transparent">
+      </div>
+    </div>
+  </div>
+
+  <!-- ร่างบัตร -->
+  <div class="section">
+    <h2>ขั้นตอนที่ 2: ร่างบัตรอวยพร (วาดแผนคร่าวๆ)</h2>
+    <div class="card-template">
+      <div class="emoji-row" contenteditable="true">🎉 🎂 🎁</div>
+      <input class="card-line" placeholder="ข้อความหลัก / ชื่องาน (WordArt)">
+      <textarea class="card-textarea" rows="3" placeholder="ข้อความอวยพร...&#10;ขอให้...&#10;จาก..."></textarea>
+      <div style="margin-top:12px;border:2px dashed #f9a8d4;border-radius:8px;min-height:80px;display:flex;align-items:center;justify-content:center;color:#f0abfc;font-size:13px">📷 ตำแหน่งรูปภาพ (วาดกรอบ)</div>
+    </div>
+  </div>
+
+  <!-- คู่มือ Word -->
+  <div class="section">
+    <h2>ขั้นตอนที่ 3: สร้างบัตรใน Word</h2>
+    <div class="steps-guide">
+      <h3>📋 ทำตามลำดับ</h3>
+      <div class="step-item"><div class="step-n">1</div><span>เปิด Word ใหม่ → Layout → หน้าแนวนอน (Landscape)</span></div>
+      <div class="step-item"><div class="step-n">2</div><span>Insert → WordArt → เลือกสไตล์ → พิมพ์ข้อความหลัก</span></div>
+      <div class="step-item"><div class="step-n">3</div><span>Insert → Pictures → Online Pictures → ค้นหารูป</span></div>
+      <div class="step-item"><div class="step-n">4</div><span>Insert → Text Box → พิมพ์ข้อความอวยพร → ตกแต่งสี</span></div>
+      <div class="step-item"><div class="step-n">5</div><span>ปรับ Theme สี: Design → Colors → เลือกชุดสีที่ชอบ</span></div>
+      <div class="step-item"><div class="step-n">6</div><span>Ctrl+S บันทึก ชื่อไฟล์: "ชื่อ_บัตรอวยพร.docx"</span></div>
+    </div>
+  </div>
+
+  <!-- Checklist -->
+  <div class="section">
+    <h2>ตรวจสอบก่อนส่ง</h2>
+    <div class="checklist">
+      <div class="check-item"><div class="check-box"></div><span>มี WordArt เป็นข้อความหลัก</span></div>
+      <div class="check-item"><div class="check-box"></div><span>มีรูปภาพอย่างน้อย 1 รูป</span></div>
+      <div class="check-item"><div class="check-box"></div><span>มีข้อความอวยพรใน Text Box</span></div>
+      <div class="check-item"><div class="check-box"></div><span>สีธีมสวยงาม ดูเข้ากัน</span></div>
+      <div class="check-item"><div class="check-box"></div><span>บันทึกไฟล์ชื่อ "ชื่อ_บัตรอวยพร.docx"</span></div>
+    </div>
+  </div>
+
+  <!-- Rubric -->
+  <div class="section">
+    <h2>เกณฑ์การให้คะแนน (20 คะแนน)</h2>
+    <table class="rubric">
+      <thead><tr><th>หัวข้อ</th><th>ดีมาก (5)</th><th>ดี (4)</th><th>พอใช้ (3)</th><th>คะแนน</th></tr></thead>
+      <tbody>
+        <tr><td>WordArt</td><td>สวยงาม เหมาะสม</td><td>มีแต่เรียบๆ</td><td>ไม่มี WordArt</td><td>&nbsp;&nbsp;&nbsp;/5</td></tr>
+        <tr><td>รูปภาพ</td><td>รูปชัด เหมาะกับโอกาส</td><td>มีรูปแต่ไม่เหมาะ</td><td>ไม่มีรูปภาพ</td><td>&nbsp;&nbsp;&nbsp;/5</td></tr>
+        <tr><td>ข้อความ</td><td>อวยพรชัดเจน มีความหมาย</td><td>พอใช้</td><td>ข้อความน้อยมาก</td><td>&nbsp;&nbsp;&nbsp;/5</td></tr>
+        <tr><td>การออกแบบรวม</td><td>สวยงาม สีเข้ากัน</td><td>พอใช้</td><td>ดูยุ่งเหยิง</td><td>&nbsp;&nbsp;&nbsp;/5</td></tr>
+        <tr style="background:#fdf2ff"><td colspan="4" style="text-align:right;font-weight:700">รวม</td><td><strong>&nbsp;&nbsp;&nbsp;/20</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:center;border-top:2px solid #f9a8d4;padding-top:12px">
+    <div style="font-size:13px;color:#888">ลายเซ็นครูผู้ตรวจ: ________________</div>
+    <div style="text-align:right"><div style="font-size:13px;color:#888">คะแนนรวม</div><div style="font-size:22px;font-weight:800;color:#9d174d">______ / 20</div></div>
+  </div>
+</div>
+</body>
+</html>

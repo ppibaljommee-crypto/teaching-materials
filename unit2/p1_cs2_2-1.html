@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"><title>ป.1 วิทยาการคำนวณ ใบงาน 2.1</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Sarabun',sans-serif;background:#fff;padding:16px}
+.page{max-width:800px;margin:0 auto;background:#fff}
+.header{background:linear-gradient(135deg,#f97316,#ea580c);border-radius:16px;padding:16px 22px;display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.header-icon{font-size:40px}
+.header-text h1{color:#fff;font-size:20px;font-weight:800}
+.header-text p{color:rgba(255,255,255,.85);font-size:13px}
+.badge{background:#ea580c;color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;display:inline-block;margin-bottom:4px}
+.info-row{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:8px;margin-bottom:16px}
+.info-box{border:1.5px solid #ddd;border-radius:8px;padding:6px 10px;font-size:13px}
+.info-box label{font-size:11px;color:#888;display:block}
+.info-box .line{border-bottom:1px solid #ccc;margin-top:8px}
+.section{margin-bottom:20px}
+.section h2{font-size:15px;font-weight:800;color:#ea580c;border-left:4px solid #f97316;padding-left:10px;margin-bottom:12px}
+/* เรียงลำดับ */
+.sort-activity{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.sort-box{border:2px solid #fed7aa;border-radius:12px;padding:14px}
+.sort-box h3{color:#ea580c;font-size:14px;font-weight:700;margin-bottom:10px}
+.step-item{display:flex;align-items:center;gap:10px;background:#fff7ed;border-radius:8px;padding:8px 12px;margin-bottom:7px;font-size:14px}
+.step-num{background:#f97316;color:#fff;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0}
+/* Flowchart วาด */
+.fc-area{border:2px dashed #fed7aa;border-radius:12px;padding:14px;min-height:300px;background:#fff7ed}
+.fc-template{display:flex;flex-direction:column;align-items:center;gap:8px;margin-top:8px}
+.fc-oval-blank{border:2px solid #f97316;border-radius:50px;width:160px;height:36px;display:flex;align-items:center;justify-content:center;font-size:13px;color:#ea580c;font-weight:700}
+.fc-rect-blank{border:2px solid #10b981;border-radius:6px;width:200px;height:36px;background:rgba(255,255,255,.7)}
+.fc-arr{color:#999;font-size:18px}
+.write-line{border:none;border-bottom:1.5px solid #ddd;width:100%;display:block;padding:4px;font-family:'Sarabun',sans-serif;font-size:14px;background:transparent}
+/* ถูกผิด */
+.tf-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;font-size:14px;padding:8px;background:#f9f9f9;border-radius:8px}
+.tf-opts{display:flex;gap:8px;margin-left:auto}
+.tf-btn{border:1.5px solid #ddd;border-radius:6px;padding:4px 12px;cursor:pointer;font-family:'Sarabun',sans-serif;font-size:13px;font-weight:700;background:#fff}
+.tf-btn.yes{border-color:#10b981;color:#10b981}
+.tf-btn.no{border-color:#ef4444;color:#ef4444}
+/* Score */
+.score-box{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.score-circle{width:36px;height:36px;border-radius:50%;border:2px solid #f97316;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#ea580c}
+@media print{body{padding:8px}.header{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div class="header-icon">🗂️</div>
+    <div class="header-text">
+      <div class="badge">วิทยาการคำนวณ • ป.1 • หน่วย 2</div>
+      <h1>ใบงาน 2.1 — เรียงขั้นตอน ทำงานเป็นระบบ</h1>
+      <p>Algorithm • Flowchart เบื้องต้น</p>
+    </div>
+  </div>
+  <div class="info-row">
+    <div class="info-box"><label>ชื่อ-นามสกุล</label><div class="line"></div></div>
+    <div class="info-box"><label>ชั้น / ห้อง</label><div class="line"></div></div>
+    <div class="info-box"><label>เลขที่</label><div class="line"></div></div>
+    <div class="info-box"><label>วันที่</label><div class="line"></div></div>
+  </div>
+
+  <!-- ข้อ 1 -->
+  <div class="section">
+    <h2>ข้อ 1: เรียงขั้นตอน (5 คะแนน)</h2>
+    <p style="font-size:14px;margin-bottom:12px">ใส่หมายเลข 1-5 ให้ถูกต้องในการ <strong>ทำข้าวต้ม</strong></p>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div class="step-item"><div style="border:1.5px solid #f97316;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;color:#ea580c;font-weight:700">__</div> ปิดเตา เสิร์ฟข้าวต้ม</div>
+      <div class="step-item"><div style="border:1.5px solid #f97316;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;color:#ea580c;font-weight:700">__</div> ใส่ข้าวและน้ำลงหม้อ</div>
+      <div class="step-item"><div style="border:1.5px solid #f97316;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;color:#ea580c;font-weight:700">__</div> เตรียมหม้อและวัตถุดิบ</div>
+      <div class="step-item"><div style="border:1.5px solid #f97316;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;color:#ea580c;font-weight:700">__</div> รอจนน้ำเดือด ข้าวสุก</div>
+      <div class="step-item"><div style="border:1.5px solid #f97316;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;color:#ea580c;font-weight:700">__</div> เปิดเตา ต้มด้วยไฟกลาง</div>
+    </div>
+  </div>
+
+  <!-- ข้อ 2 -->
+  <div class="section">
+    <h2>ข้อ 2: วาด Flowchart (8 คะแนน)</h2>
+    <p style="font-size:14px;margin-bottom:10px">วาด Flowchart แสดงขั้นตอน <strong>"เช้าวันเรียนของฉัน"</strong> อย่างน้อย 5 ขั้นตอน<br>ใช้สัญลักษณ์: วงรี (เริ่ม/จบ) + สี่เหลี่ยม (ขั้นตอน) + ลูกศร</p>
+    <div class="fc-area" style="min-height:400px">
+      <div style="display:flex;gap:16px;margin-bottom:10px;font-size:12px;color:#888">
+        <span>⬭ วงรี = เริ่ม/จบ</span>
+        <span>▭ สี่เหลี่ยม = ขั้นตอน</span>
+        <span>↓ ลูกศร = ทิศทาง</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ข้อ 3 -->
+  <div class="section">
+    <h2>ข้อ 3: ถูกหรือผิด (4 คะแนน)</h2>
+    <div class="tf-row"><span>1. วงรีใน Flowchart ใช้แสดงจุดเริ่มต้นและสิ้นสุด</span><div class="tf-opts"><div class="tf-btn yes">ถูก</div><div class="tf-btn no">ผิด</div></div></div>
+    <div class="tf-row"><span>2. อัลกอริทึมต้องมีจุดสิ้นสุดเสมอ</span><div class="tf-opts"><div class="tf-btn yes">ถูก</div><div class="tf-btn no">ผิด</div></div></div>
+    <div class="tf-row"><span>3. ใน Flowchart ไม่จำเป็นต้องมีลูกศร</span><div class="tf-opts"><div class="tf-btn yes">ถูก</div><div class="tf-btn no">ผิด</div></div></div>
+    <div class="tf-row"><span>4. สี่เหลี่ยมใน Flowchart แสดงขั้นตอนการทำงาน</span><div class="tf-opts"><div class="tf-btn yes">ถูก</div><div class="tf-btn no">ผิด</div></div></div>
+  </div>
+
+  <!-- ข้อ 4 -->
+  <div class="section">
+    <h2>ข้อ 4: คิดวิเคราะห์ (3 คะแนน)</h2>
+    <p style="font-size:14px;margin-bottom:8px">ถ้า Flowchart ไม่มีลูกศร จะเกิดปัญหาอะไร? (เขียนอธิบาย)</p>
+    <div style="border:1.5px solid #ddd;border-radius:8px;min-height:80px;padding:10px"></div>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:center;border-top:2px solid #fed7aa;padding-top:12px;margin-top:8px">
+    <div style="font-size:13px;color:#888">ลายเซ็นครูผู้ตรวจ: ________________</div>
+    <div style="text-align:right">
+      <div style="font-size:13px;color:#888">คะแนน</div>
+      <div style="font-size:22px;font-weight:800;color:#ea580c">______ / 20</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

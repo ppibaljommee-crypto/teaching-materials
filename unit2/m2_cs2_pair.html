@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"><title>ม.2 Pair Programming — Python</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Sarabun',sans-serif;background:#fff;padding:16px}
+.page{max-width:800px;margin:0 auto}
+.header{background:linear-gradient(135deg,#14532d,#16a34a);border-radius:16px;padding:16px 22px;display:flex;align-items:center;gap:16px;margin-bottom:16px}
+.header-icon{font-size:44px}
+.header-text h1{color:#fff;font-size:20px;font-weight:800}
+.header-text p{color:rgba(255,255,255,.85);font-size:12px}
+.badge{background:#15803d;color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;display:inline-block;margin-bottom:4px}
+.info-row{display:grid;grid-template-columns:2fr 2fr 1fr 1fr;gap:8px;margin-bottom:14px}
+.info-box{border:1.5px solid #ddd;border-radius:8px;padding:6px 10px}
+.info-box label{font-size:11px;color:#888;display:block}
+.info-box .line{border-bottom:1px solid #ccc;margin-top:8px}
+/* Pair info */
+.pair-box{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.driver-box,.navigator-box{border-radius:12px;padding:14px;font-size:13px}
+.driver-box{background:#dcfce7;border:2px solid #16a34a}
+.navigator-box{background:#dbeafe;border:2px solid #2563eb}
+.driver-box h3{color:#15803d;font-size:14px;font-weight:800;margin-bottom:8px}
+.navigator-box h3{color:#1d4ed8;font-size:14px;font-weight:800;margin-bottom:8px}
+.name-line{border:none;border-bottom:2px solid currentColor;width:100%;font-family:'Sarabun',sans-serif;font-size:14px;background:transparent;display:block;margin-top:4px;padding:2px}
+.section{margin-bottom:20px}
+.section h2{font-size:15px;font-weight:800;color:#15803d;border-left:4px solid #22c55e;padding-left:10px;margin-bottom:12px}
+/* Code area */
+.code-area{background:#0d1117;border-radius:10px;padding:14px;font-family:'Courier New',monospace;font-size:13px;color:#d4d4d4;line-height:1.9;margin-bottom:10px;min-height:120px}
+.code-blank{border:none;border-bottom:2px solid #4ade80;background:transparent;color:#4ade80;font-family:'Courier New',monospace;font-size:13px;width:120px;display:inline-block}
+.write-area{border:1.5px solid #ddd;border-radius:8px;min-height:100px;padding:10px;font-family:'Courier New',monospace;font-size:13px;width:100%;display:block;background:#0d1117;color:#d4d4d4}
+/* Checklist */
+.checklist{background:#f0fdf4;border:1.5px solid #86efac;border-radius:10px;padding:12px 16px;margin-top:10px}
+.checklist h3{color:#16a34a;font-size:14px;font-weight:700;margin-bottom:8px}
+.check-item{display:flex;align-items:center;gap:8px;margin-bottom:6px;font-size:13px}
+.check-box{width:18px;height:18px;border:2px solid #16a34a;border-radius:4px;flex-shrink:0}
+/* Reflection */
+.reflect-box{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:12px 16px;margin-top:8px}
+.reflect-q{font-size:13px;font-weight:600;margin-bottom:6px;color:#15803d}
+.reflect-ans{border:none;border-bottom:1.5px solid #86efac;width:100%;padding:4px;font-family:'Sarabun',sans-serif;font-size:13px;background:transparent;display:block;margin-bottom:14px}
+/* Score rubric */
+.rubric{width:100%;border-collapse:collapse;font-size:12px}
+.rubric th{background:#15803d;color:#fff;padding:6px 8px}
+.rubric td{border:1px solid #ddd;padding:6px 8px;text-align:center}
+.rubric tr:nth-child(even) td{background:#f0fdf4}
+@media print{body{padding:8px}@page{size:A4;margin:10mm}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div class="header-icon">👨‍💻👩‍💻</div>
+    <div class="header-text">
+      <div class="badge">วิทยาการคำนวณ • ม.2 • หน่วย 2</div>
+      <h1>ใบงาน Pair Programming — Python</h1>
+      <p>Variables • Input/Output • If/Else • ทำงานเป็นคู่</p>
+    </div>
+  </div>
+  <div class="info-row">
+    <div class="info-box"><label>ชื่อคนที่ 1 (Driver)</label><div class="line"></div></div>
+    <div class="info-box"><label>ชื่อคนที่ 2 (Navigator)</label><div class="line"></div></div>
+    <div class="info-box"><label>ชั้น/ห้อง</label><div class="line"></div></div>
+    <div class="info-box"><label>วันที่</label><div class="line"></div></div>
+  </div>
+
+  <!-- บทบาท -->
+  <div class="pair-box">
+    <div class="driver-box">
+      <h3>⌨️ Driver (คนพิมพ์)</h3>
+      <p>หน้าที่:</p>
+      <p>• พิมพ์โค้ดตามที่ Navigator บอก</p>
+      <p>• โฟกัสกับบรรทัดที่กำลังเขียน</p>
+      <p>• ถามเมื่อไม่เข้าใจ</p>
+      <p style="margin-top:8px">ชื่อ Driver: <input class="name-line" style="color:#15803d;border-bottom-color:#15803d" placeholder="...................."></p>
+    </div>
+    <div class="navigator-box">
+      <h3>🗺️ Navigator (คนนำทาง)</h3>
+      <p>หน้าที่:</p>
+      <p>• คิดภาพรวมและวางแผนโค้ด</p>
+      <p>• ตรวจจับ Bug และข้อผิดพลาด</p>
+      <p>• แนะนำขั้นตอนถัดไป</p>
+      <p style="margin-top:8px">ชื่อ Navigator: <input class="name-line" style="color:#1d4ed8;border-bottom-color:#1d4ed8" placeholder="...................."></p>
+    </div>
+  </div>
+
+  <!-- ข้อ 1: เติมโค้ด -->
+  <div class="section">
+    <h2>ข้อ 1: เติมโค้ดให้สมบูรณ์ (8 คะแนน)</h2>
+    <p style="font-size:13px;margin-bottom:10px">เติมโค้ดในช่องว่างให้โปรแกรมทำงานถูกต้อง:</p>
+    <div class="code-area">
+# โปรแกรมคำนวณค่าเฉลี่ยและบอกผล<br>
+<span style="color:#8b949e"># รับข้อมูล</span><br>
+name = <span class="code-blank" contenteditable="true" style="display:inline-block;min-width:100px">______</span>(<span style="color:#a5d6ff">"ชื่อนักเรียน: "</span>)<br>
+s1 = <span style="color:#79c0ff">float</span>(<span class="code-blank" contenteditable="true" style="display:inline-block;min-width:100px">______</span>(<span style="color:#a5d6ff">"คะแนนวิชาที่ 1: "</span>))<br>
+s2 = float(input(<span style="color:#a5d6ff">"คะแนนวิชาที่ 2: "</span>))<br>
+s3 = <span class="code-blank" contenteditable="true" style="display:inline-block;min-width:150px">______</span><br>
+<br>
+<span style="color:#8b949e"># คำนวณ</span><br>
+avg = (<span class="code-blank" contenteditable="true" style="display:inline-block;min-width:120px">s1 + ___ + ___</span>) / 3<br>
+<br>
+<span style="color:#8b949e"># แสดงผล</span><br>
+print(f<span style="color:#a5d6ff">"สวัสดี {</span><span class="code-blank" contenteditable="true" style="display:inline-block;min-width:60px">____</span><span style="color:#a5d6ff">}"</span>)<br>
+print(f<span style="color:#a5d6ff">"ค่าเฉลี่ย: {avg:.1f}"</span>)<br>
+<br>
+<span style="color:#ff7b72">if</span> avg <span class="code-blank" contenteditable="true" style="display:inline-block;min-width:30px">__</span> 60:<br>
+&nbsp;&nbsp;print(<span style="color:#a5d6ff">"ผล: ผ่าน ✅"</span>)<br>
+<span style="color:#ff7b72">else</span>:<br>
+&nbsp;&nbsp;print(<span class="code-blank" contenteditable="true" style="display:inline-block;min-width:180px">______</span>)
+    </div>
+  </div>
+
+  <!-- ข้อ 2: เขียนโค้ด -->
+  <div class="section">
+    <h2>ข้อ 2: เขียนโปรแกรมเอง (8 คะแนน)</h2>
+    <p style="font-size:13px;margin-bottom:10px">เขียนโปรแกรม Python ที่: รับอายุ → ถ้า ≥ 18 แสดง "ผู้ใหญ่" | ถ้า ≥ 13 แสดง "วัยรุ่น" | ถ้าน้อยกว่า แสดง "เด็ก"</p>
+    <textarea class="write-area" rows="12" placeholder="# เขียนโปรแกรมที่นี่&#10;age = int(input(...))&#10;if age >= 18:&#10;    print(...)&#10;elif ...&#10;else:&#10;    print(...)"></textarea>
+    <div class="checklist">
+      <h3>✅ ตรวจสอบโค้ดก่อนส่ง</h3>
+      <div class="check-item"><div class="check-box"></div><span>ใช้ input() รับข้อมูล</span></div>
+      <div class="check-item"><div class="check-box"></div><span>แปลงเป็น int() ก่อนเปรียบ</span></div>
+      <div class="check-item"><div class="check-box"></div><span>มี if / elif / else ครบ</span></div>
+      <div class="check-item"><div class="check-box"></div><span>แสดงผลถูกต้องทุกกรณี</span></div>
+    </div>
+  </div>
+
+  <!-- ข้อ 3: Reflection -->
+  <div class="section">
+    <h2>ข้อ 3: สะท้อนคิด (4 คะแนน)</h2>
+    <div class="reflect-box">
+      <div class="reflect-q">1. Pair Programming ช่วยให้ทำงานดีขึ้นอย่างไร?</div>
+      <input class="reflect-ans" placeholder="...">
+      <div class="reflect-q">2. บทบาท Driver กับ Navigator ต่างกันอย่างไร?</div>
+      <input class="reflect-ans" placeholder="...">
+      <div class="reflect-q">3. Python ต่างจาก Pseudocode อย่างไร?</div>
+      <input class="reflect-ans" placeholder="...">
+    </div>
+  </div>
+
+  <!-- Rubric -->
+  <div class="section">
+    <h2>เกณฑ์การให้คะแนน</h2>
+    <table class="rubric">
+      <thead><tr><th>หัวข้อ</th><th>ดีมาก (4)</th><th>ดี (3)</th><th>พอใช้ (2)</th><th>คะแนน</th></tr></thead>
+      <tbody>
+        <tr><td>ข้อ 1: เติมโค้ด</td><td>ถูกทุกช่อง</td><td>ผิด 1-2 ช่อง</td><td>ผิดหลายช่อง</td><td>/8</td></tr>
+        <tr><td>ข้อ 2: เขียนโค้ด</td><td>ทำงานถูกต้องทุกกรณี</td><td>ผิด 1 กรณี</td><td>โครงสร้างถูก แต่ผลผิด</td><td>/8</td></tr>
+        <tr><td>ข้อ 3: สะท้อนคิด</td><td>ตอบครบ ลึก</td><td>ตอบพอใช้</td><td>ตอบสั้นมาก</td><td>/4</td></tr>
+        <tr style="background:#dcfce7"><td colspan="4" style="text-align:right;font-weight:700">รวม</td><td><strong>/20</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>

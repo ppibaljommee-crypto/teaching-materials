@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"><title>ป.6 คู่มือนำเสนอข้อมูลด้วยภาพ</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Sarabun',sans-serif;background:#fff;padding:16px}
+.page{max-width:800px;margin:0 auto}
+.header{background:linear-gradient(135deg,#1e3a8a,#2563eb);border-radius:16px;padding:14px 20px;display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.header-icon{font-size:38px}
+.header-text h1{color:#fff;font-size:18px;font-weight:800}
+.header-text p{color:rgba(255,255,255,.85);font-size:12px}
+.badge{background:#1e40af;color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;display:inline-block;margin-bottom:4px}
+.info-row{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:8px;margin-bottom:14px}
+.info-box{border:1.5px solid #ddd;border-radius:8px;padding:6px 10px}
+.info-box label{font-size:11px;color:#888;display:block}
+.info-box .line{border-bottom:1px solid #ccc;margin-top:8px}
+.section{margin-bottom:18px}
+.section h2{font-size:14px;font-weight:800;color:#1e3a8a;border-left:4px solid #3b82f6;padding-left:10px;margin-bottom:10px}
+/* Topic */
+.topic-box{background:#eff6ff;border:2px solid #bfdbfe;border-radius:12px;padding:14px;margin-bottom:12px}
+.topic-opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.topic-btn{border:1.5px solid #93c5fd;border-radius:8px;padding:6px 14px;font-size:13px;cursor:pointer;font-family:'Sarabun',sans-serif;background:#fff;color:#1e40af;font-weight:600}
+/* Data table */
+.data-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:10px}
+.data-table th{background:#1e3a8a;color:#fff;padding:7px 10px}
+.data-table td{border:1px solid #ddd;padding:7px 10px}
+.data-table tr:nth-child(even) td{background:#eff6ff}
+.data-input{width:100%;border:none;font-family:'Sarabun',sans-serif;font-size:13px;background:transparent;text-align:center}
+/* Slide plan */
+.slide-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
+.slide-mini{border:1.5px solid #bfdbfe;border-radius:8px;padding:10px;background:#eff6ff}
+.slide-mini h4{color:#1e3a8a;font-size:12px;font-weight:700;margin-bottom:4px}
+.slide-mini input{border:none;border-bottom:1px solid #93c5fd;font-size:12px;width:100%;background:transparent;font-family:'Sarabun',sans-serif;display:block;margin-top:3px}
+/* Checklist */
+.checklist{background:#eff6ff;border:1.5px solid #bfdbfe;border-radius:10px;padding:12px 16px}
+.check-item{display:flex;align-items:center;gap:8px;margin-bottom:7px;font-size:13px}
+.check-box{width:18px;height:18px;border:2px solid #2563eb;border-radius:4px;flex-shrink:0}
+/* Rubric */
+.rubric{width:100%;border-collapse:collapse;font-size:12px}
+.rubric th{background:#1e3a8a;color:#fff;padding:6px 8px;text-align:center}
+.rubric td{border:1px solid #ddd;padding:6px 8px;text-align:center}
+.rubric tr:nth-child(even) td{background:#eff6ff}
+@media print{body{padding:8px}@page{size:A4;margin:10mm}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div class="header-icon">📊</div>
+    <div class="header-text">
+      <div class="badge">คอมพิวเตอร์เพิ่มเติม • ป.6 • หน่วย 2</div>
+      <h1>คู่มือ — นำเสนอข้อมูลด้วยภาพ (Infographic)</h1>
+      <p>PowerPoint • Bar/Pie/Line Chart • 5-7 Slides</p>
+    </div>
+  </div>
+  <div class="info-row">
+    <div class="info-box"><label>ชื่อ-นามสกุล</label><div class="line"></div></div>
+    <div class="info-box"><label>ชั้น/ห้อง</label><div class="line"></div></div>
+    <div class="info-box"><label>เลขที่</label><div class="line"></div></div>
+    <div class="info-box"><label>วันที่</label><div class="line"></div></div>
+  </div>
+
+  <!-- หัวข้อ -->
+  <div class="section">
+    <h2>ขั้นตอนที่ 1: เลือกหัวข้อสำรวจ</h2>
+    <div class="topic-box">
+      <p style="font-size:13px;font-weight:700;color:#1e3a8a">หัวข้อที่เลือก:</p>
+      <div class="topic-opts">
+        <div class="topic-btn">อาหารที่ชอบ</div>
+        <div class="topic-btn">วิชาที่ชอบ</div>
+        <div class="topic-btn">กีฬาที่ชอบ</div>
+        <div class="topic-btn">สีที่ชอบ</div>
+        <div class="topic-btn">ของขวัญที่อยากได้</div>
+      </div>
+      <p style="margin-top:8px;font-size:13px">หัวข้อที่เลือก: <input style="border:none;border-bottom:2px solid #2563eb;font-size:13px;width:200px;font-family:'Sarabun',sans-serif;background:transparent"></p>
+    </div>
+  </div>
+
+  <!-- รวบรวมข้อมูล -->
+  <div class="section">
+    <h2>ขั้นตอนที่ 2: รวบรวมข้อมูล (สำรวจในชั้นเรียน)</h2>
+    <p style="font-size:13px;margin-bottom:8px">สำรวจนักเรียนในชั้น บันทึกผลในตาราง:</p>
+    <table class="data-table">
+      <thead><tr><th>ตัวเลือก</th><th>จำนวนคน (นับ)</th><th>จำนวน</th><th>เปอร์เซ็นต์</th></tr></thead>
+      <tbody>
+        <tr><td><input class="data-input" placeholder="ตัวเลือก 1"></td><td><input class="data-input" placeholder="////"></td><td><input class="data-input"></td><td><input class="data-input" placeholder="%"></td></tr>
+        <tr><td><input class="data-input" placeholder="ตัวเลือก 2"></td><td><input class="data-input" placeholder="////"></td><td><input class="data-input"></td><td><input class="data-input" placeholder="%"></td></tr>
+        <tr><td><input class="data-input" placeholder="ตัวเลือก 3"></td><td><input class="data-input" placeholder="////"></td><td><input class="data-input"></td><td><input class="data-input" placeholder="%"></td></tr>
+        <tr><td><input class="data-input" placeholder="ตัวเลือก 4"></td><td><input class="data-input" placeholder="////"></td><td><input class="data-input"></td><td><input class="data-input" placeholder="%"></td></tr>
+        <tr style="background:#dbeafe"><td style="font-weight:700">รวม</td><td></td><td><input class="data-input" style="font-weight:700"></td><td><input class="data-input" placeholder="100%"></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- เลือกกราฟ -->
+  <div class="section">
+    <h2>ขั้นตอนที่ 3: เลือกประเภทกราฟ</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+      <div style="background:#eff6ff;border:2px solid #bfdbfe;border-radius:10px;padding:10px;text-align:center">
+        <p style="font-size:20px">📊</p>
+        <p style="font-size:13px;font-weight:700;color:#1e3a8a">Bar Chart</p>
+        <p style="font-size:11px;color:#666">เปรียบเทียบค่า</p>
+        <label style="font-size:12px"><input type="radio" name="chart"> เลือกนี้</label>
+      </div>
+      <div style="background:#eff6ff;border:2px solid #bfdbfe;border-radius:10px;padding:10px;text-align:center">
+        <p style="font-size:20px">🥧</p>
+        <p style="font-size:13px;font-weight:700;color:#1e3a8a">Pie Chart</p>
+        <p style="font-size:11px;color:#666">แสดงสัดส่วน%</p>
+        <label style="font-size:12px"><input type="radio" name="chart"> เลือกนี้</label>
+      </div>
+      <div style="background:#eff6ff;border:2px solid #bfdbfe;border-radius:10px;padding:10px;text-align:center">
+        <p style="font-size:20px">📈</p>
+        <p style="font-size:13px;font-weight:700;color:#1e3a8a">Line Chart</p>
+        <p style="font-size:11px;color:#666">แนวโน้ม</p>
+        <label style="font-size:12px"><input type="radio" name="chart"> เลือกนี้</label>
+      </div>
+    </div>
+    <p style="font-size:12px;color:#666;margin-top:8px">เหตุผลที่เลือกกราฟนี้: <input style="border:none;border-bottom:1.5px solid #93c5fd;font-size:13px;width:300px;background:transparent;font-family:'Sarabun',sans-serif"></p>
+  </div>
+
+  <!-- แผน Slides -->
+  <div class="section">
+    <h2>ขั้นตอนที่ 4: วางแผน Slides (ต้องมี 5-7 Slides)</h2>
+    <div class="slide-grid">
+      <div class="slide-mini"><h4>Slide 1: ปก</h4><input placeholder="ชื่อเรื่อง"><input placeholder="ชื่อผู้นำเสนอ"></div>
+      <div class="slide-mini"><h4>Slide 2: วัตถุประสงค์</h4><input placeholder="สำรวจเรื่อง..."><input placeholder="กลุ่มตัวอย่าง..."></div>
+      <div class="slide-mini"><h4>Slide 3: วิธีสำรวจ</h4><input placeholder="สำรวจด้วยวิธี..."><input placeholder="จำนวนคน..."></div>
+      <div class="slide-mini"><h4>Slide 4: ผลการสำรวจ</h4><input placeholder="กราฟประเภท..."><input placeholder="ข้อมูลหลัก..."></div>
+      <div class="slide-mini"><h4>Slide 5: วิเคราะห์</h4><input placeholder="ข้อมูลที่น่าสนใจ..."><input placeholder="แนวโน้มที่พบ..."></div>
+      <div class="slide-mini"><h4>Slide 6-7: (เพิ่มเติม)</h4><input placeholder="หัวข้อ..."><input placeholder="เนื้อหา..."></div>
+    </div>
+  </div>
+
+  <!-- Checklist -->
+  <div class="section">
+    <h2>ตรวจสอบก่อนนำเสนอ</h2>
+    <div class="checklist">
+      <div class="check-item"><div class="check-box"></div><span>ข้อมูลถูกต้อง ครบถ้วน (ผลรวมได้ 100%)</span></div>
+      <div class="check-item"><div class="check-box"></div><span>กราฟสร้างด้วย PowerPoint ไม่ใช่วาดมือ</span></div>
+      <div class="check-item"><div class="check-box"></div><span>มีกราฟอย่างน้อย 2 ประเภท</span></div>
+      <div class="check-item"><div class="check-box"></div><span>Slides 5-7 Slides ตามโครงสร้าง</span></div>
+      <div class="check-item"><div class="check-box"></div><span>มีสไลด์สรุปวิเคราะห์</span></div>
+      <div class="check-item"><div class="check-box"></div><span>ซักซ้อมการนำเสนอแล้ว</span></div>
+    </div>
+  </div>
+
+  <!-- Rubric -->
+  <div class="section">
+    <h2>เกณฑ์การให้คะแนน (20 คะแนน)</h2>
+    <table class="rubric">
+      <thead><tr><th>หัวข้อ</th><th>ดีมาก</th><th>ดี</th><th>พอใช้</th><th>คะแนน</th></tr></thead>
+      <tbody>
+        <tr><td>ข้อมูล/กราฟ</td><td>ถูกต้อง ≥2 ประเภท (6)</td><td>ถูกต้อง 1 ประเภท (4)</td><td>กราฟไม่ถูกต้อง (2)</td><td>/6</td></tr>
+        <tr><td>การออกแบบ</td><td>สวยงาม Infographic (4)</td><td>เรียบง่าย (3)</td><td>ดูยุ่ง (2)</td><td>/4</td></tr>
+        <tr><td>การวิเคราะห์</td><td>วิเคราะห์ลึก (4)</td><td>พอใช้ (3)</td><td>สรุปแบบเดียวกับข้อมูล (1)</td><td>/4</td></tr>
+        <tr><td>การนำเสนอ</td><td>ชัดเจน มั่นใจ (6)</td><td>พอใช้ (4)</td><td>อ่านจากสไลด์ (2)</td><td>/6</td></tr>
+        <tr style="background:#dbeafe"><td colspan="4" style="text-align:right;font-weight:700">รวม</td><td><strong>/20</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:center;border-top:2px solid #bfdbfe;padding-top:12px">
+    <div style="font-size:13px;color:#888">ลายเซ็นครูผู้ตรวจ: ________________</div>
+    <div style="text-align:right"><div style="font-size:13px;color:#888">คะแนนรวม</div><div style="font-size:22px;font-weight:800;color:#1e3a8a">______ / 20</div></div>
+  </div>
+</div>
+</body>
+</html>

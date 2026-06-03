@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"><title>ป.3 วิทยาการคำนวณ ใบงาน 2.1 — Flowchart If-Then-Else</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Sarabun',sans-serif;background:#fff;padding:16px}
+.page{max-width:800px;margin:0 auto}
+.header{background:linear-gradient(135deg,#7c3aed,#a855f7);border-radius:16px;padding:14px 20px;display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.header-icon{font-size:38px}
+.header-text h1{color:#fff;font-size:18px;font-weight:800}
+.header-text p{color:rgba(255,255,255,.85);font-size:12px}
+.badge{background:#6d28d9;color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;display:inline-block;margin-bottom:4px}
+.info-row{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:8px;margin-bottom:14px}
+.info-box{border:1.5px solid #ddd;border-radius:8px;padding:6px 10px}
+.info-box label{font-size:11px;color:#888;display:block}
+.info-box .line{border-bottom:1px solid #ccc;margin-top:8px}
+.section{margin-bottom:20px}
+.section h2{font-size:15px;font-weight:800;color:#7c3aed;border-left:4px solid #a855f7;padding-left:10px;margin-bottom:12px}
+/* Match */
+.match-area{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center}
+.match-left,.match-right{display:flex;flex-direction:column;gap:8px}
+.match-item{background:#f5f3ff;border:1.5px solid #ddd8fe;border-radius:8px;padding:8px 12px;font-size:13px;text-align:center}
+.match-line{display:flex;flex-direction:column;gap:8px;align-items:center}
+.match-input{width:50px;border:none;border-bottom:2px solid #a855f7;font-family:'Sarabun',sans-serif;font-size:14px;text-align:center;font-weight:700;color:#7c3aed}
+/* Trace */
+.trace-table{width:100%;border-collapse:collapse;font-size:13px}
+.trace-table th{background:#7c3aed;color:#fff;padding:7px 10px;text-align:left}
+.trace-table td{border:1px solid #ddd;padding:7px 10px}
+.trace-table tr:nth-child(even) td{background:#faf5ff}
+.trace-input{width:100%;border:none;font-family:'Sarabun',sans-serif;font-size:13px;background:transparent;color:#6d28d9;font-weight:700}
+/* FC area */
+.fc-area{border:2px dashed #ddd8fe;border-radius:12px;background:#faf5ff;min-height:400px;padding:14px;background-image:radial-gradient(circle,#e9d5ff 1px,transparent 1px);background-size:20px 20px}
+/* MC */
+.mc-item{margin-bottom:10px;font-size:14px;padding:10px 12px;background:#faf5ff;border-radius:8px;border:1px solid #e9d5ff}
+.mc-item p{margin-bottom:8px;font-weight:600}
+.mc-opts{display:flex;gap:8px;flex-wrap:wrap}
+.mc-btn{border:1.5px solid #ddd8fe;border-radius:6px;padding:4px 12px;cursor:pointer;font-family:'Sarabun',sans-serif;font-size:13px;background:#fff;color:#4c1d95}
+@media print{body{padding:8px}@page{size:A4;margin:10mm}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div class="header-icon">◇</div>
+    <div class="header-text">
+      <div class="badge">วิทยาการคำนวณ • ป.3 • หน่วย 2</div>
+      <h1>ใบงาน 2.1 — Flowchart มีเงื่อนไข (If-Then-Else)</h1>
+      <p>Decision Branch • รูปเพชร • เงื่อนไข</p>
+    </div>
+  </div>
+  <div class="info-row">
+    <div class="info-box"><label>ชื่อ-นามสกุล</label><div class="line"></div></div>
+    <div class="info-box"><label>ชั้น/ห้อง</label><div class="line"></div></div>
+    <div class="info-box"><label>เลขที่</label><div class="line"></div></div>
+    <div class="info-box"><label>วันที่</label><div class="line"></div></div>
+  </div>
+
+  <!-- ข้อ 1: จับคู่ -->
+  <div class="section">
+    <h2>ข้อ 1: จับคู่สัญลักษณ์กับความหมาย (4 คะแนน)</h2>
+    <div class="match-area">
+      <div class="match-left">
+        <div class="match-item" style="background:#e0f2fe">⬭ วงรี</div>
+        <div class="match-item" style="background:#dcfce7">▭ สี่เหลี่ยม</div>
+        <div class="match-item" style="background:#fef9c3">◇ รูปเพชร</div>
+        <div class="match-item" style="background:#fce7f3">→ ลูกศร</div>
+      </div>
+      <div class="match-line">
+        <input class="match-input" placeholder="">
+        <input class="match-input" placeholder="">
+        <input class="match-input" placeholder="">
+        <input class="match-input" placeholder="">
+      </div>
+      <div class="match-right">
+        <div class="match-item">A. เงื่อนไข มีทางออก Yes/No</div>
+        <div class="match-item">B. จุดเริ่มต้น / สิ้นสุด</div>
+        <div class="match-item">C. ขั้นตอนการทำงาน</div>
+        <div class="match-item">D. แสดงทิศทางการไหล</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ข้อ 2: Trace -->
+  <div class="section">
+    <h2>ข้อ 2: Trace — ผลลัพธ์คืออะไร? (6 คะแนน)</h2>
+    <p style="font-size:13px;margin-bottom:10px">อ่าน Flowchart และตอบคำถาม:</p>
+    <div style="background:#1e1e1e;color:#d4d4d4;font-family:monospace;padding:12px;border-radius:8px;font-size:12px;margin-bottom:12px">
+      เริ่ม → รับค่า score → IF score ≥ 70 THEN แสดง "ผ่าน" ELSE แสดง "ไม่ผ่าน" → จบ
+    </div>
+    <table class="trace-table">
+      <thead><tr><th>ค่า score</th><th>เงื่อนไข score ≥ 70?</th><th>ผลลัพธ์</th></tr></thead>
+      <tbody>
+        <tr><td>80</td><td><input class="trace-input" placeholder="ใช่ / ไม่ใช่"></td><td><input class="trace-input" placeholder="ผ่าน / ไม่ผ่าน"></td></tr>
+        <tr><td>65</td><td><input class="trace-input" placeholder="ใช่ / ไม่ใช่"></td><td><input class="trace-input" placeholder="ผ่าน / ไม่ผ่าน"></td></tr>
+        <tr><td>70</td><td><input class="trace-input" placeholder="ใช่ / ไม่ใช่"></td><td><input class="trace-input" placeholder="ผ่าน / ไม่ผ่าน"></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ข้อ 3: วาด Flowchart -->
+  <div class="section">
+    <h2>ข้อ 3: วาด Flowchart If-Then-Else (8 คะแนน)</h2>
+    <p style="font-size:13px;margin-bottom:10px">วาด Flowchart สำหรับ <strong>"การเลือกดูหนัง"</strong><br>
+    ถ้าหนังเรต ผู้ใหญ่ (อายุ &lt; 18) → ต้องดูกับพ่อแม่ | ถ้าไม่ใช่ → ดูคนเดียวได้</p>
+    <div class="fc-area">
+      <p style="font-size:12px;color:#999;margin-bottom:8px">💡 ต้องมี: วงรีเริ่ม → รูปเพชร (เงื่อนไข) → 2 ทางออก (Yes/No) → วงรีจบ</p>
+    </div>
+  </div>
+
+  <!-- ข้อ 4: MCQ -->
+  <div class="section">
+    <h2>ข้อ 4: เลือกคำตอบที่ถูกต้อง (2 คะแนน)</h2>
+    <div class="mc-item">
+      <p>รูปเพชรใน Flowchart มีทางออกกี่ทาง?</p>
+      <div class="mc-opts">
+        <div class="mc-btn">A. 1 ทาง</div>
+        <div class="mc-btn">B. 2 ทาง (Yes/No)</div>
+        <div class="mc-btn">C. 3 ทาง</div>
+        <div class="mc-btn">D. ไม่จำกัด</div>
+      </div>
+    </div>
+    <div class="mc-item">
+      <p>If-Then-Else ต่างจาก If-Then เพียงอย่างเดียวตรงไหน?</p>
+      <div class="mc-opts">
+        <div class="mc-btn">A. ไม่มีความต่าง</div>
+        <div class="mc-btn">B. If-Then-Else มีการทำงานเมื่อเงื่อนไขไม่เป็นจริง</div>
+        <div class="mc-btn">C. If-Then-Else เร็วกว่า</div>
+        <div class="mc-btn">D. If-Then-Else ใช้รูปวงรี</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:center;border-top:2px solid #e9d5ff;padding-top:12px">
+    <div style="font-size:13px;color:#888">ลายเซ็นครูผู้ตรวจ: ________________</div>
+    <div style="text-align:right"><div style="font-size:13px;color:#888">คะแนน</div><div style="font-size:22px;font-weight:800;color:#7c3aed">______ / 20</div></div>
+  </div>
+</div>
+</body>
+</html>

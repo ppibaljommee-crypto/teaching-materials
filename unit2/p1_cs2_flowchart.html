@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"><title>ป.1 Flowchart เช้าวันเรียน</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Sarabun',sans-serif;background:#fff;padding:16px}
+.page{max-width:700px;margin:0 auto}
+.header{background:linear-gradient(135deg,#f97316,#c2410c);border-radius:16px;padding:14px 20px;margin-bottom:16px;color:#fff;text-align:center}
+.header h1{font-size:20px;font-weight:800}
+.header p{font-size:13px;opacity:.85;margin-top:4px}
+.info-row{display:grid;grid-template-columns:2fr 1fr 1fr;gap:8px;margin-bottom:16px}
+.info-box{border:1.5px solid #ddd;border-radius:8px;padding:6px 10px}
+.info-box label{font-size:11px;color:#888;display:block}
+.info-box .line{border-bottom:1px solid #ccc;margin-top:8px}
+/* Symbols reference */
+.symbols{display:flex;gap:16px;background:#fff7ed;border-radius:10px;padding:10px 14px;margin-bottom:16px;flex-wrap:wrap}
+.sym{display:flex;align-items:center;gap:8px;font-size:13px}
+.sym-oval{background:#fed7aa;border:2px solid #f97316;border-radius:50px;width:60px;height:28px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#ea580c}
+.sym-rect{background:#dcfce7;border:2px solid #16a34a;border-radius:6px;width:60px;height:28px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#15803d}
+/* Drawing area */
+.fc-area{border:3px dashed #fed7aa;border-radius:16px;background:#fffbf7;min-height:500px;padding:16px;position:relative}
+.fc-area .hint{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;color:#fed7aa;font-size:14px}
+/* Grid dots */
+.fc-area{background-image:radial-gradient(circle,#fde8d0 1px,transparent 1px);background-size:20px 20px}
+/* Template boxes */
+.fc-template{display:flex;flex-direction:column;align-items:center;gap:6px}
+.fc-box-oval{border:2px solid #f97316;border-radius:50px;width:160px;min-height:34px;background:rgba(254,215,170,.3);display:flex;align-items:center;justify-content:center;font-size:13px;padding:6px 12px}
+.fc-box-rect{border:2px solid #16a34a;border-radius:6px;width:200px;min-height:34px;background:rgba(220,252,231,.3);font-size:13px;padding:6px 12px;display:flex;align-items:center;justify-content:center}
+.fc-arr{font-size:20px;color:#999}
+.write-line{border:none;border-bottom:1.5px solid #ddd;width:180px;padding:2px;font-family:'Sarabun',sans-serif;font-size:13px;background:transparent;text-align:center}
+/* Checklist */
+.checklist{background:#f0fdf4;border:1.5px solid #86efac;border-radius:10px;padding:12px 16px;margin-top:14px}
+.checklist h3{color:#16a34a;font-size:14px;font-weight:700;margin-bottom:8px}
+.check-item{display:flex;align-items:center;gap:8px;margin-bottom:6px;font-size:13px}
+.check-box{width:18px;height:18px;border:2px solid #16a34a;border-radius:4px;flex-shrink:0}
+@media print{body{padding:8px}@page{size:A4;margin:10mm}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <h1>🗺️ Flowchart — เช้าวันเรียนของฉัน</h1>
+    <p>วาด Flowchart แสดงสิ่งที่ทำตั้งแต่ตื่นนอนจนถึงเข้าห้องเรียน</p>
+  </div>
+  <div class="info-row">
+    <div class="info-box"><label>ชื่อ-นามสกุล</label><div class="line"></div></div>
+    <div class="info-box"><label>ชั้น / ห้อง</label><div class="line"></div></div>
+    <div class="info-box"><label>วันที่</label><div class="line"></div></div>
+  </div>
+
+  <div class="symbols">
+    <div class="sym"><div class="sym-oval">เริ่ม/จบ</div><span>= วงรี (จุดเริ่ม/สิ้นสุด)</span></div>
+    <div class="sym"><div class="sym-rect">ขั้นตอน</div><span>= สี่เหลี่ยม (สิ่งที่ทำ)</span></div>
+    <div class="sym"><span style="font-size:22px;color:#999">↓</span><span>= ลูกศร (ทิศทาง)</span></div>
+  </div>
+
+  <p style="font-size:13px;color:#888;margin-bottom:10px">📝 วาด Flowchart ในกรอบด้านล่าง ต้องมีอย่างน้อย 5 ขั้นตอน ใช้ดินสอหรือปากกา</p>
+
+  <div class="fc-area">
+    <div class="fc-template">
+      <div class="fc-box-oval">ตื่นนอน (เริ่มต้น)</div>
+      <div class="fc-arr">↓</div>
+      <div class="fc-box-rect"><input class="write-line" placeholder="ขั้นตอนที่ 1"></div>
+      <div class="fc-arr">↓</div>
+      <div class="fc-box-rect"><input class="write-line" placeholder="ขั้นตอนที่ 2"></div>
+      <div class="fc-arr">↓</div>
+      <div class="fc-box-rect"><input class="write-line" placeholder="ขั้นตอนที่ 3"></div>
+      <div class="fc-arr">↓</div>
+      <div class="fc-box-rect"><input class="write-line" placeholder="ขั้นตอนที่ 4"></div>
+      <div class="fc-arr">↓</div>
+      <div class="fc-box-rect"><input class="write-line" placeholder="ขั้นตอนที่ 5"></div>
+      <div class="fc-arr">↓</div>
+      <div class="fc-box-oval">เข้าห้องเรียน (สิ้นสุด)</div>
+    </div>
+  </div>
+
+  <div class="checklist">
+    <h3>✅ ตรวจสอบก่อนส่ง</h3>
+    <div class="check-item"><div class="check-box"></div><span>มีวงรี "ตื่นนอน" ที่ต้น</span></div>
+    <div class="check-item"><div class="check-box"></div><span>มีสี่เหลี่ยมอย่างน้อย 5 กล่อง</span></div>
+    <div class="check-item"><div class="check-box"></div><span>มีลูกศรเชื่อมทุกกล่อง</span></div>
+    <div class="check-item"><div class="check-box"></div><span>มีวงรี "เข้าห้องเรียน" ที่ท้าย</span></div>
+    <div class="check-item"><div class="check-box"></div><span>อ่านออกทุกขั้นตอน</span></div>
+  </div>
+</div>
+</body>
+</html>

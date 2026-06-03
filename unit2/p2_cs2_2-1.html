@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"><title>ป.2 วิทยาการคำนวณ ใบงาน 2.1 — Flowchart Loop</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Sarabun',sans-serif;background:#fff;padding:16px}
+.page{max-width:800px;margin:0 auto}
+.header{background:linear-gradient(135deg,#059669,#10b981);border-radius:16px;padding:14px 20px;display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.header-icon{font-size:38px}
+.header-text h1{color:#fff;font-size:19px;font-weight:800}
+.header-text p{color:rgba(255,255,255,.85);font-size:12px}
+.badge{background:#047857;color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;display:inline-block;margin-bottom:4px}
+.info-row{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:8px;margin-bottom:14px}
+.info-box{border:1.5px solid #ddd;border-radius:8px;padding:6px 10px;font-size:13px}
+.info-box label{font-size:11px;color:#888;display:block}
+.info-box .line{border-bottom:1px solid #ccc;margin-top:8px}
+.section{margin-bottom:20px}
+.section h2{font-size:15px;font-weight:800;color:#059669;border-left:4px solid #10b981;padding-left:10px;margin-bottom:12px}
+/* ข้อ 1: เติมคำ */
+.fill-item{display:flex;align-items:baseline;gap:6px;font-size:14px;margin-bottom:8px;flex-wrap:wrap;padding:8px 12px;background:#f0fdf4;border-radius:8px}
+.blank{border:none;border-bottom:2px solid #10b981;width:120px;font-family:'Sarabun',sans-serif;font-size:14px;background:transparent;color:#047857;font-weight:700}
+/* ข้อ 2: วาด Flowchart */
+.fc-area{border:2px dashed #86efac;border-radius:12px;background:#f0fdf4;min-height:420px;padding:16px;background-image:radial-gradient(circle,#bbf7d0 1px,transparent 1px);background-size:20px 20px}
+.fc-template{display:flex;flex-direction:column;align-items:center;gap:6px}
+.fc-oval-g{border:2px solid #059669;border-radius:50px;width:150px;height:32px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#047857;background:rgba(187,247,208,.4)}
+.fc-rect-g{border:2px solid #0891b2;border-radius:6px;width:190px;height:32px;background:rgba(207,250,254,.4);display:flex;align-items:center;justify-content:center}
+.fc-diamond-g{width:110px;height:55px;background:rgba(254,249,195,.6);transform:rotate(45deg);border:2px solid #ca8a04;border-radius:4px}
+.fc-diamond-wrap{position:relative;width:120px;height:65px;display:flex;align-items:center;justify-content:center}
+.fc-diamond-text{position:absolute;font-size:11px;font-weight:700;color:#92400e;text-align:center}
+.fc-arr{color:#999;font-size:18px}
+.write-in{border:none;border-bottom:1.5px solid #a7f3d0;width:160px;font-family:'Sarabun',sans-serif;font-size:12px;background:transparent;text-align:center;color:#047857}
+/* ข้อ 3: trace */
+.trace-box{background:#f0fdf4;border:1.5px solid #86efac;border-radius:10px;padding:12px 16px;font-size:13px}
+.trace-step{padding:5px 0;border-bottom:1px solid #d1fae5;display:flex;gap:8px}
+.trace-step:last-child{border-bottom:none}
+.trace-ans{border:none;border-bottom:1.5px solid #10b981;width:100px;font-family:'Sarabun',sans-serif;font-size:13px;background:transparent}
+/* score */
+@media print{body{padding:8px}@page{size:A4;margin:10mm}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div class="header-icon">🔄</div>
+    <div class="header-text">
+      <div class="badge">วิทยาการคำนวณ • ป.2 • หน่วย 2</div>
+      <h1>ใบงาน 2.1 — วาดขั้นตอนให้คนอื่นทำตาม (Flowchart + Loop)</h1>
+      <p>Flowchart • Loop • การวนซ้ำ</p>
+    </div>
+  </div>
+  <div class="info-row">
+    <div class="info-box"><label>ชื่อ-นามสกุล</label><div class="line"></div></div>
+    <div class="info-box"><label>ชั้น/ห้อง</label><div class="line"></div></div>
+    <div class="info-box"><label>เลขที่</label><div class="line"></div></div>
+    <div class="info-box"><label>วันที่</label><div class="line"></div></div>
+  </div>
+
+  <!-- ข้อ 1 -->
+  <div class="section">
+    <h2>ข้อ 1: เติมคำในช่องว่าง (5 คะแนน)</h2>
+    <div class="fill-item">1. Loop คือการ <input class="blank" placeholder="..........."> บางอย่างซ้ำๆ จนกว่า <input class="blank" placeholder="..........."> จะเป็นจริง</div>
+    <div class="fill-item">2. ใน Flowchart รูปร่างที่ใช้สร้าง Loop คือ <input class="blank" placeholder="..........."> (รูป ___)</div>
+    <div class="fill-item">3. ถ้า Loop วนซ้ำ 5 รอบ แสดงว่าขั้นตอนภายใน Loop จะถูกทำ <input class="blank" placeholder="..........."> ครั้ง</div>
+    <div class="fill-item">4. ลูกศรที่วนกลับใน Loop เรียกว่า <input class="blank" placeholder="..........."></div>
+    <div class="fill-item">5. Loop จะหยุดเมื่อ <input class="blank" placeholder="..........."> ไม่เป็นจริงอีกต่อไป</div>
+  </div>
+
+  <!-- ข้อ 2 -->
+  <div class="section">
+    <h2>ข้อ 2: วาด Flowchart ที่มี Loop (10 คะแนน)</h2>
+    <p style="font-size:13px;color:#555;margin-bottom:10px">วาด Flowchart สำหรับ <strong>"ดูแลต้นไม้ 5 วัน"</strong> — รดน้ำทุกวัน ตรวจสอบ วนซ้ำจนครบ 5 วัน</p>
+    <div class="fc-area">
+      <div class="fc-template">
+        <div class="fc-oval-g">เริ่มต้น</div>
+        <div class="fc-arr">↓</div>
+        <div class="fc-rect-g"><input class="write-in" placeholder="ตั้งตัวนับ = 0"></div>
+        <div class="fc-arr">↓</div>
+        <div class="fc-diamond-wrap"><div class="fc-diamond-g"></div><div class="fc-diamond-text">ตัวนับ &lt; 5?</div></div>
+        <div style="display:flex;gap:24px;align-items:flex-start">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:5px">
+            <span style="font-size:11px;color:#059669;font-weight:700">ใช่ ↓</span>
+            <div class="fc-rect-g"><input class="write-in" placeholder="รดน้ำต้นไม้"></div>
+            <div class="fc-arr">↓</div>
+            <div class="fc-rect-g"><input class="write-in" placeholder="ตัวนับ + 1"></div>
+            <span style="font-size:11px;color:#d97706;font-weight:700">↑ กลับไปเช็ค</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding-top:35px">
+            <span style="font-size:11px;color:#ef4444;font-weight:700">ไม่ใช่ →</span>
+            <div class="fc-oval-g">สิ้นสุด</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ข้อ 3 -->
+  <div class="section">
+    <h2>ข้อ 3: Trace ผลลัพธ์ (5 คะแนน)</h2>
+    <p style="font-size:13px;margin-bottom:10px">Flowchart นี้แสดงอะไร? เขียนผลลัพธ์แต่ละรอบ:</p>
+    <div style="font-family:monospace;background:#1e1e1e;color:#d4d4d4;border-radius:8px;padding:12px;font-size:12px;margin-bottom:10px">
+      ตั้งค่า n = 1<br>
+      ตรวจ: n ≤ 3? → ใช่: แสดง n, n = n+1 → ตรวจอีกครั้ง<br>
+      ตรวจ: ไม่ใช่ → จบ
+    </div>
+    <div class="trace-box">
+      <div class="trace-step"><span>รอบที่ 1: n = 1 → แสดง</span> <input class="trace-ans" placeholder="........"> <span>→ n กลายเป็น</span> <input class="trace-ans" placeholder=".."></div>
+      <div class="trace-step"><span>รอบที่ 2: n = 2 → แสดง</span> <input class="trace-ans" placeholder="........"> <span>→ n กลายเป็น</span> <input class="trace-ans" placeholder=".."></div>
+      <div class="trace-step"><span>รอบที่ 3: n = 3 → แสดง</span> <input class="trace-ans" placeholder="........"> <span>→ n กลายเป็น</span> <input class="trace-ans" placeholder=".."></div>
+      <div class="trace-step"><span>รอบที่ 4: n = 4 → เงื่อนไข n ≤ 3 →</span> <input class="trace-ans" placeholder=".........."> → <strong>จบ Loop</strong></div>
+      <div class="trace-step" style="background:#dcfce7;border-radius:6px;padding:6px;border-bottom:none"><strong>ผลลัพธ์รวม: แสดง</strong> <input class="trace-ans" placeholder="............"></div>
+    </div>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:center;border-top:2px solid #a7f3d0;padding-top:12px">
+    <div style="font-size:13px;color:#888">ลายเซ็นครูผู้ตรวจ: ________________</div>
+    <div style="text-align:right"><div style="font-size:13px;color:#888">คะแนน</div><div style="font-size:22px;font-weight:800;color:#059669">______ / 20</div></div>
+  </div>
+</div>
+</body>
+</html>

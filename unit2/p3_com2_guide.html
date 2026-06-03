@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"><title>ป.3 คู่มือนำเสนอสัตว์มหัศจรรย์</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Sarabun',sans-serif;background:#fff;padding:16px}
+.page{max-width:780px;margin:0 auto}
+.header{background:linear-gradient(135deg,#065f46,#059669);border-radius:16px;padding:14px 20px;display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.header-icon{font-size:38px}
+.header-text h1{color:#fff;font-size:18px;font-weight:800}
+.header-text p{color:rgba(255,255,255,.85);font-size:12px}
+.badge{background:#047857;color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;display:inline-block;margin-bottom:4px}
+.info-row{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:8px;margin-bottom:14px}
+.info-box{border:1.5px solid #ddd;border-radius:8px;padding:6px 10px}
+.info-box label{font-size:11px;color:#888;display:block}
+.info-box .line{border-bottom:1px solid #ccc;margin-top:8px}
+.section{margin-bottom:18px}
+.section h2{font-size:14px;font-weight:800;color:#065f46;border-left:4px solid #10b981;padding-left:10px;margin-bottom:10px}
+/* Animal selector */
+.animal-box{background:#f0fdf4;border:2px solid #86efac;border-radius:12px;padding:14px;margin-bottom:12px}
+.animal-name{font-size:16px;font-weight:700;color:#065f46;border:none;border-bottom:2px solid #10b981;width:100%;font-family:'Sarabun',sans-serif;background:transparent;padding:4px;display:block;margin-top:6px}
+/* Slide planner */
+.slide-plan{display:flex;flex-direction:column;gap:10px}
+.slide-card{border:1.5px solid #a7f3d0;border-radius:10px;padding:12px 16px;background:#f0fdf4}
+.slide-card h3{color:#065f46;font-size:14px;font-weight:700;display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.slide-num{background:#10b981;color:#fff;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px}
+.write-field{border:none;border-bottom:1.5px solid #a7f3d0;font-family:'Sarabun',sans-serif;font-size:13px;background:transparent;display:block;width:100%;margin-top:4px;padding:3px;color:#065f46}
+/* Checklist */
+.checklist{background:#f0fdf4;border:1.5px solid #86efac;border-radius:10px;padding:12px 16px}
+.check-item{display:flex;align-items:center;gap:8px;margin-bottom:7px;font-size:13px}
+.check-box{width:18px;height:18px;border:2px solid #10b981;border-radius:4px;flex-shrink:0}
+/* Rubric */
+.rubric{width:100%;border-collapse:collapse;font-size:12px}
+.rubric th{background:#065f46;color:#fff;padding:6px 8px}
+.rubric td{border:1px solid #ddd;padding:6px 8px;text-align:center}
+.rubric tr:nth-child(even) td{background:#f0fdf4}
+@media print{body{padding:8px}@page{size:A4;margin:10mm}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div class="header-icon">🦁</div>
+    <div class="header-text">
+      <div class="badge">คอมพิวเตอร์เพิ่มเติม • ป.3 • หน่วย 2</div>
+      <h1>คู่มือ — นำเสนอสัตว์มหัศจรรย์</h1>
+      <p>PowerPoint 5 Slides • นำเสนอหน้าชั้นเรียน</p>
+    </div>
+  </div>
+  <div class="info-row">
+    <div class="info-box"><label>ชื่อ-นามสกุล</label><div class="line"></div></div>
+    <div class="info-box"><label>ชั้น/ห้อง</label><div class="line"></div></div>
+    <div class="info-box"><label>เลขที่</label><div class="line"></div></div>
+    <div class="info-box"><label>วันที่</label><div class="line"></div></div>
+  </div>
+
+  <div class="section">
+    <h2>ขั้นตอนที่ 1: เลือกสัตว์ที่จะนำเสนอ</h2>
+    <div class="animal-box">
+      <p style="font-size:13px">สัตว์ที่เลือก (สัตว์จริงหรือสัตว์ในตำนานก็ได้):</p>
+      <input class="animal-name" placeholder="ชื่อสัตว์: ................................">
+      <p style="font-size:12px;margin-top:8px;color:#047857">💡 ตัวอย่าง: เสือดาว, โลมา, มังกร, ยูนิคอร์น, ฟีนิกซ์...</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>ขั้นตอนที่ 2: วางแผนเนื้อหา 5 Slides</h2>
+    <div class="slide-plan">
+      <div class="slide-card">
+        <h3><div class="slide-num">1</div>🏷️ สไลด์ปก</h3>
+        <p style="font-size:12px;color:#888;margin-bottom:6px">หัวข้อบัตรนำเสนอ + ชื่อนักเรียน + รูปสัตว์</p>
+        <input class="write-field" placeholder="หัวข้อ: .....................">
+      </div>
+      <div class="slide-card">
+        <h3><div class="slide-num">2</div>ℹ️ ข้อมูลทั่วไป</h3>
+        <p style="font-size:12px;color:#888;margin-bottom:6px">ชื่อ ถิ่นที่อยู่ อาหาร อายุ ขนาด</p>
+        <input class="write-field" placeholder="ถิ่นที่อยู่: .....................">
+        <input class="write-field" placeholder="อาหาร: .....................">
+        <input class="write-field" placeholder="ขนาด/น้ำหนัก: .....................">
+      </div>
+      <div class="slide-card">
+        <h3><div class="slide-num">3</div>🌟 ความสามารถพิเศษ</h3>
+        <p style="font-size:12px;color:#888;margin-bottom:6px">อะไรที่ทำให้สัตว์นี้พิเศษหรือน่าสนใจ</p>
+        <input class="write-field" placeholder="ความสามารถพิเศษ 1: .....................">
+        <input class="write-field" placeholder="ความสามารถพิเศษ 2: .....................">
+      </div>
+      <div class="slide-card">
+        <h3><div class="slide-num">4</div>🖼️ รูปภาพและคำอธิบาย</h3>
+        <p style="font-size:12px;color:#888;margin-bottom:6px">รูปสัตว์ + คำอธิบายใต้รูป</p>
+        <input class="write-field" placeholder="คำอธิบายรูป: .....................">
+      </div>
+      <div class="slide-card">
+        <h3><div class="slide-num">5</div>💭 ทำไมถึงชอบ/น่าสนใจ</h3>
+        <p style="font-size:12px;color:#888;margin-bottom:6px">ความรู้สึกและเหตุผลที่เลือกสัตว์นี้</p>
+        <input class="write-field" placeholder="ฉันชอบสัตว์นี้เพราะ: .....................">
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>ขั้นตอนที่ 3: ตรวจสอบก่อนนำเสนอ</h2>
+    <div class="checklist">
+      <div class="check-item"><div class="check-box"></div><span>มีครบ 5 Slides ตามโครงสร้าง</span></div>
+      <div class="check-item"><div class="check-box"></div><span>แต่ละ Slide มีรูปภาพอย่างน้อย 1 รูป</span></div>
+      <div class="check-item"><div class="check-box"></div><span>ข้อความอ่านง่าย ฟอนต์ไม่เล็กเกิน</span></div>
+      <div class="check-item"><div class="check-box"></div><span>สีธีมสวยงาม เข้ากันทุก Slide</span></div>
+      <div class="check-item"><div class="check-box"></div><span>ซักซ้อมแล้วอย่างน้อย 1 รอบ</span></div>
+      <div class="check-item"><div class="check-box"></div><span>บันทึกไฟล์แล้ว</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>เกณฑ์การให้คะแนน (20 คะแนน)</h2>
+    <table class="rubric">
+      <thead><tr><th>หัวข้อ</th><th>ดีมาก</th><th>ดี</th><th>พอใช้</th><th>คะแนน</th></tr></thead>
+      <tbody>
+        <tr><td>เนื้อหาครบ 5 Slides</td><td>ครบถ้วน ถูกต้อง (6)</td><td>ขาด 1 Slide (4)</td><td>ขาดหลาย Slide (2)</td><td>/6</td></tr>
+        <tr><td>รูปภาพ</td><td>รูปชัด เหมาะสม (4)</td><td>มีรูปบางส่วน (3)</td><td>ไม่มีรูปเลย (1)</td><td>/4</td></tr>
+        <tr><td>การออกแบบ</td><td>สวยงาม สม่ำเสมอ (4)</td><td>พอใช้ (3)</td><td>ดูยุ่ง (2)</td><td>/4</td></tr>
+        <tr><td>การนำเสนอ</td><td>ชัดเจน มั่นใจ (6)</td><td>พอใช้ (4)</td><td>ต้องปรับปรุง (2)</td><td>/6</td></tr>
+        <tr style="background:#dcfce7"><td colspan="4" style="text-align:right;font-weight:700">รวม</td><td><strong>/20</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:center;border-top:2px solid #a7f3d0;padding-top:12px">
+    <div style="font-size:13px;color:#888">ลายเซ็นครูผู้ตรวจ: ________________</div>
+    <div style="text-align:right"><div style="font-size:13px;color:#888">คะแนนรวม</div><div style="font-size:22px;font-weight:800;color:#065f46">______ / 20</div></div>
+  </div>
+</div>
+</body>
+</html>
