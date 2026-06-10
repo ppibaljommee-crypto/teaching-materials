@@ -13,16 +13,24 @@ body{font-family:'Sarabun',sans-serif;background:#0a0800;overflow:hidden;height:
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 .s1{background:linear-gradient(135deg,#1a0f00,#451a03,#92400e,#b45309)}
 .s2{background:linear-gradient(135deg,#0a0a1a,#1e1b4b,#2563eb)}
-.s3{background:linear-gradient(135deg,#0f0800,#451a03,#d97706)}
-.s4{background:linear-gradient(135deg,#050a0a,#022c22,#047857)}
-.s5{background:linear-gradient(135deg,#0a0008,#4c1d95,#7c3aed)}
-.s6{background:linear-gradient(135deg,#0a0800,#3d2000,#b45309)}
-.s7{background:linear-gradient(135deg,#000a1a,#0c3460,#1e40af)}
-.s8{background:linear-gradient(135deg,#050005,#3b0764,#6d28d9)}
-.s9{background:linear-gradient(135deg,#0a0500,#7c2d12,#dc2626)}
-.s10{background:linear-gradient(135deg,#050f10,#134e4a,#0f766e)}
-.s11{background:linear-gradient(135deg,#0a0800,#451a03,#92400e)}
-.s12{background:linear-gradient(135deg,#050010,#1e1b4b,#4338ca)}
+.s3{background:linear-gradient(135deg,#0a1500,#1a3300,#4d7c0f)}
+.s4{background:linear-gradient(135deg,#0f0800,#451a03,#d97706)}
+.s5{background:linear-gradient(135deg,#050a0a,#022c22,#047857)}
+.s6{background:linear-gradient(135deg,#0a0008,#4c1d95,#7c3aed)}
+.s7{background:linear-gradient(135deg,#0a0800,#3d2000,#b45309)}
+.s8{background:linear-gradient(135deg,#000a1a,#0c3460,#1e40af)}
+.s9{background:linear-gradient(135deg,#050005,#3b0764,#6d28d9)}
+.s10{background:linear-gradient(135deg,#0a0500,#7c2d12,#dc2626)}
+.s11{background:linear-gradient(135deg,#050f10,#134e4a,#0f766e)}
+.s12{background:linear-gradient(135deg,#001000,#002800,#15803d)}
+.s13{background:linear-gradient(135deg,#0a0800,#451a03,#92400e)}
+.s14{background:linear-gradient(135deg,#050010,#1e1b4b,#4338ca)}
+.s15{background:linear-gradient(135deg,#001010,#002a28,#0d9488)}
+.s16{background:linear-gradient(135deg,#100005,#3b0060,#7e22ce)}
+.s17{background:linear-gradient(135deg,#0a0000,#2a0505,#7c1d1d)}
+.s18{background:linear-gradient(135deg,#001a0a,#003320,#047857)}
+.s19{background:linear-gradient(135deg,#050010,#120040,#2e1065)}
+.s20{background:linear-gradient(135deg,#050010,#1e1b4b,#4338ca)}
 h1{font-size:clamp(26px,5vw,58px);font-weight:800;color:#fff;text-align:center;line-height:1.15}
 h2{font-size:clamp(19px,3.5vw,42px);font-weight:700;color:#fff;text-align:center;line-height:1.3}
 p.sub{font-size:clamp(13px,2vw,24px);color:rgba(255,255,255,.75);text-align:center;margin-top:12px}
@@ -38,22 +46,20 @@ p.sub{font-size:clamp(13px,2vw,24px);color:rgba(255,255,255,.75);text-align:cent
 .col{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:16px 20px}
 .col h4{font-size:clamp(13px,2vw,20px);color:#fbbf24;font-weight:800;margin-bottom:8px}
 .col p{font-size:clamp(11px,1.6vw,17px);color:rgba(255,255,255,.85);padding:3px 0}
-/* Sorting demo */
 .sort-demo{display:flex;gap:8px;justify-content:center;align-items:flex-end;margin:14px 0;flex-wrap:wrap}
 .bar{display:flex;flex-direction:column;align-items:center;gap:6px}
 .bar-block{width:52px;border-radius:6px 6px 0 0;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;color:#000;transition:all .5s ease}
 .bar-num{color:rgba(255,255,255,.7);font-size:13px;font-weight:700}
-/* Pseudocode */
 .pseudo{background:#1e1e1e;border:1px solid #444;border-radius:14px;padding:16px;font-family:'Courier New',monospace;font-size:clamp(11px,1.6vw,17px);color:#d4d4d4;line-height:1.9;width:100%;max-width:720px;margin-top:12px;text-align:left}
 .kw{color:#569CD6}.fn{color:#DCDCAA}.cmt{color:#6A9955}.num{color:#b5cea8}
-/* Quiz */
 .quiz-opts{display:flex;flex-direction:column;gap:10px;width:100%;max-width:720px;margin-top:12px}
 .qbtn{background:rgba(255,255,255,.09);border:1.5px solid rgba(255,255,255,.2);border-radius:14px;padding:12px 18px;color:#fff;font-size:clamp(13px,1.8vw,20px);font-weight:700;cursor:pointer;text-align:left;font-family:'Sarabun',sans-serif;transition:all .2s}
 .qbtn:hover{background:rgba(255,255,255,.16)}
 .qbtn.correct{background:rgba(74,222,128,.2);border-color:#4ade80;color:#4ade80}
 .qbtn.wrong{background:rgba(248,113,113,.15);border-color:#f87171;opacity:.7}
 .result-msg{font-size:clamp(14px,2.2vw,26px);font-weight:800;text-align:center;margin-top:10px;display:none}
-.teacher-note{position:fixed;top:18px;right:18px;background:rgba(0,0,0,.65);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:10px 16px;color:rgba(255,255,255,.65);font-size:13px;max-width:280px;text-align:right;cursor:pointer;z-index:200}
+.teacher-note{position:fixed;top:18px;right:18px;background:rgba(0,0,0,.65);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:10px 16px;color:rgba(255,255,255,.65);font-size:13px;max-width:280px;text-align:right;cursor:pointer;z-index:200;transition:opacity .2s}
+.teacher-note:hover{opacity:.3}
 .timer-widget{position:fixed;top:18px;left:18px;z-index:200}
 .timer-btn{background:rgba(245,158,11,.2);border:1px solid rgba(245,158,11,.4);border-radius:10px;padding:8px 14px;color:#fde68a;font-size:13px;font-weight:700;cursor:pointer;font-family:'Sarabun',sans-serif}
 .timer-display{background:rgba(0,0,0,.7);border:1px solid rgba(245,158,11,.4);border-radius:10px;padding:10px 18px;color:#fbbf24;font-size:28px;font-weight:800;text-align:center;margin-top:6px;display:none;font-family:monospace}
@@ -69,24 +75,33 @@ p.sub{font-size:clamp(13px,2vw,24px);color:rgba(255,255,255,.75);text-align:cent
 .reveal-text.show{display:block;animation:fadeUp .4s ease}
 .activity-box{background:rgba(245,158,11,.1);border:2px solid rgba(245,158,11,.4);border-radius:20px;padding:18px 26px;width:100%;max-width:820px;margin-top:12px;text-align:center}
 .activity-box h3{color:#fbbf24;font-size:clamp(15px,2.3vw,26px);font-weight:800;margin-bottom:8px}
+.activity-box p{color:rgba(255,255,255,.85);font-size:clamp(13px,2vw,20px)}
+.game-box{background:rgba(74,222,128,.08);border:2px solid rgba(74,222,128,.35);border-radius:20px;padding:18px 26px;width:100%;max-width:820px;margin-top:12px;text-align:center}
+.game-box h3{color:#4ade80;font-size:clamp(15px,2.3vw,26px);font-weight:800;margin-bottom:8px}
+.game-box p{color:rgba(255,255,255,.85);font-size:clamp(13px,2vw,20px)}
+.group-box{background:rgba(167,139,250,.08);border:2px solid rgba(167,139,250,.35);border-radius:20px;padding:18px 26px;width:100%;max-width:820px;margin-top:12px;text-align:center}
+.group-box h3{color:#a78bfa;font-size:clamp(15px,2.3vw,26px);font-weight:800;margin-bottom:8px}
+.group-box p{color:rgba(255,255,255,.85);font-size:clamp(13px,2vw,20px)}
+.lesson-tag{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:4px 14px;font-size:13px;color:rgba(255,255,255,.6);font-weight:700;margin-bottom:10px;display:inline-block}
 </style>
 </head>
 <body>
 <div class="prog-bar" id="prog"></div>
 <div class="timer-widget"><button class="timer-btn" onclick="startTimer(10)">⏱ 10 นาที</button><div class="timer-display" id="timerDisplay">10:00</div></div>
 
-<!-- S1 -->
+<!-- S1: Title -->
 <div class="slide s1 active" id="s1">
-  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ถามนักเรียน: "ถ้าต้องจัดหนังสือบนชั้นตามความสูง จะทำอย่างไร?"</div>
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 แผน 4 ชั่วโมง: ชม.1=S1-6, ชม.2=S7-13, ชม.3=S14-17, ชม.4=S18-20+ใบงาน</div>
   <div class="badge">วิทยาการคำนวณ • ป.6 • หน่วยที่ 2</div>
   <div class="big-emoji">🏆</div>
   <h1>เกม Sorting แข่งกัน</h1>
   <p class="sub">Sorting Algorithm • Pseudocode • Flowchart</p>
 </div>
 
-<!-- S2 -->
+<!-- S2: ทบทวน CT -->
 <div class="slide s2" id="s2">
-  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ทบทวน 4 ทักษะ CT จากหน่วย 1 — เน้น Algorithm</div>
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 ทบทวน 4 ทักษะ CT จากหน่วย 1 — ให้นักเรียนอธิบายแต่ละข้อก่อนแสดง</div>
+  <div class="lesson-tag">ชั่วโมงที่ 1</div>
   <h2>🔄 ทบทวน: Computational Thinking</h2>
   <div class="two-col">
     <div class="col"><h4>🌳 Decomposition</h4><p>แตกปัญหาเป็นชิ้นเล็ก</p></div>
@@ -96,14 +111,35 @@ p.sub{font-size:clamp(13px,2vw,24px);color:rgba(255,255,255,.75);text-align:cent
   </div>
 </div>
 
-<!-- S3: Sorting คืออะไร -->
+<!-- S3: Warm-up (ใหม่) -->
 <div class="slide s3" id="s3">
-  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ยกตัวอย่าง: เรียงคะแนนนักเรียน, จัดหนังสือตามตัวอักษร</div>
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 ให้นักเรียน 5 คนยืนถือป้ายตัวเลข 5 ตัวที่สุ่ม — ถาม "คุณจะเรียงคนเหล่านี้จากน้อยไปมากอย่างไร?" ฟังคำตอบหลายแบบก่อนสอน Bubble Sort</div>
+  <div class="lesson-tag">ชั่วโมงที่ 1 — Warm-up</div>
+  <div class="big-emoji">🤔</div>
+  <h2>ถ้าต้องเรียงตัวเลขเหล่านี้...</h2>
+  <div style="display:flex;gap:16px;justify-content:center;margin:20px 0;flex-wrap:wrap">
+    <div style="background:#f87171;border-radius:12px;padding:16px 24px;font-size:48px;font-weight:800;color:#fff">5</div>
+    <div style="background:#fb923c;border-radius:12px;padding:16px 24px;font-size:48px;font-weight:800;color:#fff">3</div>
+    <div style="background:#fbbf24;border-radius:12px;padding:16px 24px;font-size:48px;font-weight:800;color:#000">8</div>
+    <div style="background:#a3e635;border-radius:12px;padding:16px 24px;font-size:48px;font-weight:800;color:#000">2</div>
+    <div style="background:#34d399;border-radius:12px;padding:16px 24px;font-size:48px;font-weight:800;color:#fff">6</div>
+  </div>
+  <div class="game-box">
+    <h3>💭 คุณจะเรียงจากน้อยไปมากอย่างไร?</h3>
+    <p>แชร์วิธีคิดของตัวเองก่อน — ไม่มีผิดไม่มีถูก<br>แล้วเราจะเรียนวิธีที่คอมพิวเตอร์ทำ!</p>
+  </div>
+  <button class="reveal-btn" onclick="rev('r3')">🔍 เฉลย: ผลลัพธ์ที่ถูกต้อง</button>
+  <div id="r3" class="reveal-text">✅ 2, 3, 5, 6, 8</div>
+</div>
+
+<!-- S4: Sorting คืออะไร -->
+<div class="slide s4" id="s4">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 ยกตัวอย่าง: เรียงคะแนนนักเรียน, จัดหนังสือตามตัวอักษร, เรียงไฟล์ตามวันที่</div>
   <h2>📊 Sorting Algorithm คืออะไร?</h2>
   <div class="box" style="text-align:center">
-    <p style="font-size:clamp(15px,2.5vw,28px);color:#fff">Sorting = การ<span style="color:#fbbf24">เรียงลำดับ</span>ข้อมูลจากน้อยไปมาก<br>หรือจากมากไปน้อย อย่างเป็นระบบ</p>
+    <p style="font-size:clamp(15px,2.5vw,28px);color:#fff">Sorting = การ<span style="color:#fbbf24">เรียงลำดับ</span>ข้อมูลอย่างเป็นระบบ<br>จากน้อยไปมาก หรือ มากไปน้อย</p>
   </div>
-  <div class="sort-demo" id="sortDemo">
+  <div class="sort-demo">
     <div class="bar"><div class="bar-block" style="height:80px;background:#f87171">5</div><div class="bar-num">5</div></div>
     <div class="bar"><div class="bar-block" style="height:48px;background:#fb923c">3</div><div class="bar-num">3</div></div>
     <div class="bar"><div class="bar-block" style="height:128px;background:#fbbf24">8</div><div class="bar-num">8</div></div>
@@ -114,9 +150,9 @@ p.sub{font-size:clamp(13px,2vw,24px);color:rgba(255,255,255,.75);text-align:cent
   <p class="sub">เป้าหมาย: จัดให้เป็น 1, 2, 3, 5, 6, 8 ตามลำดับ</p>
 </div>
 
-<!-- S4: Bubble Sort -->
-<div class="slide s4" id="s4">
-  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้นักเรียน 6 คนยืนถือป้ายตัวเลข แล้วทำ Bubble Sort จริงๆ</div>
+<!-- S5: Bubble Sort -->
+<div class="slide s5" id="s5">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 ให้นักเรียน 6 คนยืนถือป้ายตัวเลข แล้วทำ Bubble Sort จริงๆ — สนุกและจำได้นาน</div>
   <h2>🫧 Bubble Sort — เปรียบและสลับ</h2>
   <div class="box">
     <p style="color:#fcd34d;font-weight:700;font-size:clamp(14px,2vw,21px);margin-bottom:10px">วิธีการ Bubble Sort:</p>
@@ -126,41 +162,32 @@ p.sub{font-size:clamp(13px,2vw,24px);color:rgba(255,255,255,.75);text-align:cent
       3. วนรอบใหม่ → ทำซ้ำจนไม่มีการสลับอีก
     </p>
   </div>
-  <button class="reveal-btn" onclick="bubbleDemo()">▶ แสดง Demo</button>
-  <p id="bubbleMsg" style="color:#6ee7b7;font-size:16px;font-weight:700;margin-top:10px;min-height:24px"></p>
+  <button class="reveal-btn" onclick="bubbleDemo()">▶ แสดง Demo ทีละขั้น</button>
+  <p id="bubbleMsg" style="color:#6ee7b7;font-size:16px;font-weight:700;margin-top:10px;min-height:24px;text-align:center"></p>
 </div>
 
-<!-- S5: Selection Sort -->
-<div class="slide s5" id="s5">
-  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 เปรียบ Selection Sort กับการหยิบของถูกที่สุดในกระเป๋ามาวางก่อน</div>
+<!-- S6: Selection Sort -->
+<div class="slide s6" id="s6">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 เปรียบ Selection Sort กับการหยิบของราคาถูกที่สุดมาก่อน — ให้นักเรียนช่วยทำ Selection Sort กับตัวเลข [4, 2, 7, 1] บนกระดาน</div>
   <h2>🎯 Selection Sort — เลือกค่าน้อยสุด</h2>
   <div class="box">
     <p style="color:#a78bfa;font-weight:700;font-size:clamp(14px,2vw,21px);margin-bottom:10px">วิธีการ Selection Sort:</p>
     <p style="font-size:clamp(13px,1.8vw,19px);color:rgba(255,255,255,.9);line-height:1.8">
       1. หา<strong style="color:#fbbf24">ค่าน้อยที่สุด</strong>ในทั้งหมด → เอาไปไว้อันดับแรก<br>
       2. หาค่าน้อยที่สุดในส่วนที่เหลือ → เอาไปอันดับสอง<br>
-      3. ทำซ้ำจนเรียงครบ
+      3. ทำซ้ำจนเรียงครบทุกตัว
     </p>
   </div>
   <div class="two-col" style="max-width:700px">
-    <div class="col">
-      <h4>Bubble Sort</h4>
-      <p>• เปรียบทีละคู่</p>
-      <p>• สลับถ้าผิดที่</p>
-      <p>• วนหลายรอบ</p>
-    </div>
-    <div class="col">
-      <h4>Selection Sort</h4>
-      <p>• หาค่าน้อยสุด</p>
-      <p>• เอาไปวางตำแหน่งที่ถูก</p>
-      <p>• วนน้อยกว่า</p>
-    </div>
+    <div class="col"><h4>Bubble Sort</h4><p>• เปรียบทีละคู่</p><p>• สลับถ้าผิดที่</p><p>• วนหลายรอบ</p></div>
+    <div class="col"><h4>Selection Sort</h4><p>• หาค่าน้อยสุด</p><p>• เอาไปวางตำแหน่งที่ถูก</p><p>• สลับน้อยกว่า Bubble</p></div>
   </div>
 </div>
 
-<!-- S6: Pseudocode -->
-<div class="slide s6" id="s6">
-  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 อ่าน Pseudocode ทีละบรรทัด อธิบายให้นักเรียนเข้าใจ</div>
+<!-- S7: Pseudocode -->
+<div class="slide s7" id="s7">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 อ่าน Pseudocode ทีละบรรทัด อธิบายว่า Pseudocode คือ "ภาษากึ่งๆ" ระหว่างภาษาคนกับภาษาคอมพิวเตอร์</div>
+  <div class="lesson-tag">ชั่วโมงที่ 2</div>
   <h2>💻 Pseudocode ของ Bubble Sort</h2>
   <div class="pseudo">
 <span class="cmt">// Bubble Sort — เรียงจากน้อยไปมาก</span>
@@ -179,79 +206,188 @@ p.sub{font-size:clamp(13px,2vw,24px);color:rgba(255,255,255,.75);text-align:cent
   </div>
 </div>
 
-<!-- S7: Quiz Trace -->
-<div class="slide s7" id="s7">
-  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้นักเรียน trace [3, 1, 2] ทีละขั้น — กี่รอบถึงจะเรียงครบ?</div>
+<!-- S8: อธิบาย Pseudocode ทีละส่วน (ใหม่) -->
+<div class="slide s8" id="s8">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 ให้นักเรียนอ่าน Pseudocode และตอบคำถาม ฝึกทักษะการ "อ่านโค้ด" ก่อน "เขียนโค้ด"</div>
+  <h2>🔍 อ่าน Pseudocode: แต่ละบรรทัดหมายความว่าอะไร?</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>บรรทัดสำคัญ</h4>
+      <p style="font-family:monospace;font-size:13px;margin-bottom:8px"><span style="color:#569CD6">FOR</span> i = 0 <span style="color:#569CD6">TO</span> n-1</p>
+      <button class="reveal-btn" style="padding:6px 14px;font-size:13px" onclick="rev('rps1')">ความหมาย?</button>
+      <div id="rps1" class="reveal-text" style="font-size:14px;text-align:left">✅ วนซ้ำ n รอบ (เท่ากับจำนวนสมาชิก) เพื่อเรียงให้ครบ</div>
+    </div>
+    <div class="col">
+      <h4>บรรทัดสำคัญ</h4>
+      <p style="font-family:monospace;font-size:13px;margin-bottom:8px"><span style="color:#569CD6">IF</span> arr[j] > arr[j+1] <span style="color:#569CD6">THEN SWAP</span></p>
+      <button class="reveal-btn" style="padding:6px 14px;font-size:13px" onclick="rev('rps2')">ความหมาย?</button>
+      <div id="rps2" class="reveal-text" style="font-size:14px;text-align:left">✅ ถ้าตัวซ้ายมากกว่าตัวขวา ให้สลับตำแหน่ง</div>
+    </div>
+  </div>
+  <div class="two-col" style="margin-top:12px">
+    <div class="col">
+      <h4>คำถาม: FOR ซ้อน FOR ทำไม?</h4>
+      <button class="reveal-btn" style="padding:6px 14px;font-size:13px" onclick="rev('rps3')">เฉลย</button>
+      <div id="rps3" class="reveal-text" style="font-size:14px;text-align:left">✅ FOR วงนอก = วนกี่รอบ | FOR วงใน = เปรียบทีละคู่ในแต่ละรอบ</div>
+    </div>
+    <div class="col">
+      <h4>คำถาม: n-i-2 คืออะไร?</h4>
+      <button class="reveal-btn" style="padding:6px 14px;font-size:13px" onclick="rev('rps4')">เฉลย</button>
+      <div id="rps4" class="reveal-text" style="font-size:14px;text-align:left">✅ ตัวท้ายสุดที่เรียงครบแล้วไม่ต้องเปรียบอีก ทำให้เร็วขึ้น</div>
+    </div>
+  </div>
+</div>
+
+<!-- S9: Trace -->
+<div class="slide s9" id="s9">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 ให้นักเรียน trace [3, 1, 2] ทีละขั้น บนกระดาน — กี่รอบถึงจะเรียงครบ?</div>
   <h2>🔍 Trace: เรียง [3, 1, 2] ด้วย Bubble Sort</h2>
   <div class="box" style="font-size:clamp(13px,1.8vw,18px);line-height:2">
     <p><strong style="color:#fbbf24">รอบที่ 1:</strong> [3, 1, 2] → 3&gt;1? สลับ → [1, 3, 2] → 3&gt;2? สลับ → [1, 2, 3]</p>
     <p><strong style="color:#86efac">รอบที่ 2:</strong> [1, 2, 3] → ไม่มีสลับ → เสร็จ! ✅</p>
   </div>
-  <button class="reveal-btn" onclick="rev('r7')">ตอบ: กี่รอบ?</button>
-  <div id="r7" class="reveal-text">✅ 2 รอบ — เพราะรอบที่ 2 ไม่มีการสลับแล้ว แสดงว่าเรียงครบ</div>
+  <button class="reveal-btn" onclick="rev('r9')">ตอบ: กี่รอบ?</button>
+  <div id="r9" class="reveal-text">✅ 2 รอบ — เพราะรอบที่ 2 ไม่มีการสลับแล้ว แสดงว่าเรียงครบ</div>
 </div>
 
-<!-- S8: Quiz -->
-<div class="slide s8" id="s8">
-  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ถามให้นักเรียนคิดก่อน แล้วค่อยเฉลย</div>
+<!-- S10: Trace เอง (ใหม่) -->
+<div class="slide s10" id="s10">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 ให้นักเรียนทำใน สมุด — trace เองทีละขั้น ไม่คุยกับเพื่อน เสร็จแล้วเปรียบกัน</div>
+  <h2>✏️ Trace เอง: เรียง [5, 2, 8, 1] ด้วย Bubble Sort</h2>
+  <div class="activity-box">
+    <h3>📋 โจทย์: แสดงทุกขั้นตอนในสมุด</h3>
+    <p>เริ่มจาก [5, 2, 8, 1] — trace Bubble Sort ทีละรอบ<br>
+    จนกว่าจะไม่มีการสลับในรอบนั้น</p>
+  </div>
+  <button class="reveal-btn" onclick="rev('r10')">🔍 ดูเฉลย</button>
+  <div id="r10" class="reveal-text" style="font-size:14px">
+    รอบ1: [5,2,8,1]→5&gt;2 สลับ→[2,5,8,1]→5&lt;8 ไม่สลับ→8&gt;1 สลับ→[2,5,1,8]<br>
+    รอบ2: 2&lt;5 ไม่สลับ→5&gt;1 สลับ→[2,1,5,8]→5&lt;8 ไม่สลับ<br>
+    รอบ3: 2&gt;1 สลับ→[1,2,5,8]→ไม่มีสลับ → จบ! ✅ ใช้ 3 รอบ
+  </div>
+  <button class="timer-btn" onclick="startTimer(10)" style="margin-top:10px;font-size:14px;padding:8px 20px">⏱ 10 นาที</button>
+</div>
+
+<!-- S11: Quiz ข้อ 1 -->
+<div class="slide s11" id="s11">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 Quiz 3 ข้อ — ข้อนี้ต้อง trace ก่อนตอบ</div>
+  <div class="lesson-tag">ชั่วโมงที่ 2 — ทดสอบ (1/3)</div>
   <h2>🎯 Bubble Sort เรียง [5, 3, 8, 1] รอบแรกได้อะไร?</h2>
   <div class="quiz-opts">
-    <button class="qbtn" onclick="qa(this,false)">A. [1, 3, 5, 8]</button>
-    <button class="qbtn" onclick="qa(this,true)">B. [3, 5, 1, 8]</button>
-    <button class="qbtn" onclick="qa(this,false)">C. [5, 3, 1, 8]</button>
-    <button class="qbtn" onclick="qa(this,false)">D. [1, 3, 8, 5]</button>
+    <button class="qbtn" onclick="qb(this,'q11',false)">A. [1, 3, 5, 8]</button>
+    <button class="qbtn" onclick="qb(this,'q11',true)">B. [3, 5, 1, 8]</button>
+    <button class="qbtn" onclick="qb(this,'q11',false)">C. [5, 3, 1, 8]</button>
+    <button class="qbtn" onclick="qb(this,'q11',false)">D. [1, 3, 8, 5]</button>
   </div>
-  <div id="qa-msg" class="result-msg"></div>
+  <div id="q11" class="result-msg"></div>
+  <button class="reveal-btn" onclick="rev('r11')" style="margin-top:8px">🔍 Trace</button>
+  <div id="r11" class="reveal-text" style="font-size:14px">5&gt;3 สลับ→[3,5,8,1] | 5&lt;8 ไม่สลับ | 8&gt;1 สลับ→[3,5,1,8] = B ✅</div>
 </div>
 
-<!-- S9: เกม Sorting -->
-<div class="slide s9" id="s9">
-  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 แบ่งกลุ่ม 5-6 คน ให้แต่ละกลุ่มถือป้ายตัวเลข แข่งกันเรียงให้เร็วที่สุด</div>
+<!-- S12: Quiz ข้อ 2 (ใหม่) -->
+<div class="slide s12" id="s12">
+  <div class="lesson-tag">ชั่วโมงที่ 2 — ทดสอบ (2/3)</div>
+  <h2>🎯 Quiz ข้อ 2: Pseudocode vs Code</h2>
+  <p class="sub">Pseudocode คืออะไร?</p>
+  <div class="quiz-opts">
+    <button class="qbtn" onclick="qb(this,'q12',false)">A. ภาษาโปรแกรมจริงๆ เช่น Python หรือ Java</button>
+    <button class="qbtn" onclick="qb(this,'q12',true)">B. ภาษากึ่งๆ ระหว่างภาษาคนกับภาษาคอมฯ ไม่รันได้จริง</button>
+    <button class="qbtn" onclick="qb(this,'q12',false)">C. รหัสลับที่คอมพิวเตอร์เข้าใจได้เพียงอย่างเดียว</button>
+    <button class="qbtn" onclick="qb(this,'q12',false)">D. ภาษาเขียนแบบ Flowchart</button>
+  </div>
+  <div id="q12" class="result-msg"></div>
+</div>
+
+<!-- S13: Quiz ข้อ 3 (ใหม่) -->
+<div class="slide s13" id="s13">
+  <div class="lesson-tag">ชั่วโมงที่ 2 — ทดสอบ (3/3)</div>
+  <h2>🎯 Quiz ข้อ 3: Bubble vs Selection</h2>
+  <p class="sub">ข้อใดเป็นความแตกต่างระหว่าง Bubble Sort และ Selection Sort?</p>
+  <div class="quiz-opts">
+    <button class="qbtn" onclick="qb(this,'q13',false)">A. ทั้งสองเรียงจากมากไปน้อยเท่านั้น</button>
+    <button class="qbtn" onclick="qb(this,'q13',false)">B. Bubble Sort เร็วกว่า Selection Sort เสมอ</button>
+    <button class="qbtn" onclick="qb(this,'q13',true)">C. Bubble เปรียบทีละคู่สลับ | Selection หาค่าน้อยสุดวางที่ถูก</button>
+    <button class="qbtn" onclick="qb(this,'q13',false)">D. ไม่มีความแตกต่าง ทำงานเหมือนกันทุกอย่าง</button>
+  </div>
+  <div id="q13" class="result-msg"></div>
+</div>
+
+<!-- S14: เกม Sorting แข่งกัน -->
+<div class="slide s14" id="s14">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 แบ่งกลุ่ม 5-6 คน ให้แต่ละกลุ่มถือป้ายตัวเลข แข่งกันเรียงให้เร็วที่สุด บันทึกจำนวนครั้งที่สลับ</div>
+  <div class="lesson-tag">ชั่วโมงที่ 3 — กิจกรรม</div>
   <div class="big-emoji">🏃</div>
   <h2>🎮 กิจกรรม: เกม Sorting แข่งกัน!</h2>
   <div class="activity-box">
     <h3>📋 กติกา</h3>
-    <p style="font-size:clamp(13px,2vw,20px);color:rgba(255,255,255,.9)">
-      • แต่ละกลุ่มได้ตัวเลข 6 ตัว (สุ่ม)<br>
-      • ใช้ <strong style="color:#fbbf24">Bubble Sort</strong> เรียงตัวเอง<br>
-      • กลุ่มไหนเรียงได้เร็วและถูกต้องที่สุด <strong style="color:#fbbf24">ชนะ!</strong><br>
-      • ต้องบอกด้วยว่าสลับกันกี่ครั้ง
-    </p>
+    <p>• แต่ละกลุ่มได้ตัวเลข 6 ตัว (สุ่ม)<br>
+    • ใช้ <strong style="color:#fbbf24">Bubble Sort</strong> เรียงตัวเอง<br>
+    • กลุ่มไหนเรียงได้เร็วและถูกต้องที่สุด <strong style="color:#fbbf24">ชนะ!</strong><br>
+    • ต้องบอกด้วยว่าสลับกันทั้งหมดกี่ครั้ง</p>
   </div>
-  <button class="timer-btn" onclick="startTimer(5)" style="margin-top:14px;font-size:15px;padding:10px 24px">⏱ 5 นาที เริ่ม!</button>
+  <button class="timer-btn" onclick="startTimer(10)" style="margin-top:14px;font-size:15px;padding:10px 24px">⏱ 10 นาที เริ่ม!</button>
 </div>
 
-<!-- S10: ใบงาน -->
-<div class="slide s10" id="s10">
-  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 แจกใบงาน 2.1 — ให้เขียน Pseudocode + Flowchart ของ Sorting Algorithm</div>
+<!-- S15: ใบงาน -->
+<div class="slide s15" id="s15">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 แจกใบงาน 2.1 — ให้เขียน Pseudocode + วาด Flowchart ของ Sorting Algorithm</div>
   <div class="big-emoji">✍️</div>
-  <h2>งาน: ใบงาน 2.1 Sorting</h2>
+  <h2>ใบงาน 2.1: Pseudocode + Flowchart Sorting</h2>
   <div class="activity-box">
     <h3>📋 โจทย์</h3>
-    <p style="font-size:clamp(13px,2vw,20px);color:rgba(255,255,255,.9)">
-      1. เขียน <strong style="color:#fbbf24">Pseudocode</strong> ของ Bubble Sort<br>
-      2. วาด <strong style="color:#86efac">Flowchart</strong> แสดงการเรียง 4 ตัวเลข<br>
-      3. Trace: เรียง [7, 2, 4, 1] แสดงทุกขั้นตอน
-    </p>
+    <p>1. เขียน <strong style="color:#fbbf24">Pseudocode</strong> ของ Bubble Sort (ภาษาไทย)<br>
+    2. วาด <strong style="color:#86efac">Flowchart</strong> แสดงการเรียง 4 ตัวเลข<br>
+    3. Trace: เรียง [7, 2, 4, 1] แสดงทุกขั้นตอน</p>
   </div>
-  <button class="timer-btn" onclick="startTimer(20)" style="margin-top:14px;font-size:15px;padding:10px 24px">⏱ 20 นาที</button>
+  <button class="timer-btn" onclick="startTimer(25)" style="margin-top:14px;font-size:15px;padding:10px 24px">⏱ 25 นาที</button>
 </div>
 
-<!-- S11: เปรียบ Algorithm -->
-<div class="slide s11" id="s11">
-  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 อธิบายว่า Algorithm ต่างกันมีความเร็วต่างกัน — เน้น "Efficiency"</div>
+<!-- S16: กิจกรรมกลุ่ม — เขียน Pseudocode เอง (ใหม่) -->
+<div class="slide s16" id="s16">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 กลุ่มละ 3-4 คน เขียน Pseudocode ของ Selection Sort เอง แล้วนำเสนอ — ไม่ต้องถูก 100% ให้ฝึกคิด</div>
+  <div class="lesson-tag">ชั่วโมงที่ 3 — กิจกรรมกลุ่ม</div>
+  <h2>👥 กลุ่ม: เขียน Pseudocode Selection Sort เอง</h2>
+  <div class="group-box">
+    <h3>🎯 ช่วยกันเขียน Pseudocode ของ Selection Sort</h3>
+    <p>ใช้ภาษาไทยหรือ Pseudocode ได้ ขอแค่ขั้นตอนถูกต้อง!</p>
+  </div>
+  <div class="two-col" style="max-width:800px">
+    <div class="col">
+      <h4>힌트: ขั้นตอนหลักของ Selection Sort</h4>
+      <p>1. หาค่าน้อยที่สุดในส่วนที่ยังไม่เรียง</p>
+      <p>2. เอาค่านั้นไปวางตำแหน่งที่ถูก</p>
+      <p>3. ทำซ้ำสำหรับส่วนที่เหลือ</p>
+    </div>
+    <div class="col">
+      <h4>โครงสร้าง Pseudocode</h4>
+      <p style="font-family:monospace;font-size:13px">START<br>
+      &nbsp;&nbsp;INPUT arr[]<br>
+      &nbsp;&nbsp;FOR i = 0 TO n-1<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;ค้นหา ??? ใน arr[i..n]<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;SWAP ???<br>
+      &nbsp;&nbsp;ENDFOR<br>
+      END</p>
+    </div>
+  </div>
+  <button class="timer-btn" onclick="startTimer(15)" style="margin-top:12px;font-size:15px;padding:10px 24px">⏱ 15 นาที</button>
+</div>
+
+<!-- S17: เปรียบ Algorithm (ใหม่) -->
+<div class="slide s17" id="s17">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 อธิบายว่า Algorithm ต่างกันมีความเร็วต่างกัน — เน้น "Efficiency" — ในชีวิตจริงใช้ Algorithm ที่ซับซ้อนกว่านี้มาก</div>
+  <div class="lesson-tag">ชั่วโมงที่ 4</div>
   <h2>⚡ เปรียบ Bubble vs Selection Sort</h2>
   <div class="two-col">
     <div class="col" style="border-color:rgba(251,146,60,.3)">
       <h4 style="color:#fb923c">🫧 Bubble Sort</h4>
-      <p>• ง่ายที่สุด</p>
-      <p>• เปรียบทีละคู่</p>
-      <p>• ช้ากับข้อมูลเยอะ</p>
+      <p>• ง่ายที่สุด เข้าใจเร็ว</p>
+      <p>• เปรียบทีละคู่ สลับถ้าผิดที่</p>
+      <p>• ช้ากว่าเมื่อข้อมูลเยอะ</p>
       <p>• รอบสูงสุด: n² ครั้ง</p>
     </div>
     <div class="col" style="border-color:rgba(52,211,153,.3)">
       <h4 style="color:#34d399">🎯 Selection Sort</h4>
-      <p>• เข้าใจง่าย</p>
+      <p>• เข้าใจง่าย ชัดเจน</p>
       <p>• หาค่าน้อยสุดทุกรอบ</p>
       <p>• สลับน้อยกว่า Bubble</p>
       <p>• ดีกว่า Bubble เล็กน้อย</p>
@@ -260,9 +396,41 @@ p.sub{font-size:clamp(13px,2vw,24px);color:rgba(255,255,255,.75);text-align:cent
   <p class="sub" style="margin-top:12px">ในอาชีพ Programmer เราเลือก Algorithm ตาม <strong style="color:#fbbf24">ขนาดข้อมูลและความเร็วที่ต้องการ</strong></p>
 </div>
 
-<!-- S12: สรุป -->
-<div class="slide s12" id="s12">
-  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สรุปบทเรียน ย้ำว่า Sorting Algorithm ใช้ในชีวิตจริงมาก</div>
+<!-- S18: Peer Review (ใหม่) -->
+<div class="slide s18" id="s18">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 แลกใบงานกับเพื่อน ตรวจ Pseudocode และ Flowchart ตาม checklist</div>
+  <div class="lesson-tag">ชั่วโมงที่ 4 — ตรวจงานเพื่อน</div>
+  <h2>🔍 ตรวจ Pseudocode และ Flowchart เพื่อน</h2>
+  <div class="group-box" style="margin-bottom:12px">
+    <h3>📋 แลกกระดาษ — ตรวจตาม checklist</h3>
+    <p>บอกเพื่อนว่า "ดีตรงไหน?" และ "ยังขาดอะไร?"</p>
+  </div>
+  <ul class="step-list" style="max-width:720px">
+    <li><span class="sn">☐</span>Pseudocode มี START, INPUT, FOR, IF, END ครบ</li>
+    <li><span class="sn">☐</span>Flowchart มีรูปเพชร (เงื่อนไขสลับ)</li>
+    <li><span class="sn">☐</span>Flowchart มีลูกศรย้อนกลับ (Loop)</li>
+    <li><span class="sn">☐</span>Trace ขั้นตอน [7,2,4,1] ถูกต้อง</li>
+    <li><span class="sn">☐</span>ผลลัพธ์สุดท้ายเรียงลำดับถูกต้อง</li>
+  </ul>
+</div>
+
+<!-- S19: Exit Ticket (ใหม่) -->
+<div class="slide s19" id="s19">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 Exit Ticket — ก่อนออกจากห้อง ตรวจว่าเข้าใจ Sorting Algorithm แล้วหรือยัง</div>
+  <div class="lesson-tag">ชั่วโมงที่ 4 — บัตรออกห้อง</div>
+  <div class="big-emoji">🎫</div>
+  <h2>บัตรออกห้อง (Exit Ticket)</h2>
+  <div class="activity-box" style="border-color:rgba(74,222,128,.4);background:rgba(74,222,128,.08)">
+    <h3 style="color:#4ade80">✍️ ตอบ 2 ข้อในกระดาษ แล้วส่งครู</h3>
+    <p>1. <strong style="color:#fbbf24">Trace:</strong> เรียง [4, 1, 3] ด้วย Bubble Sort ใช้กี่รอบ?<br>
+    2. <strong style="color:#fbbf24">อธิบาย:</strong> Bubble Sort และ Selection Sort ต่างกันอย่างไร?<br>(1-2 ประโยค)</p>
+  </div>
+  <button class="timer-btn" onclick="startTimer(8)" style="margin-top:14px;font-size:15px;padding:10px 24px">⏱ 8 นาที</button>
+</div>
+
+<!-- S20: สรุป -->
+<div class="slide s20" id="s20">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 สรุปบทเรียน ย้ำว่า Sorting Algorithm ใช้ในชีวิตจริงมาก ทั้ง Playlist เพลง, ผลการค้นหา, ข้อมูลตาราง</div>
   <div class="badge">สรุปบทเรียน หน่วยที่ 2</div>
   <h2>🎓 สรุป: เกม Sorting</h2>
   <ul class="step-list">
@@ -270,14 +438,14 @@ p.sub{font-size:clamp(13px,2vw,24px);color:rgba(255,255,255,.75);text-align:cent
     <li><span class="sn">B</span><strong style="color:#fb923c">Bubble Sort</strong> = เปรียบคู่ สลับถ้าผิดที่ วนซ้ำ</li>
     <li><span class="sn">S</span><strong style="color:#34d399">Selection Sort</strong> = หาค่าน้อยสุด วางที่ถูก</li>
     <li><span class="sn">P</span><strong style="color:#a78bfa">Pseudocode</strong> = เขียนขั้นตอนก่อน code จริง</li>
-    <li><span class="sn">F</span><strong style="color:#60a5fa">Flowchart</strong> = แสดง Algorithm เป็นภาพ</li>
+    <li><span class="sn">⚡</span><strong style="color:#fbbf24">Algorithm</strong> ต่างกัน → ความเร็วต่างกัน!</li>
   </ul>
 </div>
 
 <div class="nav">
   <button class="nav-btn" onclick="go(-1)">◀</button>
   <div class="dots" id="dots"></div>
-  <span class="counter" id="counter">1 / 12</span>
+  <span class="counter" id="counter">1 / 20</span>
   <button class="nav-btn" onclick="go(1)">▶</button>
 </div>
 
@@ -288,11 +456,20 @@ function showSlide(n){slides[cur].classList.remove('active');document.querySelec
 function go(d){showSlide(cur+d)}
 document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')go(1);if(e.key==='ArrowLeft')go(-1);});
 function rev(id){document.getElementById(id).classList.toggle('show')}
-function qa(btn,correct){document.querySelectorAll('.qbtn').forEach(b=>b.disabled=true);btn.classList.add(correct?'correct':'wrong');if(!correct)document.querySelectorAll('.qbtn').forEach(b=>{if(b.textContent.includes('[3, 5, 1, 8]'))b.classList.add('correct')});const msg=document.getElementById('qa-msg');msg.style.display='block';msg.style.color=correct?'#4ade80':'#f87171';msg.textContent=correct?'🎉 ถูกต้อง! [5,3]→สลับ→[3,5,8,1] แต่ [8,1]→สลับ→[3,5,1,8]':'❌ trace ใหม่: 5>3 สลับ→3,5 | 5<8 ไม่สลับ | 8>1 สลับ→3,5,1,8';}
+function toggleNote(el){el.style.opacity=el.style.opacity=='.2'?'1':'.2'}
+function qb(btn,msgId,correct){
+  const opts=btn.closest('.quiz-opts').querySelectorAll('.qbtn');
+  opts.forEach(b=>b.disabled=true);
+  btn.classList.add(correct?'correct':'wrong');
+  if(!correct){opts.forEach(b=>{if(b.onclick.toString().includes(',true)'))b.classList.add('correct')})}
+  const msg=document.getElementById(msgId);
+  msg.style.display='block';msg.style.color=correct?'#4ade80':'#f87171';
+  msg.textContent=correct?'🎉 ถูกต้อง! เก่งมาก!':'❌ ลองดูอีกที — ดูเฉลยสีเขียว';
+}
 let bubbleStep=0;
-function bubbleDemo(){const msgs=['รอบที่ 1: เปรียบ 5,3 → 5>3 สลับ!','รอบที่ 1: เปรียบ 5,8 → ไม่สลับ','รอบที่ 1: เปรียบ 8,1 → 8>1 สลับ!','รอบที่ 2: เปรียบใหม่... ไม่มีสลับ → จบ! ✅'];const el=document.getElementById('bubbleMsg');if(bubbleStep<msgs.length){el.textContent=msgs[bubbleStep];bubbleStep++;}else{el.textContent='Demo จบแล้ว!';bubbleStep=0;}}
+function bubbleDemo(){const msgs=['เปรียบ 5 กับ 3 → 5>3 สลับ! → [3,5,8,1]','เปรียบ 5 กับ 8 → ไม่สลับ → [3,5,8,1]','เปรียบ 8 กับ 1 → 8>1 สลับ! → [3,5,1,8]','รอบที่ 2: ไม่มีสลับ → เรียงครบ! ✅'];const el=document.getElementById('bubbleMsg');if(bubbleStep<msgs.length){el.textContent=msgs[bubbleStep];bubbleStep++;}else{el.textContent='Demo จบแล้ว! กด Demo ใหม่';bubbleStep=0;}}
 let timerInterval=null;
-function startTimer(min){clearInterval(timerInterval);let sec=min*60;const disp=document.getElementById('timerDisplay');disp.style.display='block';function tick(){const m=Math.floor(sec/60);const s=sec%60;disp.textContent=m+':'+(s<10?'0':'')+s;if(sec===0){clearInterval(timerInterval);disp.textContent='⏰ หมดเวลา!';}sec--;}tick();timerInterval=setInterval(tick,1000);}
+function startTimer(min){clearInterval(timerInterval);let sec=min*60;const disp=document.getElementById('timerDisplay');disp.style.display='block';disp.style.color='#fbbf24';function tick(){const m=Math.floor(sec/60);const s=sec%60;disp.textContent=m+':'+(s<10?'0':'')+s;if(sec===0){clearInterval(timerInterval);disp.textContent='⏰ หมดเวลา!';disp.style.color='#f87171';}sec--;}tick();timerInterval=setInterval(tick,1000);}
 </script>
 </body>
 </html>

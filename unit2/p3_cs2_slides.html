@@ -13,15 +13,24 @@ body{font-family:'Sarabun',sans-serif;background:#0d0520;overflow:hidden;height:
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 .s1{background:linear-gradient(135deg,#1a0533,#4c1d95,#7c3aed,#a21caf)}
 .s2{background:linear-gradient(135deg,#0a0520,#1e1b4b,#312e81)}
-.s3{background:linear-gradient(135deg,#0d0020,#3b0764,#6b21a8)}
-.s4{background:linear-gradient(135deg,#050520,#1e1b4b,#4338ca)}
-.s5{background:linear-gradient(135deg,#0a0a20,#1e1b4b,#7c3aed)}
-.s6{background:linear-gradient(135deg,#100515,#4a044e,#86198f)}
-.s7{background:linear-gradient(135deg,#050520,#0f172a,#1e3a8a)}
-.s8{background:linear-gradient(135deg,#0d0020,#2e1065,#5b21b6)}
-.s9{background:linear-gradient(135deg,#0a050f,#2d1460,#6d28d9)}
-.s10{background:linear-gradient(135deg,#050f1a,#0c4a6e,#0369a1)}
-.s11{background:linear-gradient(135deg,#0d0520,#1e1b4b,#4c1d95)}
+.s3{background:linear-gradient(135deg,#0a1500,#14400a,#15803d)}
+.s4{background:linear-gradient(135deg,#0d0020,#3b0764,#6b21a8)}
+.s5{background:linear-gradient(135deg,#050520,#1e1b4b,#4338ca)}
+.s6{background:linear-gradient(135deg,#0a0a20,#1e1b4b,#7c3aed)}
+.s7{background:linear-gradient(135deg,#100515,#4a044e,#86198f)}
+.s8{background:linear-gradient(135deg,#050520,#0f172a,#1e3a8a)}
+.s9{background:linear-gradient(135deg,#0d0020,#2e1065,#5b21b6)}
+.s10{background:linear-gradient(135deg,#0a050f,#2d1460,#6d28d9)}
+.s11{background:linear-gradient(135deg,#050f1a,#0c4a6e,#0369a1)}
+.s12{background:linear-gradient(135deg,#0d0520,#1e1b4b,#4c1d95)}
+.s13{background:linear-gradient(135deg,#001a10,#003d20,#047857)}
+.s14{background:linear-gradient(135deg,#100010,#3b0060,#7e22ce)}
+.s15{background:linear-gradient(135deg,#001010,#002a2a,#0f766e)}
+.s16{background:linear-gradient(135deg,#0a0015,#1e0050,#4c1d95)}
+.s17{background:linear-gradient(135deg,#0a0005,#200030,#581c87)}
+.s18{background:linear-gradient(135deg,#001a00,#003300,#15803d)}
+.s19{background:linear-gradient(135deg,#050020,#0f0060,#4338ca)}
+.s20{background:linear-gradient(135deg,#0d0520,#1e1b4b,#4c1d95)}
 h1{font-size:clamp(28px,5.5vw,62px);font-weight:800;color:#fff;text-align:center;line-height:1.15}
 h2{font-size:clamp(20px,3.8vw,44px);font-weight:700;color:#fff;text-align:center;line-height:1.3}
 p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:center;margin-top:12px}
@@ -31,35 +40,34 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
 .step-list{list-style:none;width:100%;max-width:800px;margin-top:12px}
 .step-list li{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:12px 20px;margin-bottom:10px;font-size:clamp(14px,2.2vw,24px);color:#fff;display:flex;align-items:center;gap:14px;animation:slideIn .4s ease both}
 @keyframes slideIn{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
-.step-list li:nth-child(1){animation-delay:.1s}.step-list li:nth-child(2){animation-delay:.2s}.step-list li:nth-child(3){animation-delay:.3s}.step-list li:nth-child(4){animation-delay:.4s}
+.step-list li:nth-child(1){animation-delay:.1s}.step-list li:nth-child(2){animation-delay:.2s}.step-list li:nth-child(3){animation-delay:.3s}.step-list li:nth-child(4){animation-delay:.4s}.step-list li:nth-child(5){animation-delay:.5s}
 .sn{background:#a855f7;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px;flex-shrink:0;color:#fff}
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;width:100%;max-width:880px;margin-top:14px}
 .col{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:18px 22px}
 .col h4{font-size:clamp(14px,2.2vw,22px);color:#d8b4fe;font-weight:800;margin-bottom:10px}
 .col p{font-size:clamp(12px,1.7vw,19px);color:rgba(255,255,255,.85);padding:4px 0}
-/* Branch demo */
 .branch-demo{display:flex;flex-direction:column;align-items:center;gap:6px;margin-top:10px;width:100%;max-width:820px}
 .fc-oval{background:#d8b4fe;color:#0a0a0a;border-radius:50px;padding:8px 22px;font-size:clamp(13px,1.8vw,18px);font-weight:800;min-width:130px;text-align:center}
 .fc-rect{background:#a5f3fc;color:#0a0a0a;border-radius:8px;padding:7px 18px;font-size:clamp(12px,1.7vw,17px);font-weight:700;min-width:180px;text-align:center}
+.fc-blank{background:rgba(255,255,255,.12);border:2px dashed rgba(255,255,255,.4);border-radius:8px;padding:7px 18px;font-size:clamp(12px,1.7vw,17px);font-weight:700;min-width:180px;text-align:center;color:rgba(255,255,255,.4)}
 .fc-diamond-wrap{position:relative;width:170px;height:80px;display:flex;align-items:center;justify-content:center}
 .fc-diamond{width:115px;height:57px;background:#fbbf24;transform:rotate(45deg);border-radius:5px}
 .fc-diamond-text{position:absolute;color:#0a0a0a;font-weight:800;font-size:clamp(11px,1.5vw,15px);text-align:center;line-height:1.2}
 .fc-arr{color:rgba(255,255,255,.6);font-size:22px}
-/* If-else visual */
 .if-else-demo{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:start;width:100%;max-width:800px;margin-top:14px}
 .branch-yes{background:rgba(74,222,128,.1);border:1.5px solid rgba(74,222,128,.4);border-radius:14px;padding:14px;text-align:center}
 .branch-no{background:rgba(248,113,113,.1);border:1.5px solid rgba(248,113,113,.4);border-radius:14px;padding:14px;text-align:center}
 .branch-label{font-weight:800;font-size:clamp(15px,2.3vw,22px);margin-bottom:8px}
 .branch-content{font-size:clamp(13px,1.8vw,18px);color:rgba(255,255,255,.85)}
 .branch-center{display:flex;flex-direction:column;align-items:center;gap:4px;padding-top:10px}
-/* Quiz */
 .quiz-opts{display:flex;flex-direction:column;gap:10px;width:100%;max-width:720px;margin-top:14px}
 .qbtn{background:rgba(255,255,255,.09);border:1.5px solid rgba(255,255,255,.2);border-radius:14px;padding:13px 20px;color:#fff;font-size:clamp(14px,2vw,22px);font-weight:700;cursor:pointer;text-align:left;font-family:'Sarabun',sans-serif;transition:all .2s}
 .qbtn:hover{background:rgba(255,255,255,.16)}
 .qbtn.correct{background:rgba(74,222,128,.2);border-color:#4ade80;color:#4ade80}
 .qbtn.wrong{background:rgba(248,113,113,.15);border-color:#f87171;opacity:.7}
 .result-msg{font-size:clamp(16px,2.5vw,28px);font-weight:800;text-align:center;margin-top:12px;display:none}
-.teacher-note{position:fixed;top:18px;right:18px;background:rgba(0,0,0,.65);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:10px 16px;color:rgba(255,255,255,.65);font-size:13px;max-width:280px;text-align:right;cursor:pointer;z-index:200}
+.teacher-note{position:fixed;top:18px;right:18px;background:rgba(0,0,0,.65);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:10px 16px;color:rgba(255,255,255,.65);font-size:13px;max-width:280px;text-align:right;cursor:pointer;z-index:200;transition:opacity .2s}
+.teacher-note:hover{opacity:.3}
 .timer-widget{position:fixed;top:18px;left:18px;z-index:200}
 .timer-btn{background:rgba(168,85,247,.2);border:1px solid rgba(168,85,247,.4);border-radius:10px;padding:8px 14px;color:#e9d5ff;font-size:13px;font-weight:700;cursor:pointer;font-family:'Sarabun',sans-serif}
 .timer-display{background:rgba(0,0,0,.7);border:1px solid rgba(168,85,247,.4);border-radius:10px;padding:10px 18px;color:#d8b4fe;font-size:28px;font-weight:800;text-align:center;margin-top:6px;display:none;font-family:monospace}
@@ -75,24 +83,33 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
 .reveal-text.show{display:block;animation:fadeUp .4s ease}
 .activity-box{background:rgba(168,85,247,.1);border:2px solid rgba(168,85,247,.4);border-radius:20px;padding:20px 28px;width:100%;max-width:820px;margin-top:14px;text-align:center}
 .activity-box h3{color:#d8b4fe;font-size:clamp(16px,2.5vw,28px);font-weight:800;margin-bottom:10px}
+.activity-box p{color:rgba(255,255,255,.85);font-size:clamp(13px,2vw,22px)}
+.game-box{background:rgba(74,222,128,.08);border:2px solid rgba(74,222,128,.35);border-radius:20px;padding:20px 28px;width:100%;max-width:820px;margin-top:14px;text-align:center}
+.game-box h3{color:#4ade80;font-size:clamp(16px,2.5vw,28px);font-weight:800;margin-bottom:10px}
+.game-box p{color:rgba(255,255,255,.85);font-size:clamp(13px,2vw,22px)}
+.group-box{background:rgba(167,139,250,.08);border:2px solid rgba(167,139,250,.35);border-radius:20px;padding:20px 28px;width:100%;max-width:820px;margin-top:14px;text-align:center}
+.group-box h3{color:#a78bfa;font-size:clamp(16px,2.5vw,28px);font-weight:800;margin-bottom:10px}
+.group-box p{color:rgba(255,255,255,.85);font-size:clamp(13px,2vw,22px)}
+.lesson-tag{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:4px 14px;font-size:13px;color:rgba(255,255,255,.6);font-weight:700;margin-bottom:10px;display:inline-block}
 </style>
 </head>
 <body>
 <div class="prog-bar" id="prog"></div>
 <div class="timer-widget"><button class="timer-btn" onclick="startTimer(10)">⏱ 10 นาที</button><div class="timer-display" id="timerDisplay">10:00</div></div>
 
-<!-- S1 -->
+<!-- S1: Title -->
 <div class="slide s1 active" id="s1">
-  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ถาม: "ถ้าฝนตก คุณทำอะไร? ถ้าไม่ตก?"</div>
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 แผน 4 ชั่วโมง: ชม.1=S1-6, ชม.2=S7-13, ชม.3=S14-17, ชม.4=S18-20+ใบงาน</div>
   <div class="badge">วิทยาการคำนวณ • ป.3 • หน่วยที่ 2</div>
   <div class="big-emoji">◇</div>
   <h1>Flowchart<br>มีเงื่อนไข</h1>
   <p class="sub">If-Then-Else • Decision Branch • การตัดสินใจ</p>
 </div>
 
-<!-- S2 -->
+<!-- S2: ทบทวน -->
 <div class="slide s2" id="s2">
-  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ทบทวน Decomposition ระดับ 2 ชั้น จาก Unit 1</div>
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 ทบทวน Decomposition 2 ชั้น จากหน่วย 1 — ถามว่า "หน่วย 1 เรียนเรื่องอะไร?"</div>
+  <div class="lesson-tag">ชั่วโมงที่ 1</div>
   <h2>🔄 ทบทวนหน่วยที่ 1</h2>
   <ul class="step-list">
     <li><span class="sn">1</span>เรียน <strong style="color:#d8b4fe">Decomposition 2 ชั้น</strong> — แตกปัญหาลงไปเรื่อยๆ</li>
@@ -102,9 +119,27 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
   <p class="sub" style="margin-top:14px">วันนี้เราจะเรียน <strong style="color:#d8b4fe">If-Then-Else</strong> ใน Flowchart</p>
 </div>
 
-<!-- S3: เงื่อนไขในชีวิต -->
+<!-- S3: Warm-up (ใหม่) -->
 <div class="slide s3" id="s3">
-  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้นักเรียนยกตัวอย่างเงื่อนไขในชีวิตประจำวันเพิ่มเติม</div>
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 เกม "ตัดสินใจ!" — ครูบอกสถานการณ์ นักเรียนยกมือซ้าย=ทำ A, ยกมือขวา=ทำ B เล่น 4-5 สถานการณ์ แล้วถามว่า "นี่คือ If-Then-Else ในชีวิตจริง!"</div>
+  <div class="lesson-tag">ชั่วโมงที่ 1 — Warm-up</div>
+  <div class="big-emoji">🤔</div>
+  <h2>เกม "ตัดสินใจ!"</h2>
+  <div class="game-box">
+    <h3>🟢 วิธีเล่น: ยกมือซ้าย = ทำ A | ยกมือขวา = ทำ B</h3>
+    <p style="margin-top:8px">
+    <strong style="color:#fcd34d">ถ้าฝนตก</strong> → A: เอาร่ม | B: ไม่เอา<br>
+    <strong style="color:#fcd34d">ถ้าหิว</strong> → A: กินข้าว | B: ดื่มน้ำ<br>
+    <strong style="color:#fcd34d">ถ้าบ้านไกล</strong> → A: รถโรงเรียน | B: เดิน<br>
+    <strong style="color:#fcd34d">ถ้าสอบผ่าน</strong> → A: ฉลอง | B: อ่านหนังสือเพิ่ม</p>
+  </div>
+  <p class="sub" style="margin-top:14px">การตัดสินใจแบบ "ถ้า...ทำ...ถ้าไม่...ทำอีกอย่าง" = <span style="color:#d8b4fe">If-Then-Else!</span></p>
+  <button class="timer-btn" onclick="startTimer(8)" style="margin-top:14px;font-size:15px;padding:10px 24px">⏱ 8 นาที</button>
+</div>
+
+<!-- S4: เงื่อนไขในชีวิต -->
+<div class="slide s4" id="s4">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 ให้นักเรียนยกตัวอย่างเงื่อนไขในชีวิตประจำวันเพิ่มเติม — รับฟังทุกคำตอบ</div>
   <h2>🤔 เงื่อนไขในชีวิตประจำวัน</h2>
   <div class="two-col">
     <div class="col">
@@ -122,9 +157,9 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
   </div>
 </div>
 
-<!-- S4: If-Then-Else -->
-<div class="slide s4" id="s4">
-  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 อธิบาย If-Then-Else เทียบกับชีวิตประจำวัน</div>
+<!-- S5: If-Then-Else -->
+<div class="slide s5" id="s5">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 อธิบาย If-Then-Else เทียบกับชีวิตประจำวัน — ชี้รูปเพชรในแผนภาพ</div>
   <h2>🔀 If – Then – Else คืออะไร?</h2>
   <div class="box" style="text-align:center">
     <p style="font-size:clamp(16px,2.5vw,28px);color:#fff"><span style="color:#a78bfa">IF</span> (เงื่อนไข) <span style="color:#4ade80">THEN</span> (ทำสิ่งนี้) <span style="color:#f87171">ELSE</span> (ถ้าไม่ใช่ทำอีกอย่าง)</p>
@@ -144,9 +179,9 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
   </div>
 </div>
 
-<!-- S5: ตัวอย่าง Flowchart If-Else -->
-<div class="slide s5" id="s5">
-  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 อ่าน Flowchart ทีละขั้น ชี้รูปเพชรและสองทางออก</div>
+<!-- S6: ตัวอย่าง Flowchart If-Else -->
+<div class="slide s6" id="s6">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 อ่าน Flowchart ทีละขั้น ชี้รูปเพชรและสองทางออก — ถามว่า "ถ้ามีเงิน 10 บาท จะไปทางไหน?"</div>
   <h2>📊 Flowchart: ตัดสินใจกินไอศกรีม</h2>
   <div class="branch-demo">
     <div class="fc-oval">เริ่มต้น</div>
@@ -173,9 +208,53 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
   </div>
 </div>
 
-<!-- S6: ตัวอย่างซับซ้อนขึ้น -->
-<div class="slide s6" id="s6">
-  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 อธิบายว่า Flowchart สามารถมีรูปเพชรหลายอัน (ซ้อนกัน) ได้</div>
+<!-- S7: ตัวอย่างอ่าน Flowchart (ใหม่) -->
+<div class="slide s7" id="s7">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 ให้นักเรียนอ่าน Flowchart แล้วตอบคำถาม ฝึกทักษะ "อ่านผัง" ก่อนจะ "วาดผัง"</div>
+  <div class="lesson-tag">ชั่วโมงที่ 2</div>
+  <h2>👀 อ่าน Flowchart: เลือกเดินทาง</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;width:100%;max-width:880px;margin-top:10px">
+    <div style="display:flex;flex-direction:column;align-items:center">
+      <div class="branch-demo" style="transform:scale(.85);transform-origin:top center">
+        <div class="fc-oval">เริ่ม</div>
+        <div class="fc-arr">↓</div>
+        <div class="fc-diamond-wrap"><div class="fc-diamond"></div><div class="fc-diamond-text">ฝนตกไหม?</div></div>
+        <div style="display:flex;gap:20px">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+            <span style="font-size:11px;color:#4ade80">ใช่</span>
+            <div class="fc-rect" style="font-size:13px">รอรถโรงเรียน</div>
+            <div class="fc-arr">↓</div>
+            <div class="fc-oval" style="font-size:13px">ถึงโรงเรียน</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+            <span style="font-size:11px;color:#f87171">ไม่ใช่</span>
+            <div class="fc-rect" style="font-size:13px">ขี่จักรยาน</div>
+            <div class="fc-arr">↓</div>
+            <div class="fc-oval" style="font-size:13px">ถึงโรงเรียน</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;justify-content:center">
+      <div style="background:rgba(255,255,255,.08);border-radius:14px;padding:14px 18px">
+        <p style="color:#fbbf24;font-weight:800;margin-bottom:6px">คำถาม 1</p>
+        <p style="color:#fff;font-size:clamp(13px,1.8vw,20px)">ถ้าฝนไม่ตก จะทำอะไร?</p>
+        <button class="reveal-btn" style="margin-top:8px;padding:6px 16px;font-size:14px" onclick="rev('rq7a')">ดูเฉลย</button>
+        <div id="rq7a" class="reveal-text" style="font-size:16px">✅ ขี่จักรยาน</div>
+      </div>
+      <div style="background:rgba(255,255,255,.08);border-radius:14px;padding:14px 18px">
+        <p style="color:#fbbf24;font-weight:800;margin-bottom:6px">คำถาม 2</p>
+        <p style="color:#fff;font-size:clamp(13px,1.8vw,20px)">ทั้งสองทางไปถึงที่เดียวกันไหม?</p>
+        <button class="reveal-btn" style="margin-top:8px;padding:6px 16px;font-size:14px" onclick="rev('rq7b')">ดูเฉลย</button>
+        <div id="rq7b" class="reveal-text" style="font-size:16px">✅ ใช่ ทั้งสองทางไปถึงโรงเรียนเหมือนกัน</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S8: เงื่อนไขซ้อนกัน -->
+<div class="slide s8" id="s8">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 อธิบายว่า Flowchart สามารถมีรูปเพชรหลายอัน (ซ้อนกัน) ได้ เหมือนการตัดสินใจหลายชั้น</div>
   <h2>🎯 เงื่อนไขซ้อนกัน (Nested If)</h2>
   <div class="box">
     <p style="color:#fcd34d;font-size:clamp(14px,2vw,20px);font-weight:700;text-align:center;margin-bottom:12px">โปรแกรมให้เกรด</p>
@@ -186,12 +265,12 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
       <p><span style="color:#a78bfa">ถ้าไม่ใช่</span> → <span style="color:#f87171">เกรด F</span> (ต้องเรียนซ่อม)</p>
     </div>
   </div>
-  <p class="sub" style="margin-top:14px">ในหนึ่ง Flowchart มีรูปเพชรได้<strong style="color:#d8b4fe"> หลายอัน!</strong></p>
+  <p class="sub" style="margin-top:14px">ใน Flowchart เดียวมีรูปเพชรได้<strong style="color:#d8b4fe"> หลายอัน!</strong></p>
 </div>
 
-<!-- S7: Quiz Trace -->
-<div class="slide s7" id="s7">
-  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้นักเรียน trace Flowchart ทีละขั้น — ถ้าคะแนน = 75 จะได้เกรดอะไร?</div>
+<!-- S9: Trace -->
+<div class="slide s9" id="s9">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 ให้นักเรียน trace ทีละขั้น บนกระดาน — "ถ้าคะแนน 55 จะเดินทางไหน?"</div>
   <h2>🔍 Trace: ถ้าได้คะแนน 75 ได้เกรดอะไร?</h2>
   <div class="box" style="font-size:clamp(13px,1.8vw,19px)">
     <p>→ เริ่มต้น: คะแนน = 75</p>
@@ -199,40 +278,184 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
     <p>→ ตรวจ: 75 ≥ 70? → <span style="color:#4ade80">ใช่!</span></p>
     <p>→ ผลลัพธ์: <strong style="color:#86efac">เกรด B</strong></p>
   </div>
-  <button class="reveal-btn" onclick="rev('r7')">✅ ดูคำตอบ</button>
-  <div id="r7" class="reveal-text">🎓 ได้เกรด B เพราะ 75 ≥ 70 แต่ไม่ถึง 80</div>
+  <button class="reveal-btn" onclick="rev('r9')">✅ ยืนยันคำตอบ</button>
+  <div id="r9" class="reveal-text">🎓 ได้เกรด B เพราะ 75 ≥ 70 แต่ไม่ถึง 80</div>
 </div>
 
-<!-- S8: Quiz -->
-<div class="slide s8" id="s8">
-  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้นักเรียนเลือกคำตอบแล้วอธิบายเหตุผล</div>
-  <h2>🎯 ข้อใดถูกต้องเกี่ยวกับรูปเพชรใน Flowchart?</h2>
-  <div class="quiz-opts">
-    <button class="qbtn" onclick="qa(this,false)">A. ใช้แสดงขั้นตอนการทำงานทั่วไป</button>
-    <button class="qbtn" onclick="qa(this,true)">B. ใช้แสดงเงื่อนไข มีทางออก 2 ทาง (ใช่/ไม่ใช่)</button>
-    <button class="qbtn" onclick="qa(this,false)">C. ใช้แสดงจุดเริ่มต้นเท่านั้น</button>
-    <button class="qbtn" onclick="qa(this,false)">D. ใช้แทนลูกศรทิศทาง</button>
+<!-- S10: Trace เอง (ใหม่) -->
+<div class="slide s10" id="s10">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 ให้นักเรียนเขียนในสมุด — trace เองทีละขั้นสำหรับทั้ง 3 คะแนน ไม่คุยกับเพื่อน</div>
+  <h2>✏️ ฝึก Trace: ระบบให้เกรด</h2>
+  <div class="activity-box">
+    <h3>📋 โจทย์: trace สำหรับคะแนนต่อไปนี้</h3>
+    <p>ใช้กฎ: ≥80=A, ≥70=B, ≥60=C, อื่นๆ=F<br>เขียน trace ในสมุดว่าแต่ละคะแนนได้เกรดอะไร</p>
   </div>
-  <div id="qa-msg" class="result-msg"></div>
+  <div class="two-col" style="max-width:720px;margin-top:14px">
+    <div class="col">
+      <h4>Trace คะแนนเหล่านี้</h4>
+      <p>• คะแนน = <strong style="color:#fbbf24">85</strong> → เกรด ?</p>
+      <p>• คะแนน = <strong style="color:#fbbf24">68</strong> → เกรด ?</p>
+      <p>• คะแนน = <strong style="color:#fbbf24">55</strong> → เกรด ?</p>
+    </div>
+    <div class="col">
+      <h4 style="color:#f87171">คำถามเพิ่มเติม</h4>
+      <p>• คะแนน 70 กับ 79 ได้เกรดเดียวกันไหม?</p>
+      <p>• ถ้าอยากได้เกรด A ต้องทำคะแนนอย่างน้อยเท่าไร?</p>
+    </div>
+  </div>
+  <button class="reveal-btn" onclick="rev('r10')">🔍 ดูเฉลย</button>
+  <div id="r10" class="reveal-text">85→A | 68→C | 55→F | คะแนน 70-79 ได้เกรด B เหมือนกัน | ต้อง ≥ 80 ได้เกรด A</div>
+  <button class="timer-btn" onclick="startTimer(10)" style="margin-top:10px;font-size:14px;padding:8px 20px">⏱ 10 นาที</button>
 </div>
 
-<!-- S9: งาน -->
-<div class="slide s9" id="s9">
-  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 แจกใบงาน 2.1 ให้นักเรียนวาด Flowchart ที่มีรูปเพชรอย่างน้อย 1 อัน</div>
+<!-- S11: Quiz ข้อ 1 -->
+<div class="slide s11" id="s11">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 Quiz 3 ข้อ — ให้ตอบพร้อมกัน "ยกนิ้วโป้ง=A, กำมือ=B, ยกมือ=C, สองมือ=D"</div>
+  <div class="lesson-tag">ชั่วโมงที่ 2 — ทดสอบ (1/3)</div>
+  <h2>🎯 Quiz ข้อ 1</h2>
+  <p class="sub">ข้อใดถูกต้องเกี่ยวกับรูปเพชรใน Flowchart?</p>
+  <div class="quiz-opts">
+    <button class="qbtn" onclick="qb(this,'q11',false)">A. ใช้แสดงขั้นตอนการทำงานทั่วไป</button>
+    <button class="qbtn" onclick="qb(this,'q11',true)">B. ใช้แสดงเงื่อนไข มีทางออก 2 ทาง (ใช่/ไม่ใช่)</button>
+    <button class="qbtn" onclick="qb(this,'q11',false)">C. ใช้แสดงจุดเริ่มต้นเท่านั้น</button>
+    <button class="qbtn" onclick="qb(this,'q11',false)">D. ใช้แทนลูกศรทิศทาง</button>
+  </div>
+  <div id="q11" class="result-msg"></div>
+</div>
+
+<!-- S12: Quiz ข้อ 2 (ใหม่) -->
+<div class="slide s12" id="s12">
+  <div class="lesson-tag">ชั่วโมงที่ 2 — ทดสอบ (2/3)</div>
+  <h2>🎯 Quiz ข้อ 2</h2>
+  <p class="sub">ถ้าคะแนน = 70 ด้วยกฎ ≥80=A, ≥70=B, ≥60=C จะได้เกรดอะไร?</p>
+  <div class="quiz-opts">
+    <button class="qbtn" onclick="qb(this,'q12',false)">A. เกรด A</button>
+    <button class="qbtn" onclick="qb(this,'q12',true)">B. เกรด B</button>
+    <button class="qbtn" onclick="qb(this,'q12',false)">C. เกรด C</button>
+    <button class="qbtn" onclick="qb(this,'q12',false)">D. เกรด F</button>
+  </div>
+  <div id="q12" class="result-msg"></div>
+  <button class="reveal-btn" onclick="rev('r12')" style="margin-top:10px">🔍 Trace</button>
+  <div id="r12" class="reveal-text">70 ≥ 80? ไม่ → 70 ≥ 70? ใช่ → เกรด B ✅</div>
+</div>
+
+<!-- S13: Quiz ข้อ 3 (ใหม่) -->
+<div class="slide s13" id="s13">
+  <div class="lesson-tag">ชั่วโมงที่ 2 — ทดสอบ (3/3)</div>
+  <h2>🎯 Quiz ข้อ 3</h2>
+  <p class="sub">ใน Flowchart If-Then-Else รูปเพชรต้องมีทางออกกี่ทาง?</p>
+  <div class="quiz-opts">
+    <button class="qbtn" onclick="qb(this,'q13',false)">A. 1 ทาง</button>
+    <button class="qbtn" onclick="qb(this,'q13',true)">B. 2 ทาง (ใช่ และ ไม่ใช่)</button>
+    <button class="qbtn" onclick="qb(this,'q13',false)">C. 3 ทาง</button>
+    <button class="qbtn" onclick="qb(this,'q13',false)">D. ไม่จำกัดทาง</button>
+  </div>
+  <div id="q13" class="result-msg"></div>
+</div>
+
+<!-- S14: ใบงาน -->
+<div class="slide s14" id="s14">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 แจกใบงาน 2.1 ให้นักเรียนวาด Flowchart ที่มีรูปเพชรอย่างน้อย 1 อัน เดินดูงาน ช่วยเหลือคนที่ติด</div>
+  <div class="lesson-tag">ชั่วโมงที่ 3 — ใบงาน</div>
   <div class="big-emoji">✍️</div>
-  <h2>งาน: วาด Flowchart If-Then-Else</h2>
+  <h2>ใบงาน: วาด Flowchart If-Then-Else</h2>
   <div class="activity-box">
     <h3>📋 โจทย์</h3>
-    <p style="color:rgba(255,255,255,.9);font-size:clamp(14px,2.2vw,22px)">วาด Flowchart สำหรับ <strong style="color:#d8b4fe">"การเลือกดูหนัง"</strong><br>ถ้าหนังเรต ผู้ใหญ่ → ดูกับพ่อแม่ | ถ้าเรต ทั่วไป → ดูคนเดียวได้</p>
-    <p style="margin-top:10px;color:rgba(255,255,255,.55);font-size:14px">ต้องมี รูปเพชร + 2 ทางออก (Yes/No) + วงรีเริ่ม/จบ</p>
+    <p>วาด Flowchart สำหรับ <strong style="color:#d8b4fe">"การเลือกดูหนัง"</strong><br>
+    ถ้าหนังเรต ผู้ใหญ่ → ดูกับพ่อแม่ | ถ้าเรต ทั่วไป → ดูคนเดียวได้<br>
+    ต้องมี รูปเพชร + 2 ทางออก (Yes/No) + วงรีเริ่ม/จบ</p>
   </div>
-  <button class="timer-btn" onclick="startTimer(15)" style="margin-top:14px;font-size:15px;padding:10px 24px">⏱ 15 นาที</button>
+  <button class="timer-btn" onclick="startTimer(20)" style="margin-top:14px;font-size:15px;padding:10px 24px">⏱ 20 นาที</button>
 </div>
 
-<!-- S10: เกณฑ์ -->
-<div class="slide s10" id="s10">
-  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สุ่มนักเรียน 3 คน อธิบาย Flowchart ตัวเอง</div>
-  <h2>✅ เกณฑ์ตรวจ Flowchart</h2>
+<!-- S15: กิจกรรมกลุ่ม (ใหม่) -->
+<div class="slide s15" id="s15">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 แบ่งกลุ่ม 3-4 คน เลือก 1 หัวข้อ วาด Flowchart If-Then-Else ร่วมกัน ขนาดใหญ่บนกระดาษ A4</div>
+  <div class="lesson-tag">ชั่วโมงที่ 3 — กิจกรรมกลุ่ม</div>
+  <h2>👥 กลุ่ม: Flowchart If-Then-Else ของเรา</h2>
+  <div class="group-box">
+    <h3>🎯 เลือก 1 หัวข้อ วาดด้วยกัน</h3>
+    <p>ต้องมีรูปเพชรและ 2 ทางออก Yes/No ที่ชัดเจน!</p>
+  </div>
+  <div class="two-col" style="max-width:800px">
+    <div class="col">
+      <h4>🌟 หัวข้อให้เลือก</h4>
+      <p>• 🌦️ ตัดสินใจว่าจะเล่นนอกบ้านไหม</p>
+      <p>• 🍕 เลือกว่าจะกินอะไรตอนกลางวัน</p>
+      <p>• 🎮 ตัดสินใจว่าจะเล่นเกมหรืออ่านหนังสือ</p>
+      <p>• 🐶 ดูแลสัตว์เลี้ยง ถ้าป่วยทำอะไร</p>
+    </div>
+    <div class="col">
+      <h4>✅ ต้องมีครบ</h4>
+      <p>• วงรีเริ่มต้นและสิ้นสุด</p>
+      <p>• รูปเพชร (เงื่อนไข)</p>
+      <p>• 2 ทางออก Label Yes/No</p>
+      <p>• สี่เหลี่ยมในแต่ละสาขา</p>
+      <p>• ชื่อสมาชิกกลุ่มทุกคน</p>
+    </div>
+  </div>
+  <button class="timer-btn" onclick="startTimer(20)" style="margin-top:12px;font-size:15px;padding:10px 24px">⏱ 20 นาที</button>
+</div>
+
+<!-- S16: Peer Review (ใหม่) -->
+<div class="slide s16" id="s16">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 ส่ง Flowchart ให้กลุ่มข้างๆ ตรวจ ฝึกการให้ feedback สร้างสรรค์</div>
+  <div class="lesson-tag">ชั่วโมงที่ 3 — ตรวจงานเพื่อน</div>
+  <h2>🔍 ตรวจ Flowchart เพื่อน</h2>
+  <div class="group-box" style="margin-bottom:12px">
+    <h3>📋 ตรวจตาม checklist แล้วบอกเพื่อน</h3>
+    <p>"ดีตรงไหน?" และ "ยังขาดอะไร?"</p>
+  </div>
+  <ul class="step-list" style="max-width:720px">
+    <li><span class="sn">☐</span>มีวงรีเริ่มต้นและสิ้นสุด</li>
+    <li><span class="sn">☐</span>มีรูปเพชร (เงื่อนไข)</li>
+    <li><span class="sn">☐</span>รูปเพชรมี 2 ทางออก (Yes/No)</li>
+    <li><span class="sn">☐</span>ทั้งสองสาขามีสี่เหลี่ยม</li>
+    <li><span class="sn">☐</span>อ่านได้ตามลำดับ ไม่สับสน</li>
+  </ul>
+</div>
+
+<!-- S17: เติม Flowchart (ใหม่) -->
+<div class="slide s17" id="s17">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 ทำในสมุด — เติมช่องที่หายไป ทำคนเดียว ไม่คุยกับเพื่อน</div>
+  <div class="lesson-tag">ชั่วโมงที่ 4 — เติมช่องว่าง</div>
+  <h2>✏️ เติม Flowchart: ตัดสินใจรดน้ำต้นไม้</h2>
+  <div style="display:flex;gap:24px;justify-content:center;align-items:flex-start;margin-top:10px;flex-wrap:wrap">
+    <div class="branch-demo" style="transform:scale(.85);transform-origin:top center">
+      <div class="fc-oval">เริ่ม</div>
+      <div class="fc-arr">↓</div>
+      <div class="fc-diamond-wrap"><div class="fc-diamond"></div><div class="fc-diamond-text">❓ เงื่อนไข?</div></div>
+      <div style="display:flex;gap:16px">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+          <span style="font-size:11px;color:#4ade80">ใช่</span>
+          <div class="fc-blank">❓ ทำอะไร?</div>
+          <div class="fc-arr">↓</div>
+          <div class="fc-oval" style="font-size:13px">จบ</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+          <span style="font-size:11px;color:#f87171">ไม่ใช่</span>
+          <div class="fc-blank">❓ ทำอะไร?</div>
+          <div class="fc-arr">↓</div>
+          <div class="fc-oval" style="font-size:13px">จบ</div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;justify-content:center">
+      <button class="reveal-btn" onclick="rev('r17a')">🔍 เงื่อนไข</button>
+      <div id="r17a" class="reveal-text" style="font-size:16px">✅ ดินแห้งไหม?</div>
+      <button class="reveal-btn" onclick="rev('r17b')" style="margin-top:6px">🔍 ใช่ → ทำอะไร?</button>
+      <div id="r17b" class="reveal-text" style="font-size:16px">✅ รดน้ำต้นไม้</div>
+      <button class="reveal-btn" onclick="rev('r17c')" style="margin-top:6px">🔍 ไม่ใช่ → ทำอะไร?</button>
+      <div id="r17c" class="reveal-text" style="font-size:16px">✅ ไม่ต้องรดน้ำ</div>
+    </div>
+  </div>
+</div>
+
+<!-- S18: เกณฑ์ตรวจ -->
+<div class="slide s18" id="s18">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 สุ่มนักเรียน 3 คน อธิบาย Flowchart ตัวเอง ให้เพื่อนปรบมือ</div>
+  <div class="lesson-tag">ชั่วโมงที่ 4</div>
+  <h2>✅ เกณฑ์ตรวจ Flowchart มีเงื่อนไข</h2>
   <div class="two-col">
     <div class="col">
       <h4>ต้องมีครบ</h4>
@@ -252,9 +475,25 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
   </div>
 </div>
 
-<!-- S11: สรุป -->
-<div class="slide s11" id="s11">
-  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สรุปบทเรียน ย้ำว่ารูปเพชรสร้าง "การตัดสินใจ" ใน Flowchart</div>
+<!-- S19: Exit Ticket (ใหม่) -->
+<div class="slide s19" id="s19">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 Exit Ticket ก่อนออกจากห้อง — ครูตรวจว่าใครยังไม่เข้าใจ If-Then-Else</div>
+  <div class="lesson-tag">ชั่วโมงที่ 4 — บัตรออกห้อง</div>
+  <div class="big-emoji">🎫</div>
+  <h2>บัตรออกห้อง (Exit Ticket)</h2>
+  <div class="activity-box" style="border-color:rgba(74,222,128,.4);background:rgba(74,222,128,.08)">
+    <h3 style="color:#4ade80">✍️ เขียนในกระดาษแผ่นเล็ก แล้วส่งครู</h3>
+    <p>วาด Flowchart If-Then-Else ง่ายๆ<br>
+    เงื่อนไขเรื่องอะไรก็ได้ในชีวิตประจำวัน<br>
+    (ต้องมี วงรีเริ่ม → รูปเพชร → สาขา Yes/No → วงรีจบ)</p>
+    <p style="color:rgba(255,255,255,.55);font-size:13px;margin-top:6px">ครูจะตรวจว่าเข้าใจ If-Then-Else แล้วหรือยัง</p>
+  </div>
+  <button class="timer-btn" onclick="startTimer(10)" style="margin-top:14px;font-size:15px;padding:10px 24px">⏱ 10 นาที</button>
+</div>
+
+<!-- S20: สรุป -->
+<div class="slide s20" id="s20">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 สรุปบทเรียน ย้ำว่ารูปเพชรสร้าง "การตัดสินใจ" ใน Flowchart</div>
   <div class="badge">สรุปบทเรียน หน่วยที่ 2</div>
   <h2>🎓 สรุป: Flowchart มีเงื่อนไข</h2>
   <ul class="step-list">
@@ -262,13 +501,14 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
     <li><span class="sn">✅</span>ทางออก <strong style="color:#4ade80">ใช่ (Yes)</strong> → ทำอย่างนี้</li>
     <li><span class="sn">❌</span>ทางออก <strong style="color:#f87171">ไม่ใช่ (No)</strong> → ทำอีกอย่าง</li>
     <li><span class="sn">🔀</span><strong style="color:#d8b4fe">If-Then-Else</strong> = โครงสร้างเงื่อนไขพื้นฐาน</li>
+    <li><span class="sn">🧩</span>มีรูปเพชรได้<strong style="color:#fbbf24">หลายอัน</strong>ในหนึ่ง Flowchart</li>
   </ul>
 </div>
 
 <div class="nav">
   <button class="nav-btn" onclick="go(-1)">◀</button>
   <div class="dots" id="dots"></div>
-  <span class="counter" id="counter">1 / 11</span>
+  <span class="counter" id="counter">1 / 20</span>
   <button class="nav-btn" onclick="go(1)">▶</button>
 </div>
 
@@ -279,9 +519,18 @@ function showSlide(n){slides[cur].classList.remove('active');document.querySelec
 function go(d){showSlide(cur+d)}
 document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')go(1);if(e.key==='ArrowLeft')go(-1);});
 function rev(id){document.getElementById(id).classList.toggle('show')}
-function qa(btn,correct){document.querySelectorAll('.qbtn').forEach(b=>b.disabled=true);btn.classList.add(correct?'correct':'wrong');if(!correct)document.querySelectorAll('.qbtn').forEach(b=>{if(b.textContent.includes('2 ทาง'))b.classList.add('correct')});const msg=document.getElementById('qa-msg');msg.style.display='block';msg.style.color=correct?'#4ade80':'#f87171';msg.textContent=correct?'🎉 ถูกต้อง! รูปเพชรมี 2 ทางออก Yes/No':'❌ รูปเพชรใช้สำหรับเงื่อนไข มี 2 ทางออก';}
+function toggleNote(el){el.style.opacity=el.style.opacity=='.2'?'1':'.2'}
+function qb(btn,msgId,correct){
+  const opts=btn.closest('.quiz-opts').querySelectorAll('.qbtn');
+  opts.forEach(b=>b.disabled=true);
+  btn.classList.add(correct?'correct':'wrong');
+  if(!correct){opts.forEach(b=>{if(b.onclick.toString().includes(',true)'))b.classList.add('correct')})}
+  const msg=document.getElementById(msgId);
+  msg.style.display='block';msg.style.color=correct?'#4ade80':'#f87171';
+  msg.textContent=correct?'🎉 ถูกต้อง! เก่งมาก!':'❌ ลองดูอีกที — ดูเฉลยสีเขียว';
+}
 let timerInterval=null;
-function startTimer(min){clearInterval(timerInterval);let sec=min*60;const disp=document.getElementById('timerDisplay');disp.style.display='block';function tick(){const m=Math.floor(sec/60);const s=sec%60;disp.textContent=m+':'+(s<10?'0':'')+s;if(sec===0){clearInterval(timerInterval);disp.textContent='⏰ หมดเวลา!';}sec--;}tick();timerInterval=setInterval(tick,1000);}
+function startTimer(min){clearInterval(timerInterval);let sec=min*60;const disp=document.getElementById('timerDisplay');disp.style.display='block';disp.style.color='#d8b4fe';function tick(){const m=Math.floor(sec/60);const s=sec%60;disp.textContent=m+':'+(s<10?'0':'')+s;if(sec===0){clearInterval(timerInterval);disp.textContent='⏰ หมดเวลา!';disp.style.color='#f87171';}sec--;}tick();timerInterval=setInterval(tick,1000);}
 </script>
 </body>
 </html>
