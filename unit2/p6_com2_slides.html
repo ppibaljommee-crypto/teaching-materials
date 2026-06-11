@@ -22,6 +22,17 @@ body{font-family:'Sarabun',sans-serif;background:#000a1a;overflow:hidden;height:
 .s9{background:linear-gradient(135deg,#050010,#1e1b4b,#4338ca)}
 .s10{background:linear-gradient(135deg,#000a1a,#0c2461,#1e3a8a)}
 .s11{background:linear-gradient(135deg,#000510,#0c1a40,#1e40af)}
+.s12{background:linear-gradient(135deg,#000d20,#0f2d5e,#1e40af)}
+.s13{background:linear-gradient(135deg,#000a15,#0c3060,#164e63)}
+.s14{background:linear-gradient(135deg,#050a1a,#0f2060,#1e3a8a)}
+.s15{background:linear-gradient(135deg,#050520,#1e1b4b,#2563eb)}
+.s16{background:linear-gradient(135deg,#000a1a,#0c3460,#0369a1)}
+.s17{background:linear-gradient(135deg,#050010,#1e1b4b,#4338ca)}
+.s18{background:linear-gradient(135deg,#02120a,#053024,#059669)}
+.s19{background:linear-gradient(135deg,#000a1a,#0c2461,#1e3a8a)}
+.s20{background:linear-gradient(135deg,#000510,#0c1a40,#1e40af)}
+.s21{background:linear-gradient(135deg,#1a0500,#5c1d08,#b45309)}
+.s22{background:linear-gradient(135deg,#000a1a,#0c2461,#1e3a8a)}
 h1{font-size:clamp(26px,5vw,58px);font-weight:800;color:#fff;text-align:center;line-height:1.15}
 h2{font-size:clamp(19px,3.5vw,42px);font-weight:700;color:#fff;text-align:center;line-height:1.3}
 p.sub{font-size:clamp(13px,2vw,24px);color:rgba(255,255,255,.75);text-align:center;margin-top:12px}
@@ -64,18 +75,19 @@ p.sub{font-size:clamp(13px,2vw,24px);color:rgba(255,255,255,.75);text-align:cent
 .nav-btn{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);color:#fff;border-radius:50%;width:50px;height:50px;font-size:20px;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center}
 .nav-btn:hover{background:rgba(255,255,255,.22);transform:scale(1.1)}
 .counter{background:rgba(0,0,0,.5);color:#fff;border-radius:20px;padding:7px 18px;font-size:15px;font-weight:700;border:1px solid rgba(255,255,255,.15)}
-.dots{display:flex;gap:6px;align-items:center}
+.dots{display:flex;gap:5px;align-items:center;max-width:55vw;flex-wrap:wrap;justify-content:center}
 .dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.22);transition:all .3s}
 .dot.on{background:#3b82f6;transform:scale(1.5);box-shadow:0 0 8px #3b82f6}
 .activity-box{background:rgba(59,130,246,.1);border:2px solid rgba(59,130,246,.4);border-radius:20px;padding:18px 26px;width:100%;max-width:820px;margin-top:12px;text-align:center}
 .activity-box h3{color:#93c5fd;font-size:clamp(15px,2.3vw,26px);font-weight:800;margin-bottom:8px}
+.tip{background:rgba(147,197,253,.12);border-left:4px solid #93c5fd;border-radius:8px;padding:10px 16px;margin-top:12px;color:#bfdbfe;font-size:clamp(12px,1.8vw,19px);max-width:820px}
 </style>
 </head>
 <body>
 <div class="prog-bar" id="prog"></div>
 <div class="timer-widget"><button class="timer-btn" onclick="startTimer(10)">⏱ 10 นาที</button><div class="timer-display" id="timerDisplay">10:00</div></div>
 
-<!-- S1 -->
+<!-- S1: ปก -->
 <div class="slide s1 active" id="s1">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ถาม: "เคยเห็น Infographic บนโซเชียลมีเดียไหม? มันดีตรงไหน?"</div>
   <div class="badge">คอมพิวเตอร์เพิ่มเติม • ป.6 • หน่วยที่ 2</div>
@@ -84,7 +96,7 @@ p.sub{font-size:clamp(13px,2vw,24px);color:rgba(255,255,255,.75);text-align:cent
   <p class="sub">PowerPoint • Infographic • Data Visualization</p>
 </div>
 
-<!-- S2 -->
+<!-- S2: ทบทวน -->
 <div class="slide s2" id="s2">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ทบทวน Word + Excel จาก Unit 1 เชื่อมสู่ PowerPoint</div>
   <h2>🔄 ทบทวน Unit 1</h2>
@@ -151,8 +163,41 @@ p.sub{font-size:clamp(13px,2vw,24px);color:rgba(255,255,255,.75);text-align:cent
   </div>
 </div>
 
-<!-- S5: สร้างกราฟใน PowerPoint -->
+<!-- S5: เลือกกราฟให้เหมาะ -->
 <div class="slide s5" id="s5">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ยกตัวอย่างข้อมูลแล้วให้นักเรียนช่วยเลือกกราฟ</div>
+  <h2>🎯 เลือกกราฟให้ตรงกับข้อมูล</h2>
+  <ul class="step-list">
+    <li><span class="sn">📊</span><strong style="color:#93c5fd">เปรียบเทียบ</strong>จำนวน/กลุ่ม → Bar Chart</li>
+    <li><span class="sn">🥧</span><strong style="color:#93c5fd">สัดส่วน %</strong> ของทั้งหมด → Pie Chart</li>
+    <li><span class="sn">📈</span><strong style="color:#93c5fd">แนวโน้ม</strong>ตามเวลา → Line Chart</li>
+    <li><span class="sn">🔗</span><strong style="color:#93c5fd">ความสัมพันธ์/ขั้นตอน</strong> → SmartArt</li>
+  </ul>
+  <div class="tip">💡 เลือกกราฟผิดประเภท จะทำให้คนอ่านเข้าใจข้อมูลผิดได้</div>
+</div>
+
+<!-- S6: เก็บข้อมูล -->
+<div class="slide s6" id="s6">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สาธิตการทำ tally แบบนับขีด ก่อนแปลงเป็นตัวเลข</div>
+  <h2>📋 ขั้นแรก: เก็บและจัดระเบียบข้อมูล</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>วิธีเก็บข้อมูล</h4>
+      <p>• ตั้งคำถามสำรวจให้ชัด</p>
+      <p>• นับด้วย <strong style="color:#fbbf24">ขีดคะแนน (Tally)</strong></p>
+      <p>• เช่น 🍕 //// = 4 คน</p>
+    </div>
+    <div class="col">
+      <h4>จัดเป็นตาราง</h4>
+      <p>• ใส่ลงตารางใน Excel/Word</p>
+      <p>• คอลัมน์: หัวข้อ + จำนวน</p>
+      <p>• ตรวจผลรวมให้ถูกต้อง</p>
+    </div>
+  </div>
+</div>
+
+<!-- S7: สร้างกราฟใน PowerPoint -->
+<div class="slide s7" id="s7">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 Demo สร้างกราฟใน PowerPoint: Insert → Chart → Bar → ใส่ข้อมูล</div>
   <h2>🛠️ สร้างกราฟใน PowerPoint</h2>
   <ul class="step-list">
@@ -164,8 +209,28 @@ p.sub{font-size:clamp(13px,2vw,24px);color:rgba(255,255,255,.75);text-align:cent
   </ul>
 </div>
 
-<!-- S6: Infographic -->
-<div class="slide s6" id="s6">
+<!-- S8: แก้ไขกราฟ + Label -->
+<div class="slide s8" id="s8">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 Demo Chart Design / Add Chart Element → Data Labels</div>
+  <h2>🔧 ปรับแต่งกราฟให้อ่านง่าย</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>ใส่รายละเอียด</h4>
+      <p>• <strong style="color:#93c5fd">Chart Title</strong> — ชื่อกราฟ</p>
+      <p>• <strong style="color:#93c5fd">Data Labels</strong> — ตัวเลขบนแท่ง</p>
+      <p>• <strong style="color:#93c5fd">Legend</strong> — คำอธิบายสี</p>
+    </div>
+    <div class="col">
+      <h4>ทำให้สวยงาม</h4>
+      <p>• เปลี่ยนสีแท่งให้เข้าธีม</p>
+      <p>• <strong style="color:#fbbf24">Chart Styles</strong> สำเร็จรูป</p>
+      <p>• แก้ข้อมูล: Edit Data</p>
+    </div>
+  </div>
+</div>
+
+<!-- S9: Infographic องค์ประกอบ -->
+<div class="slide s9" id="s9">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 แสดงตัวอย่าง Infographic ที่ดี อธิบายองค์ประกอบแต่ละส่วน</div>
   <h2>🖼️ องค์ประกอบ Infographic ที่ดี</h2>
   <div class="info-types">
@@ -178,8 +243,30 @@ p.sub{font-size:clamp(13px,2vw,24px);color:rgba(255,255,255,.75);text-align:cent
   </div>
 </div>
 
-<!-- S7: SmartArt -->
-<div class="slide s7" id="s7">
+<!-- S10: หลักการออกแบบ -->
+<div class="slide s10" id="s10">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 เปรียบเทียบ Infographic ที่รกกับที่โล่งสบายตา</div>
+  <h2>🎨 หลักการออกแบบให้ดูดี</h2>
+  <div class="two-col">
+    <div class="col" style="border-color:rgba(74,222,128,.3)">
+      <h4 style="color:#4ade80">✅ ควรทำ</h4>
+      <p>• เว้นที่ว่างให้หายใจ</p>
+      <p>• เรียงลำดับจากบนลงล่าง</p>
+      <p>• เน้นตัวเลขสำคัญให้ใหญ่</p>
+      <p>• ใช้ฟอนต์อ่านง่าย</p>
+    </div>
+    <div class="col" style="border-color:rgba(248,113,113,.3)">
+      <h4 style="color:#f87171">❌ ควรเลี่ยง</h4>
+      <p>• ยัดข้อมูลแน่นเกินไป</p>
+      <p>• ใช้สีฉูดฉาดเยอะเกิน</p>
+      <p>• ฟอนต์หลายแบบปนกัน</p>
+      <p>• รูปเบลอ/ความละเอียดต่ำ</p>
+    </div>
+  </div>
+</div>
+
+<!-- S11: SmartArt -->
+<div class="slide s11" id="s11">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 Demo SmartArt: Insert → SmartArt → เลือกรูปแบบ</div>
   <h2>🎨 SmartArt — ภาพแสดงความสัมพันธ์</h2>
   <div class="two-col">
@@ -199,21 +286,112 @@ p.sub{font-size:clamp(13px,2vw,24px);color:rgba(255,255,255,.75);text-align:cent
   </div>
 </div>
 
-<!-- S8: Quiz -->
-<div class="slide s8" id="s8">
-  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 Quiz ก่อนเริ่มงาน</div>
-  <h2>🎯 ต้องการแสดงสัดส่วน % ควรใช้กราฟอะไร?</h2>
+<!-- S12: Icons & Visual -->
+<div class="slide s12" id="s12">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 Demo Insert → Icons และการใช้ไอคอนแทนข้อความ</div>
+  <h2>🔣 ใช้ไอคอนเล่าข้อมูล</h2>
+  <ul class="step-list">
+    <li><span class="sn">1</span>Insert → <strong style="color:#93c5fd">Icons</strong> เลือกไอคอน</li>
+    <li><span class="sn">2</span>ใช้ไอคอนแทนหัวข้อ เช่น 🍎 = อาหาร</li>
+    <li><span class="sn">3</span>ไอคอนเดียวกัน = หมวดเดียวกัน</li>
+    <li><span class="sn">4</span>เปลี่ยนสีไอคอนให้เข้าธีมได้</li>
+  </ul>
+  <div class="tip">💡 ไอคอนช่วยให้ผู้อ่านเข้าใจได้เร็ว โดยไม่ต้องอ่านข้อความเยอะ</div>
+</div>
+
+<!-- S13: สี & Contrast -->
+<div class="slide s13" id="s13">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 อธิบายเรื่อง contrast — พื้นเข้มตัวอ่อน พื้นอ่อนตัวเข้ม</div>
+  <h2>🌈 สีและความคมชัด (Contrast)</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>เลือกคู่สี</h4>
+      <p>• ใช้สีหลัก 2-3 สี</p>
+      <p>• พื้นหลังเข้ม → ตัวอักษรสว่าง</p>
+      <p>• พื้นหลังสว่าง → ตัวอักษรเข้ม</p>
+    </div>
+    <div class="col">
+      <h4>เน้นข้อมูลสำคัญ</h4>
+      <p>• ใช้ <strong style="color:#fbbf24">สีเด่น</strong> 1 สีไฮไลต์</p>
+      <p>• ตัวเลขสำคัญ = ตัวใหญ่ สีต่าง</p>
+      <p>• อย่าใช้สีอ่อนบนพื้นอ่อน</p>
+    </div>
+  </div>
+</div>
+
+<!-- S14: โครงสร้าง slides -->
+<div class="slide s14" id="s14">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 แนะนำโครงสร้างงานนำเสนอ 5-7 สไลด์</div>
+  <h2>🗂️ โครงสร้างงานนำเสนอที่แนะนำ</h2>
+  <ul class="step-list">
+    <li><span class="sn">1</span><strong style="color:#93c5fd">ปก</strong> — หัวข้อ + ชื่อผู้จัดทำ</li>
+    <li><span class="sn">2</span><strong style="color:#93c5fd">ที่มา</strong> — เราสำรวจอะไร ทำไม</li>
+    <li><span class="sn">3-5</span><strong style="color:#93c5fd">ข้อมูล + กราฟ</strong> — กราฟอย่างน้อย 2 ประเภท</li>
+    <li><span class="sn">6</span><strong style="color:#93c5fd">สรุป</strong> — ข้อมูลที่น่าสนใจ</li>
+    <li><span class="sn">7</span><strong style="color:#93c5fd">อ้างอิง</strong> — แหล่งข้อมูล</li>
+  </ul>
+</div>
+
+<!-- S15: Transition/Animation -->
+<div class="slide s15" id="s15">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ย้ำว่าใช้ effect น้อยๆ ให้ดูมืออาชีพ</div>
+  <h2>✨ Transition & Animation อย่างพอดี</h2>
+  <ul class="step-list">
+    <li><span class="sn">🔄</span><strong style="color:#93c5fd">Transition</strong> = เปลี่ยนหน้าสไลด์ (Fade/Push)</li>
+    <li><span class="sn">✨</span><strong style="color:#93c5fd">Animation</strong> = ข้อความ/กราฟค่อยๆ ปรากฏ</li>
+    <li><span class="sn">⚖️</span>ใช้แบบเดียวกันทั้งงาน ดูเป็นมืออาชีพ</li>
+  </ul>
+  <div class="tip">⚠️ เอฟเฟกต์เยอะเกินไปทำให้ผู้ชมเสียสมาธิจากข้อมูล</div>
+</div>
+
+<!-- S16: เทคนิคนำเสนอข้อมูล -->
+<div class="slide s16" id="s16">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สอนให้เล่าข้อมูลเป็นเรื่อง ไม่ใช่อ่านตัวเลขเฉยๆ</div>
+  <h2>🎤 นำเสนอข้อมูลให้น่าฟัง</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>เล่าเป็นเรื่อง</h4>
+      <p>• เริ่มจากคำถามที่สำรวจ</p>
+      <p>• ชี้กราฟแล้วบอกสิ่งที่เห็น</p>
+      <p>• สรุปว่าข้อมูลบอกอะไร</p>
+    </div>
+    <div class="col">
+      <h4>ท่าทาง</h4>
+      <p>• <strong style="color:#fbbf24">ยืนหันหน้าหาผู้ฟัง</strong></p>
+      <p>• พูดชัด มั่นใจ ไม่อ่านสไลด์</p>
+      <p>• สบตาผู้ฟัง</p>
+    </div>
+  </div>
+</div>
+
+<!-- S17: Quiz 1 -->
+<div class="slide s17" id="s17">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 Quiz ข้อ 1</div>
+  <h2>🎯 ข้อ 1: ต้องการแสดงสัดส่วน % ควรใช้กราฟอะไร?</h2>
   <div class="quiz-opts">
     <button class="qbtn" onclick="qa(this,false)">A. Bar Chart — กราฟแท่ง</button>
-    <button class="qbtn" onclick="qa(this,true)">B. Pie Chart — กราฟวงกลม</button>
+    <button class="qbtn" onclick="qa(this,true)" data-correct>B. Pie Chart — กราฟวงกลม</button>
     <button class="qbtn" onclick="qa(this,false)">C. Line Chart — กราฟเส้น</button>
     <button class="qbtn" onclick="qa(this,false)">D. SmartArt</button>
   </div>
-  <div id="qa-msg" class="result-msg"></div>
+  <div class="result-msg" data-ok="🎉 ถูก! Pie Chart ใช้แสดงสัดส่วน %" data-no="❌ Pie Chart ใช้แสดงสัดส่วนเปอร์เซ็นต์"></div>
 </div>
 
-<!-- S9: งาน -->
-<div class="slide s9" id="s9">
+<!-- S18: Quiz 2 -->
+<div class="slide s18" id="s18">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 Quiz ข้อ 2</div>
+  <h2>🎯 ข้อ 2: อยากดูแนวโน้มคะแนนรายเดือน ใช้กราฟใด?</h2>
+  <div class="quiz-opts">
+    <button class="qbtn" onclick="qa(this,false)">A. Pie Chart</button>
+    <button class="qbtn" onclick="qa(this,false)">B. Bar Chart</button>
+    <button class="qbtn" onclick="qa(this,true)" data-correct>C. Line Chart — กราฟเส้น แสดงแนวโน้มตามเวลา</button>
+    <button class="qbtn" onclick="qa(this,false)">D. ตารางตัวเลข</button>
+  </div>
+  <div class="result-msg" data-ok="🎉 ถูก! Line Chart เหมาะกับแนวโน้มตามเวลา" data-no="❌ Line Chart (กราฟเส้น) ใช้ดูแนวโน้มตามเวลา"></div>
+</div>
+
+<!-- S19: งาน -->
+<div class="slide s19" id="s19">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 แจกข้อมูลให้นักเรียนแต่ละคน หรือให้สำรวจข้อมูลเอง</div>
   <div class="big-emoji">📊</div>
   <h2>งาน: Presentation + Infographic</h2>
@@ -229,8 +407,8 @@ p.sub{font-size:clamp(13px,2vw,24px);color:rgba(255,255,255,.75);text-align:cent
   <button class="timer-btn" onclick="startTimer(25)" style="margin-top:14px;font-size:15px;padding:10px 24px">⏱ 25 นาที</button>
 </div>
 
-<!-- S10: เกณฑ์ -->
-<div class="slide s10" id="s10">
+<!-- S20: เกณฑ์ -->
+<div class="slide s20" id="s20">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 แจกเกณฑ์การให้คะแนน ให้นักเรียนอ่านก่อนส่งงาน</div>
   <h2>📋 เกณฑ์การให้คะแนน (20 คะแนน)</h2>
   <div class="two-col">
@@ -249,8 +427,20 @@ p.sub{font-size:clamp(13px,2vw,24px);color:rgba(255,255,255,.75);text-align:cent
   </div>
 </div>
 
-<!-- S11: สรุป -->
-<div class="slide s11" id="s11">
+<!-- S21: จริยธรรมข้อมูล -->
+<div class="slide s21" id="s21">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ย้ำเรื่องความซื่อสัตย์ของข้อมูลและการอ้างอิงแหล่งที่มา</div>
+  <h2>⚖️ นำเสนอข้อมูลอย่างซื่อสัตย์</h2>
+  <ul class="step-list">
+    <li><span class="sn">✅</span>ใช้ข้อมูลจริง ไม่ปั้นตัวเลขขึ้นเอง</li>
+    <li><span class="sn">📏</span>กราฟต้องเริ่มจาก 0 ไม่บิดเบือนสัดส่วน</li>
+    <li><span class="sn">🔖</span>ระบุ <strong style="color:#fbbf24">แหล่งที่มา</strong> ของข้อมูลเสมอ</li>
+    <li><span class="sn">🖼️</span>ใช้รูป/ไอคอนที่มีสิทธิ์ใช้งานได้</li>
+  </ul>
+</div>
+
+<!-- S22: สรุป -->
+<div class="slide s22" id="s22">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สรุปบทเรียน ให้นักเรียน 2-3 คนนำเสนองาน</div>
   <div class="badge">สรุปบทเรียน หน่วยที่ 2</div>
   <h2>🎓 สรุป: นำเสนอข้อมูลด้วยภาพ</h2>
@@ -258,14 +448,14 @@ p.sub{font-size:clamp(13px,2vw,24px);color:rgba(255,255,255,.75);text-align:cent
     <li><span class="sn">📊</span><strong style="color:#93c5fd">Data Visualization</strong> = ทำข้อมูลให้เป็นภาพ เข้าใจง่าย</li>
     <li><span class="sn">📊</span><strong style="color:#fbbf24">Bar</strong> = เปรียบเทียบ | <strong style="color:#34d399">Pie</strong> = สัดส่วน | <strong style="color:#f87171">Line</strong> = แนวโน้ม</li>
     <li><span class="sn">🖼️</span><strong style="color:#a78bfa">Infographic</strong> = กราฟ + รูป + ข้อความ สวยงาม</li>
-    <li><span class="sn">🎨</span><strong style="color:#fb923c">SmartArt</strong> = แสดงความสัมพันธ์เป็นภาพ</li>
+    <li><span class="sn">⚖️</span>นำเสนอข้อมูล<strong style="color:#fb923c">อย่างซื่อสัตย์</strong> + อ้างอิงแหล่งที่มา</li>
   </ul>
 </div>
 
 <div class="nav">
   <button class="nav-btn" onclick="go(-1)">◀</button>
   <div class="dots" id="dots"></div>
-  <span class="counter" id="counter">1 / 11</span>
+  <span class="counter" id="counter">1 / 22</span>
   <button class="nav-btn" onclick="go(1)">▶</button>
 </div>
 <script>
@@ -274,7 +464,7 @@ for(let i=0;i<total;i++){const d=document.createElement('div');d.className='dot'
 function showSlide(n){slides[cur].classList.remove('active');document.querySelectorAll('.dot')[cur].classList.remove('on');cur=Math.max(0,Math.min(n,total-1));slides[cur].classList.add('active');document.querySelectorAll('.dot')[cur].classList.add('on');document.getElementById('counter').textContent=(cur+1)+' / '+total;document.getElementById('prog').style.width=((cur+1)/total*100)+'%';}
 function go(d){showSlide(cur+d)}
 document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')go(1);if(e.key==='ArrowLeft')go(-1);});
-function qa(btn,correct){document.querySelectorAll('.qbtn').forEach(b=>b.disabled=true);btn.classList.add(correct?'correct':'wrong');if(!correct)document.querySelectorAll('.qbtn').forEach(b=>{if(b.textContent.includes('Pie'))b.classList.add('correct')});const msg=document.getElementById('qa-msg');msg.style.display='block';msg.style.color=correct?'#4ade80':'#f87171';msg.textContent=correct?'🎉 ถูก! Pie Chart ใช้แสดงสัดส่วน %':'❌ Pie Chart ใช้แสดงสัดส่วนเปอร์เซ็นต์';}
+function qa(btn,correct){const slide=btn.closest('.slide');slide.querySelectorAll('.qbtn').forEach(b=>b.disabled=true);btn.classList.add(correct?'correct':'wrong');if(!correct){const ans=slide.querySelector('.qbtn[data-correct]');if(ans)ans.classList.add('correct');}const msg=slide.querySelector('.result-msg');msg.style.display='block';msg.style.color=correct?'#4ade80':'#f87171';msg.textContent=correct?(msg.dataset.ok||'🎉 ถูกต้อง!'):(msg.dataset.no||'❌ ลองดูเฉลยสีเขียว');}
 let timerInterval=null;
 function startTimer(min){clearInterval(timerInterval);let sec=min*60;const disp=document.getElementById('timerDisplay');disp.style.display='block';function tick(){const m=Math.floor(sec/60);const s=sec%60;disp.textContent=m+':'+(s<10?'0':'')+s;if(sec===0){clearInterval(timerInterval);disp.textContent='⏰ หมดเวลา!';}sec--;}tick();timerInterval=setInterval(tick,1000);}
 </script>
