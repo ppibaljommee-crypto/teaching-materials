@@ -24,6 +24,15 @@ body{font-family:'Sarabun',sans-serif;background:#000d00;overflow:hidden;height:
 .s11{background:linear-gradient(135deg,#050a00,#0d1a00,#1a3300)}
 .s12{background:linear-gradient(135deg,#001a10,#002a1a,#003d25)}
 .s13{background:linear-gradient(135deg,#000a10,#00141a,#003333)}
+.s14{background:linear-gradient(135deg,#000510,#000a30,#001a50)}
+.s15{background:linear-gradient(135deg,#0a0500,#1a0a00,#331400)}
+.s16{background:linear-gradient(135deg,#050005,#1a001a,#2d0045)}
+.s17{background:linear-gradient(135deg,#0a0000,#1a0505,#330a0a)}
+.s18{background:linear-gradient(135deg,#050a00,#0d1a00,#1a3300)}
+.s19{background:linear-gradient(135deg,#001005,#001a0a,#00331a)}
+.s20{background:linear-gradient(135deg,#000520,#000a40,#001060)}
+.s21{background:linear-gradient(135deg,#001a10,#002a1a,#003d25)}
+.s22{background:linear-gradient(135deg,#001a00,#003300,#065f46)}
 h1{font-size:clamp(24px,4.5vw,56px);font-weight:800;color:#fff;text-align:center;line-height:1.15}
 h2{font-size:clamp(17px,3vw,38px);font-weight:700;color:#fff;text-align:center;line-height:1.3}
 p.sub{font-size:clamp(12px,1.8vw,22px);color:rgba(255,255,255,.7);text-align:center;margin-top:10px}
@@ -181,6 +190,40 @@ p.sub{font-size:clamp(12px,1.8vw,22px);color:rgba(255,255,255,.7);text-align:cen
   </div>
 </div>
 
+<!-- S14: IPO ตัวอย่างที่ 2 -->
+<div class="slide s14" id="s14">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 ให้นักเรียนลองทำ IPO ของโปรแกรมคิดเงินทอนเองในใจ ก่อนดูเฉลย</div>
+  <h2>💡 ตัวอย่าง IPO 2: โปรแกรมคิดเงินทอน</h2>
+  <div class="ipo-box">
+    <div class="ipo-card" style="border-color:rgba(59,130,246,.5)">
+      <h4 style="color:#93c5fd">INPUT</h4>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#e6edf3;text-align:left;margin-top:6px">
+        price = int(input())<br>
+        paid = int(input())
+      </p>
+    </div>
+    <div class="ipo-arrow">→</div>
+    <div class="ipo-card" style="border-color:rgba(34,197,94,.5)">
+      <h4 style="color:#86efac">PROCESS</h4>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#e6edf3;text-align:left;margin-top:6px">
+        change = paid - price<br>
+        if change &lt; 0:<br>
+        &nbsp;&nbsp;เงินไม่พอ
+      </p>
+    </div>
+    <div class="ipo-arrow">→</div>
+    <div class="ipo-card" style="border-color:rgba(251,191,36,.5)">
+      <h4 style="color:#fde68a">OUTPUT</h4>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#e6edf3;text-align:left;margin-top:6px">
+        print(f"เงินทอน:<br>{change} บาท")
+      </p>
+    </div>
+  </div>
+  <div class="box" style="text-align:center;margin-top:12px">
+    <p style="font-size:clamp(12px,1.8vw,20px);color:#bbf7d0">วาด IPO ให้ครบทั้ง 3 ส่วนก่อน → เขียนโค้ดง่ายขึ้นมาก</p>
+  </div>
+</div>
+
 <!-- S5: เขียน Python จาก IPO -->
 <div class="slide s5" id="s5">
   <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 เน้น: เขียน IPO ก่อนเสมอ แล้วค่อยแปลงเป็นโค้ด ไม่ใช่เขียนโค้ดตรงๆ ทันที</div>
@@ -205,6 +248,32 @@ p.sub{font-size:clamp(12px,1.8vw,22px);color:rgba(255,255,255,.7);text-align:cen
       <p>✅ ถ้า Error ดู error message</p>
       <p style="margin-top:8px;color:#f87171">❌ อย่าลืม indent 4 ช่องใน if/for/def</p>
       <p style="color:#f87171">❌ อย่า Copy โค้ดโดยไม่เข้าใจ</p>
+    </div>
+  </div>
+</div>
+
+<!-- S15: Validate Input -->
+<div class="slide s15" id="s15">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 โปรแกรมที่ดีต้องรับมือกับ input แปลกๆ ได้ — สอน try-except เบื้องต้น</div>
+  <h2>🛡️ ตรวจสอบ Input ให้ปลอดภัย</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4 style="color:#fca5a5">❌ ปัญหา: ผู้ใช้ใส่ผิด</h4>
+      <p>ถ้าโปรแกรมขอตัวเลข แต่ผู้ใช้พิมพ์ตัวอักษร → โปรแกรม Error และหยุดทำงาน</p>
+      <div class="code-static" style="font-size:11px;border-radius:8px;margin-top:6px">
+<span class="vr">age</span> = <span class="fn">int</span>(<span class="fn">input</span>())<br>
+<span class="cm"># ผู้ใช้พิมพ์ "abc" → ValueError!</span>
+      </div>
+    </div>
+    <div class="col">
+      <h4 style="color:#86efac">✅ แก้ด้วย try-except</h4>
+      <div class="code-static" style="font-size:11px;border-radius:8px;margin-top:4px">
+<span class="kw">try</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="vr">age</span> = <span class="fn">int</span>(<span class="fn">input</span>())<br>
+<span class="kw">except</span> <span class="fn">ValueError</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="fn">print</span>(<span class="st">"กรุณาใส่ตัวเลข!"</span>)
+      </div>
+      <p style="margin-top:8px;font-size:13px;color:#bbf7d0">try = ลองทำ · except = ถ้าพัง ทำอะไรแทน</p>
     </div>
   </div>
 </div>
@@ -301,6 +370,34 @@ p.sub{font-size:clamp(12px,1.8vw,22px);color:rgba(255,255,255,.7);text-align:cen
   </div>
 </div>
 
+<!-- S16: Dictionary -->
+<div class="slide s16" id="s16">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 Dictionary = สมุดรายชื่อ ค้นด้วยชื่อ (key) ได้ค่า (value) — ต่อยอดจาก List</div>
+  <h2><span style="font-family:'JetBrains Mono',monospace;color:#f8b800">dict</span> — ข้อมูลแบบ key : value</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>Dictionary คืออะไร?</h4>
+      <p>= เก็บข้อมูลเป็นคู่ <strong style="color:#f8b800">key → value</strong> เข้าถึงด้วยชื่อ ไม่ใช่ตัวเลข</p>
+      <div class="code-static" style="font-size:11px;border-radius:8px;margin-top:6px">
+<span class="vr">student</span> = {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="st">"name"</span>: <span class="st">"มานี"</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="st">"age"</span>: <span class="nm">14</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="st">"grade"</span>: <span class="st">"A"</span><br>
+}<br>
+<span class="fn">print</span>(<span class="vr">student</span>[<span class="st">"name"</span>]) <span class="cm"># มานี</span>
+      </div>
+    </div>
+    <div class="col">
+      <h4>List vs Dictionary</h4>
+      <p>📋 <strong style="color:#a5d6ff">List</strong> — เข้าถึงด้วยตัวเลข index</p>
+      <p style="font-family:monospace;font-size:12px">scores[0]</p>
+      <p style="margin-top:8px">📕 <strong style="color:#f8b800">Dict</strong> — เข้าถึงด้วยชื่อ key</p>
+      <p style="font-family:monospace;font-size:12px">student["name"]</p>
+      <p style="margin-top:8px;font-size:13px;color:#bbf7d0">Dict เหมาะกับข้อมูลที่มีชื่อกำกับ เช่น โปรไฟล์นักเรียน</p>
+    </div>
+  </div>
+</div>
+
 <!-- S9: โปรแกรมตัวอย่าง -->
 <div class="slide s9" id="s9">
   <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 กด Run ให้นักเรียนดู สังเกตว่า for loop วนกี่รอบ? ผลลัพธ์ตรงกับที่คาดไหม?</div>
@@ -331,6 +428,69 @@ p.sub{font-size:clamp(12px,1.8vw,22px);color:rgba(255,255,255,.7);text-align:cen
       </div>
     </div>
   </div>
+</div>
+
+<!-- S17: Debug -->
+<div class="slide s17" id="s17">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 กด Run ให้ดู error จริง แล้วเฉลยว่าแก้อย่างไร — สอนอ่าน error message</div>
+  <h2>🐛 Debug — อ่าน Error แล้วแก้</h2>
+  <div class="two-col">
+    <div class="col" style="font-size:12px">
+      <h4>Error ที่พบบ่อย</h4>
+      <p>❌ <strong style="color:#f87171">SyntaxError</strong> — ลืม : หรือวงเล็บ</p>
+      <p>❌ <strong style="color:#f87171">IndentationError</strong> — ย่อหน้าผิด</p>
+      <p>❌ <strong style="color:#f87171">NameError</strong> — ใช้ตัวแปรที่ไม่มี</p>
+      <p>❌ <strong style="color:#f87171">TypeError</strong> — เอา str + int</p>
+      <p>❌ <strong style="color:#f87171">ValueError</strong> — แปลงค่าไม่ได้</p>
+      <p style="margin-top:6px;color:#bbf7d0">💡 อ่านบรรทัดล่างสุดของ error = ชนิดและตำแหน่ง</p>
+    </div>
+    <div>
+      <button class="run-btn" onclick="runTerminal('t_debug')">▶ ดู Error & แก้</button>
+      <div class="terminal-wrap" style="margin-top:6px">
+        <div class="terminal-bar"><div class="t-dot red"></div><div class="t-dot yellow"></div><div class="t-dot green"></div><span class="t-title">debug.py</span></div>
+        <div class="terminal-body" id="t_debug"><span class="cursor"></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S18: Quiz 1 -->
+<div class="slide s18" id="s18">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 Quiz 1 เรื่อง IPO</div>
+  <h2>🎯 Quiz 1: <span style="font-family:monospace">input()</span> เป็นส่วนไหนของ IPO?</h2>
+  <div class="quiz-opts">
+    <button class="qbtn" data-correct="1" onclick="qa(this)">A. Input (รับข้อมูลเข้า)</button>
+    <button class="qbtn" onclick="qa(this)">B. Process (ประมวลผล)</button>
+    <button class="qbtn" onclick="qa(this)">C. Output (แสดงผล)</button>
+    <button class="qbtn" onclick="qa(this)">D. ไม่ใช่ส่วนใดเลย</button>
+  </div>
+  <div class="result-msg" data-ok="🎉 ถูก! input() คือส่วน Input รับข้อมูลจากผู้ใช้" data-no="❌ input() = Input (รับข้อมูลเข้า), print() = Output"></div>
+</div>
+
+<!-- S19: Quiz 2 -->
+<div class="slide s19" id="s19">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 Quiz 2 เรื่อง List</div>
+  <h2>🎯 Quiz 2: <span style="font-family:monospace">scores = [85, 90, 78]</span> → <span style="font-family:monospace">scores[0]</span> ได้ค่าอะไร?</h2>
+  <div class="quiz-opts">
+    <button class="qbtn" data-correct="1" onclick="qa(this)">A. 85</button>
+    <button class="qbtn" onclick="qa(this)">B. 90</button>
+    <button class="qbtn" onclick="qa(this)">C. 78</button>
+    <button class="qbtn" onclick="qa(this)">D. 0</button>
+  </div>
+  <div class="result-msg" data-ok="🎉 ถูก! index เริ่มที่ 0 → scores[0] = 85 (ตัวแรก)" data-no="❌ index เริ่มที่ 0 → scores[0] คือตัวแรก = 85"></div>
+</div>
+
+<!-- S20: Quiz 3 -->
+<div class="slide s20" id="s20">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 Quiz 3 เรื่อง Function</div>
+  <h2>🎯 Quiz 3: คำสั่งใดใช้ "ส่งค่ากลับ" จาก Function?</h2>
+  <div class="quiz-opts">
+    <button class="qbtn" onclick="qa(this)">A. print()</button>
+    <button class="qbtn" onclick="qa(this)">B. input()</button>
+    <button class="qbtn" data-correct="1" onclick="qa(this)">C. return</button>
+    <button class="qbtn" onclick="qa(this)">D. def</button>
+  </div>
+  <div class="result-msg" data-ok="🎉 ถูก! return ส่งค่ากลับจากฟังก์ชันมาเก็บไว้ใช้ต่อได้" data-no="❌ ใช้ return ส่งค่ากลับ (print แค่แสดงผล ไม่ได้ส่งค่ากลับ)"></div>
 </div>
 
 <!-- S10: Canva -->
@@ -372,6 +532,32 @@ p.sub{font-size:clamp(12px,1.8vw,22px);color:rgba(255,255,255,.7);text-align:cen
   </ul>
 </div>
 
+<!-- S21: เทคนิคนำเสนอ -->
+<div class="slide s21" id="s21">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 การนำเสนอดี = คนเข้าใจง่าย ให้นักเรียนฝึกพูดสั้น กระชับ</div>
+  <h2>🎤 เทคนิคนำเสนอโปรเจกต์ให้น่าสนใจ</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4 style="color:#86efac">✅ ควรทำ</h4>
+      <p>• เริ่มด้วยปัญหาที่โปรแกรมช่วยแก้</p>
+      <p>• อธิบาย IPO ให้เห็นภาพ</p>
+      <p>• Demo การรันจริงให้ดู</p>
+      <p>• เล่าปัญหาที่เจอ + วิธีแก้ (Debug)</p>
+      <p>• พูดชัด มองผู้ฟัง</p>
+    </div>
+    <div class="col">
+      <h4 style="color:#fca5a5">❌ ควรเลี่ยง</h4>
+      <p>• อ่านสไลด์คำต่อคำ</p>
+      <p>• ใส่โค้ดเยอะจนอ่านไม่ทัน</p>
+      <p>• สไลด์ตัวอักษรเล็กเกินไป</p>
+      <p>• พูดเร็ว/เบาเกินไป</p>
+    </div>
+  </div>
+  <div class="box" style="text-align:center;margin-top:10px">
+    <p style="font-size:clamp(12px,1.8vw,20px);color:#bbf7d0">โปรแกรมดี + นำเสนอดี = โปรเจกต์ที่สมบูรณ์ 🌟</p>
+  </div>
+</div>
+
 <!-- S12: โจทย์โปรเจกต์ -->
 <div class="slide s12" id="s12">
   <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 แบ่งกลุ่ม 2-3 คน เลือกโจทย์ 1 ข้อ วางแผน IPO แล้วเริ่มเขียนโค้ด ส่งทั้ง Python + Canva Link</div>
@@ -396,6 +582,29 @@ p.sub{font-size:clamp(12px,1.8vw,22px);color:rgba(255,255,255,.7);text-align:cen
   </div>
 </div>
 
+<!-- S22: ต่อยอด Python -->
+<div class="slide s22" id="s22">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 สร้างแรงบันดาลใจ — Python ที่เรียนต่อยอดสู่งานจริงได้มากมาย</div>
+  <h2>🚀 Python ต่อยอดทำอะไรได้อีก?</h2>
+  <div class="three-col">
+    <div class="col" style="border-color:rgba(59,130,246,.4)">
+      <h4 style="color:#93c5fd">🌐 เว็บ & แอป</h4>
+      <p>สร้างเว็บไซต์ (Django, Flask) และแอปได้</p>
+    </div>
+    <div class="col" style="border-color:rgba(34,197,94,.4)">
+      <h4 style="color:#86efac">📊 วิเคราะห์ข้อมูล</h4>
+      <p>pandas, matplotlib วิเคราะห์ข้อมูลใหญ่ๆ</p>
+    </div>
+    <div class="col" style="border-color:rgba(251,191,36,.4)">
+      <h4 style="color:#fde68a">🤖 AI & หุ่นยนต์</h4>
+      <p>สร้าง AI, Machine Learning, ควบคุมหุ่นยนต์</p>
+    </div>
+  </div>
+  <div class="box" style="text-align:center;margin-top:12px">
+    <p style="font-size:clamp(13px,1.9vw,21px);color:#bbf7d0">Function, List, Dict ที่เรียนวันนี้ = พื้นฐานของทุกอย่างข้างบน<br><strong style="color:#86efac">เริ่มจากโปรเจกต์เล็กๆ วันนี้ สู่สิ่งที่ยิ่งใหญ่ในอนาคต! 💪</strong></p>
+  </div>
+</div>
+
 <!-- S13: สรุป -->
 <div class="slide s13" id="s13">
   <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 ถามนักเรียน: "Function ต่างจากการเขียนโค้ดปกติอย่างไร? IPO ช่วยอะไร?"</div>
@@ -414,7 +623,7 @@ p.sub{font-size:clamp(12px,1.8vw,22px);color:rgba(255,255,255,.7);text-align:cen
 <div class="nav">
   <button class="nav-btn" onclick="go(-1)">◀</button>
   <div class="dots" id="dots"></div>
-  <span class="counter" id="counter">1 / 13</span>
+  <span class="counter" id="counter">1 / 22</span>
   <button class="nav-btn" onclick="go(1)">▶</button>
 </div>
 
@@ -444,6 +653,7 @@ document.addEventListener('keydown', e => {
 });
 function rev(id) { document.getElementById(id).classList.toggle('show'); }
 function toggleNote(el) { el.style.opacity = el.style.opacity === '.2' ? '1' : '.2'; }
+function qa(btn){const opts=btn.closest('.quiz-opts');const correct=btn.dataset.correct==='1';opts.querySelectorAll('.qbtn').forEach(b=>b.disabled=true);btn.classList.add(correct?'correct':'wrong');if(!correct)opts.querySelectorAll('.qbtn').forEach(b=>{if(b.dataset.correct==='1')b.classList.add('correct')});const msg=btn.closest('.slide').querySelector('.result-msg');msg.style.display='block';msg.style.color=correct?'#4ade80':'#f87171';msg.textContent=correct?msg.dataset.ok:msg.dataset.no;}
 
 /* ---- Terminal System ---- */
 const TERMINALS = {
@@ -461,6 +671,19 @@ const TERMINALS = {
       { t: 'out',  c: 'BMI: 20.76' },
       { t: 'code', c: '>>> print(bmi_status(b))' },
       { t: 'out',  c: 'ปกติ ✅' },
+    ]
+  },
+  t_debug: {
+    lines: [
+      { t: 'code', c: '>>> age = input("อายุ: ")' },
+      { t: 'inp',  c: 'อายุ: 13' },
+      { t: 'code', c: '>>> print(age + 1)' },
+      { t: 'out',  c: 'TypeError: can only concatenate str (not "int")' },
+      { t: 'out',  c: '# age เป็น str ต้องแปลงเป็น int ก่อน' },
+      { t: 'code', c: '>>> age = int(input("อายุ: "))' },
+      { t: 'inp',  c: 'อายุ: 13' },
+      { t: 'code', c: '>>> print(age + 1)' },
+      { t: 'out',  c: '14' },
     ]
   },
   t_list1: {

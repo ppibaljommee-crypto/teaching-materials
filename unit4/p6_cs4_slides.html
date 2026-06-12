@@ -15,7 +15,7 @@ body{font-family:'Sarabun',sans-serif;background:#05000f;overflow:hidden;height:
 .s2{background:linear-gradient(135deg,#05000f,#0f0022,#1e0045)}
 .s3{background:linear-gradient(135deg,#000520,#00063a,#000c5e)}
 .s4{background:linear-gradient(135deg,#0a0020,#150040,#230060)}
-.s5{background:linear-gradient(135deg,#060015,#0f0030,#1a004a}}
+.s5{background:linear-gradient(135deg,#060015,#0f0030,#1a004a)}
 .s6{background:linear-gradient(135deg,#020012,#07002a,#100045)}
 .s7{background:linear-gradient(135deg,#001520,#002a40,#003060)}
 .s8{background:linear-gradient(135deg,#0a0015,#18003a,#2a0060)}
@@ -23,6 +23,14 @@ body{font-family:'Sarabun',sans-serif;background:#05000f;overflow:hidden;height:
 .s10{background:linear-gradient(135deg,#1a0010,#3a0020,#5a0035)}
 .s11{background:linear-gradient(135deg,#0a001a,#15003a,#200055)}
 .s12{background:linear-gradient(135deg,#020010,#070025,#0d0040)}
+.s13{background:linear-gradient(135deg,#001220,#0c4a6e,#0369a1)}
+.s14{background:linear-gradient(135deg,#001a10,#14532d,#15803d)}
+.s15{background:linear-gradient(135deg,#1a1000,#854d0e,#ca8a04)}
+.s16{background:linear-gradient(135deg,#001520,#002a40,#003060)}
+.s17{background:linear-gradient(135deg,#0a0020,#150040,#230060)}
+.s18{background:linear-gradient(135deg,#1a0010,#3a0020,#5a0035)}
+.s19{background:linear-gradient(135deg,#1a0008,#7f1d1d,#b91c1c)}
+.s20{background:linear-gradient(135deg,#13004d,#2e0a7a,#5b21b6)}
 h1{font-size:clamp(28px,5.5vw,62px);font-weight:800;color:#fff;text-align:center;line-height:1.15}
 h2{font-size:clamp(20px,3.8vw,44px);font-weight:700;color:#fff;text-align:center;line-height:1.3}
 p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:center;margin-top:12px}
@@ -101,6 +109,29 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
   </div>
 </div>
 
+<!-- S13: คำถามวิเคราะห์โรงเรียน -->
+<div class="slide s13" id="s13">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้นักเรียนเห็นว่าข้อมูลโรงเรียนตอบคำถามสำคัญได้จริง</div>
+  <h2>🏫 ข้อมูลโรงเรียนตอบคำถามอะไรได้?</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>📚 ด้านการเรียน</h4>
+      <p>• วิชาไหนนักเรียนคะแนนเฉลี่ยต่ำ?</p>
+      <p>• ห้องไหนผลการเรียนพัฒนาขึ้น?</p>
+      <p>• การมาเรียนสัมพันธ์กับคะแนนไหม?</p>
+    </div>
+    <div class="col">
+      <h4>🏃 ด้านอื่นๆ</h4>
+      <p>• นักเรียนส่วนใหญ่เดินทางมายังไง?</p>
+      <p>• กิจกรรมไหนนักเรียนสนใจมากสุด?</p>
+      <p>• ช่วงไหนนักเรียนป่วยเยอะ?</p>
+    </div>
+  </div>
+  <div class="box" style="text-align:center;margin-top:12px">
+    <p style="font-size:clamp(14px,2vw,22px);color:#fde68a">ข้อมูลช่วยให้โรงเรียน<strong>ตัดสินใจปรับปรุง</strong>ได้ตรงจุด 📊</p>
+  </div>
+</div>
+
 <!-- S3: ชนิดข้อมูล -->
 <div class="slide s3" id="s3">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ถาม: "ชื่อนักเรียน เป็นข้อมูลชนิดไหน? คะแนนสอบล่ะ?" ให้นักเรียนตอบก่อน</div>
@@ -169,6 +200,54 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
   </div>
 </div>
 
+<!-- S14: Mean vs Median -->
+<div class="slide s14" id="s14">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สอนว่าเมื่อมี outlier ค่า Mean จะถูกดึง แต่ Median ไม่สะเทือน</div>
+  <h2>⚖️ Mean vs Median — เลือกใช้เมื่อไหร่?</h2>
+  <div class="box" style="text-align:center">
+    <p style="font-size:clamp(14px,2vw,22px);color:#fff">เมื่อมีข้อมูลผิดปกติ (Outlier) → <span style="color:#86efac">Median น่าเชื่อถือกว่า</span></p>
+  </div>
+  <div class="two-col">
+    <div class="col">
+      <h4>ตัวอย่าง: ค่าขนม (บาท)</h4>
+      <p>20, 25, 30, 25, <span style="color:#f87171">500</span></p>
+      <p style="margin-top:6px;color:#60a5fa">Mean = 600 ÷ 5 = 120 บาท</p>
+      <p style="color:#86efac">Median = 25 บาท</p>
+    </div>
+    <div class="col">
+      <h4>อันไหนสะท้อนความจริง?</h4>
+      <p>Mean 120 → <span style="color:#f87171">ดูเหมือนทุกคนมีเงินเยอะ</span> (เพราะ 500 ดึง)</p>
+      <p>Median 25 → <span style="color:#86efac">สะท้อนคนส่วนใหญ่จริง</span></p>
+      <p style="color:#fde68a;margin-top:6px;font-size:13px">มี outlier → ใช้ Median</p>
+    </div>
+  </div>
+</div>
+
+<!-- S15: Frequency Table -->
+<div class="slide s15" id="s15">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ตารางแจกแจงความถี่ช่วยสรุปข้อมูลจำนวนมากให้ดูง่าย</div>
+  <h2>📊 ตารางแจกแจงความถี่ (Frequency Table)</h2>
+  <div class="box" style="text-align:center">
+    <p style="font-size:clamp(14px,2vw,22px);color:#fff">นับว่าแต่ละช่วง/กลุ่ม มี<span style="color:#ddd6fe">กี่ตัว</span> สรุปข้อมูลเยอะให้ดูง่าย</p>
+  </div>
+  <div class="two-col">
+    <div class="col">
+      <h4>ตัวอย่าง: ช่วงคะแนนสอบ</h4>
+      <p>91-100 : ||| (3 คน)</p>
+      <p>81-90 : |||| || (7 คน)</p>
+      <p>71-80 : |||| (5 คน)</p>
+      <p>60-70 : || (2 คน)</p>
+    </div>
+    <div class="col">
+      <h4>ประโยชน์</h4>
+      <p>• เห็นว่าคนส่วนใหญ่อยู่ช่วงไหน</p>
+      <p>• หากลุ่มที่ต้องช่วยเหลือ (60-70)</p>
+      <p>• นำไปทำกราฟ Histogram ได้</p>
+      <p style="color:#ddd6fe;margin-top:4px;font-size:13px">ช่วงที่ความถี่สูงสุด = Mode</p>
+    </div>
+  </div>
+</div>
+
 <!-- S5: ทำความสะอาดข้อมูล -->
 <div class="slide s5" id="s5">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ยกตัวอย่าง: ถ้ามีนักเรียนส่วนสูง 500 ซม. ในข้อมูล ต้องทำอย่างไร? (ลบหรือตรวจสอบ)</div>
@@ -213,6 +292,27 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
       <p>🎯 จำนวนนักเรียนป่วยรายเดือน → <span style="color:#4ade80">Line Chart</span></p>
       <p>🎯 % ชาย-หญิงในโรงเรียน → <span style="color:#fb923c">Pie Chart</span></p>
       <p>🎯 ส่วนสูง vs น้ำหนัก → <span style="color:#a78bfa">Scatter Plot</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- S16: Scatter Plot -->
+<div class="slide s16" id="s16">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 Scatter plot แสดงความสัมพันธ์ 2 ตัวแปร จุดเรียงขึ้น = สัมพันธ์เชิงบวก</div>
+  <h2>⬛ อ่านกราฟกระจาย (Scatter Plot)</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>กราฟกระจายบอกอะไร?</h4>
+      <p>• แต่ละจุด = 1 ข้อมูล (2 ค่า)</p>
+      <p>• ใช้ดู<strong style="color:#a78bfa">ความสัมพันธ์</strong>ระหว่าง 2 ตัวแปร</p>
+      <p style="margin-top:8px">📈 จุดเรียงขึ้น → Positive</p>
+      <p>📉 จุดเรียงลง → Negative</p>
+      <p>☁️ จุดกระจัดกระจาย → ไม่สัมพันธ์</p>
+    </div>
+    <div class="col">
+      <h4>ตัวอย่าง: เวลาอ่านหนังสือ vs คะแนน</h4>
+      <p style="font-family:monospace;line-height:1.4;color:#86efac;font-size:13px">คะแนน│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;•<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;•<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;•<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│•<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──────<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;เวลาอ่าน</p>
+      <p style="color:#4ade80;font-size:13px">จุดเรียงขึ้น = อ่านมาก คะแนนมาก (Positive)</p>
     </div>
   </div>
 </div>
@@ -267,22 +367,76 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
   </div>
 </div>
 
+<!-- S19: กราฟหลอกตา -->
+<div class="slide s19" id="s19">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สอนคิดวิเคราะห์ — กราฟอาจถูกออกแบบให้เข้าใจผิด ต้องอ่านอย่างมีวิจารณญาณ</div>
+  <h2>⚠️ ระวังกราฟหลอกตา (Misleading Charts)</h2>
+  <div class="box" style="text-align:center">
+    <p style="font-size:clamp(14px,2vw,22px);color:#fff">บางกราฟออกแบบให้<span style="color:#f87171">เข้าใจผิด</span> ต้องดูให้รอบคอบ</p>
+  </div>
+  <div class="two-col">
+    <div class="col" style="border-color:rgba(248,113,113,.3)">
+      <h4 style="color:#fca5a5">🚩 เทคนิคหลอกตา</h4>
+      <p>• แกน Y ไม่เริ่มจาก 0 → ทำให้ดูต่างมาก</p>
+      <p>• ไม่มีตัวเลขกำกับแกน</p>
+      <p>• ใช้รูปขนาดต่างเกินจริง</p>
+      <p>• เลือกแสดงเฉพาะข้อมูลบางส่วน</p>
+    </div>
+    <div class="col" style="border-color:rgba(74,222,128,.3)">
+      <h4 style="color:#86efac">✅ ตรวจสอบอย่างไร</h4>
+      <p>• ดูว่าแกน Y เริ่มจาก 0 ไหม</p>
+      <p>• อ่านตัวเลขจริง ไม่ดูแค่รูป</p>
+      <p>• ถามว่าข้อมูลครบหรือเลือกมา</p>
+      <p>• ใครทำกราฟ เพื่ออะไร</p>
+    </div>
+  </div>
+  <div class="box" style="text-align:center;margin-top:10px">
+    <p style="font-size:clamp(13px,1.8vw,20px);color:#fde68a">นักวิเคราะห์ข้อมูลที่ดี = อ่านกราฟอย่างมีวิจารณญาณ 🧠</p>
+  </div>
+</div>
+
 <!-- S10: Quiz -->
 <div class="slide s10" id="s10">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้นักเรียนคิดคนเดียวก่อน 30 วินาที แล้วค่อยตอบ</div>
-  <h2>🎯 Quiz: ดูข้อมูลแล้ววิเคราะห์</h2>
+  <h2>🎯 Quiz 1: ดูข้อมูลแล้ววิเคราะห์</h2>
   <div class="box" style="margin-bottom:12px">
     <p style="font-size:clamp(12px,1.7vw,18px);color:rgba(255,255,255,.9)">ข้อมูลคะแนนสอบ: 85, 90, 78, 92, 88, 150, 80, 76</p>
     <p style="font-size:clamp(12px,1.6vw,17px);color:rgba(255,255,255,.7);margin-top:6px">(หมายเหตุ: คะแนนเต็ม 100)</p>
   </div>
   <p style="color:#fff;font-size:clamp(15px,2.2vw,24px);font-weight:800;text-align:center;margin-bottom:10px">ข้อมูลชุดนี้มีปัญหาอะไร?</p>
   <div class="quiz-opts">
-    <button class="qbtn" onclick="qa(this,false)">ก. ข้อมูลไม่ครบ (Missing Values)</button>
-    <button class="qbtn" onclick="qa(this,true)">ข. มี Outlier คือ 150 ซึ่งเกินคะแนนเต็ม</button>
-    <button class="qbtn" onclick="qa(this,false)">ค. ข้อมูลซ้ำกัน (Duplicates)</button>
-    <button class="qbtn" onclick="qa(this,false)">ง. ข้อมูลไม่ใช่ตัวเลข</button>
+    <button class="qbtn" onclick="qa(this)">ก. ข้อมูลไม่ครบ (Missing Values)</button>
+    <button class="qbtn" data-correct="1" onclick="qa(this)">ข. มี Outlier คือ 150 ซึ่งเกินคะแนนเต็ม</button>
+    <button class="qbtn" onclick="qa(this)">ค. ข้อมูลซ้ำกัน (Duplicates)</button>
+    <button class="qbtn" onclick="qa(this)">ง. ข้อมูลไม่ใช่ตัวเลข</button>
   </div>
-  <div class="result-msg" id="qr"></div>
+  <div class="result-msg" data-ok="🎉 ถูกต้อง! 150 เกินคะแนนเต็ม 100 = Outlier ต้องตรวจสอบ" data-no="❌ ดูที่ค่า 150 — คะแนนเต็มคือ 100 มีปัญหาอะไรไหม?"></div>
+</div>
+
+<!-- S17: Quiz 2 -->
+<div class="slide s17" id="s17">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 Quiz 2 เรื่อง Median</div>
+  <h2>🎯 Quiz 2: ข้อมูล 3, 5, 7, 9, 11 ค่ามัธยฐาน (Median) คือเท่าไหร่?</h2>
+  <div class="quiz-opts">
+    <button class="qbtn" onclick="qa(this)">ก. 5</button>
+    <button class="qbtn" data-correct="1" onclick="qa(this)">ข. 7</button>
+    <button class="qbtn" onclick="qa(this)">ค. 9</button>
+    <button class="qbtn" onclick="qa(this)">ง. 35</button>
+  </div>
+  <div class="result-msg" data-ok="🎉 ถูก! เรียงแล้วค่ากลางคือ 7 (ตัวที่ 3 จาก 5 ตัว)" data-no="❌ Median = ค่ากลางเมื่อเรียง 3,5,(7),9,11 → 7"></div>
+</div>
+
+<!-- S18: Quiz 3 -->
+<div class="slide s18" id="s18">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 Quiz 3 เรื่อง Correlation vs Causation</div>
+  <h2>🎯 Quiz 3: "ยอดขายไอศกรีมสูง + คนจมน้ำสูง" สรุปอะไรได้?</h2>
+  <div class="quiz-opts">
+    <button class="qbtn" onclick="qa(this)">ก. ไอศกรีมทำให้คนจมน้ำ</button>
+    <button class="qbtn" data-correct="1" onclick="qa(this)">ข. มีความสัมพันธ์ แต่ไม่ใช่เหตุ-ผลกัน (ทั้งคู่เกิดจากอากาศร้อน)</button>
+    <button class="qbtn" onclick="qa(this)">ค. คนจมน้ำทำให้ขายไอศกรีมดี</button>
+    <button class="qbtn" onclick="qa(this)">ง. ข้อมูลผิดทั้งคู่</button>
+  </div>
+  <div class="result-msg" data-ok="🎉 ถูก! Correlation ≠ Causation — สัมพันธ์กันไม่ได้แปลว่าเป็นเหตุ-ผล" data-no="❌ มีความสัมพันธ์แต่ไม่ใช่เหตุ-ผล (ทั้งคู่เกิดจากอากาศร้อน)"></div>
 </div>
 
 <!-- S11: งาน -->
@@ -303,6 +457,31 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
   <button class="timer-btn" onclick="startTimer(25)" style="margin-top:14px;font-size:16px;padding:12px 28px">⏱ เริ่มจับเวลา 25 นาที</button>
 </div>
 
+<!-- S20: Big Data & AI -->
+<div class="slide s20" id="s20">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ต่อยอดสู่อนาคต — ทักษะวิเคราะห์ข้อมูลคือพื้นฐานของ AI และ Big Data</div>
+  <h2>🌐 จากข้อมูลโรงเรียน สู่ Big Data & AI</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>📦 Big Data คืออะไร?</h4>
+      <p>ข้อมูลขนาดมหาศาล — เป็นล้านๆ แถว</p>
+      <p style="color:#ddd6fe;margin-top:6px">• ข้อมูลผู้ใช้ในแอป</p>
+      <p>• การซื้อขายออนไลน์</p>
+      <p>• ข้อมูลจากเซนเซอร์ IoT</p>
+    </div>
+    <div class="col">
+      <h4>🤖 AI ใช้ข้อมูลอย่างไร</h4>
+      <p>• เรียนรู้จากข้อมูลจำนวนมาก</p>
+      <p>• ทำนายแนวโน้มอนาคต</p>
+      <p>• แนะนำสิ่งที่เราน่าจะชอบ</p>
+      <p style="color:#ddd6fe;margin-top:4px">ทักษะวันนี้ = พื้นฐานของ AI!</p>
+    </div>
+  </div>
+  <div class="box" style="text-align:center;margin-top:12px">
+    <p style="font-size:clamp(14px,2vw,22px);color:#fde68a">วิเคราะห์ข้อมูลเป็น = เข้าใจและสร้างเทคโนโลยีแห่งอนาคตได้ 🚀</p>
+  </div>
+</div>
+
 <!-- S12: สรุป -->
 <div class="slide s12" id="s12">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้นักเรียนนำเสนอผลงานสั้นๆ และบอกว่า "ข้อมูลชุดนี้บอกเราว่าอะไร?"</div>
@@ -321,7 +500,7 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
 <div class="nav">
   <button class="nav-btn" onclick="go(-1)">◀</button>
   <div class="dots" id="dots"></div>
-  <span class="counter" id="counter">1 / 12</span>
+  <span class="counter" id="counter">1 / 20</span>
   <button class="nav-btn" onclick="go(1)">▶</button>
 </div>
 
@@ -364,13 +543,7 @@ function startTimer(min) {
   tick();
   timerInterval = setInterval(tick, 1000);
 }
-function qa(btn, correct) {
-  const opts = btn.parentElement.querySelectorAll('.qbtn');
-  opts.forEach(b => b.disabled = true);
-  const msg = document.getElementById('qr');
-  if (correct) { btn.classList.add('correct'); msg.textContent = '🎉 ถูกต้อง! 150 เกินคะแนนเต็ม 100 = Outlier ต้องตรวจสอบ'; msg.style.color = '#4ade80'; msg.style.display = 'block'; }
-  else { btn.classList.add('wrong'); msg.textContent = '❌ ดูที่ค่า 150 — คะแนนเต็มคือ 100 มีปัญหาอะไรไหม?'; msg.style.color = '#f87171'; msg.style.display = 'block'; }
-}
+function qa(btn){const opts=btn.closest('.quiz-opts');const correct=btn.dataset.correct==='1';opts.querySelectorAll('.qbtn').forEach(b=>b.disabled=true);btn.classList.add(correct?'correct':'wrong');if(!correct)opts.querySelectorAll('.qbtn').forEach(b=>{if(b.dataset.correct==='1')b.classList.add('correct')});const msg=btn.closest('.slide').querySelector('.result-msg');msg.style.display='block';msg.style.color=correct?'#4ade80':'#f87171';msg.textContent=correct?msg.dataset.ok:msg.dataset.no;}
 </script>
 </body>
 </html>

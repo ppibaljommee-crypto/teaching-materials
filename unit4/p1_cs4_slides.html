@@ -23,6 +23,14 @@ body{font-family:'Sarabun',sans-serif;background:#1a0800;overflow:hidden;height:
 .s10{background:linear-gradient(135deg,#060c0a,#134e4a,#0f766e)}
 .s11{background:linear-gradient(135deg,#1a0800,#7c2d12,#c2410c)}
 .s12{background:linear-gradient(135deg,#0a1a00,#14532d,#166534)}
+.s13{background:linear-gradient(135deg,#1a0a00,#7c2d12,#9a3412)}
+.s14{background:linear-gradient(135deg,#001a14,#134e4a,#0f766e)}
+.s15{background:linear-gradient(135deg,#0a0010,#3b0764,#6d28d9)}
+.s16{background:linear-gradient(135deg,#1a0008,#7f1d1d,#b91c1c)}
+.s17{background:linear-gradient(135deg,#0f0a00,#422006,#a16207)}
+.s18{background:linear-gradient(135deg,#001505,#14532d,#15803d)}
+.s19{background:linear-gradient(135deg,#001220,#0c4a6e,#0369a1)}
+.s20{background:linear-gradient(135deg,#1a0800,#7c2d12,#ea580c)}
 h1{font-size:clamp(28px,5.5vw,62px);font-weight:800;color:#fff;text-align:center;line-height:1.15}
 h2{font-size:clamp(20px,3.8vw,44px);font-weight:700;color:#fff;text-align:center;line-height:1.3}
 p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:center;margin-top:12px}
@@ -94,6 +102,23 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
     <li><span class="sn">4</span>ตัวละครเรียกว่า <strong style="color:#fde68a">Sprite</strong></li>
     <li><span class="sn">5</span>หน่วย 4 นี้เราจะสร้าง <strong style="color:#4ade80">การ์ตูนสั้น 3 ฉาก!</strong></li>
   </ul>
+</div>
+
+<!-- S13: ภาพรวมหมวดบล็อก -->
+<div class="slide s13" id="s13">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้นักเรียนจำสีแต่ละหมวด — สีบอกหน้าที่ของบล็อก เหมือนสีของไฟจราจร</div>
+  <h2>🌈 บล็อกแต่ละสีทำหน้าที่ต่างกัน</h2>
+  <p class="sub" style="margin-bottom:8px">ScratchJr แบ่งบล็อกเป็นหมวดสี จำสีได้ = ใช้เป็นเร็ว!</p>
+  <div class="block-demo">
+    <div class="scratch-block block-event">🟡 เหลือง = เริ่มต้น (Event)</div>
+    <div class="scratch-block block-motion">🔵 น้ำเงิน = เคลื่อนที่ (Motion)</div>
+    <div class="scratch-block block-looks">🟣 ม่วง = รูปร่าง (Looks)</div>
+    <div class="scratch-block block-sound">🩷 ชมพู = เสียง (Sound)</div>
+    <div class="scratch-block block-control">🟠 ส้ม = ควบคุม (Control)</div>
+  </div>
+  <div class="box" style="text-align:center;margin-top:14px">
+    <p style="font-size:clamp(14px,2vw,22px);color:#fde68a">วันนี้เราจะเรียนทุกสี แล้วเอามาต่อกันเป็นการ์ตูน 🎬</p>
+  </div>
 </div>
 
 <!-- S3: การสั่งงานคืออะไร -->
@@ -171,6 +196,33 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
       <p>• ใช้ทำ<strong style="color:#fde68a">ปุ่มกด</strong>หรือ<strong style="color:#fde68a">อินเทอร์แอคทีฟ</strong></p>
       <p>• แตะกี่ครั้งก็ได้ ทำงานทุกครั้ง</p>
     </div>
+  </div>
+</div>
+
+<!-- S14: Wait block -->
+<div class="slide s14" id="s14">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 Wait = หยุดรอ ทำให้การ์ตูนมีจังหวะ ไม่รีบจนดูไม่ทัน — สาธิตก่อน/หลังใส่ Wait</div>
+  <h2>⏳ Wait Block — รอจังหวะ</h2>
+  <div class="block-demo" style="margin-bottom:14px">
+    <div class="scratch-block block-control">⏳ Wait [10] — รอสักครู่</div>
+  </div>
+  <div class="two-col">
+    <div class="col" style="border-color:rgba(248,113,113,.4)">
+      <h4 style="color:#f87171">❌ ไม่มี Wait</h4>
+      <p>พูด "สวัสดี"</p>
+      <p>พูด "ฉันชื่อมานี"</p>
+      <p style="color:#f87171;margin-top:6px">→ ข้อความเด้งเร็วมาก อ่านไม่ทัน!</p>
+    </div>
+    <div class="col" style="border-color:rgba(74,222,128,.4)">
+      <h4 style="color:#4ade80">✅ ใส่ Wait</h4>
+      <p>พูด "สวัสดี"</p>
+      <p><strong style="color:#fde68a">รอ 10</strong></p>
+      <p>พูด "ฉันชื่อมานี"</p>
+      <p style="color:#4ade80;margin-top:6px">→ มีจังหวะ ดูเป็นธรรมชาติ!</p>
+    </div>
+  </div>
+  <div class="box" style="text-align:center;margin-top:12px">
+    <p style="font-size:clamp(14px,2vw,22px);color:#fde68a">ตัวเลขใน Wait = ระยะเวลารอ (10 ≈ 1 วินาที)</p>
   </div>
 </div>
 
@@ -278,6 +330,78 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
   </div>
 </div>
 
+<!-- S15: สคริปต์สมบูรณ์ -->
+<div class="slide s15" id="s15">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 อ่านสคริปต์ตามลำดับ ให้นักเรียนทายว่าตัวละครจะทำอะไรทีละขั้น</div>
+  <h2>🧩 ต่อบล็อกเป็นสคริปต์สมบูรณ์</h2>
+  <p class="sub" style="margin-bottom:8px">เอาบล็อกทุกสีมาต่อกัน = ฉากการ์ตูน 1 ฉาก</p>
+  <div class="block-demo" style="flex-direction:column;align-items:stretch;max-width:560px;margin:0 auto">
+    <div class="scratch-block block-event">🟢 เมื่อกดธงเขียว</div>
+    <div class="scratch-block block-looks">💬 พูด "สวัสดี ฉันชื่อแมวเหมียว"</div>
+    <div class="scratch-block block-control">⏳ รอ 10</div>
+    <div class="scratch-block block-motion">➡️ เดินขวา 5</div>
+    <div class="scratch-block block-sound">🔊 เล่นเสียง "เหมียว"</div>
+    <div class="scratch-block block-looks">🎨 เปลี่ยนฉาก</div>
+  </div>
+  <div class="box" style="text-align:center;margin-top:12px">
+    <p style="font-size:clamp(13px,1.8vw,20px);color:#fde68a">บล็อกทำงานจากบนลงล่าง: ทักทาย → รอ → เดิน → ส่งเสียง → เปลี่ยนฉาก</p>
+  </div>
+</div>
+
+<!-- S16: Debug -->
+<div class="slide s16" id="s16">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ปัญหายอดฮิตของ ScratchJr — ให้นักเรียนรู้วิธีแก้เองก่อนยกมือถาม</div>
+  <h2>🐛 ทำไมการ์ตูนไม่ทำงาน? (Debug)</h2>
+  <ul class="step-list">
+    <li><span class="sn">1</span>❌ <strong style="color:#f87171">ลืมบล็อกเริ่ม</strong> → ต้องมี 🟢 เมื่อกดธงเขียว ที่หัวสุด</li>
+    <li><span class="sn">2</span>❌ <strong style="color:#f87171">บล็อกไม่ติดกัน</strong> → ลากให้ชนกันจนคลิกเข้าที่</li>
+    <li><span class="sn">3</span>❌ <strong style="color:#f87171">ใส่เลขเป็น 0</strong> → ตัวละครไม่ขยับ ใส่เลขมากกว่า 0</li>
+    <li><span class="sn">4</span>❌ <strong style="color:#f87171">เร็วเกินไป</strong> → ใส่บล็อก ⏳ รอ คั่นระหว่างคำสั่ง</li>
+  </ul>
+  <div class="box" style="text-align:center;margin-top:10px">
+    <p style="font-size:clamp(14px,2vw,22px);color:#fde68a">เจอบั๊ก = ลองแก้ทีละจุด แล้วกดธงเขียวทดสอบใหม่ 🔧</p>
+  </div>
+</div>
+
+<!-- S17: Quiz 1 -->
+<div class="slide s17" id="s17">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 Quiz 1 ให้นักเรียนยกมือตอบพร้อมกัน</div>
+  <h2>🎯 Quiz 1: บล็อกไหนใช้เริ่มต้นโปรแกรม?</h2>
+  <div class="quiz-opts">
+    <button class="qbtn" data-correct="1" onclick="qa(this)">A. 🟢 เมื่อกดธงเขียว (Green Flag)</button>
+    <button class="qbtn" onclick="qa(this)">B. ➡️ เดินขวา (Move Right)</button>
+    <button class="qbtn" onclick="qa(this)">C. 💬 พูด (Say)</button>
+    <button class="qbtn" onclick="qa(this)">D. 🔊 เล่นเสียง (Play Sound)</button>
+  </div>
+  <div class="result-msg" data-ok="🎉 ถูก! บล็อกธงเขียวคือจุดเริ่มต้นโปรแกรม วางไว้หัวสุด" data-no="❌ บล็อกเริ่มต้นคือ 🟢 เมื่อกดธงเขียว (Event)"></div>
+</div>
+
+<!-- S18: Quiz 2 -->
+<div class="slide s18" id="s18">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 Quiz 2 เรื่อง Loop</div>
+  <h2>🎯 Quiz 2: อยากให้ตัวละครเดินขวา 5 ครั้งซ้ำๆ ควรใช้บล็อกอะไร?</h2>
+  <div class="quiz-opts">
+    <button class="qbtn" onclick="qa(this)">A. 💬 Say (พูด)</button>
+    <button class="qbtn" data-correct="1" onclick="qa(this)">B. 🔁 Repeat (ทำซ้ำ)</button>
+    <button class="qbtn" onclick="qa(this)">C. 🙈 Hide (ซ่อน)</button>
+    <button class="qbtn" onclick="qa(this)">D. 🎤 Record (อัดเสียง)</button>
+  </div>
+  <div class="result-msg" data-ok="🎉 ถูก! Repeat (ทำซ้ำ) ช่วยให้ไม่ต้องต่อบล็อกเดิมหลายอัน" data-no="❌ ใช้ 🔁 Repeat เพื่อทำคำสั่งซ้ำหลายครั้ง"></div>
+</div>
+
+<!-- S19: Quiz 3 -->
+<div class="slide s19" id="s19">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 Quiz 3 เรื่องลำดับคำสั่ง</div>
+  <h2>🎯 Quiz 3: คอมพิวเตอร์ทำตามคำสั่งในลำดับใด?</h2>
+  <div class="quiz-opts">
+    <button class="qbtn" data-correct="1" onclick="qa(this)">A. จากบนลงล่าง ทีละบล็อก</button>
+    <button class="qbtn" onclick="qa(this)">B. สุ่มทำบล็อกไหนก่อนก็ได้</button>
+    <button class="qbtn" onclick="qa(this)">C. จากล่างขึ้นบน</button>
+    <button class="qbtn" onclick="qa(this)">D. ทำทุกบล็อกพร้อมกัน</button>
+  </div>
+  <div class="result-msg" data-ok="🎉 ถูก! คอมพิวเตอร์ทำตามลำดับบนลงล่างเสมอ ลำดับจึงสำคัญ" data-no="❌ คอมพิวเตอร์ทำจากบนลงล่างทีละบล็อก ลำดับสำคัญมาก"></div>
+</div>
+
 <!-- S10: ออกแบบโปรเจกต์ -->
 <div class="slide s10" id="s10">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 แจกใบงาน p1_cs4_project.html ให้นักเรียนวางแผนก่อนเริ่มสร้างใน ScratchJr</div>
@@ -309,6 +433,30 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
   <button class="timer-btn" onclick="startTimer(25)" style="margin-top:14px;font-size:16px;padding:12px 28px">⏱ เริ่มจับเวลา 25 นาที</button>
 </div>
 
+<!-- S20: นำเสนอผลงาน -->
+<div class="slide s20" id="s20">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้นักเรียน 4-5 คนฉายการ์ตูนหน้าชั้น ชมเชยความตั้งใจของทุกคน</div>
+  <h2>🎤 นำเสนอการ์ตูนของเรา</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>🗣️ เล่าโปรเจกต์</h4>
+      <p>• การ์ตูนของเราเรื่องอะไร</p>
+      <p>• มีตัวละครอะไรบ้าง</p>
+      <p>• ใช้บล็อกอะไรบ้าง</p>
+      <p>• ภูมิใจตรงไหนที่สุด</p>
+    </div>
+    <div class="col">
+      <h4>💖 ชมผลงานเพื่อน</h4>
+      <p>• ตั้งใจดูเพื่อนนำเสนอ</p>
+      <p>• ปรบมือให้กำลังใจ</p>
+      <p>• บอกสิ่งที่ชอบในงานเพื่อน</p>
+    </div>
+  </div>
+  <div class="box" style="text-align:center;margin-top:12px">
+    <p style="font-size:clamp(14px,2vw,22px);color:#fde68a">ทุกคนเป็นนักสร้างการ์ตูนได้! เก่งขึ้นทุกครั้งที่ลองทำ 🌟</p>
+  </div>
+</div>
+
 <!-- S12: สรุป -->
 <div class="slide s12" id="s12">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้นักเรียนแต่ละคนอธิบายโปรเจกต์ตัวเองสั้นๆ 1 นาที</div>
@@ -327,7 +475,7 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
 <div class="nav">
   <button class="nav-btn" onclick="go(-1)">◀</button>
   <div class="dots" id="dots"></div>
-  <span class="counter" id="counter">1 / 12</span>
+  <span class="counter" id="counter">1 / 20</span>
   <button class="nav-btn" onclick="go(1)">▶</button>
 </div>
 
@@ -372,19 +520,7 @@ function startTimer(min) {
   timerInterval = setInterval(tick, 1000);
 }
 
-function qa(btn, correct) {
-  const opts = btn.parentElement.querySelectorAll('.qbtn');
-  opts.forEach(b => b.disabled = true);
-  if (correct) {
-    btn.classList.add('correct');
-    const msg = btn.parentElement.nextElementSibling;
-    if (msg) { msg.textContent = '🎉 ถูกต้อง!'; msg.style.color = '#4ade80'; msg.style.display = 'block'; }
-  } else {
-    btn.classList.add('wrong');
-    const msg = btn.parentElement.nextElementSibling;
-    if (msg) { msg.textContent = '❌ ลองคิดใหม่นะ'; msg.style.color = '#f87171'; msg.style.display = 'block'; }
-  }
-}
+function qa(btn){const opts=btn.closest('.quiz-opts');const correct=btn.dataset.correct==='1';opts.querySelectorAll('.qbtn').forEach(b=>b.disabled=true);btn.classList.add(correct?'correct':'wrong');if(!correct)opts.querySelectorAll('.qbtn').forEach(b=>{if(b.dataset.correct==='1')b.classList.add('correct')});const msg=btn.closest('.slide').querySelector('.result-msg');msg.style.display='block';msg.style.color=correct?'#4ade80':'#f87171';msg.textContent=correct?msg.dataset.ok:msg.dataset.no;}
 </script>
 </body>
 </html>
