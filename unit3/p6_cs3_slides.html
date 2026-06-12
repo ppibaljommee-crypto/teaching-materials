@@ -23,6 +23,14 @@ body{font-family:'Sarabun',sans-serif;background:#0a0020;overflow:hidden;height:
 .s10{background:linear-gradient(135deg,#050015,#1e0050,#3730a3,#7c3aed)}
 .s11{background:linear-gradient(135deg,#040010,#120035,#2e1065,#6d28d9)}
 .s12{background:linear-gradient(135deg,#0a0020,#1e0050,#3b0764,#a855f7)}
+.s13{background:linear-gradient(135deg,#08001a,#312e81,#4338ca)}
+.s14{background:linear-gradient(135deg,#0a0015,#3b0764,#7e22ce)}
+.s15{background:linear-gradient(135deg,#001012,#134e4a,#0f766e)}
+.s16{background:linear-gradient(135deg,#1a0010,#831843,#be185d)}
+.s17{background:linear-gradient(135deg,#050015,#1e1b4b,#4f46e5)}
+.s18{background:linear-gradient(135deg,#0a0020,#4c1d95,#7c3aed)}
+.s19{background:linear-gradient(135deg,#001505,#14532d,#15803d)}
+.s20{background:linear-gradient(135deg,#0a0020,#2e1065,#6d28d9)}
 h1{font-size:clamp(28px,5.5vw,62px);font-weight:800;color:#fff;text-align:center;line-height:1.15}
 h2{font-size:clamp(20px,3.8vw,44px);font-weight:700;color:#fff;text-align:center;line-height:1.3}
 p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:center;margin-top:12px}
@@ -108,6 +116,33 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
   </div>
 </div>
 
+<!-- S13: ทบทวนแนวคิดพื้นฐาน -->
+<div class="slide s13" id="s13">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ทบทวน 3 แนวคิดพื้นฐานก่อนต่อยอด ให้นักเรียนยกตัวอย่างแต่ละอัน</div>
+  <h2>🧱 ทบทวน 3 เสาหลักของการเขียนโปรแกรม</h2>
+  <p class="sub">ทุกโปรแกรมในโลกสร้างจาก 3 สิ่งนี้</p>
+  <div class="ps-steps" style="display:flex;gap:10px;margin-top:18px;flex-wrap:wrap">
+    <div class="col" style="flex:1;min-width:160px;text-align:center">
+      <div style="font-size:38px">➡️</div>
+      <h4>1. Sequence</h4>
+      <p>ทำคำสั่งเรียงตามลำดับ ทีละขั้น</p>
+    </div>
+    <div class="col" style="flex:1;min-width:160px;text-align:center">
+      <div style="font-size:38px">🔄</div>
+      <h4>2. Loop</h4>
+      <p>ทำคำสั่งซ้ำหลายครั้งอัตโนมัติ</p>
+    </div>
+    <div class="col" style="flex:1;min-width:160px;text-align:center">
+      <div style="font-size:38px">🔀</div>
+      <h4>3. Conditional</h4>
+      <p>เลือกทำตามเงื่อนไข ถ้า...แล้ว</p>
+    </div>
+  </div>
+  <div class="box" style="text-align:center;margin-top:14px">
+    <p style="color:#d8b4fe;font-size:clamp(13px,1.8vw,20px)">วันนี้เราจะต่อยอดทั้ง 3 ให้ซับซ้อนขึ้น + เพิ่ม Function</p>
+  </div>
+</div>
+
 <!-- S3: Conditional ขั้นสูง -->
 <div class="slide s3" id="s3">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ทบทวน If ง่ายๆ ก่อน แล้วค่อยแนะนำ If-Else และ If-ElseIf</div>
@@ -168,6 +203,31 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
   </div>
 </div>
 
+<!-- S14: ตัวอย่าง Nested Loop วาดตาราง -->
+<div class="slide s14" id="s14">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้นักเรียนเดาผลลัพธ์ก่อน แล้วชี้ให้เห็นว่ารอบนอก=แถว รอบใน=คอลัมน์</div>
+  <h2>🟦 Nested Loop วาดตาราง 3×3</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>โค้ด</h4>
+      <div class="code-block">
+        <span class="code-kw">ทำซ้ำ</span> <span class="code-num">3</span> ครั้ง <span class="code-comment">// แถว</span><br>
+        &nbsp;&nbsp;<span class="code-kw">ทำซ้ำ</span> <span class="code-num">3</span> ครั้ง <span class="code-comment">// คอลัมน์</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-fn">วาดสี่เหลี่ยม</span>()<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;ขยับขวา<br>
+        &nbsp;&nbsp;ขึ้นบรรทัดใหม่
+      </div>
+    </div>
+    <div class="col">
+      <h4>ผลลัพธ์</h4>
+      <div style="font-size:clamp(20px,4vw,40px);text-align:center;line-height:1.3;letter-spacing:6px;margin-top:8px">
+        🟦🟦🟦<br>🟦🟦🟦<br>🟦🟦🟦
+      </div>
+      <p style="text-align:center;color:#c084fc;margin-top:10px;font-size:13px">รอบนอก × รอบใน = 3 × 3 = วาด 9 ช่อง</p>
+    </div>
+  </div>
+</div>
+
 <!-- S5: Function คืออะไร -->
 <div class="slide s5" id="s5">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 อธิบาย Function ด้วยตัวอย่าง: "สูตรทำข้าวผัด — ทำครั้งเดียว เรียกใช้ได้หลายครั้ง"</div>
@@ -207,6 +267,35 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
     <li><span class="sn">3</span><strong style="color:#86efac">อ่านง่ายขึ้น</strong> — ชื่อฟังก์ชันบอกว่าทำอะไร</li>
     <li><span class="sn">4</span><strong style="color:#fde047">นำกลับมาใช้</strong> — ฟังก์ชันดีๆ ใช้ได้ในโปรเจกต์อื่น</li>
   </ul>
+</div>
+
+<!-- S15: Function มีพารามิเตอร์ -->
+<div class="slide s15" id="s15">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 พารามิเตอร์ = "ช่องว่างให้เติมค่า" ทำให้ฟังก์ชันยืดหยุ่นขึ้น เปรียบกับสูตรที่ปรับได้</div>
+  <h2>🎛️ Function แบบส่งค่าเข้า (Parameter)</h2>
+  <div class="box" style="text-align:center">
+    <p style="font-size:clamp(14px,2vw,22px);color:#fff">Parameter = <span style="color:#5eead4">ค่าที่ส่งเข้าฟังก์ชัน</span> ทำให้ฟังก์ชันเดียวทำงานได้หลายแบบ</p>
+  </div>
+  <div class="two-col" style="margin-top:12px">
+    <div class="col">
+      <h4>ฟังก์ชันธรรมดา</h4>
+      <div class="code-block" style="font-size:12px">
+        <span class="code-fn">สร้าง</span> "วาดสี่เหลี่ยมเล็ก"<br>
+        &nbsp;&nbsp;<span class="code-kw">ทำซ้ำ</span> 4: เดิน 50, หมุน 90<br>
+        <span class="code-comment">// ได้ขนาดเดียวเท่านั้น</span>
+      </div>
+    </div>
+    <div class="col">
+      <h4>ฟังก์ชันมีพารามิเตอร์</h4>
+      <div class="code-block" style="font-size:12px">
+        <span class="code-fn">สร้าง</span> "วาดสี่เหลี่ยม(<span class="code-num">ขนาด</span>)"<br>
+        &nbsp;&nbsp;<span class="code-kw">ทำซ้ำ</span> 4: เดิน <span class="code-num">ขนาด</span>, หมุน 90<br>
+        <span class="code-fn">เรียก</span> วาดสี่เหลี่ยม(<span class="code-num">50</span>)<br>
+        <span class="code-fn">เรียก</span> วาดสี่เหลี่ยม(<span class="code-num">100</span>)<br>
+        <span class="code-comment">// เล็กหรือใหญ่ก็ได้!</span>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- S7: การ Debug -->
@@ -254,6 +343,20 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
   </div>
 </div>
 
+<!-- S16: เกมหาบั๊ก -->
+<div class="slide s16" id="s16">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้นักเรียนอ่านโค้ดแล้วหาบั๊กเอง 2 นาที ก่อนกดเฉลย — ฝึกทักษะ Debug จริง</div>
+  <h2>🔍 เกม: หาบั๊กในโค้ดนี้!</h2>
+  <p class="sub">โจทย์: อยากวาดสี่เหลี่ยม (4 ด้าน) แต่โค้ดผิด</p>
+  <div class="code-block" style="width:100%;max-width:640px;text-align:center">
+    <span class="code-kw">ทำซ้ำ</span> <span class="code-num" style="color:#f87171">3</span> ครั้ง <span class="code-comment">// 👈 ตรงนี้น่าสงสัย</span><br>
+    &nbsp;&nbsp;เดินหน้า 100<br>
+    &nbsp;&nbsp;หมุนขวา <span class="code-num">90</span> องศา
+  </div>
+  <button class="reveal-btn" onclick="rev('r16')">เฉลย 🐛</button>
+  <div id="r16" class="reveal-text">บั๊ก: สี่เหลี่ยมมี 4 ด้าน ต้องทำซ้ำ <strong style="color:#86efac">4</strong> ครั้ง ไม่ใช่ 3 → แก้เลข 3 เป็น 4</div>
+</div>
+
 <!-- S9: ทดสอบ Quiz -->
 <div class="slide s9" id="s9">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้นักเรียนตอบโดยไม่ดูสไลด์ก่อน</div>
@@ -264,12 +367,38 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
     &nbsp;&nbsp;&nbsp;&nbsp;เดินหน้า
   </div>
   <div class="quiz-opts" style="margin-top:16px">
-    <button class="qbtn" onclick="qa(this,false)">A. 3 ครั้ง</button>
-    <button class="qbtn" onclick="qa(this,false)">B. 4 ครั้ง</button>
-    <button class="qbtn" onclick="qa(this,false)">C. 7 ครั้ง (3+4)</button>
-    <button class="qbtn" onclick="qa(this,true)">D. 12 ครั้ง (3×4)</button>
+    <button class="qbtn" onclick="qa(this)">A. 3 ครั้ง</button>
+    <button class="qbtn" onclick="qa(this)">B. 4 ครั้ง</button>
+    <button class="qbtn" onclick="qa(this)">C. 7 ครั้ง (3+4)</button>
+    <button class="qbtn" data-correct="1" onclick="qa(this)">D. 12 ครั้ง (3×4)</button>
   </div>
-  <div id="qa-msg" class="result-msg"></div>
+  <div class="result-msg" data-ok="🎉 ถูกต้อง! 3×4 = 12 ครั้ง Loop ซ้อนกันคูณกัน" data-no="❌ ลองใหม่ — Loop ซ้อนกันนับ 3×4 = 12 ครั้ง"></div>
+</div>
+
+<!-- S17: Quiz 2 -->
+<div class="slide s17" id="s17">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 Quiz 2 เรื่อง If-Else</div>
+  <h2>🎯 Quiz 2: ถ้าอยากให้ "ถ้ามีกำแพง→หมุน ไม่งั้น→เดินหน้า" ใช้อะไร?</h2>
+  <div class="quiz-opts">
+    <button class="qbtn" onclick="qa(this)">A. Loop (วนซ้ำ)</button>
+    <button class="qbtn" data-correct="1" onclick="qa(this)">B. If-Else (ถ้า...ไม่งั้น...)</button>
+    <button class="qbtn" onclick="qa(this)">C. Function (ฟังก์ชัน)</button>
+    <button class="qbtn" onclick="qa(this)">D. Sequence (เรียงลำดับ)</button>
+  </div>
+  <div class="result-msg" data-ok="🎉 ถูก! If-Else เลือกทำ 1 ใน 2 ทางตามเงื่อนไข" data-no="❌ ใช้ If-Else เพื่อเลือกทำคนละทางเมื่อเงื่อนไขจริงหรือเท็จ"></div>
+</div>
+
+<!-- S18: Quiz 3 -->
+<div class="slide s18" id="s18">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 Quiz 3 เรื่อง Function</div>
+  <h2>🎯 Quiz 3: ข้อดีหลักของ Function คืออะไร?</h2>
+  <div class="quiz-opts">
+    <button class="qbtn" onclick="qa(this)">A. ทำให้โปรแกรมทำงานช้าลง</button>
+    <button class="qbtn" data-correct="1" onclick="qa(this)">B. เขียนครั้งเดียว เรียกใช้ซ้ำได้ ลดโค้ดซ้ำ</button>
+    <button class="qbtn" onclick="qa(this)">C. ทำให้โค้ดยาวขึ้นเสมอ</button>
+    <button class="qbtn" onclick="qa(this)">D. ใช้แทนการบันทึกไฟล์</button>
+  </div>
+  <div class="result-msg" data-ok="🎉 ถูก! Function เขียนครั้งเดียวเรียกใช้ซ้ำได้ ลดโค้ดซ้ำและแก้ง่าย" data-no="❌ Function ช่วยลดโค้ดซ้ำ เขียนครั้งเดียวเรียกใช้ได้หลายครั้ง"></div>
 </div>
 
 <!-- S10: Challenge -->
@@ -289,6 +418,24 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
   <div id="r10" class="reveal-text">จำนวนกลีบ = 6, หมุนแต่ละกลีบ = 360÷6 = 60 องศา</div>
 </div>
 
+<!-- S19: Decomposition -->
+<div class="slide s19" id="s19">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 เชื่อมแนวคิดแก้ปัญหา — งานใหญ่แตกเป็นงานเล็ก แต่ละงานเป็น Function</div>
+  <h2>🧩 Decomposition — แตกงานใหญ่เป็นฟังก์ชันย่อย</h2>
+  <div class="box" style="text-align:center">
+    <p style="font-size:clamp(14px,2vw,22px);color:#fff">โปรแกรมเมอร์มือโปร: แตกปัญหาใหญ่เป็น<span style="color:#86efac">งานย่อยๆ</span> แล้วเขียนเป็น Function แต่ละอัน</p>
+  </div>
+  <div class="code-block" style="width:100%;max-width:700px;margin-top:12px">
+    <span class="code-comment">// งานใหญ่: วาดบ้าน 🏠</span><br>
+    <span class="code-fn">วาดบ้าน</span>()<br>
+    &nbsp;&nbsp;<span class="code-fn">วาดผนัง</span>() <span class="code-comment">// งานย่อย 1</span><br>
+    &nbsp;&nbsp;<span class="code-fn">วาดหลังคา</span>() <span class="code-comment">// งานย่อย 2</span><br>
+    &nbsp;&nbsp;<span class="code-fn">วาดประตู</span>() <span class="code-comment">// งานย่อย 3</span><br>
+    &nbsp;&nbsp;<span class="code-fn">วาดหน้าต่าง</span>() <span class="code-comment">// งานย่อย 4</span>
+  </div>
+  <p class="sub" style="margin-top:10px;font-size:clamp(13px,1.8vw,20px)">แต่ละงานย่อยทำง่าย + รวมกันเป็นงานใหญ่ที่สมบูรณ์</p>
+</div>
+
 <!-- S11: กิจกรรมหลัก -->
 <div class="slide s11" id="s11">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 เปิด Code.org Course F ให้นักเรียน ทำ Level ที่กำหนด แจกใบงาน ป.6</div>
@@ -300,6 +447,31 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
     <p style="margin-top:10px;color:rgba(255,255,255,.55);font-size:14px">บันทึกภาพหน้าจอผลงานแต่ละด่านลงใบงาน</p>
   </div>
   <button class="timer-btn" onclick="startTimer(30)" style="margin-top:14px;font-size:15px;padding:10px 24px">⏱ 30 นาที</button>
+</div>
+
+<!-- S20: Coding ในโลกจริง -->
+<div class="slide s20" id="s20">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สร้างแรงบันดาลใจ — ทักษะที่เรียนวันนี้ใช้สร้างสิ่งเหล่านี้ในชีวิตจริง</div>
+  <h2>🌍 Coding ใช้ทำอะไรในโลกจริง?</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>💡 สิ่งรอบตัวที่ใช้โค้ด</h4>
+      <p>📱 แอปและเกมในมือถือ</p>
+      <p>🤖 หุ่นยนต์และ AI</p>
+      <p>🚗 รถยนต์ไฟฟ้า/ขับเอง</p>
+      <p>🎬 เอฟเฟกต์ในหนัง/แอนิเมชัน</p>
+    </div>
+    <div class="col">
+      <h4>🚀 อาชีพสาย Coding</h4>
+      <p>• นักพัฒนาเกม / แอป</p>
+      <p>• นักวิทยาศาสตร์ข้อมูล</p>
+      <p>• วิศวกร AI / หุ่นยนต์</p>
+      <p style="color:#d8b4fe;margin-top:6px">เริ่มจากวันนี้ ก็เป็นได้!</p>
+    </div>
+  </div>
+  <div class="box" style="text-align:center;margin-top:12px">
+    <p style="color:#c084fc;font-size:clamp(14px,2vw,22px)">ทักษะ Loop, Function, Debug ที่เรียนวันนี้ = พื้นฐานของทุกโปรแกรม 💪</p>
+  </div>
 </div>
 
 <!-- S12: สรุป -->
@@ -319,7 +491,7 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
 <div class="nav">
   <button class="nav-btn" onclick="go(-1)">◀</button>
   <div class="dots" id="dots"></div>
-  <span class="counter" id="counter">1 / 12</span>
+  <span class="counter" id="counter">1 / 20</span>
   <button class="nav-btn" onclick="go(1)">▶</button>
 </div>
 
@@ -332,7 +504,7 @@ function showSlide(n){slides[cur].classList.remove('active');document.querySelec
 function go(d){showSlide(cur+d)}
 document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')go(1);if(e.key==='ArrowLeft')go(-1);});
 function rev(id){document.getElementById(id).classList.toggle('show')}
-function qa(btn,correct){document.querySelectorAll('.qbtn').forEach(b=>b.disabled=true);btn.classList.add(correct?'correct':'wrong');const msg=document.getElementById('qa-msg');msg.style.display='block';msg.style.color=correct?'#4ade80':'#f87171';msg.textContent=correct?'🎉 ถูกต้อง! 3×4 = 12 ครั้ง Loop ซ้อนกันคูณกัน':'❌ ลองใหม่ — Loop ซ้อนกันนับ 3×4 = 12 ครั้ง';}
+function qa(btn){const opts=btn.closest('.quiz-opts');const correct=btn.dataset.correct==='1';opts.querySelectorAll('.qbtn').forEach(b=>b.disabled=true);btn.classList.add(correct?'correct':'wrong');if(!correct)opts.querySelectorAll('.qbtn').forEach(b=>{if(b.dataset.correct==='1')b.classList.add('correct')});const msg=btn.closest('.slide').querySelector('.result-msg');msg.style.display='block';msg.style.color=correct?'#4ade80':'#f87171';msg.textContent=correct?msg.dataset.ok:msg.dataset.no;}
 let timerInterval=null;
 function startTimer(min){clearInterval(timerInterval);let sec=min*60;const disp=document.getElementById('timerDisplay');disp.style.display='block';function tick(){const m=Math.floor(sec/60);const s=sec%60;disp.textContent=m+':'+(s<10?'0':'')+s;if(sec===0){clearInterval(timerInterval);disp.textContent='⏰ หมดเวลา!';}sec--;}tick();timerInterval=setInterval(tick,1000);}
 showSlide(0);

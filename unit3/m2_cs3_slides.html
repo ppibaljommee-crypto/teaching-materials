@@ -25,6 +25,14 @@ body{font-family:'Sarabun',sans-serif;background:#000d00;overflow:hidden;height:
 .s12{background:linear-gradient(135deg,#001a00,#003300,#065f46)}
 .s13{background:linear-gradient(135deg,#000d00,#001a00,#003300)}
 .s14{background:linear-gradient(135deg,#001a00,#003d00,#14532d)}
+.s15{background:linear-gradient(135deg,#0a0010,#2e1065,#4c1d95)}
+.s16{background:linear-gradient(135deg,#001a14,#003322,#0f766e)}
+.s17{background:linear-gradient(135deg,#0a0800,#3d3300,#854d0e)}
+.s18{background:linear-gradient(135deg,#1a0008,#3d0010,#7f1d1d)}
+.s19{background:linear-gradient(135deg,#001505,#002e10,#15803d)}
+.s20{background:linear-gradient(135deg,#050020,#1e1b4b,#3730a3)}
+.s21{background:linear-gradient(135deg,#001a0a,#003322,#047857)}
+.s22{background:linear-gradient(135deg,#001a00,#003d00,#065f46)}
 h1{font-size:clamp(24px,4.5vw,56px);font-weight:800;color:#fff;text-align:center;line-height:1.15}
 h2{font-size:clamp(17px,3vw,38px);font-weight:700;color:#fff;text-align:center;line-height:1.3}
 p.sub{font-size:clamp(12px,1.8vw,22px);color:rgba(255,255,255,.7);text-align:center;margin-top:10px}
@@ -226,6 +234,37 @@ result = <span class="fn">double</span>(<span class="nm">5</span>)   <span class
   </div>
 </div>
 
+<!-- S15: Scope -->
+<div class="slide s15" id="s15">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.2'?'1':'.2'">👩‍🏫 อธิบาย Scope ด้วยภาพ "ตัวแปรในห้อง (Function) ออกนอกห้องไม่ได้"</div>
+  <h2><span style="font-family:'JetBrains Mono',monospace;color:#c084fc">scope</span> — ขอบเขตตัวแปร</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>Local vs Global</h4>
+      <p>🔒 <strong style="color:#c084fc">Local</strong> = ตัวแปรในฟังก์ชัน ใช้ได้แค่ในนั้น</p>
+      <p>🌍 <strong style="color:#86efac">Global</strong> = ตัวแปรนอกฟังก์ชัน ใช้ได้ทั้งโปรแกรม</p>
+      <div class="code-static" style="font-size:clamp(10px,1.3vw,13px);margin-top:8px">
+<span class="vr">total</span> = <span class="nm">100</span>      <span class="cm"># Global</span>
+
+<span class="kw">def</span> <span class="fn">show</span>():
+    msg = <span class="st">"hi"</span>   <span class="cm"># Local</span>
+    <span class="fn">print</span>(total)  <span class="cm"># อ่าน global ได้</span>
+
+<span class="fn">show</span>()
+<span class="fn">print</span>(msg)  <span class="cm"># ❌ Error! local</span>
+      </div>
+    </div>
+    <div>
+      <button class="run-btn" onclick="runTerminal('t_scope')">▶ Run</button>
+      <div class="terminal-wrap" style="margin-top:6px">
+        <div class="terminal-bar"><div class="t-dot red"></div><div class="t-dot yellow"></div><div class="t-dot green"></div><span class="t-title">scope.py</span></div>
+        <div class="terminal-body" id="t_scope"><span class="cursor"></span></div>
+      </div>
+      <p style="margin-top:8px;font-size:12px;color:#fbbf24">⚠️ ตัวแปร Local ออกนอกฟังก์ชันไม่ได้</p>
+    </div>
+  </div>
+</div>
+
 <!-- S6: Lists -->
 <div class="slide s6" id="s6">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.2'?'1':'.2'">👩‍🏫 เปรียบ List กับ "รายการสิ่งของ" — กล่องหลายช่องในกล่องเดียว, index เริ่มที่ 0</div>
@@ -282,6 +321,33 @@ result = <span class="fn">double</span>(<span class="nm">5</span>)   <span class
   </div>
 </div>
 
+<!-- S16: List Slicing -->
+<div class="slide s16" id="s16">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.2'?'1':'.2'">👩‍🏫 Slicing = "ตัดแบ่ง" List — เน้น [start:end] ไม่รวม end</div>
+  <h2>List Slicing — <span style="font-family:'JetBrains Mono',monospace;color:#5eead4">[start:end]</span></h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>ตัดส่วนของ List</h4>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#e6edf3;line-height:2">
+        nums = [<span class="nm">10</span>,<span class="nm">20</span>,<span class="nm">30</span>,<span class="nm">40</span>,<span class="nm">50</span>]<br>
+        nums[<span class="nm">1</span>:<span class="nm">3</span>] → [<span class="nm">20</span>,<span class="nm">30</span>] <span class="cm"># ไม่รวม 3</span><br>
+        nums[:<span class="nm">2</span>]  → [<span class="nm">10</span>,<span class="nm">20</span>] <span class="cm"># ตั้งแต่ต้น</span><br>
+        nums[<span class="nm">3</span>:]  → [<span class="nm">40</span>,<span class="nm">50</span>] <span class="cm"># ถึงท้าย</span><br>
+        nums[<span class="nm">-2</span>:] → [<span class="nm">40</span>,<span class="nm">50</span>] <span class="cm"># 2 ตัวท้าย</span><br>
+        nums[::<span class="nm">2</span>] → [<span class="nm">10</span>,<span class="nm">30</span>,<span class="nm">50</span>] <span class="cm"># เว้น 1</span>
+      </div>
+      <p style="margin-top:8px;font-size:12px;color:#fbbf24">⚠️ [start:end] ได้ตั้งแต่ start ถึง end-1</p>
+    </div>
+    <div>
+      <button class="run-btn" onclick="runTerminal('t_slice')">▶ Run</button>
+      <div class="terminal-wrap" style="margin-top:6px">
+        <div class="terminal-bar"><div class="t-dot red"></div><div class="t-dot yellow"></div><div class="t-dot green"></div><span class="t-title">slicing.py</span></div>
+        <div class="terminal-body" id="t_slice"><span class="cursor"></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- S8: for loop กับ List -->
 <div class="slide s8" id="s8">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.2'?'1':'.2'">👩‍🏫 for loop + list เป็นคู่ที่ใช้บ่อยมาก — ให้นักเรียน trace ทีละขั้น</div>
@@ -315,6 +381,37 @@ avg = <span class="fn">sum</span>(scores) / <span class="fn">len</span>(scores)
   </div>
 </div>
 
+<!-- S17: Dictionary -->
+<div class="slide s17" id="s17">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.2'?'1':'.2'">👩‍🏫 Dictionary = "สมุดพจนานุกรม" คำ→ความหมาย, key→value เปรียบกับ List ที่ใช้ชื่อแทนตัวเลข</div>
+  <h2><span style="font-family:'JetBrains Mono',monospace;color:#f8b800">dict</span> — ข้อมูลแบบ key : value</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>Dictionary คืออะไร?</h4>
+      <p>• เก็บข้อมูลเป็นคู่ <strong style="color:#f8b800">key → value</strong></p>
+      <p>• เข้าถึงด้วย key (ไม่ใช่ index)</p>
+      <p>• เหมาะกับข้อมูลที่มีชื่อกำกับ</p>
+      <div class="code-static" style="font-size:clamp(10px,1.3vw,13px);margin-top:8px">
+student = {
+    <span class="st">"name"</span>: <span class="st">"มาย"</span>,
+    <span class="st">"age"</span>: <span class="nm">14</span>,
+    <span class="st">"grade"</span>: <span class="st">"A"</span>
+}
+<span class="fn">print</span>(student[<span class="st">"name"</span>])  <span class="cm"># มาย</span>
+student[<span class="st">"age"</span>] = <span class="nm">15</span>     <span class="cm"># แก้ค่า</span>
+      </div>
+    </div>
+    <div>
+      <button class="run-btn" onclick="runTerminal('t_dict')">▶ Run</button>
+      <div class="terminal-wrap" style="margin-top:6px">
+        <div class="terminal-bar"><div class="t-dot red"></div><div class="t-dot yellow"></div><div class="t-dot green"></div><span class="t-title">dictionary.py</span></div>
+        <div class="terminal-body" id="t_dict"><span class="cursor"></span></div>
+      </div>
+      <p style="margin-top:8px;font-size:12px;color:#86efac">💡 List ใช้ตัวเลข · Dict ใช้ชื่อ (key)</p>
+    </div>
+  </div>
+</div>
+
 <!-- S9: String Methods -->
 <div class="slide s9" id="s9">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.2'?'1':'.2'">👩‍🏫 String Methods ใช้บ่อยมากในโปรแกรมจริง — เน้น .strip() .split() .replace()</div>
@@ -339,6 +436,30 @@ avg = <span class="fn">sum</span>(scores) / <span class="fn">len</span>(scores)
         <div class="terminal-bar"><div class="t-dot red"></div><div class="t-dot yellow"></div><div class="t-dot green"></div><span class="t-title">string_methods.py</span></div>
         <div class="terminal-body" id="t_strmethod"><span class="cursor"></span></div>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- S18: Python Errors / Debug -->
+<div class="slide s18" id="s18">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.2'?'1':'.2'">👩‍🏫 อ่าน Error message เป็นทักษะสำคัญ — บอกชื่อ error และบรรทัดที่ผิด ให้นักเรียนหัดอ่าน</div>
+  <h2>🐛 Debug: Error ที่พบบ่อยใน Python</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4 style="color:#f87171">Error ที่เจอบ่อย</h4>
+      <p>❌ <strong style="color:#fca5a5">SyntaxError</strong> — ลืม : หรือวงเล็บไม่ครบ</p>
+      <p>❌ <strong style="color:#fca5a5">IndentationError</strong> — เว้นวรรคหน้าบรรทัดผิด</p>
+      <p>❌ <strong style="color:#fca5a5">NameError</strong> — ใช้ตัวแปรที่ยังไม่ประกาศ</p>
+      <p>❌ <strong style="color:#fca5a5">IndexError</strong> — เรียก index เกินขอบเขต List</p>
+      <p>❌ <strong style="color:#fca5a5">TypeError</strong> — เอาคนละชนิดมาบวกกัน (str+int)</p>
+    </div>
+    <div>
+      <button class="run-btn" onclick="runTerminal('t_err')">▶ ดู Error</button>
+      <div class="terminal-wrap" style="margin-top:6px">
+        <div class="terminal-bar"><div class="t-dot red"></div><div class="t-dot yellow"></div><div class="t-dot green"></div><span class="t-title">errors.py</span></div>
+        <div class="terminal-body" id="t_err"><span class="cursor"></span></div>
+      </div>
+      <p style="margin-top:8px;font-size:12px;color:#fbbf24">💡 อ่าน error บรรทัดล่างสุด = ชนิดและตำแหน่งที่ผิด</p>
     </div>
   </div>
 </div>
@@ -383,6 +504,26 @@ avg = <span class="fn">analyze</span>(scores)
   </div>
 </div>
 
+<!-- S22: แบบฝึกเขียน Function -->
+<div class="slide s22" id="s22">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.2'?'1':'.2'">👩‍🏫 ให้นักเรียนลองเขียนเองในกระดาษ/เครื่อง 5 นาที ก่อนกดเฉลย</div>
+  <h2>🏋️ แบบฝึก: เขียน Function เอง</h2>
+  <div class="box" style="text-align:center">
+    <p style="font-size:clamp(13px,1.9vw,21px);color:#fff">เขียนฟังก์ชัน <span style="color:#79c0ff;font-family:monospace">is_pass(score)</span><br>คืนค่า <span style="color:#86efac">"ผ่าน"</span> ถ้าคะแนน ≥ 50 ไม่งั้นคืน <span style="color:#f87171">"ไม่ผ่าน"</span></p>
+  </div>
+  <button class="reveal-btn" onclick="rev('r22')">💡 ดูเฉลย</button>
+  <div id="r22" class="code-static reveal-text" style="text-align:left;width:100%;max-width:600px;font-size:clamp(11px,1.5vw,15px);margin-top:10px">
+<span class="kw">def</span> <span class="fn">is_pass</span>(score):
+    <span class="kw">if</span> score >= <span class="nm">50</span>:
+        <span class="kw">return</span> <span class="st">"ผ่าน"</span>
+    <span class="kw">else</span>:
+        <span class="kw">return</span> <span class="st">"ไม่ผ่าน"</span>
+
+<span class="fn">print</span>(<span class="fn">is_pass</span>(<span class="nm">75</span>))  <span class="cm"># ผ่าน</span>
+<span class="fn">print</span>(<span class="fn">is_pass</span>(<span class="nm">40</span>))  <span class="cm"># ไม่ผ่าน</span>
+  </div>
+</div>
+
 <!-- S11: Quiz -->
 <div class="slide s11" id="s11">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.2'?'1':'.2'">👩‍🏫 ให้ trace ก่อนตอบ อย่าเดา</div>
@@ -397,14 +538,40 @@ avg = <span class="fn">analyze</span>(scores)
     <span style="color:#79c0ff">print</span>(result)
   </div>
   <div class="quiz-opts" style="max-width:700px">
-    <button class="qbtn" onclick="qa(this,false)">A. [1, 2, 3]</button>
-    <button class="qbtn" onclick="qa(this,false)">B. [2, 4, 6, 8]</button>
-    <button class="qbtn" onclick="qa(this,true)">C. [2, 4, 6]</button>
-    <button class="qbtn" onclick="qa(this,false)">D. 12</button>
+    <button class="qbtn" onclick="qa(this)">A. [1, 2, 3]</button>
+    <button class="qbtn" onclick="qa(this)">B. [2, 4, 6, 8]</button>
+    <button class="qbtn" data-correct="1" onclick="qa(this)">C. [2, 4, 6]</button>
+    <button class="qbtn" onclick="qa(this)">D. 12</button>
   </div>
-  <div id="qa-msg" class="result-msg"></div>
+  <div class="result-msg" data-ok="🎉 ถูก! double(1)=2, double(2)=4, double(3)=6 → [2,4,6]" data-no="❌ trace: n=1→2 | n=2→4 | n=3→6 → result=[2,4,6]"></div>
   <button class="reveal-btn" onclick="rev('r11')">🔍 Trace ทีละขั้น</button>
   <div id="r11" class="reveal-text">n=1→double(1)=2 | n=2→double(2)=4 | n=3→double(3)=6 → result=[2,4,6]</div>
+</div>
+
+<!-- S19: Quiz 2 -->
+<div class="slide s19" id="s19">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.2'?'1':'.2'">👩‍🏫 Quiz 2 เรื่อง List index/slicing</div>
+  <h2>🎯 Quiz 2: <span style="font-family:'JetBrains Mono',monospace">nums = [10,20,30,40]</span> → <span style="font-family:'JetBrains Mono',monospace">nums[1:3]</span> ได้อะไร?</h2>
+  <div class="quiz-opts" style="max-width:700px">
+    <button class="qbtn" onclick="qa(this)">A. [10, 20, 30]</button>
+    <button class="qbtn" data-correct="1" onclick="qa(this)">B. [20, 30]</button>
+    <button class="qbtn" onclick="qa(this)">C. [20, 30, 40]</button>
+    <button class="qbtn" onclick="qa(this)">D. [10, 20]</button>
+  </div>
+  <div class="result-msg" data-ok="🎉 ถูก! [1:3] = index 1 ถึง 2 (ไม่รวม 3) = [20, 30]" data-no="❌ [1:3] เริ่ม index 1 ถึง 2 (ไม่รวม end=3) → [20, 30]"></div>
+</div>
+
+<!-- S20: Quiz 3 -->
+<div class="slide s20" id="s20">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.2'?'1':'.2'">👩‍🏫 Quiz 3 เรื่อง return vs print</div>
+  <h2>🎯 Quiz 3: ถ้าอยากเก็บค่าจากฟังก์ชันไว้ใช้ต่อ ต้องใช้อะไร?</h2>
+  <div class="quiz-opts" style="max-width:700px">
+    <button class="qbtn" onclick="qa(this)">A. print()</button>
+    <button class="qbtn" data-correct="1" onclick="qa(this)">B. return</button>
+    <button class="qbtn" onclick="qa(this)">C. input()</button>
+    <button class="qbtn" onclick="qa(this)">D. append()</button>
+  </div>
+  <div class="result-msg" data-ok="🎉 ถูก! return ส่งค่ากลับมาเก็บไว้ใช้ต่อได้ ส่วน print แค่แสดงผล" data-no="❌ ใช้ return เพื่อส่งค่ากลับมาเก็บไว้ใช้ต่อ (print แค่แสดงผล)"></div>
 </div>
 
 <!-- S12: Mini Project -->
@@ -426,6 +593,37 @@ avg = <span class="fn">analyze</span>(scores)
     </div>
   </div>
   <button class="timer-btn" onclick="startTimer(25)" style="margin-top:14px;font-size:15px;padding:10px 24px">⏱ 25 นาที</button>
+</div>
+
+<!-- S21: Clean Code -->
+<div class="slide s21" id="s21">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.2'?'1':'.2'">👩‍🏫 โค้ดที่ดีไม่ใช่แค่ทำงานได้ แต่ต้องอ่านง่าย — เน้นการตั้งชื่อและคอมเมนต์</div>
+  <h2>✨ เทคนิคเขียนโค้ดให้อ่านง่าย</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4 style="color:#f87171">❌ โค้ดอ่านยาก</h4>
+      <div class="code-static" style="font-size:clamp(10px,1.3vw,13px)">
+<span class="kw">def</span> <span class="fn">f</span>(a):
+    <span class="kw">return</span> a*<span class="nm">2</span>
+x = <span class="fn">f</span>(<span class="nm">5</span>)
+<span class="cm"># ชื่อไม่สื่อ ไม่มีคอมเมนต์</span>
+      </div>
+    </div>
+    <div class="col">
+      <h4 style="color:#86efac">✅ โค้ดอ่านง่าย</h4>
+      <div class="code-static" style="font-size:clamp(10px,1.3vw,13px)">
+<span class="cm"># คูณราคาด้วยจำนวน</span>
+<span class="kw">def</span> <span class="fn">calc_total</span>(price):
+    <span class="kw">return</span> price * <span class="nm">2</span>
+total = <span class="fn">calc_total</span>(<span class="nm">5</span>)
+      </div>
+    </div>
+  </div>
+  <ul class="step-list" style="margin-top:10px;max-width:820px">
+    <li><span class="sn">1</span>ตั้งชื่อตัวแปร/ฟังก์ชันให้<strong style="color:#86efac">สื่อความหมาย</strong></li>
+    <li><span class="sn">2</span>ใส่ <strong style="color:#8b949e"># คอมเมนต์</strong> อธิบายส่วนสำคัญ</li>
+    <li><span class="sn">3</span>แบ่งงานเป็น <strong style="color:#79c0ff">Function ย่อยๆ</strong> + ย่อหน้าให้ถูก</li>
+  </ul>
 </div>
 
 <!-- S13: เชื่อมสู่หน่วย 4 -->
@@ -472,7 +670,7 @@ avg = <span class="fn">analyze</span>(scores)
 <div class="nav">
   <button class="nav-btn" onclick="go(-1)">◀</button>
   <div class="dots" id="dots"></div>
-  <span class="counter" id="counter">1 / 14</span>
+  <span class="counter" id="counter">1 / 22</span>
   <button class="nav-btn" onclick="go(1)">▶</button>
 </div>
 
@@ -485,7 +683,7 @@ function showSlide(n){slides[cur].classList.remove('active');document.querySelec
 function go(d){showSlide(cur+d)}
 document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')go(1);if(e.key==='ArrowLeft')go(-1);});
 function rev(id){document.getElementById(id).classList.toggle('show')}
-function qa(btn,correct){document.querySelectorAll('.qbtn').forEach(b=>b.disabled=true);btn.classList.add(correct?'correct':'wrong');if(!correct)document.querySelectorAll('.qbtn').forEach(b=>{if(b.textContent.includes('[2, 4, 6]'))b.classList.add('correct')});const msg=document.getElementById('qa-msg');msg.style.display='block';msg.style.color=correct?'#4ade80':'#f87171';msg.textContent=correct?'🎉 ถูก! double(1)=2, double(2)=4, double(3)=6 → [2,4,6]':'❌ trace: n=1→2 | n=2→4 | n=3→6 → result=[2,4,6]';}
+function qa(btn){const opts=btn.closest('.quiz-opts');const correct=btn.dataset.correct==='1';opts.querySelectorAll('.qbtn').forEach(b=>b.disabled=true);btn.classList.add(correct?'correct':'wrong');if(!correct)opts.querySelectorAll('.qbtn').forEach(b=>{if(b.dataset.correct==='1')b.classList.add('correct')});const msg=btn.closest('.slide').querySelector('.result-msg');msg.style.display='block';msg.style.color=correct?'#4ade80':'#f87171';msg.textContent=correct?msg.dataset.ok:msg.dataset.no;}
 let timerInterval=null;
 function startTimer(min){clearInterval(timerInterval);let sec=min*60;const disp=document.getElementById('timerDisplay');disp.style.display='block';disp.style.color='#4ade80';function tick(){const m=Math.floor(sec/60);const s=sec%60;disp.textContent=m+':'+(s<10?'0':'')+s;if(sec<=10)disp.style.color='#f87171';if(sec===0){clearInterval(timerInterval);disp.textContent='⏰ หมดเวลา!';}sec--;}tick();timerInterval=setInterval(tick,1000);}
 
@@ -578,6 +776,51 @@ const TERMINALS={
     {t:'code',c:'>>> words = "a,b,c".split(",")'},
     {t:'code',c:'>>> print(words)'},
     {t:'out',c:"['a', 'b', 'c']"},
+  ]},
+  t_scope:{lines:[
+    {t:'code',c:'>>> total = 100'},
+    {t:'code',c:'>>> def show():'},
+    {t:'code',c:'...     msg = "hi"'},
+    {t:'code',c:'...     print(total)'},
+    {t:'code',c:'...'},
+    {t:'code',c:'>>> show()'},
+    {t:'out',c:'100'},
+    {t:'code',c:'>>> print(msg)'},
+    {t:'out',c:'NameError: name \'msg\' is not defined'},
+    {t:'out',c:'# msg เป็น local อยู่แค่ในฟังก์ชัน'},
+  ]},
+  t_slice:{lines:[
+    {t:'code',c:'>>> nums = [10, 20, 30, 40, 50]'},
+    {t:'code',c:'>>> print(nums[1:3])'},
+    {t:'out',c:'[20, 30]'},
+    {t:'code',c:'>>> print(nums[:2])'},
+    {t:'out',c:'[10, 20]'},
+    {t:'code',c:'>>> print(nums[3:])'},
+    {t:'out',c:'[40, 50]'},
+    {t:'code',c:'>>> print(nums[::2])'},
+    {t:'out',c:'[10, 30, 50]'},
+  ]},
+  t_dict:{lines:[
+    {t:'code',c:'>>> student = {"name": "มาย", "age": 14}'},
+    {t:'code',c:'>>> print(student["name"])'},
+    {t:'out',c:'มาย'},
+    {t:'code',c:'>>> student["age"] = 15'},
+    {t:'code',c:'>>> print(student["age"])'},
+    {t:'out',c:'15'},
+    {t:'code',c:'>>> student["grade"] = "A"'},
+    {t:'code',c:'>>> print(student)'},
+    {t:'out',c:"{'name': 'มาย', 'age': 15, 'grade': 'A'}"},
+  ]},
+  t_err:{lines:[
+    {t:'code',c:'>>> print("hello"'},
+    {t:'out',c:'SyntaxError: ( ไม่ครบ — ลืมปิดวงเล็บ'},
+    {t:'code',c:'>>> print(age)'},
+    {t:'out',c:'NameError: name \'age\' is not defined'},
+    {t:'code',c:'>>> nums = [1, 2, 3]'},
+    {t:'code',c:'>>> print(nums[5])'},
+    {t:'out',c:'IndexError: list index out of range'},
+    {t:'code',c:'>>> print("3" + 5)'},
+    {t:'out',c:'TypeError: ต้องเป็นชนิดเดียวกัน'},
   ]},
   t_full:{lines:[
     {t:'out',c:'85 → เกรด A'},

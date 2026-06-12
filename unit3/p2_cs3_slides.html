@@ -23,6 +23,14 @@ body{font-family:'Sarabun',sans-serif;background:#001a2e;overflow:hidden;height:
 .s10{background:linear-gradient(135deg,#001020,#0c4a6e,#0891b2)}
 .s11{background:linear-gradient(135deg,#0a0020,#1e1b4b,#0ea5e9)}
 .s12{background:linear-gradient(135deg,#001a2e,#0f172a,#0c4a6e,#06b6d4)}
+.s13{background:linear-gradient(135deg,#001020,#075985,#0891b2)}
+.s14{background:linear-gradient(135deg,#0a0020,#3730a3,#2563eb)}
+.s15{background:linear-gradient(135deg,#001a10,#065f46,#0d9488)}
+.s16{background:linear-gradient(135deg,#100018,#4c1d95,#6d28d9)}
+.s17{background:linear-gradient(135deg,#1a0500,#7c2d12,#c2410c)}
+.s18{background:linear-gradient(135deg,#001020,#0c4a6e,#0ea5e9)}
+.s19{background:linear-gradient(135deg,#0a0020,#1e1b4b,#4338ca)}
+.s20{background:linear-gradient(135deg,#001a1a,#134e4a,#0e7490)}
 h1{font-size:clamp(28px,5.5vw,62px);font-weight:800;color:#fff;text-align:center;line-height:1.15}
 h2{font-size:clamp(20px,3.8vw,44px);font-weight:700;color:#fff;text-align:center;line-height:1.3}
 p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:center;margin-top:12px}
@@ -159,6 +167,26 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
   </div>
 </div>
 
+<!-- S13: อ่านสคริปต์ -->
+<div class="slide s13" id="s13">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 อ่านสคริปต์จากซ้ายไปขวา ให้นักเรียนทายว่าตัวละครจะทำอะไรตามลำดับ</div>
+  <h2>📜 อ่านสคริปต์: บล็อกต่อกันเป็นลำดับ</h2>
+  <p class="sub">โปรแกรมทำงานจากซ้ายไปขวา ทีละบล็อก</p>
+  <div class="cmd-block" style="margin-top:18px">
+    <span class="cmd-pill when">เมื่อกด ▶</span>
+    <span style="color:#7dd3fc;font-size:22px">→</span>
+    <span class="cmd-pill move">เดิน 4 ก้าว</span>
+    <span style="color:#7dd3fc;font-size:22px">→</span>
+    <span class="cmd-pill say">พูด "หิวจัง"</span>
+    <span style="color:#7dd3fc;font-size:22px">→</span>
+    <span class="cmd-pill turn">หมุนขวา</span>
+  </div>
+  <div class="box" style="text-align:center;margin-top:16px">
+    <p style="font-size:clamp(14px,2.2vw,24px);color:#fff">ตัวละครจะ: เริ่มเมื่อกดเล่น → เดิน 4 ก้าว → พูด "หิวจัง" → หมุนขวา</p>
+    <p style="color:#fde047;margin-top:8px;font-size:clamp(13px,1.8vw,20px)">สลับลำดับบล็อก = ผลลัพธ์เปลี่ยนไป! 🔄</p>
+  </div>
+</div>
+
 <!-- S5: คำสั่ง Move -->
 <div class="slide s5" id="s5">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สาธิตการลากบล็อก Move แล้วกด ▶ ให้ตัวละครเดิน ให้นักเรียนลองทำตาม</div>
@@ -228,6 +256,54 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
   </ul>
 </div>
 
+<!-- S14: Loop วนซ้ำ -->
+<div class="slide s14" id="s14">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 เน้นแนวคิดสำคัญ: แทนที่จะวางบล็อกเดิมซ้ำหลายอัน ใช้ Loop ครั้งเดียว</div>
+  <h2>🔁 Loop (วนซ้ำ) — บล็อกสีส้ม</h2>
+  <div class="box" style="text-align:center">
+    <p style="font-size:clamp(15px,2.4vw,26px);color:#fff">Loop = สั่งให้ทำคำสั่งเดิม <span style="color:#fdba74">ซ้ำหลายครั้ง</span><br>ไม่ต้องวางบล็อกเดิมซ้ำๆ ให้เมื่อยมือ!</p>
+  </div>
+  <div class="two-col">
+    <div class="col">
+      <h4 style="color:#fca5a5">😓 แบบไม่ใช้ Loop</h4>
+      <p>เดิน 1 ก้าว</p>
+      <p>เดิน 1 ก้าว</p>
+      <p>เดิน 1 ก้าว</p>
+      <p>เดิน 1 ก้าว</p>
+      <p style="color:rgba(255,255,255,.5)">→ วาง 4 บล็อก</p>
+    </div>
+    <div class="col">
+      <h4 style="color:#86efac">😄 แบบใช้ Loop</h4>
+      <p style="font-size:clamp(14px,2vw,22px)">🔁 ทำซ้ำ 4 ครั้ง:</p>
+      <p style="padding-left:14px">เดิน 1 ก้าว</p>
+      <p style="color:#86efac;margin-top:6px">→ วางแค่ 1 บล็อก!</p>
+    </div>
+  </div>
+</div>
+
+<!-- S15: Wait และความเร็ว -->
+<div class="slide s15" id="s15">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สาธิต Wait ทำให้การ์ตูนดูเป็นธรรมชาติ ไม่รีบจนเกินไป</div>
+  <h2>⏳ Wait (รอ) ทำให้การ์ตูนสมจริง</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>⏳ Wait (รอ)</h4>
+      <p>หยุดรอสักครู่ก่อนทำคำสั่งถัดไป</p>
+      <div style="margin-top:8px"><span class="cmd-pill" style="background:rgba(234,179,8,.25);border-color:#eab308;color:#fde047">รอ 1 วินาที</span></div>
+      <p style="margin-top:8px;font-size:13px;color:rgba(255,255,255,.6)">เช่น พูดเสร็จ → รอ → ค่อยเดินต่อ</p>
+    </div>
+    <div class="col">
+      <h4>🏃 ความเร็ว (Speed)</h4>
+      <p>ปรับให้ตัวละครเดินช้า/ปกติ/เร็ว</p>
+      <p>🐢 ช้า · 🚶 ปกติ · 🐇 เร็ว</p>
+      <p style="margin-top:8px;font-size:13px;color:rgba(255,255,255,.6)">ช่วยให้การเคลื่อนไหวดูเป็นธรรมชาติ</p>
+    </div>
+  </div>
+  <div class="box" style="text-align:center;margin-top:12px">
+    <p style="color:#7dd3fc;font-size:clamp(14px,2vw,22px)">ลอง: เดิน → <span style="color:#fde047">รอ 1 วินาที</span> → พูด "ถึงแล้ว!"</p>
+  </div>
+</div>
+
 <!-- S8: สร้างตัวละคร -->
 <div class="slide s8" id="s8">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้นักเรียนเลือกตัวละครที่ชอบจาก Library แล้วตั้งชื่อ — ใช้เวลาประมาณ 5 นาที</div>
@@ -267,18 +343,85 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
   </div>
 </div>
 
+<!-- S16: Storyboard วางแผน -->
+<div class="slide s16" id="s16">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ย้ำ "คิดก่อนทำ" จากหน่วยก่อน — วางแผนเรื่องก่อนลงมือสร้าง</div>
+  <h2>📝 วางแผนเรื่องก่อนสร้าง (Storyboard)</h2>
+  <p class="sub">นักสร้างการ์ตูนเก่งๆ จะวาดแผนก่อนเสมอ</p>
+  <div class="ps-steps" style="margin-top:16px" >
+    <div class="ps-step" style="flex:1;min-width:140px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.15);border-radius:14px;padding:14px 12px;text-align:center">
+      <div class="icon" style="font-size:32px">1️⃣</div>
+      <h5 style="color:#7dd3fc">ฉากที่ 1</h5>
+      <p>ตัวละครอยู่ที่ไหน? ทำอะไร?</p>
+    </div>
+    <div class="ps-step" style="flex:1;min-width:140px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.15);border-radius:14px;padding:14px 12px;text-align:center">
+      <div class="icon" style="font-size:32px">2️⃣</div>
+      <h5 style="color:#fde047">ฉากที่ 2</h5>
+      <p>เกิดอะไรขึ้นต่อ? พูดอะไร?</p>
+    </div>
+    <div class="ps-step" style="flex:1;min-width:140px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.15);border-radius:14px;padding:14px 12px;text-align:center">
+      <div class="icon" style="font-size:32px">3️⃣</div>
+      <h5 style="color:#86efac">ฉากที่ 3</h5>
+      <p>จบเรื่องอย่างไร?</p>
+    </div>
+  </div>
+  <div class="box" style="text-align:center;margin-top:14px">
+    <p style="color:#fff;font-size:clamp(14px,2vw,22px)">วาดในกระดาษก่อน → แล้วค่อยสร้างใน ScratchJr ✏️</p>
+  </div>
+</div>
+
+<!-- S17: Debug -->
+<div class="slide s17" id="s17">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ถามนักเรียน: "ถ้าตัวละครไม่ขยับ คิดว่าผิดตรงไหน?" ก่อนเฉลย</div>
+  <h2>🐛 Debug: ทำไมตัวละครไม่ทำงาน?</h2>
+  <p class="sub">เจอ Bug แบบนี้บ่อยมาก — มาหาวิธีแก้กัน</p>
+  <ul class="step-list" style="margin-top:12px">
+    <li><span class="sn">1</span>❌ <strong style="color:#fca5a5">ลืมบล็อก When</strong> → ไม่มีตัวเริ่ม กด ▶ แล้วไม่มีอะไรเกิด</li>
+    <li><span class="sn">2</span>❌ <strong style="color:#fca5a5">บล็อกไม่ต่อกัน</strong> → ต้องลากให้ติดกันสนิท</li>
+    <li><span class="sn">3</span>❌ <strong style="color:#fca5a5">ใส่จำนวนก้าวเป็น 0</strong> → ตัวละครอยู่กับที่</li>
+  </ul>
+  <button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show')">วิธีแก้ 🔧</button>
+  <div class="reveal-text">ตรวจ When ที่หัวสคริปต์ → ลากบล็อกให้ติดกัน → ใส่ตัวเลขมากกว่า 0</div>
+</div>
+
 <!-- S10: Quiz -->
 <div class="slide s10" id="s10">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้นักเรียนช่วยกันตอบ ไม่ต้องเร่ง</div>
-  <h2>🎯 ทดสอบ: บล็อกสีน้ำเงินใน ScratchJr ใช้ทำอะไร?</h2>
+  <h2>🎯 Quiz 1: บล็อกสีน้ำเงินใน ScratchJr ใช้ทำอะไร?</h2>
   <p class="sub">คิดดูว่าบล็อกสีน้ำเงินสัมพันธ์กับอะไร</p>
   <div class="quiz-opts">
-    <button class="qbtn" onclick="qa(this,false)">A. ให้ตัวละครพูดข้อความ</button>
-    <button class="qbtn" onclick="qa(this,true)">B. สั่งให้ตัวละครเดินและเคลื่อนที่</button>
-    <button class="qbtn" onclick="qa(this,false)">C. เปลี่ยนสีฉากหลัง</button>
-    <button class="qbtn" onclick="qa(this,false)">D. บันทึกโปรเจกต์</button>
+    <button class="qbtn" onclick="qa(this)">A. ให้ตัวละครพูดข้อความ</button>
+    <button class="qbtn" data-correct="1" onclick="qa(this)">B. สั่งให้ตัวละครเดินและเคลื่อนที่</button>
+    <button class="qbtn" onclick="qa(this)">C. เปลี่ยนสีฉากหลัง</button>
+    <button class="qbtn" onclick="qa(this)">D. บันทึกโปรเจกต์</button>
   </div>
-  <div id="qa-msg" class="result-msg"></div>
+  <div class="result-msg" data-ok="🎉 ถูกต้อง! บล็อกสีน้ำเงิน = Motion สั่งให้ตัวละครเคลื่อนที่" data-no="❌ ลองใหม่ — บล็อกสีน้ำเงิน = Motion (การเคลื่อนที่)"></div>
+</div>
+
+<!-- S18: Quiz 2 -->
+<div class="slide s18" id="s18">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 Quiz 2 เรื่องบล็อก When</div>
+  <h2>🎯 Quiz 2: บล็อก When ต้องวางไว้ตรงไหน?</h2>
+  <div class="quiz-opts">
+    <button class="qbtn" data-correct="1" onclick="qa(this)">A. หัวสุดของสคริปต์ (บล็อกแรก)</button>
+    <button class="qbtn" onclick="qa(this)">B. ตรงกลางสคริปต์</button>
+    <button class="qbtn" onclick="qa(this)">C. ท้ายสุดของสคริปต์</button>
+    <button class="qbtn" onclick="qa(this)">D. วางตรงไหนก็ได้</button>
+  </div>
+  <div class="result-msg" data-ok="🎉 ถูก! บล็อก When ต้องอยู่หัวสุดเสมอ เป็นตัวเริ่มโปรแกรม" data-no="❌ บล็อก When ต้องอยู่หัวสุดของสคริปต์ เป็นตัวเริ่มต้น"></div>
+</div>
+
+<!-- S19: Quiz 3 -->
+<div class="slide s19" id="s19">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 Quiz 3 เรื่อง Loop</div>
+  <h2>🎯 Quiz 3: อยากให้ตัวละครเดิน 10 ก้าวซ้ำๆ ควรใช้บล็อกอะไร?</h2>
+  <div class="quiz-opts">
+    <button class="qbtn" onclick="qa(this)">A. บล็อก Say (พูด)</button>
+    <button class="qbtn" onclick="qa(this)">B. บล็อก When (เมื่อ)</button>
+    <button class="qbtn" data-correct="1" onclick="qa(this)">C. บล็อก Loop (วนซ้ำ)</button>
+    <button class="qbtn" onclick="qa(this)">D. บล็อก Background (ฉาก)</button>
+  </div>
+  <div class="result-msg" data-ok="🎉 ถูก! Loop ช่วยให้ทำคำสั่งเดิมซ้ำได้ ไม่ต้องวางหลายบล็อก" data-no="❌ ใช้บล็อก Loop (วนซ้ำ) จะทำคำสั่งเดิมซ้ำได้ง่ายกว่า"></div>
 </div>
 
 <!-- S11: กิจกรรม -->
@@ -292,6 +435,29 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
     <p style="margin-top:10px;color:rgba(255,255,255,.55);font-size:14px">ใช้คำสั่ง: เมื่อกด ▶ → เดิน → พูด → เปลี่ยนฉาก</p>
   </div>
   <button class="timer-btn" onclick="startTimer(20)" style="margin-top:14px;font-size:15px;padding:10px 24px">⏱ 20 นาที</button>
+</div>
+
+<!-- S20: บันทึก & นำเสนอ -->
+<div class="slide s20" id="s20">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้นักเรียน 3-4 คนนำการ์ตูนของตัวเองมาฉายหน้าชั้น ชมเชยทุกคน</div>
+  <h2>💾 บันทึกและนำเสนอผลงาน</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>💾 บันทึกโปรเจกต์</h4>
+      <p>1. กดปุ่ม <span style="color:#7dd3fc">หน้าบ้าน 🏠</span> มุมซ้ายบน</p>
+      <p>2. โปรเจกต์ถูกบันทึกอัตโนมัติ</p>
+      <p>3. ตั้งชื่อการ์ตูนของเรา</p>
+    </div>
+    <div class="col">
+      <h4>🎤 นำเสนอ</h4>
+      <p>• กด ▶ เล่นการ์ตูนแบบเต็มจอ</p>
+      <p>• เล่าเรื่องให้เพื่อนฟัง</p>
+      <p>• บอกว่าใช้บล็อกอะไรบ้าง</p>
+    </div>
+  </div>
+  <div class="box" style="text-align:center;margin-top:12px">
+    <p style="color:#7dd3fc;font-size:clamp(14px,2vw,22px)">ทุกผลงานมีความพิเศษในแบบของตัวเอง 🌟</p>
+  </div>
 </div>
 
 <!-- S12: สรุป -->
@@ -311,7 +477,7 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
 <div class="nav">
   <button class="nav-btn" onclick="go(-1)">◀</button>
   <div class="dots" id="dots"></div>
-  <span class="counter" id="counter">1 / 12</span>
+  <span class="counter" id="counter">1 / 20</span>
   <button class="nav-btn" onclick="go(1)">▶</button>
 </div>
 
@@ -324,7 +490,7 @@ function showSlide(n){slides[cur].classList.remove('active');document.querySelec
 function go(d){showSlide(cur+d)}
 document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')go(1);if(e.key==='ArrowLeft')go(-1);});
 function rev(id){document.getElementById(id).classList.toggle('show')}
-function qa(btn,correct){document.querySelectorAll('.qbtn').forEach(b=>b.disabled=true);btn.classList.add(correct?'correct':'wrong');const msg=document.getElementById('qa-msg');msg.style.display='block';msg.style.color=correct?'#4ade80':'#f87171';msg.textContent=correct?'🎉 ถูกต้อง! บล็อกสีน้ำเงิน = Motion สั่งให้ตัวละครเคลื่อนที่':'❌ ลองใหม่ — บล็อกสีน้ำเงิน = Motion (การเคลื่อนที่)';}
+function qa(btn){const opts=btn.closest('.quiz-opts');const correct=btn.dataset.correct==='1';opts.querySelectorAll('.qbtn').forEach(b=>b.disabled=true);btn.classList.add(correct?'correct':'wrong');if(!correct)opts.querySelectorAll('.qbtn').forEach(b=>{if(b.dataset.correct==='1')b.classList.add('correct')});const msg=btn.closest('.slide').querySelector('.result-msg');msg.style.display='block';msg.style.color=correct?'#4ade80':'#f87171';msg.textContent=correct?msg.dataset.ok:msg.dataset.no;}
 let timerInterval=null;
 function startTimer(min){clearInterval(timerInterval);let sec=min*60;const disp=document.getElementById('timerDisplay');disp.style.display='block';function tick(){const m=Math.floor(sec/60);const s=sec%60;disp.textContent=m+':'+(s<10?'0':'')+s;if(sec===0){clearInterval(timerInterval);disp.textContent='⏰ หมดเวลา!';}sec--;}tick();timerInterval=setInterval(tick,1000);}
 showSlide(0);

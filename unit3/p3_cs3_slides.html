@@ -23,6 +23,14 @@ body{font-family:'Sarabun',sans-serif;background:#0a1a00;overflow:hidden;height:
 .s10{background:linear-gradient(135deg,#051005,#0f3010,#1a5c20,#22c55e)}
 .s11{background:linear-gradient(135deg,#030a00,#0d2010,#166534,#4ade80)}
 .s12{background:linear-gradient(135deg,#0a1a00,#1a3a00,#365314,#84cc16)}
+.s13{background:linear-gradient(135deg,#0a1500,#3f6212,#65a30d)}
+.s14{background:linear-gradient(135deg,#001a14,#115e59,#0d9488)}
+.s15{background:linear-gradient(135deg,#1a1000,#854d0e,#ca8a04)}
+.s16{background:linear-gradient(135deg,#050f00,#14532d,#15803d)}
+.s17{background:linear-gradient(135deg,#0a0018,#4c1d95,#7c3aed)}
+.s18{background:linear-gradient(135deg,#001505,#166534,#22c55e)}
+.s19{background:linear-gradient(135deg,#0f1500,#3f6212,#84cc16)}
+.s20{background:linear-gradient(135deg,#001a10,#064e3b,#16a34a)}
 h1{font-size:clamp(28px,5.5vw,62px);font-weight:800;color:#fff;text-align:center;line-height:1.15}
 h2{font-size:clamp(20px,3.8vw,44px);font-weight:700;color:#fff;text-align:center;line-height:1.3}
 p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:center;margin-top:12px}
@@ -162,6 +170,28 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
   </div>
 </div>
 
+<!-- S13: ตัวแปร Variables -->
+<div class="slide s13" id="s13">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 อธิบายตัวแปรเหมือน "กล่อง" เก็บค่า เช่น คะแนน เปลี่ยนค่าได้ระหว่างเล่น</div>
+  <h2>📦 ตัวแปร (Variable) — กล่องเก็บคะแนน</h2>
+  <div class="box" style="text-align:center">
+    <p style="font-size:clamp(15px,2.4vw,26px);color:#fff">ตัวแปร = <span style="color:#bef264">กล่องที่เก็บค่าได้</span> เช่น คะแนน เวลา จำนวนชีวิต<br>ค่าในกล่อง<span style="color:#fde047">เปลี่ยนได้</span>ขณะเล่นเกม</p>
+  </div>
+  <div class="two-col">
+    <div class="col">
+      <h4>สร้างตัวแปร Score</h4>
+      <div class="code-block">กำหนด Score = 0<br>เปลี่ยน Score โดย 1<br>เปลี่ยน Score โดย -1</div>
+    </div>
+    <div class="col">
+      <h4>ใช้ในเกมจับผิด</h4>
+      <p>• เริ่มเกม → Score = 0</p>
+      <p>• คลิกถูก → Score +1</p>
+      <p>• คลิกผิด → Score -1</p>
+      <p style="color:#bef264;margin-top:6px;font-size:13px">ติ๊กให้แสดง Score บน Stage ได้</p>
+    </div>
+  </div>
+</div>
+
 <!-- S6: Motion -->
 <div class="slide s6" id="s6">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สาธิตการสั่งให้ Sprite เดิน หมุน ไปยังจุด x,y บน Stage</div>
@@ -197,6 +227,42 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
   </div>
 </div>
 
+<!-- S14: Sensing -->
+<div class="slide s14" id="s14">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 Sensing = ประสาทสัมผัสของโปรแกรม รับรู้การคลิก การชน ปุ่มกด</div>
+  <h2>🩵 Sensing — การรับรู้/ตรวจจับ</h2>
+  <div class="box" style="text-align:center">
+    <p style="font-size:clamp(14px,2vw,24px);color:#fff">Sensing = บล็อกที่ทำให้โปรแกรม <span style="color:#5eead4">"รู้สึก/รับรู้"</span> สิ่งที่เกิดขึ้น</p>
+  </div>
+  <ul class="step-list" style="margin-top:12px">
+    <li><span class="sn">1</span><strong style="color:#5eead4">แตะ Mouse-pointer?</strong> — ตรวจว่าเมาส์ชี้โดนตัวละครไหม</li>
+    <li><span class="sn">2</span><strong style="color:#5eead4">กดเมาส์?</strong> — ตรวจว่าผู้เล่นคลิกหรือยัง</li>
+    <li><span class="sn">3</span><strong style="color:#5eead4">แตะสี / แตะขอบ?</strong> — ตรวจการชนกัน</li>
+  </ul>
+  <div class="box" style="text-align:center;margin-top:8px">
+    <p style="color:#bef264;font-size:clamp(13px,1.8vw,20px)">เกมจับผิด: ใช้ "ถ้าแตะ mouse-pointer และกดเมาส์" → ตรวจว่าคลิกภาพไหน</p>
+  </div>
+</div>
+
+<!-- S15: Sound -->
+<div class="slide s15" id="s15">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 เสียงทำให้เกมสนุกขึ้น — สาธิตใส่เสียงตอนคลิกถูก/ผิด</div>
+  <h2>🔊 Sound — ใส่เสียงให้เกมสนุก</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>คำสั่งเสียง</h4>
+      <div class="code-block">เล่นเสียง [pop]<br>เล่นเสียง [cheer] จนจบ<br>หยุดเสียงทั้งหมด</div>
+    </div>
+    <div class="col">
+      <h4>ใช้ในเกมจับผิด 🎵</h4>
+      <p>✅ คลิกถูก → เสียง "ติ๊ง!" 🔔</p>
+      <p>❌ คลิกผิด → เสียง "บัซ!" 📯</p>
+      <p>🏆 ชนะ → เสียงเชียร์ 🎉</p>
+      <p style="color:#bef264;margin-top:6px;font-size:13px">เลือกเสียงจากแท็บ Sounds</p>
+    </div>
+  </div>
+</div>
+
 <!-- S8: สร้างเกมจับผิดภาพ ขั้นตอน -->
 <div class="slide s8" id="s8">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สาธิตสร้างเกมทีละขั้น ค่อยๆ อธิบาย ให้นักเรียนทำตาม</div>
@@ -210,18 +276,74 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
   </ul>
 </div>
 
+<!-- S16: ตัวอย่างสคริปต์จริง -->
+<div class="slide s16" id="s16">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 อ่านสคริปต์ทีละบรรทัด ให้นักเรียนเข้าใจว่าแต่ละบล็อกทำงานอย่างไร</div>
+  <h2>📜 ตัวอย่างสคริปต์: ภาพที่ผิด</h2>
+  <p class="sub">นี่คือโค้ดของตัวละคร "ภาพผิด" ที่ผู้เล่นต้องคลิก</p>
+  <div class="code-block" style="max-width:760px;width:100%">
+    🟡 เมื่อคลิก ⚑<br>
+    📦 กำหนด Score = 0<br>
+    🔄 ทำซ้ำตลอดไป<br>
+    &nbsp;&nbsp;🔀 ถ้า <span style="color:#5eead4">แตะ mouse-pointer?</span> และ <span style="color:#5eead4">กดเมาส์?</span> แล้ว<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;📦 เปลี่ยน Score โดย 1<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;🔊 เล่นเสียง [pop]<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;🟣 พูดว่า "ถูกต้อง!" 1 วินาที<br>
+    &nbsp;&nbsp;จบ
+  </div>
+</div>
+
+<!-- S17: วางแผนเกมก่อนสร้าง -->
+<div class="slide s17" id="s17">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 เชื่อมแนวคิด "คิดก่อนทำ" — นักออกแบบเกมวางแผนก่อนเขียนโค้ดเสมอ</div>
+  <h2>🎨 วางแผนเกมก่อนสร้าง (Game Design)</h2>
+  <p class="sub">ตอบ 4 ข้อนี้ก่อนเริ่มเขียนโค้ด</p>
+  <ul class="step-list" style="margin-top:12px">
+    <li><span class="sn">1</span>🎯 <strong style="color:#bef264">เป้าหมายเกม:</strong> ผู้เล่นต้องทำอะไรถึงชนะ?</li>
+    <li><span class="sn">2</span>🕹️ <strong style="color:#a3e635">การควบคุม:</strong> ผู้เล่นคลิก/กดปุ่มอะไร?</li>
+    <li><span class="sn">3</span>🏆 <strong style="color:#d9f99d">การให้คะแนน:</strong> ได้คะแนนเมื่อไหร่ เสียเมื่อไหร่?</li>
+    <li><span class="sn">4</span>🎬 <strong style="color:#fde047">จบเกม:</strong> เกมจบเมื่อไหร่ (เวลาหมด/ครบคะแนน)?</li>
+  </ul>
+</div>
+
 <!-- S9: Quiz -->
 <div class="slide s9" id="s9">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้นักเรียนร่วมกันตอบ อภิปรายเหตุผล</div>
-  <h2>🎯 ทดสอบ: บล็อก Events ใช้ทำอะไร?</h2>
+  <h2>🎯 Quiz 1: บล็อก Events ใช้ทำอะไร?</h2>
   <p class="sub">เลือกคำตอบที่ถูกต้อง</p>
   <div class="quiz-opts">
-    <button class="qbtn" onclick="qa(this,false)">A. สั่งให้ตัวละครเดินไปข้างหน้า</button>
-    <button class="qbtn" onclick="qa(this,false)">B. เปลี่ยนสีพื้นหลัง</button>
-    <button class="qbtn" onclick="qa(this,true)">C. กำหนดว่าโปรแกรมเริ่มทำงานเมื่อเกิดอะไร</button>
-    <button class="qbtn" onclick="qa(this,false)">D. บันทึกโปรเจกต์ลง Cloud</button>
+    <button class="qbtn" onclick="qa(this)">A. สั่งให้ตัวละครเดินไปข้างหน้า</button>
+    <button class="qbtn" onclick="qa(this)">B. เปลี่ยนสีพื้นหลัง</button>
+    <button class="qbtn" data-correct="1" onclick="qa(this)">C. กำหนดว่าโปรแกรมเริ่มทำงานเมื่อเกิดอะไร</button>
+    <button class="qbtn" onclick="qa(this)">D. บันทึกโปรเจกต์ลง Cloud</button>
   </div>
-  <div id="qa-msg" class="result-msg"></div>
+  <div class="result-msg" data-ok="🎉 ถูกต้อง! Events = กำหนดจุดเริ่มต้นของโปรแกรม" data-no="❌ ลองใหม่ — Events คือบล็อกที่กำหนดว่าโปรแกรมเริ่มเมื่อเกิดอะไร"></div>
+</div>
+
+<!-- S18: Quiz 2 -->
+<div class="slide s18" id="s18">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 Quiz 2 เรื่อง Control / เงื่อนไข</div>
+  <h2>🎯 Quiz 2: อยากให้เกมตรวจว่า "ผู้เล่นคลิกถูกภาพไหม" ควรใช้บล็อกอะไร?</h2>
+  <div class="quiz-opts">
+    <button class="qbtn" onclick="qa(this)">A. บล็อก Motion (เดิน)</button>
+    <button class="qbtn" data-correct="1" onclick="qa(this)">B. บล็อก If (ถ้า...แล้ว)</button>
+    <button class="qbtn" onclick="qa(this)">C. บล็อก Looks (พูด)</button>
+    <button class="qbtn" onclick="qa(this)">D. บล็อก Sound (เสียง)</button>
+  </div>
+  <div class="result-msg" data-ok="🎉 ถูก! ใช้บล็อก If ตรวจเงื่อนไข ถ้าคลิกถูกแล้วค่อยทำสิ่งต่อไป" data-no="❌ ใช้บล็อก If (ถ้า...แล้ว) เพื่อตรวจเงื่อนไขก่อนทำงาน"></div>
+</div>
+
+<!-- S19: Quiz 3 -->
+<div class="slide s19" id="s19">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 Quiz 3 เรื่องตัวแปร</div>
+  <h2>🎯 Quiz 3: ใช้อะไรเก็บ "คะแนน" ที่เปลี่ยนค่าได้ระหว่างเล่น?</h2>
+  <div class="quiz-opts">
+    <button class="qbtn" onclick="qa(this)">A. Costume (ชุดตัวละคร)</button>
+    <button class="qbtn" onclick="qa(this)">B. Background (ฉาก)</button>
+    <button class="qbtn" data-correct="1" onclick="qa(this)">C. Variable (ตัวแปร)</button>
+    <button class="qbtn" onclick="qa(this)">D. Sprite (ตัวละคร)</button>
+  </div>
+  <div class="result-msg" data-ok="🎉 ถูก! ตัวแปร (Variable) คือกล่องเก็บค่าที่เปลี่ยนได้ เช่น Score" data-no="❌ ใช้ตัวแปร (Variable) เก็บคะแนน เพราะค่าเปลี่ยนได้ระหว่างเล่น"></div>
 </div>
 
 <!-- S10: Debug ปัญหาที่พบบ่อย -->
@@ -259,6 +381,30 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
   <button class="timer-btn" onclick="startTimer(25)" style="margin-top:14px;font-size:15px;padding:10px 24px">⏱ 25 นาที</button>
 </div>
 
+<!-- S20: ต่อยอด & แชร์ -->
+<div class="slide s20" id="s20">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ชวนนักเรียนคิดต่อยอด เปิดโอกาสให้ออกแบบเกมเวอร์ชันของตัวเอง</div>
+  <h2>🚀 ต่อยอดเกมของเรา</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>💡 เพิ่มความสนุก</h4>
+      <p>• ใส่ตัวจับเวลา (Timer)</p>
+      <p>• เพิ่มภาพหลายคู่ให้ยากขึ้น</p>
+      <p>• ใส่เสียงและเอฟเฟกต์</p>
+      <p>• ทำหน้าจอ "ชนะ/แพ้"</p>
+    </div>
+    <div class="col">
+      <h4>🌐 แชร์ผลงาน</h4>
+      <p>• กด Save บัญชี Scratch</p>
+      <p>• กด Share ให้เพื่อนเล่น</p>
+      <p>• ดูเกมเพื่อนแล้วกด ❤️ ให้กำลังใจ</p>
+    </div>
+  </div>
+  <div class="box" style="text-align:center;margin-top:12px">
+    <p style="color:#bef264;font-size:clamp(14px,2vw,22px)">โปรแกรมเมอร์เก่งๆ เริ่มจากการลองทำเกมเล็กๆ แบบนี้! 💪</p>
+  </div>
+</div>
+
 <!-- S12: สรุป -->
 <div class="slide s12" id="s12">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สรุปบทเรียน ถามนักเรียนว่า Scratch ต่างจาก ScratchJr อย่างไร</div>
@@ -276,7 +422,7 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
 <div class="nav">
   <button class="nav-btn" onclick="go(-1)">◀</button>
   <div class="dots" id="dots"></div>
-  <span class="counter" id="counter">1 / 12</span>
+  <span class="counter" id="counter">1 / 20</span>
   <button class="nav-btn" onclick="go(1)">▶</button>
 </div>
 
@@ -288,7 +434,7 @@ for(let i=0;i<total;i++){const d=document.createElement('div');d.className='dot'
 function showSlide(n){slides[cur].classList.remove('active');document.querySelectorAll('.dot')[cur].classList.remove('on');cur=Math.max(0,Math.min(n,total-1));slides[cur].classList.add('active');document.querySelectorAll('.dot')[cur].classList.add('on');document.getElementById('counter').textContent=(cur+1)+' / '+total;document.getElementById('prog').style.width=((cur+1)/total*100)+'%';}
 function go(d){showSlide(cur+d)}
 document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')go(1);if(e.key==='ArrowLeft')go(-1);});
-function qa(btn,correct){document.querySelectorAll('.qbtn').forEach(b=>b.disabled=true);btn.classList.add(correct?'correct':'wrong');const msg=document.getElementById('qa-msg');msg.style.display='block';msg.style.color=correct?'#4ade80':'#f87171';msg.textContent=correct?'🎉 ถูกต้อง! Events = กำหนดจุดเริ่มต้นของโปรแกรม':'❌ ลองใหม่ — Events คือบล็อกที่กำหนดว่าโปรแกรมเริ่มเมื่อเกิดอะไร';}
+function qa(btn){const opts=btn.closest('.quiz-opts');const correct=btn.dataset.correct==='1';opts.querySelectorAll('.qbtn').forEach(b=>b.disabled=true);btn.classList.add(correct?'correct':'wrong');if(!correct)opts.querySelectorAll('.qbtn').forEach(b=>{if(b.dataset.correct==='1')b.classList.add('correct')});const msg=btn.closest('.slide').querySelector('.result-msg');msg.style.display='block';msg.style.color=correct?'#4ade80':'#f87171';msg.textContent=correct?msg.dataset.ok:msg.dataset.no;}
 let timerInterval=null;
 function startTimer(min){clearInterval(timerInterval);let sec=min*60;const disp=document.getElementById('timerDisplay');disp.style.display='block';function tick(){const m=Math.floor(sec/60);const s=sec%60;disp.textContent=m+':'+(s<10?'0':'')+s;if(sec===0){clearInterval(timerInterval);disp.textContent='⏰ หมดเวลา!';}sec--;}tick();timerInterval=setInterval(tick,1000);}
 showSlide(0);
