@@ -22,6 +22,15 @@ body{font-family:'Sarabun',sans-serif;background:#030818;overflow:hidden;height:
 .s9{background:linear-gradient(135deg,#030815,#0d1a50,#1e3a8a,#6366f1)}
 .s10{background:linear-gradient(135deg,#020510,#0a1040,#1d4ed8,#3b82f6)}
 .s11{background:linear-gradient(135deg,#030818,#0f1a50,#1e3a8a,#818cf8)}
+.s12{background:linear-gradient(135deg,#001012,#0c4a6e,#0369a1)}
+.s13{background:linear-gradient(135deg,#001a14,#134e4a,#0f766e)}
+.s14{background:linear-gradient(135deg,#0a0020,#1e1b4b,#3730a3)}
+.s15{background:linear-gradient(135deg,#001505,#14532d,#15803d)}
+.s16{background:linear-gradient(135deg,#1a1000,#854d0e,#ca8a04)}
+.s17{background:linear-gradient(135deg,#020510,#0a1440,#1d4ed8)}
+.s18{background:linear-gradient(135deg,#0a0018,#4c1d95,#7c3aed)}
+.s19{background:linear-gradient(135deg,#001a10,#064e3b,#047857)}
+.s20{background:linear-gradient(135deg,#1a0008,#7f1d1d,#b91c1c)}
 h1{font-size:clamp(28px,5.5vw,62px);font-weight:800;color:#fff;text-align:center;line-height:1.15}
 h2{font-size:clamp(20px,3.8vw,44px);font-weight:700;color:#fff;text-align:center;line-height:1.3}
 p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:center;margin-top:12px}
@@ -107,6 +116,47 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
   </div>
 </div>
 
+<!-- S12: ข้อมูล vs สารสนเทศ -->
+<div class="slide s12" id="s12">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 แยกข้อมูลดิบ (ตัวเลขดิบ) กับสารสนเทศ (ผ่านการประมวลผลแล้วมีความหมาย)</div>
+  <h2>📦 ข้อมูล (Data) vs สารสนเทศ (Information)</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>📥 ข้อมูลดิบ (Data)</h4>
+      <p>ตัวเลข/ข้อความที่ยังไม่ผ่านการคิด</p>
+      <p style="color:#93c5fd;margin-top:6px">เช่น: 85, 92, 78, 88, 90...</p>
+      <p style="color:rgba(255,255,255,.5);font-size:13px;margin-top:6px">มองแล้วยังไม่รู้ว่าหมายถึงอะไร</p>
+    </div>
+    <div class="col">
+      <h4>📤 สารสนเทศ (Information)</h4>
+      <p>ข้อมูลที่ประมวลผลแล้ว มีความหมาย</p>
+      <p style="color:#60a5fa;margin-top:6px">เช่น: "คะแนนเฉลี่ยห้อง = 86.6"</p>
+      <p style="color:rgba(255,255,255,.5);font-size:13px;margin-top:6px">นำไปใช้ตัดสินใจได้</p>
+    </div>
+  </div>
+  <div class="box" style="text-align:center;margin-top:12px">
+    <p style="color:#93c5fd;font-size:clamp(14px,2vw,22px)">การจัดการข้อมูล = เปลี่ยน <strong>ข้อมูลดิบ → สารสนเทศ</strong> ที่ใช้งานได้ 💡</p>
+  </div>
+</div>
+
+<!-- S13: โครงสร้างข้อมูลที่ดี -->
+<div class="slide s13" id="s13">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ก่อนจัดการข้อมูล ต้องจัดตารางให้ถูกโครงสร้างก่อน — Field/Record</div>
+  <h2>🏗️ โครงสร้างตารางข้อมูลที่ดี</h2>
+  <div class="box" style="text-align:center">
+    <p style="font-size:clamp(14px,2vw,22px);color:#fff">ตารางที่ดี: <span style="color:#93c5fd">แถวบนสุด = หัวคอลัมน์ (Field)</span> · <span style="color:#60a5fa">แต่ละแถว = 1 ระเบียน (Record)</span></p>
+  </div>
+  <table class="data-table" style="max-width:720px">
+    <tr><th>ชื่อ (Field)</th><th>ห้อง (Field)</th><th>คะแนน (Field)</th></tr>
+    <tr><td colspan="3" style="color:#60a5fa">↓ แต่ละแถวคือ 1 Record (ข้อมูลของคน 1 คน)</td></tr>
+    <tr><td>กาญจน์</td><td>ป.6/1</td><td>85</td></tr>
+    <tr><td>ขวัญ</td><td>ป.6/2</td><td>92</td></tr>
+  </table>
+  <ul class="step-list" style="margin-top:10px;max-width:780px">
+    <li><span class="sn">✓</span>มีหัวตารางทุกคอลัมน์ · ห้ามเว้นแถวว่างกลางตาราง · 1 ช่อง = 1 ข้อมูล</li>
+  </ul>
+</div>
+
 <!-- S3: Sort (เรียงข้อมูล) -->
 <div class="slide s3" id="s3">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สาธิต Sort ทั้งน้อยไปมาก และมากไปน้อย บน Excel ที่มีข้อมูลนักเรียน</div>
@@ -135,6 +185,35 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
   </div>
 </div>
 
+<!-- S14: Multi-level Sort -->
+<div class="slide s14" id="s14">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 Sort หลายชั้น — เรียงห้องก่อน ในแต่ละห้องเรียงคะแนนอีกที</div>
+  <h2>🔢 Sort หลายชั้น (Multi-level)</h2>
+  <div class="box" style="text-align:center">
+    <p style="font-size:clamp(14px,2vw,22px);color:#fff">เรียงข้อมูลทีละหลายเงื่อนไข — เรียงอันแรกก่อน แล้วเรียงอันที่สองภายในกลุ่ม</p>
+  </div>
+  <div class="two-col" style="margin-top:10px">
+    <div class="col">
+      <h4>วิธีทำ</h4>
+      <p>1. Data → Sort</p>
+      <p>2. <span style="color:#93c5fd">Sort by:</span> ห้อง (A→Z)</p>
+      <p>3. กด <span style="color:#60a5fa">Add Level</span></p>
+      <p>4. <span style="color:#93c5fd">Then by:</span> คะแนน (มาก→น้อย)</p>
+    </div>
+    <div class="col">
+      <h4>ผลลัพธ์</h4>
+      <table class="data-table" style="margin:0">
+        <tr><th>ห้อง</th><th>คะแนน</th></tr>
+        <tr><td>ป.6/1</td><td>85</td></tr>
+        <tr><td>ป.6/1</td><td>78</td></tr>
+        <tr><td>ป.6/2</td><td>92</td></tr>
+        <tr><td>ป.6/2</td><td>88</td></tr>
+      </table>
+      <p style="font-size:12px;margin-top:4px;color:rgba(255,255,255,.5)">เรียงห้องก่อน แล้วคะแนนในห้อง</p>
+    </div>
+  </div>
+</div>
+
 <!-- S4: Filter (กรองข้อมูล) -->
 <div class="slide s4" id="s4">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สาธิต Filter ให้แสดงเฉพาะนักเรียนที่คะแนนมากกว่า 80 หรือเฉพาะชั้น ป.6/1</div>
@@ -156,6 +235,30 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
       <p>• <span style="color:#93c5fd">Text Filter</span> — กรองข้อความ (เช่น "กรองเฉพาะ ป.6")</p>
       <p>• <span style="color:#60a5fa">Number Filter</span> — กรองตัวเลข (เช่น "คะแนน > 80")</p>
       <p>• <span style="color:#93c5fd">Date Filter</span> — กรองวันที่</p>
+    </div>
+  </div>
+</div>
+
+<!-- S16: Conditional Formatting -->
+<div class="slide s16" id="s16">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สาธิตเน้นสีเซลล์ที่คะแนนต่ำกว่า 50 เป็นสีแดงอัตโนมัติ — เห็นปัญหาทันที</div>
+  <h2>🎨 Conditional Formatting — เน้นสีตามเงื่อนไข</h2>
+  <div class="box" style="text-align:center">
+    <p style="font-size:clamp(14px,2vw,22px);color:#fff">ใส่<span style="color:#93c5fd">สีให้เซลล์อัตโนมัติ</span>ตามเงื่อนไข — เห็นข้อมูลสำคัญได้ทันตา</p>
+  </div>
+  <div class="two-col" style="margin-top:10px">
+    <div class="col">
+      <h4>วิธีใช้</h4>
+      <p>1. เลือกช่วงข้อมูล</p>
+      <p>2. Home → <span style="color:#93c5fd">Conditional Formatting</span></p>
+      <p>3. ตั้งเงื่อนไข เช่น "น้อยกว่า 50"</p>
+      <p>4. เลือกสีที่ต้องการเน้น</p>
+    </div>
+    <div class="col">
+      <h4>ตัวอย่างใช้งาน</h4>
+      <p>🔴 คะแนน &lt; 50 = แดง (ต้องช่วย)</p>
+      <p>🟢 คะแนน ≥ 80 = เขียว (เก่ง)</p>
+      <p>📊 แถบสีตามค่ามาก-น้อย (Data Bars)</p>
     </div>
   </div>
 </div>
@@ -217,18 +320,71 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
   </div>
 </div>
 
+<!-- S15: ตัวอย่าง VLOOKUP เต็ม -->
+<div class="slide s15" id="s15">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 เดินผ่านตัวอย่างทีละขั้น — VLOOKUP หาแถวที่ตรง แล้วดึงคอลัมน์ที่ระบุ</div>
+  <h2>🔎 ตัวอย่าง VLOOKUP: ค้นราคาสินค้า</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>ตารางอ้างอิง (A:C)</h4>
+      <table class="data-table" style="margin:0">
+        <tr><th>รหัส</th><th>สินค้า</th><th>ราคา</th></tr>
+        <tr><td>P01</td><td>ดินสอ</td><td>5</td></tr>
+        <tr><td>P02</td><td>ปากกา</td><td>10</td></tr>
+        <tr><td>P03</td><td>ยางลบ</td><td>3</td></tr>
+      </table>
+    </div>
+    <div class="col">
+      <h4>ค้นหา P02 → ราคา?</h4>
+      <div class="formula-box" style="font-size:12px">=VLOOKUP("P02", A2:C4, 3, FALSE)</div>
+      <p style="margin-top:8px;font-size:13px">1️⃣ หา "P02" ในคอลัมน์แรก</p>
+      <p style="font-size:13px">2️⃣ เจอที่แถวปากกา</p>
+      <p style="font-size:13px">3️⃣ ดึงคอลัมน์ที่ 3 = <strong style="color:#4ade80">10</strong></p>
+    </div>
+  </div>
+  <div class="box" style="text-align:center;margin-top:8px">
+    <p style="color:#93c5fd;font-size:clamp(13px,1.8vw,19px)">FALSE = หาแบบตรงเป๊ะ (แนะนำให้ใช้เสมอ) · เลขคอลัมน์นับจากซ้ายของตาราง</p>
+  </div>
+</div>
+
 <!-- S8: Quiz -->
 <div class="slide s8" id="s8">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้นักเรียนคิดก่อนตอบ ไม่เปิดดูสไลด์</div>
-  <h2>🎯 ทดสอบ: Filter ใช้ทำอะไร?</h2>
+  <h2>🎯 Quiz 1: Filter ใช้ทำอะไร?</h2>
   <p class="sub">เลือกคำตอบที่ถูกต้องที่สุด</p>
   <div class="quiz-opts">
-    <button class="qbtn" onclick="qa(this,false)">A. เรียงข้อมูลจากน้อยไปมาก</button>
-    <button class="qbtn" onclick="qa(this,true)">B. แสดงเฉพาะแถวที่ตรงกับเงื่อนไขที่กำหนด</button>
-    <button class="qbtn" onclick="qa(this,false)">C. สรุปข้อมูลเป็นตารางใหม่</button>
-    <button class="qbtn" onclick="qa(this,false)">D. ค้นหาข้อมูลในตาราง</button>
+    <button class="qbtn" onclick="qa(this)">A. เรียงข้อมูลจากน้อยไปมาก</button>
+    <button class="qbtn" data-correct="1" onclick="qa(this)">B. แสดงเฉพาะแถวที่ตรงกับเงื่อนไขที่กำหนด</button>
+    <button class="qbtn" onclick="qa(this)">C. สรุปข้อมูลเป็นตารางใหม่</button>
+    <button class="qbtn" onclick="qa(this)">D. ค้นหาข้อมูลในตาราง</button>
   </div>
-  <div id="qa-msg" class="result-msg"></div>
+  <div class="result-msg" data-ok="🎉 ถูกต้อง! Filter แสดงเฉพาะข้อมูลที่ตรงเงื่อนไข" data-no="❌ ลองใหม่ — Filter กรองข้อมูล แสดงเฉพาะแถวที่ตรงเงื่อนไข"></div>
+</div>
+
+<!-- S17: Quiz 2 -->
+<div class="slide s17" id="s17">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 Quiz 2 เรื่อง Sort</div>
+  <h2>🎯 Quiz 2: อยากเรียงคะแนนจากมากไปน้อย ใช้อะไร?</h2>
+  <div class="quiz-opts">
+    <button class="qbtn" data-correct="1" onclick="qa(this)">A. Sort → Descending (มาก→น้อย)</button>
+    <button class="qbtn" onclick="qa(this)">B. Sort → Ascending (น้อย→มาก)</button>
+    <button class="qbtn" onclick="qa(this)">C. Filter ตัวเลข</button>
+    <button class="qbtn" onclick="qa(this)">D. VLOOKUP</button>
+  </div>
+  <div class="result-msg" data-ok="🎉 ถูก! Descending = เรียงมากไปน้อย (Ascending = น้อยไปมาก)" data-no="❌ มากไปน้อยใช้ Sort Descending (Ascending = น้อยไปมาก)"></div>
+</div>
+
+<!-- S18: Quiz 3 -->
+<div class="slide s18" id="s18">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 Quiz 3 เรื่อง PivotTable/VLOOKUP</div>
+  <h2>🎯 Quiz 3: อยากสรุป "คะแนนเฉลี่ยแต่ละห้อง" จากข้อมูล 500 แถว ใช้อะไรดีที่สุด?</h2>
+  <div class="quiz-opts">
+    <button class="qbtn" onclick="qa(this)">A. พิมพ์ทีละห้องเอง</button>
+    <button class="qbtn" data-correct="1" onclick="qa(this)">B. PivotTable</button>
+    <button class="qbtn" onclick="qa(this)">C. เปลี่ยนสีเซลล์</button>
+    <button class="qbtn" onclick="qa(this)">D. Sort อย่างเดียว</button>
+  </div>
+  <div class="result-msg" data-ok="🎉 ถูก! PivotTable สรุปข้อมูลหลายมิติจากข้อมูลจำนวนมากได้อัตโนมัติ" data-no="❌ ใช้ PivotTable สรุปข้อมูลจำนวนมากเป็นตารางได้รวดเร็วอัตโนมัติ"></div>
 </div>
 
 <!-- S9: เปรียบเทียบเครื่องมือ -->
@@ -263,6 +419,29 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
   </div>
 </div>
 
+<!-- S19: ข้อมูลกับการตัดสินใจ -->
+<div class="slide s19" id="s19">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 เชื่อมสู่โลกจริง — องค์กรใหญ่ใช้ข้อมูลตัดสินใจ ให้นักเรียนเห็นความสำคัญ</div>
+  <h2>💡 ข้อมูลช่วยตัดสินใจอย่างไร?</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>🏪 ในธุรกิจ</h4>
+      <p>• สินค้าไหนขายดี → สั่งเพิ่ม</p>
+      <p>• ช่วงไหนคนซื้อเยอะ → จัดโปร</p>
+      <p>• สาขาไหนขาดทุน → ปรับปรุง</p>
+    </div>
+    <div class="col">
+      <h4>🏫 ในโรงเรียน</h4>
+      <p>• วิชาไหนนักเรียนอ่อน → ติวเพิ่ม</p>
+      <p>• ห้องไหนคะแนนดี → ดูวิธีสอน</p>
+      <p>• แนวโน้มคะแนนขึ้น/ลง</p>
+    </div>
+  </div>
+  <div class="box" style="text-align:center;margin-top:12px">
+    <p style="color:#93c5fd;font-size:clamp(14px,2vw,22px)">ตัดสินใจด้วย<strong>ข้อมูลจริง</strong> ดีกว่าการเดา — นี่คือพลังของการจัดการข้อมูล 📊</p>
+  </div>
+</div>
+
 <!-- S10: กิจกรรม -->
 <div class="slide s10" id="s10">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 แจกใบงาน ป.6 COM ให้นักเรียน เปิด Excel ให้เริ่มทำกิจกรรม</div>
@@ -274,6 +453,32 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
     <p style="margin-top:10px;color:rgba(255,255,255,.55);font-size:14px">บันทึกผลลัพธ์แต่ละขั้นลงใบงาน</p>
   </div>
   <button class="timer-btn" onclick="startTimer(25)" style="margin-top:14px;font-size:15px;padding:10px 24px">⏱ 25 นาที</button>
+</div>
+
+<!-- S20: ความเป็นส่วนตัวของข้อมูล -->
+<div class="slide s20" id="s20">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 เน้นจริยธรรม — ข้อมูลส่วนตัวของคนอื่นต้องเก็บรักษา ไม่เผยแพร่</div>
+  <h2>🔐 ความเป็นส่วนตัวของข้อมูล</h2>
+  <div class="box" style="text-align:center">
+    <p style="font-size:clamp(14px,2vw,22px);color:#fff">ข้อมูลบางอย่างเป็น<span style="color:#93c5fd">ความลับส่วนตัว</span> ต้องเก็บรักษา ไม่เผยแพร่</p>
+  </div>
+  <div class="two-col">
+    <div class="col">
+      <h4 style="color:#fca5a5">⚠️ ข้อมูลที่ต้องระวัง</h4>
+      <p>• ชื่อ-ที่อยู่-เบอร์โทร</p>
+      <p>• คะแนน-ข้อมูลส่วนตัวเพื่อน</p>
+      <p>• รหัสผ่าน-เลขบัตร</p>
+    </div>
+    <div class="col">
+      <h4>✅ ทำอย่างมีจริยธรรม</h4>
+      <p>• ไม่เอาข้อมูลคนอื่นไปเผยแพร่</p>
+      <p>• ขออนุญาตก่อนใช้ข้อมูลคนอื่น</p>
+      <p>• เก็บไฟล์ข้อมูลให้ปลอดภัย</p>
+    </div>
+  </div>
+  <div class="box" style="text-align:center;margin-top:10px">
+    <p style="color:#93c5fd;font-size:clamp(13px,1.8vw,20px)">จัดการข้อมูลเก่ง ต้องมาพร้อม<strong>ความรับผิดชอบ</strong>ด้วย 🤝</p>
+  </div>
 </div>
 
 <!-- S11: สรุป -->
@@ -293,7 +498,7 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
 <div class="nav">
   <button class="nav-btn" onclick="go(-1)">◀</button>
   <div class="dots" id="dots"></div>
-  <span class="counter" id="counter">1 / 11</span>
+  <span class="counter" id="counter">1 / 20</span>
   <button class="nav-btn" onclick="go(1)">▶</button>
 </div>
 
@@ -306,7 +511,7 @@ function showSlide(n){slides[cur].classList.remove('active');document.querySelec
 function go(d){showSlide(cur+d)}
 document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')go(1);if(e.key==='ArrowLeft')go(-1);});
 function rev(id){document.getElementById(id).classList.toggle('show')}
-function qa(btn,correct){document.querySelectorAll('.qbtn').forEach(b=>b.disabled=true);btn.classList.add(correct?'correct':'wrong');const msg=document.getElementById('qa-msg');msg.style.display='block';msg.style.color=correct?'#4ade80':'#f87171';msg.textContent=correct?'🎉 ถูกต้อง! Filter แสดงเฉพาะข้อมูลที่ตรงเงื่อนไข':'❌ ลองใหม่ — Filter กรองข้อมูล แสดงเฉพาะแถวที่ตรงเงื่อนไข';}
+function qa(btn){const opts=btn.closest('.quiz-opts');const correct=btn.dataset.correct==='1';opts.querySelectorAll('.qbtn').forEach(b=>b.disabled=true);btn.classList.add(correct?'correct':'wrong');if(!correct)opts.querySelectorAll('.qbtn').forEach(b=>{if(b.dataset.correct==='1')b.classList.add('correct')});const msg=btn.closest('.slide').querySelector('.result-msg');msg.style.display='block';msg.style.color=correct?'#4ade80':'#f87171';msg.textContent=correct?msg.dataset.ok:msg.dataset.no;}
 let timerInterval=null;
 function startTimer(min){clearInterval(timerInterval);let sec=min*60;const disp=document.getElementById('timerDisplay');disp.style.display='block';function tick(){const m=Math.floor(sec/60);const s=sec%60;disp.textContent=m+':'+(s<10?'0':'')+s;if(sec===0){clearInterval(timerInterval);disp.textContent='⏰ หมดเวลา!';}sec--;}tick();timerInterval=setInterval(tick,1000);}
 showSlide(0);

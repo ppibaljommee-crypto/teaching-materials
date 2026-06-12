@@ -22,6 +22,15 @@ body{font-family:'Sarabun',sans-serif;background:#001a15;overflow:hidden;height:
 .s9{background:linear-gradient(135deg,#001010,#02282a,#0e7490,#14b8a6)}
 .s10{background:linear-gradient(135deg,#000f08,#022820,#047857,#10b981)}
 .s11{background:linear-gradient(135deg,#001a15,#063030,#0d4b4b,#0d9488)}
+.s12{background:linear-gradient(135deg,#001505,#14532d,#15803d)}
+.s13{background:linear-gradient(135deg,#000f12,#0c4a6e,#0369a1)}
+.s14{background:linear-gradient(135deg,#0a0020,#312e81,#4338ca)}
+.s15{background:linear-gradient(135deg,#001a14,#134e4a,#0f766e)}
+.s16{background:linear-gradient(135deg,#1a1000,#854d0e,#ca8a04)}
+.s17{background:linear-gradient(135deg,#001010,#03302a,#047857)}
+.s18{background:linear-gradient(135deg,#0a0018,#4c1d95,#7c3aed)}
+.s19{background:linear-gradient(135deg,#1a0008,#7f1d1d,#b91c1c)}
+.s20{background:linear-gradient(135deg,#001a15,#063030,#0d9488)}
 h1{font-size:clamp(28px,5.5vw,62px);font-weight:800;color:#fff;text-align:center;line-height:1.15}
 h2{font-size:clamp(20px,3.8vw,44px);font-weight:700;color:#fff;text-align:center;line-height:1.3}
 p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:center;margin-top:12px}
@@ -107,6 +116,31 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
   </div>
 </div>
 
+<!-- S12: ทำไมใช้ Excel -->
+<div class="slide s12" id="s12">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 เปรียบกับการจดในสมุดแล้วบวกเลขเอง — Excel เปลี่ยนเลขแล้วผลรวมเปลี่ยนเอง</div>
+  <h2>🤔 ทำไมใช้ Excel ดีกว่าจดในสมุด?</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4 style="color:#f87171">📓 จดในสมุด</h4>
+      <p>• บวกเลขเองทุกครั้ง</p>
+      <p>• แก้เลขแล้วต้องบวกใหม่หมด</p>
+      <p>• ผิดพลาดง่าย</p>
+      <p>• ทำกราฟยาก</p>
+    </div>
+    <div class="col">
+      <h4>📊 ใช้ Excel</h4>
+      <p>• คำนวณ<strong style="color:#5eead4">อัตโนมัติ</strong></p>
+      <p>• แก้เลข → ผลรวม<strong style="color:#5eead4">เปลี่ยนเอง</strong></p>
+      <p>• แม่นยำ ไม่ผิดพลาด</p>
+      <p>• สร้างกราฟได้ในคลิกเดียว</p>
+    </div>
+  </div>
+  <div class="box" style="text-align:center;margin-top:12px">
+    <p style="color:#5eead4;font-size:clamp(14px,2vw,22px)">Excel = ผู้ช่วยคำนวณที่ไม่เคยเหนื่อยและไม่เคยผิด 🧮</p>
+  </div>
+</div>
+
 <!-- S3: Cell Row Column -->
 <div class="slide s3" id="s3">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ชี้ Cell A1, B2, C3 บน Excel จริง ให้นักเรียนบอกชื่อ Cell ตาม</div>
@@ -129,6 +163,23 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
   </div>
   <div class="box" style="text-align:center;margin-top:10px">
     <p style="color:#5eead4;font-size:clamp(13px,1.8vw,20px)">ลองคลิก Cell ต่างๆ — ดูที่ <strong>Name Box</strong> (มุมซ้ายบน) จะแสดงชื่อ Cell</p>
+  </div>
+</div>
+
+<!-- S13: Cell Range -->
+<div class="slide s13" id="s13">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 อธิบายเครื่องหมาย : ว่าหมายถึง "ตั้งแต่...ถึง..." ให้นักเรียนอ่าน range ออก</div>
+  <h2>📍 Cell Range — ช่วงของเซลล์</h2>
+  <div class="box" style="text-align:center">
+    <p style="font-size:clamp(14px,2vw,22px);color:#fff">เครื่องหมาย <span style="color:#5eead4">:</span> (โคลอน) = "ตั้งแต่...ถึง..."<br>ใช้บอกช่วงของเซลล์หลายช่อง</p>
+  </div>
+  <ul class="step-list" style="margin-top:12px">
+    <li><span class="sn">1</span><strong style="color:#5eead4">C2:C5</strong> = เซลล์ C2 ถึง C5 (4 ช่องในคอลัมน์เดียว)</li>
+    <li><span class="sn">2</span><strong style="color:#5eead4">A1:A10</strong> = A1 ถึง A10 (10 ช่องแนวตั้ง)</li>
+    <li><span class="sn">3</span><strong style="color:#5eead4">A1:C3</strong> = สี่เหลี่ยมจาก A1 ถึง C3 (9 ช่อง)</li>
+  </ul>
+  <div class="box" style="text-align:center;margin-top:8px">
+    <p style="color:#5eead4;font-size:clamp(13px,1.8vw,20px)">อ่านว่า: =SUM(<strong>C2:C5</strong>) → "บวก C2 ถึง C5"</p>
   </div>
 </div>
 
@@ -198,6 +249,50 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
   </div>
 </div>
 
+<!-- S14: Auto Fill -->
+<div class="slide s14" id="s14">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สาธิตลากมุมเซลล์เพื่อก็อปปี้สูตร/ลำดับ — ประหยัดเวลามาก</div>
+  <h2>🪄 Auto Fill — คัดลอกอัตโนมัติ</h2>
+  <div class="box" style="text-align:center">
+    <p style="font-size:clamp(14px,2vw,22px);color:#fff">ลากมุมขวาล่างของเซลล์ (<span style="color:#5eead4">Fill Handle</span>)<br>Excel จะเติมข้อมูลต่อให้อัตโนมัติ</p>
+  </div>
+  <div class="two-col">
+    <div class="col">
+      <h4>เติมลำดับ</h4>
+      <p>พิมพ์ 1, 2 → ลาก → 3,4,5...</p>
+      <p>พิมพ์ จันทร์ → ลาก → อังคาร, พุธ...</p>
+      <p>พิมพ์ ม.ค. → ลาก → ก.พ., มี.ค...</p>
+    </div>
+    <div class="col">
+      <h4>คัดลอกสูตร</h4>
+      <p>เขียน =C2+D2 ที่แถวแรก</p>
+      <p>ลากลงมา → Excel ปรับเป็น</p>
+      <p>=C3+D3, =C4+D4... ให้เอง!</p>
+    </div>
+  </div>
+</div>
+
+<!-- S15: COUNT -->
+<div class="slide s15" id="s15">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 COUNT นับจำนวนช่องที่มีตัวเลข — ใช้นับจำนวนรายการ</div>
+  <h2>🔢 สูตร COUNT — นับจำนวน</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>=COUNT()</h4>
+      <div class="formula-box" style="font-size:13px">=COUNT(C2:C10)</div>
+      <p style="margin-top:6px;font-size:13px;color:rgba(255,255,255,.6)">นับว่ามี<strong style="color:#5eead4">กี่ช่อง</strong>ที่มีตัวเลข</p>
+      <p style="font-size:13px;color:#5eead4">เช่น นับว่ามีรายการกี่รายการ</p>
+    </div>
+    <div class="col">
+      <h4>ใช้คู่กับสูตรอื่น</h4>
+      <p>• SUM = ผลรวมทั้งหมด</p>
+      <p>• COUNT = จำนวนรายการ</p>
+      <p>• SUM ÷ COUNT = ค่าเฉลี่ย</p>
+      <p style="color:#5eead4;margin-top:4px;font-size:13px">(เหมือนกับ AVERAGE!)</p>
+    </div>
+  </div>
+</div>
+
 <!-- S7: สร้างตารางรายรับรายจ่าย -->
 <div class="slide s7" id="s7">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สาธิตสร้างตารางรายรับรายจ่ายทั้งหมด ให้นักเรียนสร้างตาม</div>
@@ -213,18 +308,62 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
   </table>
 </div>
 
+<!-- S16: สร้างกราฟ -->
+<div class="slide s16" id="s16">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สาธิตเลือกข้อมูล → Insert → Chart ให้นักเรียนเห็นกราฟเกิดทันที</div>
+  <h2>📈 สร้างกราฟจากข้อมูล</h2>
+  <div class="box" style="text-align:center">
+    <p style="font-size:clamp(14px,2vw,22px);color:#fff">กราฟ = เปลี่ยนตัวเลขเป็น<span style="color:#5eead4">ภาพ</span> ดูง่าย เข้าใจเร็ว</p>
+  </div>
+  <ul class="step-list" style="margin-top:12px">
+    <li><span class="sn">1</span><strong style="color:#5eead4">เลือกข้อมูล</strong> ที่ต้องการทำกราฟ (ลากคลุม)</li>
+    <li><span class="sn">2</span>ไปที่เมนู <strong style="color:#5eead4">Insert → Chart</strong></li>
+    <li><span class="sn">3</span>เลือกชนิดกราฟ: 📊 แท่ง · 🥧 วงกลม · 📈 เส้น</li>
+  </ul>
+  <div class="two-col" style="margin-top:6px">
+    <div class="col"><h4>📊 กราฟแท่ง</h4><p>เปรียบเทียบค่า เช่น รายจ่ายแต่ละวัน</p></div>
+    <div class="col"><h4>🥧 กราฟวงกลม</h4><p>แสดงสัดส่วน เช่น ใช้เงินไปกับอะไรบ้าง</p></div>
+  </div>
+</div>
+
 <!-- S8: Quiz -->
 <div class="slide s8" id="s8">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้นักเรียนคิดก่อนตอบ ไม่ต้องเปิดดูสไลด์</div>
-  <h2>🎯 ทดสอบ: สูตรอะไรใช้หาผลรวม?</h2>
+  <h2>🎯 Quiz 1: สูตรอะไรใช้หาผลรวม?</h2>
   <p class="sub">เลือกคำตอบที่ถูกต้อง</p>
   <div class="quiz-opts">
-    <button class="qbtn" onclick="qa(this,false)">A. =AVERAGE(C2:C10)</button>
-    <button class="qbtn" onclick="qa(this,true)">B. =SUM(C2:C10)</button>
-    <button class="qbtn" onclick="qa(this,false)">C. =MAX(C2:C10)</button>
-    <button class="qbtn" onclick="qa(this,false)">D. =COUNT(C2:C10)</button>
+    <button class="qbtn" onclick="qa(this)">A. =AVERAGE(C2:C10)</button>
+    <button class="qbtn" data-correct="1" onclick="qa(this)">B. =SUM(C2:C10)</button>
+    <button class="qbtn" onclick="qa(this)">C. =MAX(C2:C10)</button>
+    <button class="qbtn" onclick="qa(this)">D. =COUNT(C2:C10)</button>
   </div>
-  <div id="qa-msg" class="result-msg"></div>
+  <div class="result-msg" data-ok="🎉 ถูกต้อง! =SUM() ใช้หาผลรวมของช่วงตัวเลข" data-no="❌ ลองใหม่ — =SUM() คือสูตรหาผลรวม"></div>
+</div>
+
+<!-- S17: Quiz 2 -->
+<div class="slide s17" id="s17">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 Quiz 2 เรื่องสูตรต้องเริ่มด้วย =</div>
+  <h2>🎯 Quiz 2: ทุกสูตรใน Excel ต้องเริ่มด้วยเครื่องหมายอะไร?</h2>
+  <div class="quiz-opts">
+    <button class="qbtn" onclick="qa(this)">A. + (บวก)</button>
+    <button class="qbtn" data-correct="1" onclick="qa(this)">B. = (เท่ากับ)</button>
+    <button class="qbtn" onclick="qa(this)">C. # (ชาร์ป)</button>
+    <button class="qbtn" onclick="qa(this)">D. @ (แอท)</button>
+  </div>
+  <div class="result-msg" data-ok="🎉 ถูก! ทุกสูตรเริ่มด้วย = เสมอ Excel ถึงจะคำนวณให้" data-no="❌ สูตรต้องเริ่มด้วย = (เท่ากับ) เสมอ ไม่งั้น Excel มองเป็นข้อความ"></div>
+</div>
+
+<!-- S18: Quiz 3 -->
+<div class="slide s18" id="s18">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 Quiz 3 เรื่องค่าเฉลี่ย</div>
+  <h2>🎯 Quiz 3: อยากหา "ค่าเฉลี่ย" รายจ่ายต่อวัน ใช้สูตรอะไร?</h2>
+  <div class="quiz-opts">
+    <button class="qbtn" onclick="qa(this)">A. =MAX(D2:D8)</button>
+    <button class="qbtn" onclick="qa(this)">B. =SUM(D2:D8)</button>
+    <button class="qbtn" data-correct="1" onclick="qa(this)">C. =AVERAGE(D2:D8)</button>
+    <button class="qbtn" onclick="qa(this)">D. =MIN(D2:D8)</button>
+  </div>
+  <div class="result-msg" data-ok="🎉 ถูก! =AVERAGE() หาค่าเฉลี่ย (ผลรวม ÷ จำนวน)" data-no="❌ ค่าเฉลี่ยใช้ =AVERAGE() (MAX=สูงสุด, MIN=ต่ำสุด, SUM=ผลรวม)"></div>
 </div>
 
 <!-- S9: จัดรูปแบบตาราง -->
@@ -248,6 +387,31 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
   </div>
 </div>
 
+<!-- S19: แก้ปัญหา Excel -->
+<div class="slide s19" id="s19">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ปัญหายอดฮิตของ Excel ให้นักเรียนรู้จักก่อน จะได้ไม่ตกใจ</div>
+  <h2>🔧 แก้ปัญหาที่พบบ่อยใน Excel</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4 style="color:#f87171">😵 ปัญหา</h4>
+      <p>• ช่องขึ้น <strong style="color:#fde047">####</strong></p>
+      <p>• พิมพ์สูตรแล้วขึ้นเป็นข้อความ</p>
+      <p>• ผลรวมไม่เปลี่ยนตามตัวเลข</p>
+      <p>• สูตรขึ้น <strong style="color:#fde047">#NAME?</strong></p>
+    </div>
+    <div class="col">
+      <h4>✅ วิธีแก้</h4>
+      <p>• #### = คอลัมน์แคบไป → <strong style="color:#5eead4">ขยายคอลัมน์</strong></p>
+      <p>• ลืมใส่ <strong style="color:#5eead4">=</strong> หน้าสูตร</p>
+      <p>• เช็คว่าอ้าง Cell ถูกช่วงไหม</p>
+      <p>• #NAME? = สะกดชื่อสูตรผิด</p>
+    </div>
+  </div>
+  <div class="box" style="text-align:center;margin-top:12px">
+    <p style="color:#5eead4;font-size:clamp(14px,2vw,22px)">Error ไม่ใช่เรื่องน่ากลัว — อ่านดูว่าผิดอะไร แล้วแก้ทีละจุด 🔍</p>
+  </div>
+</div>
+
 <!-- S10: กิจกรรม -->
 <div class="slide s10" id="s10">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 แจกใบงาน Excel ป.3 ให้นักเรียน เปิด Excel ให้เริ่มสร้างตาราง</div>
@@ -259,6 +423,31 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
     <p style="margin-top:10px;color:rgba(255,255,255,.55);font-size:14px">ใช้สูตร: SUM, AVERAGE, MAX, MIN อย่างน้อย 2 สูตร</p>
   </div>
   <button class="timer-btn" onclick="startTimer(20)" style="margin-top:14px;font-size:15px;padding:10px 24px">⏱ 20 นาที</button>
+</div>
+
+<!-- S20: Excel ในชีวิตจริง -->
+<div class="slide s20" id="s20">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 เชื่อมโยงสู่การออม — จดรายรับรายจ่ายช่วยให้รู้ว่าเงินไปไหน ออมได้</div>
+  <h2>💡 ทำบัญชีช่วยเรื่องการออม</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>📒 ประโยชน์ของการจดบัญชี</h4>
+      <p>• รู้ว่าเงินไปไหนหมด</p>
+      <p>• เห็นว่าใช้จ่ายอะไรมากเกินไป</p>
+      <p>• วางแผนการออมได้</p>
+      <p>• ตั้งเป้าหมายเก็บเงินซื้อของที่อยากได้</p>
+    </div>
+    <div class="col">
+      <h4>🐷 เคล็ดลับการออม</h4>
+      <p>• แบ่งเงินออมก่อนใช้</p>
+      <p>• จดทุกครั้งที่ใช้เงิน</p>
+      <p>• ตั้งเป้าออมต่อสัปดาห์</p>
+      <p style="color:#5eead4;margin-top:4px">ออมวันละนิด สะสมเป็นก้อนใหญ่!</p>
+    </div>
+  </div>
+  <div class="box" style="text-align:center;margin-top:12px">
+    <p style="color:#5eead4;font-size:clamp(14px,2vw,22px)">Excel ที่เรียนวันนี้ ใช้จัดการเงินของเราเองได้จริง 💰</p>
+  </div>
 </div>
 
 <!-- S11: สรุป -->
@@ -278,7 +467,7 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
 <div class="nav">
   <button class="nav-btn" onclick="go(-1)">◀</button>
   <div class="dots" id="dots"></div>
-  <span class="counter" id="counter">1 / 11</span>
+  <span class="counter" id="counter">1 / 20</span>
   <button class="nav-btn" onclick="go(1)">▶</button>
 </div>
 
@@ -291,7 +480,7 @@ function showSlide(n){slides[cur].classList.remove('active');document.querySelec
 function go(d){showSlide(cur+d)}
 document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')go(1);if(e.key==='ArrowLeft')go(-1);});
 function rev(id){document.getElementById(id).classList.toggle('show')}
-function qa(btn,correct){document.querySelectorAll('.qbtn').forEach(b=>b.disabled=true);btn.classList.add(correct?'correct':'wrong');const msg=document.getElementById('qa-msg');msg.style.display='block';msg.style.color=correct?'#4ade80':'#f87171';msg.textContent=correct?'🎉 ถูกต้อง! =SUM() ใช้หาผลรวมของช่วงตัวเลข':'❌ ลองใหม่ — =SUM() คือสูตรหาผลรวม';}
+function qa(btn){const opts=btn.closest('.quiz-opts');const correct=btn.dataset.correct==='1';opts.querySelectorAll('.qbtn').forEach(b=>b.disabled=true);btn.classList.add(correct?'correct':'wrong');if(!correct)opts.querySelectorAll('.qbtn').forEach(b=>{if(b.dataset.correct==='1')b.classList.add('correct')});const msg=btn.closest('.slide').querySelector('.result-msg');msg.style.display='block';msg.style.color=correct?'#4ade80':'#f87171';msg.textContent=correct?msg.dataset.ok:msg.dataset.no;}
 let timerInterval=null;
 function startTimer(min){clearInterval(timerInterval);let sec=min*60;const disp=document.getElementById('timerDisplay');disp.style.display='block';function tick(){const m=Math.floor(sec/60);const s=sec%60;disp.textContent=m+':'+(s<10?'0':'')+s;if(sec===0){clearInterval(timerInterval);disp.textContent='⏰ หมดเวลา!';}sec--;}tick();timerInterval=setInterval(tick,1000);}
 showSlide(0);
