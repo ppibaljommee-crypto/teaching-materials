@@ -11,18 +11,26 @@ body{font-family:'Sarabun',sans-serif;background:#000510;overflow:hidden;height:
 .slide{display:none;width:100vw;height:100vh;flex-direction:column;align-items:center;justify-content:center;padding:36px 32px;position:relative;overflow:hidden}
 .slide.active{display:flex;animation:fadeUp .4s ease}
 @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
-.s1{background:linear-gradient(135deg,#001a3d,#003575,#0057a8,#0ea5e9}}
-.s2{background:linear-gradient(135deg,#000510,#000e22,#001838}}
-.s3{background:linear-gradient(135deg,#001218,#001f28,#002e3a}}
-.s4{background:linear-gradient(135deg,#000510,#000c20,#001038}}
-.s5{background:linear-gradient(135deg,#050015,#0a0030,#10004a}}
-.s6{background:linear-gradient(135deg,#001018,#001f2a,#002e3f}}
-.s7{background:linear-gradient(135deg,#050010,#0a0022,#100038}}
-.s8{background:linear-gradient(135deg,#001500,#002800,#003c00}}
-.s9{background:linear-gradient(135deg,#0a0010,#150025,#200040}}
-.s10{background:linear-gradient(135deg,#001510,#002820,#003c30}}
-.s11{background:linear-gradient(135deg,#0a0008,#180018,#280028}}
-.s12{background:linear-gradient(135deg,#000510,#000e22,#001a3d}}
+.s1{background:linear-gradient(135deg,#001a3d,#003575,#0057a8,#0ea5e9)}
+.s2{background:linear-gradient(135deg,#000510,#000e22,#001838)}
+.s3{background:linear-gradient(135deg,#001218,#001f28,#002e3a)}
+.s4{background:linear-gradient(135deg,#000510,#000c20,#001038)}
+.s5{background:linear-gradient(135deg,#050015,#0a0030,#10004a)}
+.s6{background:linear-gradient(135deg,#001018,#001f2a,#002e3f)}
+.s7{background:linear-gradient(135deg,#050010,#0a0022,#100038)}
+.s8{background:linear-gradient(135deg,#001500,#002800,#003c00)}
+.s9{background:linear-gradient(135deg,#0a0010,#150025,#200040)}
+.s10{background:linear-gradient(135deg,#001510,#002820,#003c30)}
+.s11{background:linear-gradient(135deg,#0a0008,#180018,#280028)}
+.s12{background:linear-gradient(135deg,#000510,#000e22,#001a3d)}
+.s13{background:linear-gradient(135deg,#001a10,#14532d,#15803d)}
+.s14{background:linear-gradient(135deg,#0a0020,#2e1065,#6d28d9)}
+.s15{background:linear-gradient(135deg,#1a1000,#854d0e,#ca8a04)}
+.s16{background:linear-gradient(135deg,#001215,#134e4a,#0f766e)}
+.s17{background:linear-gradient(135deg,#1a0008,#7f1d1d,#b91c1c)}
+.s18{background:linear-gradient(135deg,#001838,#003575,#0369a1)}
+.s19{background:linear-gradient(135deg,#050015,#0a0030,#3730a3)}
+.s20{background:linear-gradient(135deg,#001a3d,#0057a8,#0ea5e9)}
 h1{font-size:clamp(28px,5.5vw,62px);font-weight:800;color:#fff;text-align:center;line-height:1.15}
 h2{font-size:clamp(20px,3.8vw,44px);font-weight:700;color:#fff;text-align:center;line-height:1.3}
 p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:center;margin-top:12px}
@@ -151,6 +159,24 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
   </ul>
 </div>
 
+<!-- S13: wireframe -->
+<div class="slide s13" id="s13">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 wireframe = ร่างโครงเว็บคร่าวๆ ก่อนสร้างจริง เหมือนพิมพ์เขียวบ้าน</div>
+  <h2>📐 ร่างผังเว็บ (Wireframe) ก่อนสร้าง</h2>
+  <div class="box" style="text-align:center">
+    <p style="font-size:clamp(15px,2.3vw,26px);color:#fff">Wireframe = <span style="color:#bae6fd">ร่างโครงเว็บคร่าวๆ</span> วางว่าอะไรอยู่ตรงไหน</p>
+  </div>
+  <div class="web-demo" style="max-width:600px;margin:14px auto 0">
+    <div style="background:rgba(14,165,233,.25);border-radius:6px;padding:8px;text-align:center;margin-bottom:6px">🔷 หัวเว็บ (Logo + ชื่อ + เมนู)</div>
+    <div style="display:flex;gap:6px;margin-bottom:6px">
+      <div style="flex:2;background:rgba(255,255,255,.08);border-radius:6px;padding:14px;text-align:center">🖼️ รูปใหญ่ + ข้อความต้อนรับ</div>
+      <div style="flex:1;background:rgba(255,255,255,.08);border-radius:6px;padding:14px;text-align:center">📋 เมนู</div>
+    </div>
+    <div style="background:rgba(255,255,255,.05);border-radius:6px;padding:8px;text-align:center">📄 เนื้อหา · 🔗 ลิงก์ · 📧 ติดต่อ (ท้ายเว็บ)</div>
+  </div>
+  <p class="sub" style="margin-top:10px;font-size:clamp(13px,1.8vw,20px)">วาดในกระดาษก่อน → สร้างจริงเร็วและไม่หลงทาง</p>
+</div>
+
 <!-- S5: สร้างเว็บใหม่ -->
 <div class="slide s5" id="s5">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สาธิตทีละขั้นบน Projector ให้นักเรียนทำตาม ช้าๆ รอทุกคน</div>
@@ -189,6 +215,21 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
   </div>
 </div>
 
+<!-- S14: โครงสร้างหน้าเว็บ -->
+<div class="slide s14" id="s14">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ทุกหน้าเว็บมีโครงสร้างคล้ายกัน: หัว เนื้อหา ท้าย</div>
+  <h2>🧱 โครงสร้างหน้าเว็บที่ดี</h2>
+  <ul class="step-list">
+    <li><span class="sn">1</span><strong style="color:#38bdf8">Header (ส่วนหัว)</strong> — ชื่อเว็บ/โลโก้ + เมนูนำทาง อยู่บนสุด</li>
+    <li><span class="sn">2</span><strong style="color:#4ade80">Hero (ส่วนเด่น)</strong> — รูปใหญ่ + ข้อความต้อนรับ ดึงดูดสายตา</li>
+    <li><span class="sn">3</span><strong style="color:#fde68a">Content (เนื้อหา)</strong> — ข้อมูลหลัก แบ่งเป็นส่วนๆ อ่านง่าย</li>
+    <li><span class="sn">4</span><strong style="color:#a78bfa">Footer (ส่วนท้าย)</strong> — ข้อมูลติดต่อ เครดิต ลิงก์เพิ่มเติม</li>
+  </ul>
+  <div class="box" style="text-align:center;margin-top:8px">
+    <p style="font-size:clamp(13px,1.8vw,20px);color:#bae6fd">วางเนื้อหาสำคัญไว้บนๆ — คนดูส่วนบนก่อนเสมอ</p>
+  </div>
+</div>
+
 <!-- S7: สร้างหน้าใหม่ -->
 <div class="slide s7" id="s7">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สาธิตการสร้างหน้าใหม่และ Navigation menu ที่ปรากฏอัตโนมัติ</div>
@@ -202,6 +243,27 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
   </ul>
   <div class="box" style="text-align:center;margin-top:10px">
     <p style="font-size:clamp(14px,2vw,22px);color:#fde68a;font-weight:800">💡 เว็บที่ดีควรมีอย่างน้อย 3 หน้า: หน้าแรก + เนื้อหา + ติดต่อ</p>
+  </div>
+</div>
+
+<!-- S15: ลิงก์ (hyperlink) -->
+<div class="slide s15" id="s15">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ลิงก์ทำให้เว็บเชื่อมโยงกัน คลิกแล้วไปหน้าอื่นหรือเว็บอื่นได้</div>
+  <h2>🔗 ลิงก์ (Hyperlink) เชื่อมหน้า</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>วิธีใส่ลิงก์</h4>
+      <p>1. เลือกข้อความหรือรูป</p>
+      <p>2. คลิกไอคอน <strong style="color:#38bdf8">🔗 Insert link</strong></p>
+      <p>3. เลือกหน้าในเว็บ หรือวาง URL ภายนอก</p>
+      <p>4. คลิก Apply</p>
+    </div>
+    <div class="col">
+      <h4>ลิงก์ 2 แบบ</h4>
+      <p>📄 <strong style="color:#4ade80">ลิงก์ภายใน</strong> — ไปหน้าอื่นในเว็บเรา</p>
+      <p>🌐 <strong style="color:#fde68a">ลิงก์ภายนอก</strong> — ไปเว็บอื่น เช่น YouTube</p>
+      <p style="margin-top:6px;color:#bae6fd;font-size:13px">ใช้ข้อความลิงก์ที่สื่อความหมาย เช่น "ดูผลงาน" ไม่ใช่ "คลิกที่นี่"</p>
+    </div>
   </div>
 </div>
 
@@ -255,6 +317,30 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
   </div>
 </div>
 
+<!-- S16: เว็บบนมือถือ -->
+<div class="slide s16" id="s16">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 คนส่วนใหญ่เปิดเว็บบนมือถือ ต้องเช็กว่าเว็บดูดีบนจอเล็กด้วย</div>
+  <h2>📱 ตรวจสอบเว็บบนมือถือ (Preview)</h2>
+  <div class="box" style="text-align:center">
+    <p style="font-size:clamp(15px,2.3vw,26px);color:#fff">คนส่วนใหญ่เปิดเว็บบน<span style="color:#bae6fd">มือถือ</span> ต้องดูดีทุกจอ</p>
+  </div>
+  <div class="two-col">
+    <div class="col">
+      <h4>วิธี Preview</h4>
+      <p>1. คลิกไอคอน <strong style="color:#38bdf8">👁️ Preview</strong> มุมขวาบน</p>
+      <p>2. เลือกดูแบบ 📱 มือถือ / 💻 แท็บเล็ต / 🖥️ คอม</p>
+      <p>3. เช็กว่าตัวอักษร/รูปไม่ล้นจอ</p>
+    </div>
+    <div class="col">
+      <h4>เคล็ดลับ</h4>
+      <p>• ตัวอักษรไม่เล็กเกินบนมือถือ</p>
+      <p>• รูปไม่ใหญ่จนล้นจอ</p>
+      <p>• ปุ่ม/ลิงก์กดง่ายด้วยนิ้ว</p>
+      <p style="color:#bae6fd;margin-top:4px">Google Sites ปรับให้อัตโนมัติ แต่ควรเช็กเสมอ</p>
+    </div>
+  </div>
+</div>
+
 <!-- S10: เผยแพร่เว็บ -->
 <div class="slide s10" id="s10">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สาธิต Publish แล้วเปิด URL ที่ได้บน Projector — ให้นักเรียนเห็นเว็บจริงบนอินเทอร์เน็ต ตื่นเต้นมาก!</div>
@@ -269,18 +355,95 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
   </ul>
 </div>
 
+<!-- S17: ความปลอดภัยข้อมูลบนเว็บ -->
+<div class="slide s17" id="s17">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 เว็บที่เผยแพร่ทุกคนเห็นได้ ต้องระวังไม่ใส่ข้อมูลส่วนตัว — เชื่อมกับหน่วยความปลอดภัย</div>
+  <h2>🔐 ระวังข้อมูลส่วนตัวบนเว็บ</h2>
+  <div class="box" style="text-align:center">
+    <p style="font-size:clamp(15px,2.3vw,26px);color:#fff">เว็บที่ Publish แล้ว <span style="color:#f87171">ทุกคนบนอินเทอร์เน็ตเห็นได้</span></p>
+  </div>
+  <div class="two-col">
+    <div class="col" style="border-color:rgba(248,113,113,.3)">
+      <h4 style="color:#f87171">🚫 อย่าใส่ในเว็บ</h4>
+      <p>• ที่อยู่บ้าน เบอร์โทร</p>
+      <p>• ชื่อ-นามสกุลเต็ม</p>
+      <p>• รูปที่บอกตำแหน่งบ้าน/โรงเรียน</p>
+      <p>• ข้อมูลคนอื่นโดยไม่ขอ</p>
+    </div>
+    <div class="col" style="border-color:rgba(74,222,128,.3)">
+      <h4 style="color:#4ade80">✅ ใส่ได้ปลอดภัย</h4>
+      <p>• ชื่อเล่น/ชื่อโปรเจกต์</p>
+      <p>• ผลงาน งานเรียน</p>
+      <p>• รูปที่ไม่บอกข้อมูลส่วนตัว</p>
+      <p>• อ้างอิงรูป/ข้อมูลที่นำมาใช้</p>
+    </div>
+  </div>
+  <div class="box" style="text-align:center;margin-top:8px">
+    <p style="font-size:clamp(13px,1.8vw,20px);color:#bae6fd">ก่อน Publish → ตรวจว่าไม่มีข้อมูลส่วนตัวหลุดออกไป</p>
+  </div>
+</div>
+
 <!-- S11: Quiz -->
 <div class="slide s11" id="s11">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ถามให้นักเรียนอธิบายเหตุผล ไม่ใช่แค่ตอบถูก/ผิด</div>
   <h2>🎯 Quiz: เว็บไซต์ที่ดีต้องมีอะไร?</h2>
   <p style="color:#fff;font-size:clamp(14px,2.2vw,24px);font-weight:800;text-align:center;margin:10px 0">ข้อใดเป็นเว็บไซต์ที่ดีที่สุด?</p>
   <div class="quiz-opts">
-    <button class="qbtn" onclick="qa(this,false)">ก. เว็บที่มีรูปเยอะที่สุด สีหลายสี เต็มทุกหน้า</button>
-    <button class="qbtn" onclick="qa(this,true)">ข. เว็บที่มีเนื้อหาชัดเจน อ่านง่าย มี Navigation ที่ดี</button>
-    <button class="qbtn" onclick="qa(this,false)">ค. เว็บที่มี Animation เยอะที่สุด</button>
-    <button class="qbtn" onclick="qa(this,false)">ง. เว็บที่มีหน้าเยอะที่สุด</button>
+    <button class="qbtn" onclick="qa(this)">ก. เว็บที่มีรูปเยอะที่สุด สีหลายสี เต็มทุกหน้า</button>
+    <button class="qbtn" data-correct="1" onclick="qa(this)">ข. เว็บที่มีเนื้อหาชัดเจน อ่านง่าย มี Navigation ที่ดี</button>
+    <button class="qbtn" onclick="qa(this)">ค. เว็บที่มี Animation เยอะที่สุด</button>
+    <button class="qbtn" onclick="qa(this)">ง. เว็บที่มีหน้าเยอะที่สุด</button>
   </div>
-  <div class="result-msg" id="qr11"></div>
+  <div class="result-msg" data-ok="🎉 ถูกต้อง! เนื้อหาดีและอ่านง่ายสำคัญที่สุด ไม่ใช่ความหรูหรา" data-no="❌ เว็บที่ดีไม่จำเป็นต้องมีรูปเยอะหรือ Animation เยอะ แต่ต้องอ่านง่ายและมี Navigation ดี"></div>
+</div>
+
+<!-- S18: Quiz 2 -->
+<div class="slide s18" id="s18">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 Quiz 2 เรื่อง Google Sites</div>
+  <h2>🎯 Quiz 2: หลังแก้ไขเว็บใน Google Sites ต้องกด Save ไหม?</h2>
+  <div class="quiz-opts">
+    <button class="qbtn" onclick="qa(this)">ก. ต้องกด Save ทุกครั้ง ไม่งั้นหาย</button>
+    <button class="qbtn" data-correct="1" onclick="qa(this)">ข. ไม่ต้อง Google Sites บันทึกอัตโนมัติ</button>
+    <button class="qbtn" onclick="qa(this)">ค. ต้องกด Ctrl+S</button>
+    <button class="qbtn" onclick="qa(this)">ง. ต้องดาวน์โหลดไฟล์เก็บ</button>
+  </div>
+  <div class="result-msg" data-ok="🎉 ถูก! Google Sites บันทึกอัตโนมัติ แต่ต้องกด Publish ให้เว็บอัปเดต" data-no="❌ Google Sites บันทึกอัตโนมัติ (แต่ต้องกด Publish เพื่อให้เว็บสาธารณะอัปเดต)"></div>
+</div>
+
+<!-- S19: Quiz 3 -->
+<div class="slide s19" id="s19">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 Quiz 3 เรื่องความปลอดภัย</div>
+  <h2>🎯 Quiz 3: สิ่งใดไม่ควรใส่ในเว็บที่เผยแพร่สาธารณะ?</h2>
+  <div class="quiz-opts">
+    <button class="qbtn" onclick="qa(this)">ก. ผลงานและงานเรียนของเรา</button>
+    <button class="qbtn" data-correct="1" onclick="qa(this)">ข. ที่อยู่บ้านและเบอร์โทรศัพท์</button>
+    <button class="qbtn" onclick="qa(this)">ค. รูปงานศิลปะที่เราวาด</button>
+    <button class="qbtn" onclick="qa(this)">ง. ชื่อโปรเจกต์</button>
+  </div>
+  <div class="result-msg" data-ok="🎉 ถูก! ห้ามใส่ข้อมูลส่วนตัว เช่น ที่อยู่ เบอร์โทร บนเว็บสาธารณะ" data-no="❌ ห้ามใส่ข้อมูลส่วนตัว (ที่อยู่ เบอร์โทร) เพราะทุกคนบนเน็ตเห็นได้"></div>
+</div>
+
+<!-- S20: ต่อยอด web developer -->
+<div class="slide s20" id="s20">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สร้างแรงบันดาลใจ — Google Sites เป็นจุดเริ่ม ต่อยอดสู่การสร้างเว็บจริงได้</div>
+  <h2>🚀 ต่อยอดสู่นักสร้างเว็บ (Web Developer)</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>🌱 เริ่มจากวันนี้</h4>
+      <p>• Google Sites (ลากวาง ง่าย)</p>
+      <p>• Canva Website</p>
+      <p>• WordPress</p>
+    </div>
+    <div class="col">
+      <h4>🌳 ต่อยอดในอนาคต</h4>
+      <p>• HTML & CSS (เขียนโครงเว็บเอง)</p>
+      <p>• JavaScript (ทำเว็บโต้ตอบได้)</p>
+      <p>• เป็น Web Developer / นักออกแบบเว็บ</p>
+    </div>
+  </div>
+  <div class="box" style="text-align:center;margin-top:12px">
+    <p style="font-size:clamp(14px,2vw,22px);color:#bae6fd;font-weight:800">เว็บนี้ (สื่อการสอน) ก็สร้างด้วย HTML — เริ่มจากเล็กๆ ได้เสมอ! 🌐</p>
+  </div>
 </div>
 
 <!-- S12: งาน + สรุป -->
@@ -320,7 +483,7 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
 <div class="nav">
   <button class="nav-btn" onclick="go(-1)">◀</button>
   <div class="dots" id="dots"></div>
-  <span class="counter" id="counter">1 / 12</span>
+  <span class="counter" id="counter">1 / 20</span>
   <button class="nav-btn" onclick="go(1)">▶</button>
 </div>
 
@@ -363,13 +526,7 @@ function startTimer(min) {
   tick();
   timerInterval = setInterval(tick, 1000);
 }
-function qa(btn, correct) {
-  const opts = btn.parentElement.querySelectorAll('.qbtn');
-  opts.forEach(b => b.disabled = true);
-  const msg = document.getElementById('qr11');
-  if (correct) { btn.classList.add('correct'); msg.textContent = '🎉 ถูกต้อง! เนื้อหาดีและอ่านง่ายสำคัญที่สุด ไม่ใช่ความ華麗'; msg.style.color = '#4ade80'; msg.style.display = 'block'; }
-  else { btn.classList.add('wrong'); msg.textContent = '❌ เว็บที่ดีไม่จำเป็นต้องมีรูปเยอะหรือ Animation เยอะ แต่ต้องอ่านง่ายและมี Navigation ดี'; msg.style.color = '#f87171'; msg.style.display = 'block'; }
-}
+function qa(btn){const opts=btn.closest('.quiz-opts');const correct=btn.dataset.correct==='1';opts.querySelectorAll('.qbtn').forEach(b=>b.disabled=true);btn.classList.add(correct?'correct':'wrong');if(!correct)opts.querySelectorAll('.qbtn').forEach(b=>{if(b.dataset.correct==='1')b.classList.add('correct')});const msg=btn.closest('.slide').querySelector('.result-msg');msg.style.display='block';msg.style.color=correct?'#4ade80':'#f87171';msg.textContent=correct?msg.dataset.ok:msg.dataset.no;}
 </script>
 </body>
 </html>

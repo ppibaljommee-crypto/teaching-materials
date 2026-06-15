@@ -11,17 +11,26 @@ body{font-family:'Sarabun',sans-serif;background:#0f0500;overflow:hidden;height:
 .slide{display:none;width:100vw;height:100vh;flex-direction:column;align-items:center;justify-content:center;padding:36px 32px;position:relative;overflow:hidden}
 .slide.active{display:flex;animation:fadeUp .4s ease}
 @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
-.s1{background:linear-gradient(135deg,#450a00,#7f1d1d,#b91c1c,#dc2626}}
-.s2{background:linear-gradient(135deg,#0f0500,#1f0800,#300c00}}
-.s3{background:linear-gradient(135deg,#050800,#101500,#1a2200}}
-.s4{background:linear-gradient(135deg,#0a0500,#1a0c00,#2a1200}}
-.s5{background:linear-gradient(135deg,#001a0a,#003018,#004522}}
-.s6{background:linear-gradient(135deg,#0a0500,#200d00,#351500}}
-.s7{background:linear-gradient(135deg,#050a00,#0f1800,#1a2600}}
-.s8{background:linear-gradient(135deg,#1a0005,#350010,#50001a}}
-.s9{background:linear-gradient(135deg,#0a0800,#1a1400,#2c1e00}}
-.s10{background:linear-gradient(135deg,#051005,#0a2010,#0f3015}}
-.s11{background:linear-gradient(135deg,#0a0000,#200808,#361010}}
+.s1{background:linear-gradient(135deg,#450a00,#7f1d1d,#b91c1c,#dc2626)}
+.s2{background:linear-gradient(135deg,#0f0500,#1f0800,#300c00)}
+.s3{background:linear-gradient(135deg,#050800,#101500,#1a2200)}
+.s4{background:linear-gradient(135deg,#0a0500,#1a0c00,#2a1200)}
+.s5{background:linear-gradient(135deg,#001a0a,#003018,#004522)}
+.s6{background:linear-gradient(135deg,#0a0500,#200d00,#351500)}
+.s7{background:linear-gradient(135deg,#050a00,#0f1800,#1a2600)}
+.s8{background:linear-gradient(135deg,#1a0005,#350010,#50001a)}
+.s9{background:linear-gradient(135deg,#0a0800,#1a1400,#2c1e00)}
+.s10{background:linear-gradient(135deg,#051005,#0a2010,#0f3015)}
+.s11{background:linear-gradient(135deg,#0a0000,#200808,#361010)}
+.s12{background:linear-gradient(135deg,#001520,#0c4a6e,#0369a1)}
+.s13{background:linear-gradient(135deg,#001a10,#14532d,#15803d)}
+.s14{background:linear-gradient(135deg,#0a0020,#2e1065,#6d28d9)}
+.s15{background:linear-gradient(135deg,#0a0500,#200d00,#a16207)}
+.s16{background:linear-gradient(135deg,#001215,#134e4a,#0f766e)}
+.s17{background:linear-gradient(135deg,#0a0500,#1a0c00,#7c2d12)}
+.s18{background:linear-gradient(135deg,#1a0008,#7f1d1d,#b91c1c)}
+.s19{background:linear-gradient(135deg,#1a0005,#350010,#9d174d)}
+.s20{background:linear-gradient(135deg,#450a00,#7f1d1d,#dc2626)}
 h1{font-size:clamp(28px,5.5vw,62px);font-weight:800;color:#fff;text-align:center;line-height:1.15}
 h2{font-size:clamp(20px,3.8vw,44px);font-weight:700;color:#fff;text-align:center;line-height:1.3}
 p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:center;margin-top:12px}
@@ -106,6 +115,31 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
   </div>
 </div>
 
+<!-- S12: ประเภทของข่าว -->
+<div class="slide s12" id="s12">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้นักเรียนยกตัวอย่างข่าวแต่ละประเภทที่เคยเห็น</div>
+  <h2>🗂️ ข่าวมีหลายประเภท</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>📋 ประเภทข่าว</h4>
+      <p>⚽ <strong style="color:#fca5a5">ข่าวกีฬา</strong> — ผลแข่งขัน นักกีฬา</p>
+      <p>🎭 <strong style="color:#fb923c">ข่าวบันเทิง</strong> — ภาพยนตร์ ดนตรี</p>
+      <p>🏫 <strong style="color:#fde68a">ข่าวการศึกษา</strong> — โรงเรียน การเรียน</p>
+      <p>🌦️ <strong style="color:#4ade80">ข่าวอากาศ</strong> — พยากรณ์อากาศ</p>
+    </div>
+    <div class="col">
+      <h4>📰 ตัวอย่างหัวข้อ</h4>
+      <p>⚽ "ทีมโรงเรียนคว้าแชมป์ฟุตบอล"</p>
+      <p>🎭 "ละครเวทีนักเรียนเปิดการแสดง"</p>
+      <p>🏫 "เปิดห้องสมุดใหม่ที่โรงเรียน"</p>
+      <p>🌦️ "สัปดาห์นี้ฝนตกหนักทั่วภาคเหนือ"</p>
+    </div>
+  </div>
+  <div class="box" style="text-align:center;margin-top:10px">
+    <p style="font-size:clamp(13px,1.8vw,20px);color:#fca5a5">เลือกประเภทข่าวที่เราสนใจ จะเขียนได้สนุกและดีขึ้น</p>
+  </div>
+</div>
+
 <!-- S3: 5W1H -->
 <div class="slide s3" id="s3">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 จำง่ายๆ: "5W1H = คำถาม 6 ข้อที่นักข่าวต้องตอบ" — ถ้าตอบครบ ข่าวก็สมบูรณ์</div>
@@ -173,6 +207,31 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
   </div>
 </div>
 
+<!-- S13: แหล่งข่าว -->
+<div class="slide s13" id="s13">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 นักข่าวต้องหาข้อมูลจากแหล่งจริง ไม่ใช่เดาเอง</div>
+  <h2>📍 แหล่งข่าว — หาข้อมูลจากไหน?</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>🔍 แหล่งข้อมูลของนักข่าว</h4>
+      <p>👤 <strong>สัมภาษณ์</strong> ผู้เกี่ยวข้อง/พยาน</p>
+      <p>👀 <strong>สังเกต</strong> เหตุการณ์ด้วยตัวเอง</p>
+      <p>📄 <strong>เอกสาร</strong> ทางการ สถิติ</p>
+      <p>🏛️ <strong>เว็บทางการ</strong> หน่วยงานที่เชื่อถือได้</p>
+    </div>
+    <div class="col">
+      <h4>✅ แหล่งข่าวที่ดี</h4>
+      <p>• มาจากคนที่อยู่ในเหตุการณ์จริง</p>
+      <p>• มีมากกว่า 1 แหล่งยืนยันตรงกัน</p>
+      <p>• เป็นทางการ ตรวจสอบได้</p>
+      <p style="color:#f87171;margin-top:4px">❌ ไม่ใช่ "เพื่อนเล่าว่า..." หรือเดาเอง</p>
+    </div>
+  </div>
+  <div class="box" style="text-align:center;margin-top:10px">
+    <p style="font-size:clamp(13px,1.8vw,20px);color:#fca5a5">ข่าวที่ดีต้องบอกได้ว่า "ข้อมูลนี้มาจากใคร/ที่ไหน"</p>
+  </div>
+</div>
+
 <!-- S5: โครงสร้างข่าว -->
 <div class="slide s5" id="s5">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 อธิบาย Inverted Pyramid: ข้อมูลสำคัญที่สุดอยู่บนสุดเสมอ เพราะคนอ่านแค่ด้านบน</div>
@@ -210,6 +269,29 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
   </div>
 </div>
 
+<!-- S14: ภาพประกอบ & caption -->
+<div class="slide s14" id="s14">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 รูปช่วยเล่าเรื่อง คำบรรยายภาพ (caption) บอกว่าในรูปคืออะไร</div>
+  <h2>📷 ภาพประกอบข่าว & คำบรรยายภาพ</h2>
+  <div class="box" style="text-align:center">
+    <p style="font-size:clamp(15px,2.3vw,26px);color:#fff">รูปภาพช่วยให้ข่าว<span style="color:#fca5a5">น่าสนใจและน่าเชื่อถือ</span>ขึ้น</p>
+  </div>
+  <div class="two-col">
+    <div class="col">
+      <h4>📸 ภาพข่าวที่ดี</h4>
+      <p>• เกี่ยวข้องกับเนื้อข่าว</p>
+      <p>• ชัดเจน เห็นเหตุการณ์</p>
+      <p>• เป็นภาพจริง ไม่ตัดต่อหลอก</p>
+      <p>• ถ้าใช้ภาพคนอื่น ต้องอ้างอิง</p>
+    </div>
+    <div class="col">
+      <h4>✍️ คำบรรยายภาพ (Caption)</h4>
+      <p>บอกสั้นๆ ว่าในรูปคืออะไร ใคร ที่ไหน</p>
+      <p style="margin-top:6px;color:#fde68a;font-size:13px">เช่น: "นักเรียน ป.3 ช่วยกันปลูกต้นไม้ที่สนามโรงเรียน เมื่อ 14 มิ.ย."</p>
+    </div>
+  </div>
+</div>
+
 <!-- S7: การสัมภาษณ์ -->
 <div class="slide s7" id="s7">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ฝึกร่วมกัน: ให้นักเรียน 2 คน เล่นบทบาท นักข่าว + ผู้ให้สัมภาษณ์ สัมภาษณ์ 2 นาที</div>
@@ -221,6 +303,30 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
     <li><span class="sn">4</span><strong style="color:#4ade80">อ้างอิงคำพูด</strong> — ใช้เครื่องหมายคำพูด "..." เมื่อยกคำพูดตรงๆ</li>
     <li><span class="sn">5</span><strong style="color:#60a5fa">ขอบคุณ</strong> — หลังสัมภาษณ์เสมอ</li>
   </ul>
+</div>
+
+<!-- S15: เรียบเรียงคำเอง -->
+<div class="slide s15" id="s15">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สอนว่าการลอกข้อความคนอื่นมาทั้งดุ้น = ผิด ต้องเรียบเรียงด้วยคำของเราเอง</div>
+  <h2>✍️ เขียนด้วยคำของเราเอง</h2>
+  <div class="box" style="text-align:center">
+    <p style="font-size:clamp(15px,2.3vw,26px);color:#fff">อ่านข้อมูล → เข้าใจ → <span style="color:#fca5a5">เขียนใหม่ด้วยคำของเรา</span></p>
+  </div>
+  <div class="two-col">
+    <div class="col" style="border-color:rgba(248,113,113,.3)">
+      <h4 style="color:#f87171">❌ ลอกมาทั้งดุ้น</h4>
+      <p>Copy ข้อความจากเว็บมาวางเลย</p>
+      <p style="color:rgba(255,255,255,.5);font-size:13px;margin-top:4px">→ ผิดลิขสิทธิ์ + ไม่ได้ฝึกคิด</p>
+    </div>
+    <div class="col" style="border-color:rgba(74,222,128,.3)">
+      <h4 style="color:#4ade80">✅ เรียบเรียงเอง</h4>
+      <p>อ่านเข้าใจ แล้วเขียนใหม่ในแบบเรา</p>
+      <p style="color:rgba(255,255,255,.5);font-size:13px;margin-top:4px">→ ถ้ายกคำพูดตรงๆ ใส่ "..." + บอกที่มา</p>
+    </div>
+  </div>
+  <div class="box" style="text-align:center;margin-top:10px">
+    <p style="font-size:clamp(13px,1.8vw,20px);color:#fca5a5">เขียนเอง = เข้าใจจริง + ไม่ขโมยผลงานใคร</p>
+  </div>
 </div>
 
 <!-- S8: ตรวจสอบข้อเท็จจริง -->
@@ -247,18 +353,84 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
   </div>
 </div>
 
+<!-- S16: จรรยาบรรณนักข่าว -->
+<div class="slide s16" id="s16">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 นักข่าวที่ดีต้องเป็นกลาง เสนอความจริง ไม่เข้าข้างฝ่ายใด</div>
+  <h2>⚖️ จรรยาบรรณนักข่าว</h2>
+  <ul class="step-list">
+    <li><span class="sn">1</span><strong style="color:#fca5a5">เสนอความจริง</strong> — รายงานตามข้อเท็จจริง ไม่บิดเบือน</li>
+    <li><span class="sn">2</span><strong style="color:#fb923c">เป็นกลาง</strong> — ไม่เข้าข้างฝ่ายใดฝ่ายหนึ่ง</li>
+    <li><span class="sn">3</span><strong style="color:#fde68a">เคารพผู้อื่น</strong> — ไม่ทำร้ายชื่อเสียงใครโดยไม่มีหลักฐาน</li>
+    <li><span class="sn">4</span><strong style="color:#4ade80">รับผิดชอบ</strong> — ถ้าผิดต้องแก้ไขและขอโทษ</li>
+  </ul>
+  <div class="box" style="text-align:center;margin-top:8px">
+    <p style="font-size:clamp(14px,2vw,22px);color:#fca5a5;font-weight:800">นักข่าวที่ดีมีพลัง — ต้องใช้พลังนั้นอย่างมีความรับผิดชอบ</p>
+  </div>
+</div>
+
+<!-- S19: ไม่สร้างข่าวปลอม -->
+<div class="slide s19" id="s19">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ย้ำว่าการแต่งข่าวเพื่อให้น่าตื่นเต้นเป็นเรื่องผิด ทำให้คนเข้าใจผิด</div>
+  <h2>🚫 นักข่าวที่ดีไม่สร้างข่าวปลอม</h2>
+  <div class="two-col">
+    <div class="col" style="border-color:rgba(248,113,113,.3)">
+      <h4 style="color:#f87171">❌ อย่าทำ</h4>
+      <p>• แต่งเรื่องให้ตื่นเต้นเกินจริง</p>
+      <p>• ใส่ตัวเลขมั่วๆ ที่ไม่ได้ตรวจ</p>
+      <p>• ใช้หัวข้อหลอกให้คลิก (Clickbait)</p>
+      <p>• ตัดต่อรูป/คำพูดให้ผิดความหมาย</p>
+    </div>
+    <div class="col" style="border-color:rgba(74,222,128,.3)">
+      <h4 style="color:#4ade80">✅ ทำแบบนี้</h4>
+      <p>• เขียนตามที่เกิดขึ้นจริง</p>
+      <p>• ตรวจสอบตัวเลขก่อนเขียน</p>
+      <p>• หัวข้อตรงกับเนื้อหา</p>
+      <p>• ใช้รูปจริง ไม่ตัดต่อหลอก</p>
+    </div>
+  </div>
+  <div class="box" style="text-align:center;margin-top:10px">
+    <p style="font-size:clamp(13px,1.8vw,20px);color:#fca5a5">ข่าวจริงสร้างความเข้าใจ · ข่าวปลอมสร้างความเสียหาย</p>
+  </div>
+</div>
+
 <!-- S9: Quiz -->
 <div class="slide s9" id="s9">
   <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้นักเรียนโหวตโดยยกมือ แล้วอธิบายว่าทำไมถึงเลือกอันนั้น</div>
   <h2>🎯 Quiz: หัวข้อข่าวไหนดีกว่า?</h2>
   <p class="sub" style="margin-bottom:8px">เหตุการณ์: นักเรียน ป.3 ชนะแข่งขันวาดรูประดับประเทศ ที่กรุงเทพฯ เมื่อวานนี้</p>
   <div class="quiz-opts">
-    <button class="qbtn" onclick="qa(this,false)">ก. "มีนักเรียนชนะการแข่งขันแล้ว"</button>
-    <button class="qbtn" onclick="qa(this,true)">ข. "นักเรียน ป.3 คว้าแชมป์วาดรูประดับประเทศ ที่กรุงเทพฯ"</button>
-    <button class="qbtn" onclick="qa(this,false)">ค. "สุดยอดมาก!!! ต้องอ่านด่วนที่สุด!!!"</button>
-    <button class="qbtn" onclick="qa(this,false)">ง. "มีผลการแข่งขันออกมาแล้ว เด็กชนะ"</button>
+    <button class="qbtn" onclick="qa(this)">ก. "มีนักเรียนชนะการแข่งขันแล้ว"</button>
+    <button class="qbtn" data-correct="1" onclick="qa(this)">ข. "นักเรียน ป.3 คว้าแชมป์วาดรูประดับประเทศ ที่กรุงเทพฯ"</button>
+    <button class="qbtn" onclick="qa(this)">ค. "สุดยอดมาก!!! ต้องอ่านด่วนที่สุด!!!"</button>
+    <button class="qbtn" onclick="qa(this)">ง. "มีผลการแข่งขันออกมาแล้ว เด็กชนะ"</button>
   </div>
-  <div class="result-msg" id="qr9"></div>
+  <div class="result-msg" data-ok="🎉 ถูกต้อง! บอก Who + What + Where ชัดเจน ไม่ยาวเกินไป" data-no="❌ หัวข้อที่ดีต้องบอก Who + What ได้ทันที ไม่คลุมเครือหรือเกินจริง"></div>
+</div>
+
+<!-- S17: Quiz 2 -->
+<div class="slide s17" id="s17">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 Quiz 2 เรื่อง 5W1H</div>
+  <h2>🎯 Quiz 2: คำถาม "เกิดเหตุที่ไหน?" ตรงกับ W ตัวไหน?</h2>
+  <div class="quiz-opts">
+    <button class="qbtn" onclick="qa(this)">ก. Who (ใคร)</button>
+    <button class="qbtn" onclick="qa(this)">ข. When (เมื่อไหร่)</button>
+    <button class="qbtn" data-correct="1" onclick="qa(this)">ค. Where (ที่ไหน)</button>
+    <button class="qbtn" onclick="qa(this)">ง. Why (ทำไม)</button>
+  </div>
+  <div class="result-msg" data-ok="🎉 ถูก! Where = ที่ไหน (สถานที่เกิดเหตุ)" data-no="❌ &quot;ที่ไหน&quot; = Where (Who=ใคร, When=เมื่อไหร่, Why=ทำไม)"></div>
+</div>
+
+<!-- S18: Quiz 3 -->
+<div class="slide s18" id="s18">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 Quiz 3 เรื่องจรรยาบรรณ</div>
+  <h2>🎯 Quiz 3: ก่อนเผยแพร่ข่าว นักข่าวที่ดีควรทำอะไร?</h2>
+  <div class="quiz-opts">
+    <button class="qbtn" onclick="qa(this)">ก. รีบเผยแพร่ให้เร็วที่สุด ไม่ต้องตรวจ</button>
+    <button class="qbtn" data-correct="1" onclick="qa(this)">ข. ตรวจสอบข้อเท็จจริงและแหล่งข้อมูลก่อน</button>
+    <button class="qbtn" onclick="qa(this)">ค. แต่งเรื่องให้ตื่นเต้นขึ้น</button>
+    <button class="qbtn" onclick="qa(this)">ง. ใส่ตัวเลขมั่วๆ ให้ดูน่าเชื่อ</button>
+  </div>
+  <div class="result-msg" data-ok="🎉 ถูก! ตรวจสอบข้อเท็จจริงก่อนเสมอ = หัวใจของนักข่าวที่ดี" data-no="❌ ต้องตรวจสอบข้อเท็จจริงและแหล่งข้อมูลก่อนเผยแพร่เสมอ"></div>
 </div>
 
 <!-- S10: งาน -->
@@ -275,6 +447,31 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
       4️⃣ เขียน Lead ย่อหน้าแรก (1-2 ประโยค ตอบ 5W1H)<br>
       5️⃣ เขียนเนื้อหาข่าว 2-3 ย่อหน้า
     </p>
+  </div>
+</div>
+
+<!-- S20: นักข่าวที่ดี -->
+<div class="slide s20" id="s20">
+  <div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ทบทวนคุณสมบัตินักข่าวที่ดี เชื่อมโยงกับสิ่งที่เรียน</div>
+  <h2>🗞️ คุณสมบัตินักข่าวตัวน้อยที่ดี</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>📝 ทักษะ</h4>
+      <p>• ถาม 5W1H ครบถ้วน</p>
+      <p>• เขียนหัวข้อกระชับ น่าสนใจ</p>
+      <p>• สัมภาษณ์และจดบันทึกเก่ง</p>
+      <p>• เรียบเรียงด้วยคำของตัวเอง</p>
+    </div>
+    <div class="col">
+      <h4>💗 หัวใจ</h4>
+      <p>• เสนอความจริง ตรวจสอบก่อน</p>
+      <p>• เป็นกลาง ไม่ลำเอียง</p>
+      <p>• ไม่สร้างข่าวปลอม</p>
+      <p>• รับผิดชอบต่อสิ่งที่เขียน</p>
+    </div>
+  </div>
+  <div class="box" style="text-align:center;margin-top:12px">
+    <p style="font-size:clamp(14px,2vw,22px);color:#fca5a5;font-weight:800">ทุกคนเป็นนักข่าวตัวน้อยที่ดีได้! 📰</p>
   </div>
 </div>
 
@@ -296,7 +493,7 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
 <div class="nav">
   <button class="nav-btn" onclick="go(-1)">◀</button>
   <div class="dots" id="dots"></div>
-  <span class="counter" id="counter">1 / 11</span>
+  <span class="counter" id="counter">1 / 20</span>
   <button class="nav-btn" onclick="go(1)">▶</button>
 </div>
 
@@ -339,13 +536,7 @@ function startTimer(min) {
   tick();
   timerInterval = setInterval(tick, 1000);
 }
-function qa(btn, correct) {
-  const opts = btn.parentElement.querySelectorAll('.qbtn');
-  opts.forEach(b => b.disabled = true);
-  const msg = document.getElementById('qr9');
-  if (correct) { btn.classList.add('correct'); msg.textContent = '🎉 ถูกต้อง! บอก Who + What + Where ชัดเจน ไม่ยาวเกินไป'; msg.style.color = '#4ade80'; msg.style.display = 'block'; }
-  else { btn.classList.add('wrong'); msg.textContent = '❌ หัวข้อที่ดีต้องบอก Who + What ได้ทันที ไม่คลุมเครือหรือเกินจริง'; msg.style.color = '#f87171'; msg.style.display = 'block'; }
-}
+function qa(btn){const opts=btn.closest('.quiz-opts');const correct=btn.dataset.correct==='1';opts.querySelectorAll('.qbtn').forEach(b=>b.disabled=true);btn.classList.add(correct?'correct':'wrong');if(!correct)opts.querySelectorAll('.qbtn').forEach(b=>{if(b.dataset.correct==='1')b.classList.add('correct')});const msg=btn.closest('.slide').querySelector('.result-msg');msg.style.display='block';msg.style.color=correct?'#4ade80':'#f87171';msg.textContent=correct?msg.dataset.ok:msg.dataset.no;}
 </script>
 </body>
 </html>
