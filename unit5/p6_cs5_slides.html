@@ -23,6 +23,14 @@ body{font-family:'Sarabun',sans-serif;background:#0a0008;overflow:hidden;height:
 .s10{background:linear-gradient(135deg,#0a0518,#3b0764,#7e22ce)}
 .s11{background:linear-gradient(135deg,#001a15,#065f46,#0d9488)}
 .s12{background:linear-gradient(135deg,#0a0a1a,#1e1b4b,#4338ca)}
+.s13{background:linear-gradient(135deg,#1a1500,#78350f,#d97706)}
+.s14{background:linear-gradient(135deg,#1a0505,#7f1d1d,#dc2626)}
+.s15{background:linear-gradient(135deg,#0a1a0a,#166534,#15803d)}
+.s16{background:linear-gradient(135deg,#0a1520,#0c4a6e,#0284c7)}
+.s17{background:linear-gradient(135deg,#1a0533,#3d0c6b,#6b21a8)}
+.s18{background:linear-gradient(135deg,#0a0518,#3b0764,#7e22ce)}
+.s19{background:linear-gradient(135deg,#001a15,#065f46,#0d9488)}
+.s20{background:linear-gradient(135deg,#1a1000,#78350f,#d97706)}
 h1{font-size:clamp(28px,5.5vw,64px);font-weight:800;color:#fff;text-align:center;line-height:1.15}
 h2{font-size:clamp(20px,3.8vw,46px);font-weight:700;color:#fff;text-align:center;line-height:1.3}
 p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:center;margin-top:12px}
@@ -67,36 +75,82 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
 <div class="prog-bar" id="prog"></div>
 <div class="timer-widget"><button class="timer-btn" onclick="startTimer(10)">⏱ 10 นาที</button><div class="timer-display" id="timerDisplay">10:00</div></div>
 
+<!-- 1 -->
 <div class="slide s1 active"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ถาม: "เคยได้รับข้อความแปลกๆ หรือลิงก์น่าสงสัยบ้างไหม?"</div><div class="badge">วิทยาการคำนวณ • ป.6 • หน่วยที่ 5</div><div class="big-emoji">🛡️</div><h1>ป้องกันตัว<br>ในโลกดิจิทัล</h1><p class="sub">ภัยไซเบอร์ • Phishing • Malware • การป้องกัน</p></div>
 
+<!-- 2 -->
 <div class="slide s2"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ทบทวนหน่วย 4 Code.org วิเคราะห์ข้อมูล</div><h2>🔄 จำได้มั้ย? หน่วยที่ 4</h2><ul class="step-list" style="max-width:700px"><li><span class="sn">1</span>วิเคราะห์<strong style="color:#fbbf24">ข้อมูลโรงเรียน</strong>ด้วย Excel</li><li><span class="sn">2</span>สร้าง<strong style="color:#4ade80">กราฟและ PivotTable</strong></li><li><span class="sn">3</span><strong style="color:#a78bfa">นำเสนอข้อสรุป</strong>จากข้อมูล</li></ul><p class="sub" style="margin-top:16px">หน่วยสุดท้าย = <strong style="color:#fcd34d">รู้จักภัยและป้องกันตัวในโลกดิจิทัล</strong> 🛡️</p></div>
 
+<!-- 3 -->
 <div class="slide s3"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 อธิบายภัยไซเบอร์แต่ละประเภท ให้นักเรียนยกมือถ้าเคยเจอ</div><h2>⚠️ ภัยไซเบอร์คืออะไร?</h2><div class="two-col"><div class="col"><h4 style="color:#f87171">🎣 Phishing</h4><p>หลอกให้กรอกข้อมูลส่วนตัว<br>ผ่านเว็บหรืออีเมลปลอม</p><br><h4 style="color:#f87171">🦠 Malware</h4><p>ซอฟต์แวร์อันตราย<br>ไวรัส โทรจัน Ransomware</p></div><div class="col"><h4 style="color:#f87171">💰 Scam</h4><p>หลอกให้โอนเงิน<br>หรือซื้อของปลอม</p><br><h4 style="color:#f87171">😔 Cyberbullying</h4><p>การกลั่นแกล้งออนไลน์<br>ทำให้เสียชื่อเสียง</p></div></div></div>
 
+<!-- 4 -->
 <div class="slide s4"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 อธิบาย Phishing ด้วยตัวอย่างอีเมลปลอมจากธนาคาร</div><h2>🎣 รู้จัก Phishing</h2><div class="box" style="text-align:center"><p style="font-size:clamp(14px,2.3vw,26px);color:#fff;margin-bottom:12px">Phishing = <span style="color:#f87171">หลอกล่อ</span>ให้เราเปิดเผยข้อมูลสำคัญ</p></div><div class="two-col"><div class="col"><h4>🚩 สัญญาณเตือน</h4><p>• ชื่อผู้ส่งไม่ชัดเจน</p><p>• URL ผิดสังเกต</p><p>• ขอข้อมูลส่วนตัว</p><p>• บอกว่า "ด่วน! บัญชีถูกล็อค"</p><p>• มีการสะกดผิด</p></div><div class="col"><h4>✅ วิธีรับมือ</h4><p>• ไม่คลิกลิงก์ในเมล</p><p>• ตรวจสอบ URL ให้ดี</p><p>• โทรถามโดยตรงแทน</p><p>• แจ้งผู้ปกครองหรือครู</p></div></div></div>
 
-<div class="slide s5"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 อธิบาย Malware ว่าเข้ามาได้ยังไง และผลที่ตามมา</div><h2>🦠 รู้จัก Malware</h2><div class="two-col"><div class="col"><h4>📌 Malware เข้ามาได้จาก</h4><p>• เปิดไฟล์แนบอีเมล</p><p>• Download จากเว็บไม่ดี</p><p>• คลิกโฆษณาน่าสงสัย</p><p>• USB ที่มีไวรัส</p></div><div class="col"><h4>🛡️ ป้องกันได้ด้วย</h4><p>• ติดตั้ง Antivirus</p><p>• อัปเดตระบบสม่ำเสมอ</p><p>• ไม่ Download ของฟรีน่าสงสัย</p><p>• สแกน USB ก่อนใช้</p></div></div></div>
+<!-- 5 — Quiz 1 -->
+<div class="slide s5"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้ยกมือตอบก่อนกดเฉลย</div><div class="badge">Quiz ข้อที่ 1</div><h2>🎯 ทดสอบความเข้าใจ!</h2><p class="sub">ถ้าได้รับอีเมลขอให้กรอกรหัสผ่าน เราควรทำอย่างไร?</p><div class="quiz-opts">
+<button class="qbtn" onclick="qa(this)">A. กรอกไปเลย เพราะเป็นเรื่องด่วน</button>
+<button class="qbtn" data-correct="1" onclick="qa(this)">B. ไม่กรอก ลบทิ้ง แจ้งผู้ปกครอง</button>
+<button class="qbtn" onclick="qa(this)">C. กรอกครึ่งเดียวก่อน</button>
+<button class="qbtn" onclick="qa(this)">D. ส่งต่อให้เพื่อนช่วยกรอก</button>
+</div><div class="result-msg" data-ok="🎉 ถูกต้อง! ไม่กรอก ลบ แจ้งทันที" data-no="❌ อีเมลขอรหัสผ่าน = Phishing เสมอ ไม่ควรกรอก"></div></div>
 
-<div class="slide s6"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สอนการสร้างรหัสผ่านที่แข็งแรง ให้นักเรียนลองคิดรหัสผ่าน</div><h2>🔐 รหัสผ่านที่ดีเป็นยังไง?</h2><div class="box"><p style="text-align:center;font-size:clamp(15px,2.5vw,26px);color:#fcd34d;font-weight:700;margin-bottom:12px">รหัสผ่านที่แข็งแรง = ปลอดภัย</p></div><div class="two-col"><div class="col"><h4>✅ รหัสที่ดี</h4><p>• ยาวอย่างน้อย 8 ตัว</p><p>• มีตัวพิมพ์ใหญ่-เล็ก</p><p>• มีตัวเลขและอักขระพิเศษ</p><p>• ไม่ใช้ชื่อหรือวันเกิด</p></div><div class="col"><h4>❌ รหัสที่อ่อนแอ</h4><p>• 12345678</p><p>• password</p><p>• ชื่อตัวเอง</p><p>• วันเกิด เช่น 2550</p></div></div></div>
+<!-- 6 -->
+<div class="slide s6"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 อธิบาย Malware ว่าเข้ามาได้ยังไง และผลที่ตามมา</div><h2>🦠 รู้จัก Malware</h2><div class="two-col"><div class="col"><h4>📌 Malware เข้ามาได้จาก</h4><p>• เปิดไฟล์แนบอีเมล</p><p>• Download จากเว็บไม่ดี</p><p>• คลิกโฆษณาน่าสงสัย</p><p>• USB ที่มีไวรัส</p></div><div class="col"><h4>🛡️ ป้องกันได้ด้วย</h4><p>• ติดตั้ง Antivirus</p><p>• อัปเดตระบบสม่ำเสมอ</p><p>• ไม่ Download ของฟรีน่าสงสัย</p><p>• สแกน USB ก่อนใช้</p></div></div></div>
 
-<div class="slide s7"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้นักเรียนร่วมกันวิเคราะห์สถานการณ์</div><h2>🎮 สถานการณ์: ทำอย่างไร?</h2><div class="box"><p style="font-size:clamp(14px,2.3vw,24px);color:#fcd34d;font-weight:700;margin-bottom:8px">ได้รับอีเมลแจ้งว่า "คุณได้รางวัลล้านบาท! กรอกเลขบัตรประชาชนเพื่อรับรางวัล"</p></div><button class="reveal-btn" onclick="rev('r7')">🔍 ดูเฉลย</button><div id="r7" class="reveal-text">🚨 นี่คือ Phishing/Scam! — ไม่กรอก ลบทิ้ง แจ้งผู้ปกครองทันที</div></div>
+<!-- 7 -->
+<div class="slide s7"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 อธิบาย Scam หลอกเงิน ยกตัวอย่างหลอกซื้อของออนไลน์</div><h2>💰 รู้จัก Scam (หลอกเงิน)</h2><div class="box" style="text-align:center"><p style="font-size:clamp(14px,2.3vw,26px);color:#fff">Scam = <span style="color:#f87171">หลอกให้โอนเงิน</span> หรือซื้อของที่ไม่มีจริง</p></div><div class="two-col"><div class="col" style="border-color:rgba(248,113,113,.3)"><h4 style="color:#f87171">🚩 รูปแบบที่พบบ่อย</h4><p>• "ถูกรางวัล! โอนค่าธรรมเนียมก่อน"</p><p>• ร้านออนไลน์ราคาถูกผิดปกติ</p><p>• ขอยืมเงินผ่านบัญชีปลอม</p></div><div class="col" style="border-color:rgba(74,222,128,.3)"><h4 style="color:#4ade80">✅ วิธีรับมือ</h4><p>• ไม่โอนเงินให้คนแปลกหน้า</p><p>• ตรวจสอบร้านค้าก่อนซื้อ</p><p>• ปรึกษาผู้ปกครองทุกครั้ง</p></div></div></div>
 
-<div class="slide s8"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สรุปหลักการป้องกัน THINK ก่อนโพสต์/คลิก</div><h2>🧠 THINK ก่อนทำอะไรออนไลน์</h2><ul class="step-list"><li><span class="sn">T</span><strong style="color:#fcd34d">True</strong> — จริงหรือเปล่า? ตรวจสอบก่อน</li><li><span class="sn">H</span><strong style="color:#4ade80">Helpful</strong> — มีประโยชน์ไหม?</li><li><span class="sn">I</span><strong style="color:#a78bfa">Inspiring</strong> — สร้างสรรค์หรือทำร้ายคนอื่น?</li><li><span class="sn">N</span><strong style="color:#7dd3fc">Necessary</strong> — จำเป็นต้องทำจริงไหม?</li><li><span class="sn">K</span><strong style="color:#f87171">Kind</strong> — กรุณาต่อคนอื่นไหม?</li></ul></div>
+<!-- 8 -->
+<div class="slide s8"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 Cyberbullying — ชวนคุยว่าเคยเห็นการกลั่นแกล้งออนไลน์ไหม</div><h2>😔 Cyberbullying (กลั่นแกล้งออนไลน์)</h2><div class="box" style="text-align:center"><p style="font-size:clamp(14px,2.3vw,26px);color:#fff">การใช้คำพูด/รูป ทำร้ายจิตใจคนอื่นบนโลกออนไลน์</p></div><div class="two-col"><div class="col" style="border-color:rgba(248,113,113,.3)"><h4 style="color:#f87171">❌ ตัวอย่าง</h4><p>• ด่าว่าหรือล้อเลียนในคอมเมนต์</p><p>• แชร์รูปคนอื่นเพื่อล้อ</p><p>• ตั้งกลุ่มนินทาเพื่อน</p></div><div class="col" style="border-color:rgba(74,222,128,.3)"><h4 style="color:#4ade80">✅ ถ้าเจอ ให้...</h4><p>• ไม่ตอบโต้ เก็บหลักฐาน</p><p>• บล็อกและรายงาน</p><p>• บอกผู้ปกครองหรือครู</p></div></div></div>
 
-<div class="slide s9"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้ยกมือตอบ</div><h2>🎯 ทดสอบความเข้าใจ!</h2><p class="sub">ถ้าได้รับอีเมลขอให้กรอกรหัสผ่าน เราควรทำอย่างไร?</p><div class="quiz-opts">
-<button class="qbtn" onclick="qa(this,false)">A. กรอกไปเลย เพราะเป็นเรื่องด่วน</button>
-<button class="qbtn" onclick="qa(this,true)">B. ไม่กรอก ลบทิ้ง แจ้งผู้ปกครอง</button>
-<button class="qbtn" onclick="qa(this,false)">C. กรอกครึ่งเดียวก่อน</button>
-<button class="qbtn" onclick="qa(this,false)">D. ส่งต่อให้เพื่อนช่วยกรอก</button>
-</div><div id="qa-msg" class="result-msg"></div></div>
+<!-- 9 -->
+<div class="slide s9"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สอนการสร้างรหัสผ่านที่แข็งแรง ให้นักเรียนลองคิดรหัสผ่าน</div><h2>🔐 รหัสผ่านที่ดีเป็นยังไง?</h2><div class="box"><p style="text-align:center;font-size:clamp(15px,2.5vw,26px);color:#fcd34d;font-weight:700;margin-bottom:12px">รหัสผ่านที่แข็งแรง = ปลอดภัย</p></div><div class="two-col"><div class="col"><h4>✅ รหัสที่ดี</h4><p>• ยาวอย่างน้อย 8 ตัว</p><p>• มีตัวพิมพ์ใหญ่-เล็ก</p><p>• มีตัวเลขและอักขระพิเศษ</p><p>• ไม่ใช้ชื่อหรือวันเกิด</p></div><div class="col"><h4>❌ รหัสที่อ่อนแอ</h4><p>• 12345678</p><p>• password</p><p>• ชื่อตัวเอง</p><p>• วันเกิด เช่น 2550</p></div></div></div>
 
-<div class="slide s10"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 แจกใบงานสถานการณ์ภัยไซเบอร์ ให้วิเคราะห์และเลือกวิธีรับมือ</div><div class="big-emoji">🕵️</div><h2>งานของเรา: วิเคราะห์ภัยไซเบอร์</h2><div class="activity-box"><h3>📋 โจทย์</h3><p>อ่านสถานการณ์ <strong style="color:#fcd34d">5 กรณี</strong><br>วิเคราะห์ว่าเป็นภัยประเภทไหน และจะรับมืออย่างไร</p><p style="margin-top:10px;color:rgba(255,255,255,.65);font-size:14px">ใบงาน 5.1 — ระบุประเภทภัย + วิธีป้องกัน</p></div><button class="timer-btn" onclick="startTimer(20)" style="margin-top:14px;font-size:15px;padding:10px 24px">⏱ เริ่มจับเวลา 20 นาที</button></div>
+<!-- 10 -->
+<div class="slide s10"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 อธิบายการยืนยันตัวตน 2 ขั้น (2FA) ว่าช่วยกันแฮกได้ยังไง</div><h2>🔑 ยืนยันตัวตน 2 ขั้น (2FA)</h2><div class="box" style="text-align:center"><p style="font-size:clamp(14px,2.3vw,26px);color:#fff">2FA = ใช้<span style="color:#fcd34d">รหัสผ่าน + อีกหนึ่งขั้น</span> เพื่อความปลอดภัย</p></div><div class="two-col"><div class="col"><h4>📲 ขั้นที่สองคืออะไร</h4><p>• รหัส OTP ส่งเข้ามือถือ</p><p>• แอปยืนยันตัวตน</p><p>• ลายนิ้วมือ / สแกนหน้า</p></div><div class="col"><h4>💡 ทำไมถึงปลอดภัยขึ้น</h4><p>• ถึงรหัสผ่านรั่ว ก็เข้าไม่ได้</p><p>• ต้องมีมือถือเราด้วย</p><p>• ป้องกันการแฮกบัญชี</p></div></div></div>
 
-<div class="slide s11"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้นักเรียนนำเสนอการวิเคราะห์ของตัวเอง</div><h2>🌟 สรุปการรับมือภัยไซเบอร์</h2><ul class="step-list"><li><span class="sn">🎣</span>Phishing: <strong style="color:#fcd34d">ไม่คลิก ไม่กรอก แจ้งทันที</strong></li><li><span class="sn">🦠</span>Malware: <strong style="color:#4ade80">ใช้ Antivirus อัปเดตระบบเสมอ</strong></li><li><span class="sn">💰</span>Scam: <strong style="color:#a78bfa">ไม่โอนเงิน ไม่เชื่อโดยไม่ตรวจสอบ</strong></li><li><span class="sn">🔐</span>รหัสผ่าน: <strong style="color:#7dd3fc">ยาว ซับซ้อน ไม่บอกใคร</strong></li></ul></div>
+<!-- 11 — Quiz 2 -->
+<div class="slide s11"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ทบทวนเรื่องรหัสผ่าน</div><div class="badge">Quiz ข้อที่ 2</div><h2>🎯 ลองคิดดู!</h2><p class="sub">รหัสผ่านข้อใด "แข็งแรง" และปลอดภัยที่สุด?</p><div class="quiz-opts">
+<button class="qbtn" onclick="qa(this)">A. 12345678</button>
+<button class="qbtn" onclick="qa(this)">B. password</button>
+<button class="qbtn" data-correct="1" onclick="qa(this)">C. Mx7$pLb2!kQ</button>
+<button class="qbtn" onclick="qa(this)">D. วันเกิดของเรา</button>
+</div><div class="result-msg" data-ok="✅ ถูกต้อง! รหัสยาว มีพิมพ์ใหญ่-เล็ก ตัวเลข และอักขระพิเศษ = แข็งแรง" data-no="❌ ยังไม่ใช่ — รหัสที่ดีต้องยาวและผสมตัวอักษร ตัวเลข อักขระพิเศษ"></div></div>
 
-<div class="slide s12"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สรุปบทเรียน ขอบคุณนักเรียนที่เรียนมาตลอดปี</div><div class="badge">สรุปบทเรียน หน่วยที่ 5</div><h2>🎓 สรุป: ป้องกันตัวในโลกดิจิทัล</h2><ul class="step-list"><li><span class="sn">⚠️</span>ภัยไซเบอร์มี<strong style="color:#fcd34d">หลายรูปแบบ</strong> ต้องระวัง</li><li><span class="sn">🎣</span>Phishing = <strong style="color:#f87171">หลอกล่อข้อมูล</strong> อย่าหลงเชื่อ</li><li><span class="sn">🦠</span>Malware = <strong style="color:#f87171">ซอฟต์แวร์อันตราย</strong> ป้องกันด้วย Antivirus</li><li><span class="sn">🧠</span>คิดก่อนทำ: <strong style="color:#4ade80">THINK ทุกครั้ง</strong></li><li><span class="sn">🛡️</span>ปลอดภัย = <strong style="color:#a78bfa">ระวัง ตรวจสอบ แจ้งผู้ใหญ่</strong></li></ul></div>
+<!-- 12 -->
+<div class="slide s12"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 อธิบายความเป็นส่วนตัว ข้อมูลอะไรไม่ควรโพสต์/บอกใคร</div><h2>🔒 ปกป้องข้อมูลส่วนตัว</h2><div class="box" style="text-align:center"><p style="font-size:clamp(14px,2.3vw,26px);color:#fcd34d;font-weight:700">ข้อมูลบางอย่างไม่ควรบอกหรือโพสต์ออนไลน์</p></div><div class="two-col"><div class="col" style="border-color:rgba(248,113,113,.3)"><h4 style="color:#f87171">🚫 ไม่ควรเปิดเผย</h4><p>• เลขบัตรประชาชน</p><p>• ที่อยู่บ้าน / เบอร์โทร</p><p>• รหัสผ่าน</p><p>• รูปที่บอกตำแหน่งบ้าน/โรงเรียน</p></div><div class="col" style="border-color:rgba(74,222,128,.3)"><h4 style="color:#4ade80">✅ ควรทำ</h4><p>• ตั้งบัญชีเป็นส่วนตัว</p><p>• รับเพื่อนเฉพาะคนที่รู้จัก</p><p>• ถามผู้ปกครองก่อนโพสต์</p></div></div></div>
 
-<div class="nav"><button class="nav-btn" onclick="go(-1)">◀</button><div class="dots" id="dots"></div><span class="counter" id="counter">1 / 12</span><button class="nav-btn" onclick="go(1)">▶</button></div>
+<!-- 13 -->
+<div class="slide s13"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สรุปหลักการ THINK ก่อนโพสต์/คลิก</div><h2>🧠 THINK ก่อนทำอะไรออนไลน์</h2><ul class="step-list"><li><span class="sn">T</span><strong style="color:#fcd34d">True</strong> — จริงหรือเปล่า? ตรวจสอบก่อน</li><li><span class="sn">H</span><strong style="color:#4ade80">Helpful</strong> — มีประโยชน์ไหม?</li><li><span class="sn">I</span><strong style="color:#a78bfa">Inspiring</strong> — สร้างสรรค์หรือทำร้ายคนอื่น?</li><li><span class="sn">N</span><strong style="color:#7dd3fc">Necessary</strong> — จำเป็นต้องทำจริงไหม?</li><li><span class="sn">K</span><strong style="color:#f87171">Kind</strong> — กรุณาต่อคนอื่นไหม?</li></ul></div>
+
+<!-- 14 — สถานการณ์ 1 -->
+<div class="slide s14"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้นักเรียนร่วมกันวิเคราะห์สถานการณ์ก่อนเฉลย</div><div class="badge">สถานการณ์ที่ 1</div><h2>🎮 สถานการณ์: ทำอย่างไร?</h2><div class="box"><p style="font-size:clamp(14px,2.3vw,24px);color:#fcd34d;font-weight:700;margin-bottom:8px">ได้รับอีเมลแจ้งว่า "คุณได้รางวัลล้านบาท! กรอกเลขบัตรประชาชนเพื่อรับรางวัล"</p></div><button class="reveal-btn" onclick="rev('r14')">🔍 ดูเฉลย</button><div id="r14" class="reveal-text">🚨 นี่คือ Phishing/Scam! — ไม่กรอก ลบทิ้ง แจ้งผู้ปกครองทันที</div></div>
+
+<!-- 15 — สถานการณ์ 2 -->
+<div class="slide s15"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สถานการณ์ที่ 2 — เรื่องการกลั่นแกล้งออนไลน์</div><div class="badge">สถานการณ์ที่ 2</div><h2>💬 สถานการณ์: ทำอย่างไร?</h2><div class="box"><p style="font-size:clamp(14px,2.3vw,24px);color:#fcd34d;font-weight:700;margin-bottom:8px">เห็นเพื่อนในกลุ่มแชร์รูปล้อเลียนเพื่อนอีกคน แล้วชวนเราคอมเมนต์ด่าด้วย</p></div><button class="reveal-btn" onclick="rev('r15')">🔍 ดูเฉลย</button><div id="r15" class="reveal-text">✅ ไม่ร่วมด้วย! — เก็บหลักฐาน บอกครู/ผู้ปกครอง และให้กำลังใจเพื่อนที่ถูกล้อ</div></div>
+
+<!-- 16 -->
+<div class="slide s16"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 อธิบายความเสี่ยงของ Wi-Fi สาธารณะ เช่นในห้าง</div><h2>📶 Wi-Fi สาธารณะปลอดภัยไหม?</h2><div class="box" style="text-align:center"><p style="font-size:clamp(14px,2.3vw,26px);color:#fff">Wi-Fi ฟรีในที่สาธารณะ <span style="color:#f87171">อาจไม่ปลอดภัย</span></p></div><div class="two-col"><div class="col" style="border-color:rgba(248,113,113,.3)"><h4 style="color:#f87171">⚠️ ความเสี่ยง</h4><p>• คนอื่นอาจดักข้อมูลเราได้</p><p>• Wi-Fi ปลอมที่ตั้งชื่อหลอก</p><p>• ไม่ควรทำธุรกรรมเงิน</p></div><div class="col" style="border-color:rgba(74,222,128,.3)"><h4 style="color:#4ade80">✅ ใช้อย่างปลอดภัย</h4><p>• ไม่ล็อกอินบัญชีสำคัญ</p><p>• ดูเฉพาะข้อมูลทั่วไป</p><p>• ใช้เน็ตมือถือถ้าทำเรื่องสำคัญ</p></div></div></div>
+
+<!-- 17 — Quiz 3 -->
+<div class="slide s17"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ข้อสุดท้าย — ทบทวนข้อมูลส่วนตัว</div><div class="badge">Quiz ข้อที่ 3</div><h2>🎯 ข้อสุดท้าย!</h2><p class="sub">ข้อใด "ไม่ควร" โพสต์หรือบอกใครบนอินเทอร์เน็ต?</p><div class="quiz-opts">
+<button class="qbtn" onclick="qa(this)">A. ชื่อเล่นของเรา</button>
+<button class="qbtn" onclick="qa(this)">B. งานอดิเรกที่ชอบ</button>
+<button class="qbtn" data-correct="1" onclick="qa(this)">C. เลขบัตรประชาชนและที่อยู่บ้าน</button>
+<button class="qbtn" onclick="qa(this)">D. สีที่ชอบ</button>
+</div><div class="result-msg" data-ok="✅ ถูกต้อง! ข้อมูลส่วนตัวสำคัญ เช่น เลขบัตร ที่อยู่ ไม่ควรเปิดเผย" data-no="❌ ยังไม่ใช่ — ข้อมูลที่ไม่ควรเปิดเผยคือเลขบัตรประชาชนและที่อยู่บ้าน"></div></div>
+
+<!-- 18 — กิจกรรม -->
+<div class="slide s18"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 แจกใบงานสถานการณ์ภัยไซเบอร์ ให้วิเคราะห์และเลือกวิธีรับมือ</div><div class="big-emoji">🕵️</div><h2>งานของเรา: วิเคราะห์ภัยไซเบอร์</h2><div class="activity-box"><h3>📋 โจทย์</h3><p>อ่านสถานการณ์ <strong style="color:#fcd34d">5 กรณี</strong><br>วิเคราะห์ว่าเป็นภัยประเภทไหน และจะรับมืออย่างไร</p><p style="margin-top:10px;color:rgba(255,255,255,.65);font-size:14px">ใบงาน 5.1 — ระบุประเภทภัย + วิธีป้องกัน</p></div><button class="timer-btn" onclick="startTimer(20)" style="margin-top:14px;font-size:15px;padding:10px 24px">⏱ เริ่มจับเวลา 20 นาที</button></div>
+
+<!-- 19 -->
+<div class="slide s19"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้นักเรียนนำเสนอการวิเคราะห์ของตัวเอง</div><h2>🌟 สรุปการรับมือภัยไซเบอร์</h2><ul class="step-list"><li><span class="sn">🎣</span>Phishing: <strong style="color:#fcd34d">ไม่คลิก ไม่กรอก แจ้งทันที</strong></li><li><span class="sn">🦠</span>Malware: <strong style="color:#4ade80">ใช้ Antivirus อัปเดตระบบเสมอ</strong></li><li><span class="sn">💰</span>Scam: <strong style="color:#a78bfa">ไม่โอนเงิน ไม่เชื่อโดยไม่ตรวจสอบ</strong></li><li><span class="sn">🔐</span>รหัสผ่าน: <strong style="color:#7dd3fc">ยาว ซับซ้อน ไม่บอกใคร</strong></li></ul></div>
+
+<!-- 20 — สรุป -->
+<div class="slide s20"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สรุปบทเรียน ขอบคุณนักเรียนที่เรียนมาตลอดปี</div><div class="badge">สรุปบทเรียน หน่วยที่ 5</div><h2>🎓 สรุป: ป้องกันตัวในโลกดิจิทัล</h2><ul class="step-list"><li><span class="sn">⚠️</span>ภัยไซเบอร์มี<strong style="color:#fcd34d">หลายรูปแบบ</strong> ต้องระวัง</li><li><span class="sn">🎣</span>Phishing = <strong style="color:#f87171">หลอกล่อข้อมูล</strong> อย่าหลงเชื่อ</li><li><span class="sn">🦠</span>Malware = <strong style="color:#f87171">ซอฟต์แวร์อันตราย</strong> ป้องกันด้วย Antivirus</li><li><span class="sn">🧠</span>คิดก่อนทำ: <strong style="color:#4ade80">THINK ทุกครั้ง</strong></li><li><span class="sn">🛡️</span>ปลอดภัย = <strong style="color:#a78bfa">ระวัง ตรวจสอบ แจ้งผู้ใหญ่</strong></li></ul></div>
+
+<div class="nav"><button class="nav-btn" onclick="go(-1)">◀</button><div class="dots" id="dots"></div><span class="counter" id="counter">1 / 20</span><button class="nav-btn" onclick="go(1)">▶</button></div>
 <script>
 let cur=0;const slides=document.querySelectorAll('.slide');const total=slides.length;const dotsEl=document.getElementById('dots');const counterEl=document.getElementById('counter');const progEl=document.getElementById('prog');
 for(let i=0;i<total;i++){const d=document.createElement('div');d.className='dot'+(i===0?' on':'');dotsEl.appendChild(d);}
@@ -104,7 +158,7 @@ function showSlide(n){slides[cur].classList.remove('active');document.querySelec
 function go(d){showSlide(cur+d)}
 document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')go(1);if(e.key==='ArrowLeft')go(-1);});
 function rev(id){document.getElementById(id).classList.toggle('show')}
-function qa(btn,correct){document.querySelectorAll('.qbtn').forEach(b=>b.disabled=true);btn.classList.add(correct?'correct':'wrong');if(!correct){document.querySelectorAll('.qbtn').forEach(b=>{if(b.textContent.includes('ไม่กรอก'))b.classList.add('correct')})}const msg=document.getElementById('qa-msg');msg.style.display='block';msg.style.color=correct?'#4ade80':'#f87171';msg.textContent=correct?'🎉 ถูกต้อง! ไม่กรอก ลบ แจ้งทันที':'❌ อีเมลขอรหัสผ่าน = Phishing เสมอ ไม่ควรกรอก';}
+function qa(btn){const opts=btn.closest('.quiz-opts');const correct=btn.dataset.correct==='1';opts.querySelectorAll('.qbtn').forEach(b=>b.disabled=true);btn.classList.add(correct?'correct':'wrong');if(!correct)opts.querySelectorAll('.qbtn').forEach(b=>{if(b.dataset.correct==='1')b.classList.add('correct')});const msg=btn.closest('.slide').querySelector('.result-msg');msg.style.display='block';msg.style.color=correct?'#4ade80':'#f87171';msg.textContent=correct?msg.dataset.ok:msg.dataset.no;}
 let timerInterval=null;
 function startTimer(min){clearInterval(timerInterval);let sec=min*60;const disp=document.getElementById('timerDisplay');disp.style.display='block';function tick(){const m=Math.floor(sec/60);const s=sec%60;disp.textContent=m+':'+(s<10?'0':'')+s;if(sec===0){clearInterval(timerInterval);disp.textContent='⏰ หมดเวลา!';disp.style.color='#f87171';}sec--;}tick();timerInterval=setInterval(tick,1000);}
 </script>

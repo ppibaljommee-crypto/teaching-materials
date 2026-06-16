@@ -23,6 +23,16 @@ body{font-family:'Sarabun',sans-serif;background:#0a0008;overflow:hidden;height:
 .s10{background:linear-gradient(135deg,#0a0518,#3b0764,#7e22ce)}
 .s11{background:linear-gradient(135deg,#001a15,#065f46,#0d9488)}
 .s12{background:linear-gradient(135deg,#0a0a1a,#1e1b4b,#4338ca)}
+.s13{background:linear-gradient(135deg,#051520,#0c4a6e,#0ea5e9)}
+.s14{background:linear-gradient(135deg,#1a0a00,#7c2d12,#ea580c)}
+.s15{background:linear-gradient(135deg,#1a0505,#7f1d1d,#dc2626)}
+.s16{background:linear-gradient(135deg,#0a1a0a,#166534,#15803d)}
+.s17{background:linear-gradient(135deg,#1a0533,#3d0c6b,#6b21a8)}
+.s18{background:linear-gradient(135deg,#1a1500,#78350f,#d97706)}
+.s19{background:linear-gradient(135deg,#0a0518,#3b0764,#7e22ce)}
+.s20{background:linear-gradient(135deg,#001a15,#065f46,#0d9488)}
+.s21{background:linear-gradient(135deg,#050f1a,#1e3a5f,#2563eb)}
+.s22{background:linear-gradient(135deg,#0a0a1a,#1e1b4b,#4338ca)}
 h1{font-size:clamp(28px,5.5vw,64px);font-weight:800;color:#fff;text-align:center;line-height:1.15}
 h2{font-size:clamp(20px,3.8vw,46px);font-weight:700;color:#fff;text-align:center;line-height:1.3}
 p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:center;margin-top:12px}
@@ -59,49 +69,105 @@ p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:ce
 .activity-box{background:rgba(6,182,212,.1);border:2px solid rgba(6,182,212,.4);border-radius:20px;padding:20px 28px;width:100%;max-width:820px;margin-top:14px;text-align:center}
 .activity-box h3{color:#67e8f9;font-size:clamp(16px,2.5vw,28px);font-weight:800;margin-bottom:10px}
 .activity-box p{color:rgba(255,255,255,.85);font-size:clamp(13px,2vw,22px)}
+.reveal-btn{background:rgba(6,182,212,.7);border:1px solid #06b6d4;color:#fff;border-radius:50px;padding:11px 28px;font-size:clamp(13px,1.8vw,20px);font-weight:700;cursor:pointer;font-family:'Sarabun',sans-serif;transition:all .2s;margin-top:12px}
+.reveal-text{color:#fcd34d;font-size:clamp(15px,2.3vw,26px);font-weight:800;text-align:center;margin-top:12px;display:none}
+.reveal-text.show{display:block;animation:fadeUp .4s ease}
 </style>
 </head>
 <body>
 <div class="prog-bar" id="prog"></div>
 <div class="timer-widget"><button class="timer-btn" onclick="startTimer(10)">⏱ 10 นาที</button><div class="timer-display" id="timerDisplay">10:00</div></div>
 
+<!-- 1 -->
 <div class="slide s1 active"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ถาม: "จริยธรรมดิจิทัลคืออะไรในความเข้าใจของนักเรียน?"</div><div class="badge">วิทยาการคำนวณ • ม.2 • หน่วยที่ 5</div><div class="big-emoji">⚖️</div><h1>ความปลอดภัยและ<br>จริยธรรมดิจิทัล</h1><p class="sub">Digital Ethics • พ.ร.บ.คอมพิวเตอร์ • Cybersecurity • Pledge Card</p></div>
 
+<!-- 2 -->
 <div class="slide s2"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ทบทวน Python โปรเจกต์ + Canva Presentation จากหน่วย 4</div><h2>🔄 จำได้มั้ย? หน่วยที่ 4</h2><ul class="step-list" style="max-width:700px"><li><span class="sn">1</span>สร้าง<strong style="color:#fbbf24">โปรเจกต์ Python</strong> พร้อม IPO Diagram</li><li><span class="sn">2</span>นำเสนอด้วย<strong style="color:#4ade80">Canva Presentation</strong></li><li><span class="sn">3</span>ใช้ Python แก้ปัญหา<strong style="color:#a78bfa">ในชีวิตจริง</strong></li></ul><p class="sub" style="margin-top:16px">หน่วยสุดท้าย = <strong style="color:#67e8f9">จริยธรรมและความปลอดภัยดิจิทัล</strong> ⚖️</p></div>
 
+<!-- 3 -->
 <div class="slide s3"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 อธิบาย Digital Ethics ว่าคือการกำหนดว่า "ถูก" หรือ "ผิด" ในโลกดิจิทัล</div><h2>⚖️ จริยธรรมดิจิทัลคืออะไร?</h2><div class="box" style="text-align:center"><p style="font-size:clamp(14px,2.5vw,28px);color:#fff">Digital Ethics = หลักการว่าด้วย<span style="color:#67e8f9">ความถูกผิด</span><br>ในการใช้เทคโนโลยีและข้อมูล</p></div><div class="two-col"><div class="col"><h4>📌 ครอบคลุมเรื่อง</h4><p>• ความเป็นส่วนตัว (Privacy)</p><p>• ลิขสิทธิ์และทรัพย์สินทางปัญญา</p><p>• ความรับผิดชอบออนไลน์</p><p>• การเข้าถึงข้อมูลอย่างเท่าเทียม</p></div><div class="col"><h4>💡 ทำไมสำคัญ?</h4><p>• เทคโนโลยีทรงพลังมาก</p><p>• ผลกระทบเกิดขึ้นเร็ว</p><p>• กฎหมายตามไม่ทัน</p><p>• ต้องพึ่งจิตสำนึกของคน</p></div></div></div>
 
+<!-- 4 -->
 <div class="slide s4"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 อธิบาย พ.ร.บ.คอมพิวเตอร์ 2560 ย่อๆ</div><h2>⚖️ พ.ร.บ.คอมพิวเตอร์ 2560</h2><div class="two-col"><div class="col"><h4>🚫 สิ่งที่ผิดกฎหมาย</h4><p>• เข้าระบบโดยไม่ได้รับอนุญาต (Hacking)</p><p>• ดักจับข้อมูล</p><p>• สร้างข้อมูลเท็จที่ทำให้เสียหาย</p><p>• โพสต์ภาพลามก</p><p>• สแปม / โฆษณาหลอกลวง</p></div><div class="col"><h4>⚠️ บทลงโทษ</h4><p>• ปรับสูงสุด <strong style="color:#f87171">200,000 บาท</strong></p><p>• จำคุกสูงสุด <strong style="color:#f87171">5 ปี</strong></p><p>• หรือทั้งจำทั้งปรับ</p><br><p style="color:#fcd34d">นักเรียนก็โดนได้ถ้าทำผิด!</p></div></div></div>
 
-<div class="slide s5"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 อธิบาย Fake News และวิธีตรวจสอบ</div><h2>📰 Fake News และการตรวจสอบ</h2><div class="two-col"><div class="col"><h4>🚩 สัญญาณ Fake News</h4><p>• หัวข้อเกินจริง ตื่นตระหนก</p><p>• ไม่มีแหล่งที่มาชัดเจน</p><p>• วันที่เก่ามากหรือไม่มีวันที่</p><p>• ใช้ภาษาสร้างอารมณ์มาก</p></div><div class="col"><h4>✅ วิธีตรวจสอบ</h4><p>• ค้นหาจากแหล่งอื่นด้วย</p><p>• ดูว่าเว็บน่าเชื่อถือไหม</p><p>• ตรวจสอบวันที่เผยแพร่</p><p>• ใช้ Fact-checking sites</p></div></div></div>
+<!-- 5 — Quiz 1 -->
+<div class="slide s5"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้ยกมือตอบก่อนกดเฉลย</div><div class="badge">Quiz ข้อที่ 1</div><h2>🎯 ทดสอบความเข้าใจ!</h2><p class="sub">ข้อใดไม่ถือว่าเป็นการละเมิด พ.ร.บ.คอมพิวเตอร์?</p><div class="quiz-opts">
+<button class="qbtn" onclick="qa(this)">A. ส่ง Email สแปมโฆษณาหลอกลวง</button>
+<button class="qbtn" data-correct="1" onclick="qa(this)">B. โพสต์บทความข่าวที่เป็นความจริง</button>
+<button class="qbtn" onclick="qa(this)">C. Hack เข้าระบบคอมพิวเตอร์โรงเรียน</button>
+<button class="qbtn" onclick="qa(this)">D. โพสต์ข้อมูลเท็จทำให้คนอื่นเสียหาย</button>
+</div><div class="result-msg" data-ok="🎉 ถูกต้อง! โพสต์ข่าวจริงไม่ผิดกฎหมาย" data-no="❌ การโพสต์ข้อมูลจริงไม่ถือว่าผิด พ.ร.บ.คอมฯ"></div></div>
 
-<div class="slide s6"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 อธิบาย 9 ด้านของ Digital Citizenship</div><h2>🌐 Digital Citizenship 9 ด้าน</h2><ul class="step-list" style="max-width:800px"><li><span class="sn">1</span><strong style="color:#67e8f9">การเข้าถึง</strong> — ทุกคนควรมีสิทธิ์ใช้เทคโนโลยี</li><li><span class="sn">2</span><strong style="color:#fbbf24">การพาณิชย์</strong> — ซื้อขายออนไลน์อย่างปลอดภัย</li><li><span class="sn">3</span><strong style="color:#4ade80">การสื่อสาร</strong> — ใช้ภาษาสุภาพ เคารพผู้อื่น</li><li><span class="sn">4</span><strong style="color:#a78bfa">ความรู้</strong> — รู้จักประเมินและใช้ข้อมูล</li><li><span class="sn">5</span><strong style="color:#f87171">จริยธรรม</strong> — ทำสิ่งที่ถูกต้อง แม้ไม่มีใครเห็น</li></ul></div>
+<!-- 6 -->
+<div class="slide s6"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 อธิบาย Fake News และสัญญาณเตือน</div><h2>📰 Fake News คืออะไร?</h2><div class="box" style="text-align:center"><p style="font-size:clamp(14px,2.4vw,26px);color:#fff">Fake News = ข่าวปลอม/บิดเบือน ที่ทำให้เข้าใจผิด</p></div><div class="two-col"><div class="col"><h4>🚩 สัญญาณ Fake News</h4><p>• หัวข้อเกินจริง ตื่นตระหนก</p><p>• ไม่มีแหล่งที่มาชัดเจน</p><p>• วันที่เก่ามากหรือไม่มีวันที่</p><p>• ใช้ภาษาสร้างอารมณ์มาก</p></div><div class="col"><h4>😟 ผลกระทบ</h4><p>• สร้างความตื่นตระหนก</p><p>• ทำให้คนเข้าใจผิด</p><p>• สร้างความเกลียดชัง</p><p>• กระทบชื่อเสียงคนอื่น</p></div></div></div>
 
-<div class="slide s7"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้นักเรียนอภิปรายกรณีศึกษา</div><h2>🧠 กรณีศึกษา: ทำอย่างไร?</h2><div class="box"><p style="font-size:clamp(14px,2.2vw,24px);color:#fcd34d;font-weight:700;margin-bottom:10px">สมชายพบช่องโหว่ในระบบโรงเรียน เขาสามารถแก้ไขเกรดตัวเองได้ เขาควรทำอย่างไร?</p></div><div class="two-col" style="margin-top:12px"><div class="col"><h4 style="color:#f87171">❌ ผิดจริยธรรม</h4><p>• แก้เกรดตัวเอง</p><p>• แก้เกรดให้เพื่อน</p><p>• ขายข้อมูลให้คนอื่น</p></div><div class="col"><h4 style="color:#4ade80">✅ ถูกต้อง</h4><p>• แจ้งครูหรือ IT ทันที</p><p>• ไม่แตะต้องระบบ</p><p>• ผิด พ.ร.บ.คอมฯ ด้วย!</p></div></div></div>
+<!-- 7 -->
+<div class="slide s7"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สอนวิธีตรวจสอบข่าว แนะนำ fact-checking เช่น AFP, Cofact</div><h2>🔍 ตรวจสอบก่อนแชร์</h2><ul class="step-list"><li><span class="sn">1</span><strong style="color:#67e8f9">หาแหล่งอื่น</strong> — ข่าวจริงมักมีหลายสำนักรายงาน</li><li><span class="sn">2</span><strong style="color:#fbbf24">ดูความน่าเชื่อถือ</strong> — เว็บนี้เชื่อถือได้ไหม?</li><li><span class="sn">3</span><strong style="color:#4ade80">ตรวจวันที่</strong> — เก่าเกินไปหรือไม่มีวันที่?</li><li><span class="sn">4</span><strong style="color:#a78bfa">ใช้ Fact-checking</strong> — เช่น Cofact, AFP Fact Check</li><li><span class="sn">5</span><strong style="color:#f87171">ยังไม่แน่ใจ = ยังไม่แชร์</strong></li></ul></div>
 
-<div class="slide s8"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 อธิบาย Personal Data Protection Act (PDPA) ย่อๆ</div><h2>🔒 PDPA ที่ต้องรู้</h2><div class="box" style="text-align:center"><p style="font-size:clamp(14px,2.5vw,26px);color:#fff">PDPA = พ.ร.บ.คุ้มครองข้อมูลส่วนบุคคล 2562<br><span style="color:#67e8f9">ให้สิทธิ์เราในการควบคุมข้อมูลของตัวเอง</span></p></div><div class="two-col"><div class="col"><h4>📌 สิทธิ์ของเรา</h4><p>• รู้ว่าใครเก็บข้อมูลเรา</p><p>• ขอดูข้อมูลที่เก็บ</p><p>• ขอให้แก้ไขหรือลบ</p><p>• ปฏิเสธการประมวลผล</p></div><div class="col"><h4>⚠️ หน้าที่ของผู้เก็บข้อมูล</h4><p>• ขอความยินยอมก่อน</p><p>• เก็บข้อมูลเท่าที่จำเป็น</p><p>• รักษาความปลอดภัย</p><p>• บอกถ้าข้อมูลรั่วไหล</p></div></div></div>
+<!-- 8 -->
+<div class="slide s8"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 อธิบาย Digital Citizenship ด้านที่ 1-5</div><h2>🌐 Digital Citizenship (1–5)</h2><ul class="step-list" style="max-width:800px"><li><span class="sn">1</span><strong style="color:#67e8f9">การเข้าถึง</strong> — ทุกคนควรมีสิทธิ์ใช้เทคโนโลยี</li><li><span class="sn">2</span><strong style="color:#fbbf24">การพาณิชย์</strong> — ซื้อขายออนไลน์อย่างปลอดภัย</li><li><span class="sn">3</span><strong style="color:#4ade80">การสื่อสาร</strong> — ใช้ภาษาสุภาพ เคารพผู้อื่น</li><li><span class="sn">4</span><strong style="color:#a78bfa">ความรู้</strong> — รู้จักประเมินและใช้ข้อมูล</li><li><span class="sn">5</span><strong style="color:#f87171">จริยธรรม</strong> — ทำสิ่งที่ถูกต้อง แม้ไม่มีใครเห็น</li></ul></div>
 
-<div class="slide s9"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้ยกมือตอบ</div><h2>🎯 ทดสอบความเข้าใจ!</h2><p class="sub">ข้อใดไม่ถือว่าเป็นการละเมิด พ.ร.บ.คอมพิวเตอร์?</p><div class="quiz-opts">
-<button class="qbtn" onclick="qa(this,false)">A. ส่ง Email สแปมโฆษณาหลอกลวง</button>
-<button class="qbtn" onclick="qa(this,true)">B. โพสต์บทความข่าวที่เป็นความจริง</button>
-<button class="qbtn" onclick="qa(this,false)">C. Hack เข้าระบบคอมพิวเตอร์โรงเรียน</button>
-<button class="qbtn" onclick="qa(this,false)">D. โพสต์ข้อมูลเท็จทำให้คนอื่นเสียหาย</button>
-</div><div id="qa-msg" class="result-msg"></div></div>
+<!-- 9 -->
+<div class="slide s9"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 อธิบาย Digital Citizenship ด้านที่ 6-9</div><h2>🌐 Digital Citizenship (6–9)</h2><ul class="step-list" style="max-width:800px"><li><span class="sn">6</span><strong style="color:#67e8f9">กฎหมาย</strong> — เคารพลิขสิทธิ์และ พ.ร.บ.คอมฯ</li><li><span class="sn">7</span><strong style="color:#fbbf24">สิทธิและหน้าที่</strong> — รู้สิทธิ์ตัวเองและเคารพผู้อื่น</li><li><span class="sn">8</span><strong style="color:#4ade80">สุขภาพ</strong> — ใช้เทคโนโลยีอย่างพอดี ไม่ติดจอ</li><li><span class="sn">9</span><strong style="color:#a78bfa">ความปลอดภัย</strong> — ป้องกันข้อมูลและอุปกรณ์</li></ul></div>
 
-<div class="slide s10"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 แจก Pledge Card ให้นักเรียนออกแบบด้วย Canva และเขียนคำสัญญาของตัวเอง</div><div class="big-emoji">🤝</div><h2>งานของเรา: Digital Citizenship Pledge Card</h2><div class="activity-box"><h3>📋 โจทย์</h3><p>สร้าง <strong style="color:#67e8f9">Pledge Card</strong> ด้วย Canva<br>เขียนคำสัญญา <strong style="color:#fbbf24">5 ข้อ</strong> ในฐานะพลเมืองดิจิทัล<br>ออกแบบให้สวยงาม มีชื่อและลายเซ็น</p></div><button class="timer-btn" onclick="startTimer(20)" style="margin-top:14px;font-size:15px;padding:10px 24px">⏱ เริ่มจับเวลา 20 นาที</button></div>
+<!-- 10 -->
+<div class="slide s10"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 Digital Footprint — สิ่งที่เราโพสต์อยู่ตลอดไป ยกตัวอย่างผลต่อการสมัครงาน/เรียน</div><h2>👣 Digital Footprint (รอยเท้าดิจิทัล)</h2><div class="box" style="text-align:center"><p style="font-size:clamp(14px,2.4vw,26px);color:#fff">ทุกอย่างที่เราโพสต์/ค้นหา ทิ้ง<span style="color:#67e8f9">ร่องรอยถาวร</span>ไว้</p></div><div class="two-col"><div class="col"><h4>📌 ตัวอย่างรอยเท้า</h4><p>• โพสต์ คอมเมนต์ รูปภาพ</p><p>• ประวัติการค้นหา</p><p>• ไลก์/แชร์ ที่เคยทำ</p></div><div class="col"><h4>⚠️ ทำไมต้องระวัง</h4><p>• ลบแล้วอาจมีคนแคปไว้</p><p>• มีผลต่อการเรียน/สมัครงาน</p><p>• สร้างภาพลักษณ์ของเรา</p></div></div></div>
 
-<div class="slide s11"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้นักเรียนนำเสนอ Pledge Card ของตัวเอง</div><h2>🌟 ตัวอย่างคำสัญญาพลเมืองดิจิทัล</h2><ul class="step-list"><li><span class="sn">1</span>"ฉันจะ<strong style="color:#67e8f9">ไม่โพสต์สิ่งที่เป็นเท็จ</strong>หรือทำให้คนอื่นเสียหาย"</li><li><span class="sn">2</span>"ฉันจะ<strong style="color:#fbbf24">อ้างอิงแหล่งที่มา</strong>เสมอเมื่อใช้ข้อมูลคนอื่น"</li><li><span class="sn">3</span>"ฉันจะ<strong style="color:#4ade80">รายงานช่องโหว่</strong>แทนที่จะใช้ประโยชน์จากมัน"</li><li><span class="sn">4</span>"ฉันจะ<strong style="color:#a78bfa">ไม่แชร์ข่าวปลอม</strong>โดยไม่ตรวจสอบก่อน"</li><li><span class="sn">5</span>"ฉันจะ<strong style="color:#f87171">เคารพความเป็นส่วนตัว</strong>ของผู้อื่น"</li></ul></div>
+<!-- 11 — Quiz 2 -->
+<div class="slide s11"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ทบทวนเรื่อง Fake News</div><div class="badge">Quiz ข้อที่ 2</div><h2>🎯 ลองคิดดู!</h2><p class="sub">เห็นข่าวน่าตกใจในไลน์กลุ่ม สิ่งแรกที่ควรทำคืออะไร?</p><div class="quiz-opts">
+<button class="qbtn" onclick="qa(this)">A. รีบแชร์ต่อทันทีให้ทุกคนรู้</button>
+<button class="qbtn" data-correct="1" onclick="qa(this)">B. ตรวจสอบแหล่งที่มาก่อนว่าจริงไหม</button>
+<button class="qbtn" onclick="qa(this)">C. เชื่อเลยเพราะคนส่งเป็นคนรู้จัก</button>
+<button class="qbtn" onclick="qa(this)">D. แคปไปโพสต์ในเฟซเพื่อยอดไลก์</button>
+</div><div class="result-msg" data-ok="✅ ถูกต้อง! ตรวจสอบก่อนแชร์เสมอ ป้องกันการส่งต่อข่าวปลอม" data-no="❌ ยังไม่ใช่ — ต้องตรวจสอบแหล่งที่มาก่อน ไม่แชร์ทันที"></div></div>
 
-<div class="slide s12"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สรุปบทเรียนทั้งปี ขอบคุณนักเรียนที่ตั้งใจเรียน</div><div class="badge">สรุปบทเรียน หน่วยที่ 5</div><h2>🎓 สรุป: จริยธรรมและความปลอดภัยดิจิทัล</h2><ul class="step-list"><li><span class="sn">⚖️</span>Digital Ethics = รู้<strong style="color:#67e8f9">ถูกผิดในโลกออนไลน์</strong></li><li><span class="sn">⚖️</span>พ.ร.บ.คอมฯ = มีบทลงโทษ<strong style="color:#f87171">จริงๆ</strong></li><li><span class="sn">📰</span>Fake News = <strong style="color:#fbbf24">ตรวจสอบก่อนแชร์</strong>เสมอ</li><li><span class="sn">🔒</span>PDPA = เรา<strong style="color:#4ade80">มีสิทธิ์</strong>ในข้อมูลตัวเอง</li><li><span class="sn">🤝</span>เป็น<strong style="color:#a78bfa">พลเมืองดิจิทัลที่ดี</strong>ได้เลยตั้งแต่วันนี้</li></ul></div>
+<!-- 12 -->
+<div class="slide s12"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้นักเรียนอภิปรายกรณีศึกษา</div><h2>🧠 กรณีศึกษา: ทำอย่างไร?</h2><div class="box"><p style="font-size:clamp(14px,2.2vw,24px);color:#fcd34d;font-weight:700;margin-bottom:10px">สมชายพบช่องโหว่ในระบบโรงเรียน เขาสามารถแก้ไขเกรดตัวเองได้ เขาควรทำอย่างไร?</p></div><div class="two-col" style="margin-top:12px"><div class="col"><h4 style="color:#f87171">❌ ผิดจริยธรรม</h4><p>• แก้เกรดตัวเอง</p><p>• แก้เกรดให้เพื่อน</p><p>• ขายข้อมูลให้คนอื่น</p></div><div class="col"><h4 style="color:#4ade80">✅ ถูกต้อง</h4><p>• แจ้งครูหรือ IT ทันที</p><p>• ไม่แตะต้องระบบ</p><p>• ผิด พ.ร.บ.คอมฯ ด้วย!</p></div></div></div>
 
-<div class="nav"><button class="nav-btn" onclick="go(-1)">◀</button><div class="dots" id="dots"></div><span class="counter" id="counter">1 / 12</span><button class="nav-btn" onclick="go(1)">▶</button></div>
+<!-- 13 -->
+<div class="slide s13"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 อธิบาย Cybersecurity พื้นฐาน — การเข้ารหัส (encryption), HTTPS, 2FA</div><h2>🔐 Cybersecurity พื้นฐาน</h2><div class="two-col"><div class="col"><h4>🔑 ป้องกันบัญชี</h4><p>• รหัสผ่านยาว ซับซ้อน ไม่ซ้ำ</p><p>• เปิด 2FA (ยืนยัน 2 ขั้น)</p><p>• ไม่บอกรหัสใครเด็ดขาด</p></div><div class="col"><h4>🌐 ใช้เน็ตปลอดภัย</h4><p>• ดู https:// และรูปกุญแจ 🔒</p><p>• ระวัง Wi-Fi สาธารณะ</p><p>• อัปเดตซอฟต์แวร์เสมอ</p></div></div><div class="box" style="text-align:center;margin-top:10px"><p style="font-size:clamp(13px,1.9vw,21px);color:#67e8f9">การเข้ารหัส (Encryption) = แปลงข้อมูลให้คนอื่นอ่านไม่ออกถ้าถูกดักจับ</p></div></div>
+
+<!-- 14 -->
+<div class="slide s14"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 อธิบาย Personal Data Protection Act (PDPA) ย่อๆ</div><h2>🔒 PDPA ที่ต้องรู้</h2><div class="box" style="text-align:center"><p style="font-size:clamp(14px,2.5vw,26px);color:#fff">PDPA = พ.ร.บ.คุ้มครองข้อมูลส่วนบุคคล 2562<br><span style="color:#67e8f9">ให้สิทธิ์เราในการควบคุมข้อมูลของตัวเอง</span></p></div><div class="two-col"><div class="col"><h4>📌 สิทธิ์ของเรา</h4><p>• รู้ว่าใครเก็บข้อมูลเรา</p><p>• ขอดูข้อมูลที่เก็บ</p><p>• ขอให้แก้ไขหรือลบ</p><p>• ปฏิเสธการประมวลผล</p></div><div class="col"><h4>⚠️ หน้าที่ของผู้เก็บข้อมูล</h4><p>• ขอความยินยอมก่อน</p><p>• เก็บข้อมูลเท่าที่จำเป็น</p><p>• รักษาความปลอดภัย</p><p>• บอกถ้าข้อมูลรั่วไหล</p></div></div></div>
+
+<!-- 15 -->
+<div class="slide s15"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 Cyberbullying — ชวนอภิปรายผลกระทบและความรับผิดชอบ</div><h2>😔 Cyberbullying และความรับผิดชอบ</h2><div class="box" style="text-align:center"><p style="font-size:clamp(14px,2.3vw,26px);color:#fff">การกลั่นแกล้งออนไลน์ = ทำร้ายจิตใจ และ<span style="color:#f87171">อาจผิดกฎหมาย</span></p></div><div class="two-col"><div class="col" style="border-color:rgba(248,113,113,.3)"><h4 style="color:#f87171">⚠️ ผลกระทบ</h4><p>• เหยื่อเครียด ซึมเศร้า</p><p>• เสียชื่อเสียงถาวร</p><p>• ผู้กระทำอาจถูกดำเนินคดี</p></div><div class="col" style="border-color:rgba(74,222,128,.3)"><h4 style="color:#4ade80">✅ ถ้าพบเห็น</h4><p>• ไม่ร่วม ไม่แชร์ต่อ</p><p>• เก็บหลักฐาน รายงาน</p><p>• ให้กำลังใจเหยื่อ บอกผู้ใหญ่</p></div></div></div>
+
+<!-- 16 -->
+<div class="slide s16"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 Digital Wellbeing — สมดุลการใช้หน้าจอ ชวนคุยเรื่องเวลาเล่นมือถือ</div><h2>🧘 Digital Wellbeing (ใช้อย่างสมดุล)</h2><ul class="step-list"><li><span class="sn">⏰</span>กำหนด<strong style="color:#67e8f9">เวลาใช้หน้าจอ</strong>ในแต่ละวัน</li><li><span class="sn">😴</span>พักจอ<strong style="color:#fbbf24">ก่อนนอน</strong> เพื่อการนอนที่ดี</li><li><span class="sn">👀</span>พักสายตา<strong style="color:#4ade80">ทุก 20 นาที</strong> (กฎ 20-20-20)</li><li><span class="sn">🏃</span>แบ่งเวลาให้<strong style="color:#a78bfa">กิจกรรมนอกจอ</strong>ด้วย</li></ul></div>
+
+<!-- 17 — Quiz 3 -->
+<div class="slide s17"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ข้อสุดท้าย — ทบทวน PDPA</div><div class="badge">Quiz ข้อที่ 3</div><h2>🎯 ข้อสุดท้าย!</h2><p class="sub">ตาม PDPA ก่อนเก็บข้อมูลส่วนบุคคลของคนอื่น ต้องทำสิ่งใดก่อน?</p><div class="quiz-opts">
+<button class="qbtn" onclick="qa(this)">A. เก็บได้เลย ไม่ต้องบอก</button>
+<button class="qbtn" data-correct="1" onclick="qa(this)">B. ขอความยินยอมจากเจ้าของข้อมูลก่อน</button>
+<button class="qbtn" onclick="qa(this)">C. ขายข้อมูลให้บริษัทอื่นได้</button>
+<button class="qbtn" onclick="qa(this)">D. เก็บไว้ตลอดไปโดยไม่ต้องดูแล</button>
+</div><div class="result-msg" data-ok="✅ ถูกต้อง! PDPA กำหนดว่าต้องขอความยินยอมก่อนเก็บข้อมูล" data-no="❌ ยังไม่ใช่ — ต้องขอความยินยอมจากเจ้าของข้อมูลก่อนเสมอ"></div></div>
+
+<!-- 18 — กรณีศึกษา reveal -->
+<div class="slide s18"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้นักเรียนคิดและอภิปรายก่อนเปิดเฉลย</div><div class="badge">กรณีศึกษา</div><h2>🧩 คิดดู: ถูกหรือผิด?</h2><div class="box"><p style="font-size:clamp(14px,2.3vw,24px);color:#fcd34d;font-weight:700;margin-bottom:8px">มานะถ่ายรูปเพื่อนตอนหลับในห้อง แล้วโพสต์ลงกลุ่มเพื่อขำๆ โดยไม่ได้ขอเพื่อนก่อน</p></div><button class="reveal-btn" onclick="rev('r18')">🔍 ดูเฉลย</button><div id="r18" class="reveal-text">❌ ผิด! — ละเมิดความเป็นส่วนตัว (PDPA) และอาจเข้าข่าย Cyberbullying ต้องขออนุญาตก่อนเสมอ</div></div>
+
+<!-- 19 — กิจกรรม -->
+<div class="slide s19"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 แจก Pledge Card ให้นักเรียนออกแบบด้วย Canva และเขียนคำสัญญาของตัวเอง</div><div class="big-emoji">🤝</div><h2>งานของเรา: Digital Citizenship Pledge Card</h2><div class="activity-box"><h3>📋 โจทย์</h3><p>สร้าง <strong style="color:#67e8f9">Pledge Card</strong> ด้วย Canva<br>เขียนคำสัญญา <strong style="color:#fbbf24">5 ข้อ</strong> ในฐานะพลเมืองดิจิทัล<br>ออกแบบให้สวยงาม มีชื่อและลายเซ็น</p></div><button class="timer-btn" onclick="startTimer(20)" style="margin-top:14px;font-size:15px;padding:10px 24px">⏱ เริ่มจับเวลา 20 นาที</button></div>
+
+<!-- 20 -->
+<div class="slide s20"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้นักเรียนนำเสนอ Pledge Card ของตัวเอง</div><h2>🌟 ตัวอย่างคำสัญญาพลเมืองดิจิทัล</h2><ul class="step-list"><li><span class="sn">1</span>"ฉันจะ<strong style="color:#67e8f9">ไม่โพสต์สิ่งที่เป็นเท็จ</strong>หรือทำให้คนอื่นเสียหาย"</li><li><span class="sn">2</span>"ฉันจะ<strong style="color:#fbbf24">อ้างอิงแหล่งที่มา</strong>เสมอเมื่อใช้ข้อมูลคนอื่น"</li><li><span class="sn">3</span>"ฉันจะ<strong style="color:#4ade80">รายงานช่องโหว่</strong>แทนที่จะใช้ประโยชน์จากมัน"</li><li><span class="sn">4</span>"ฉันจะ<strong style="color:#a78bfa">ไม่แชร์ข่าวปลอม</strong>โดยไม่ตรวจสอบก่อน"</li><li><span class="sn">5</span>"ฉันจะ<strong style="color:#f87171">เคารพความเป็นส่วนตัว</strong>ของผู้อื่น"</li></ul></div>
+
+<!-- 21 -->
+<div class="slide s21"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 เชื่อมโยงสู่อนาคต — อาชีพสายความปลอดภัยดิจิทัล สร้างแรงบันดาลใจ</div><h2>🚀 ต่อยอด: อาชีพสายดิจิทัล</h2><div class="two-col"><div class="col"><h4>💼 ตัวอย่างอาชีพ</h4><p>• ผู้เชี่ยวชาญความปลอดภัยไซเบอร์</p><p>• นักวิเคราะห์ข้อมูล</p><p>• นักพัฒนาโปรแกรม</p><p>• ที่ปรึกษากฎหมายดิจิทัล</p></div><div class="col"><h4>🌱 เริ่มได้ตั้งแต่ตอนนี้</h4><p>• ฝึกใช้เทคโนโลยีอย่างมีจริยธรรม</p><p>• เรียนรู้การเขียนโปรแกรม</p><p>• ติดตามข่าวเทคโนโลยี</p><p>• เป็นพลเมืองดิจิทัลที่ดี</p></div></div></div>
+
+<!-- 22 — สรุป -->
+<div class="slide s22"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สรุปบทเรียนทั้งปี ขอบคุณนักเรียนที่ตั้งใจเรียน</div><div class="badge">สรุปบทเรียน หน่วยที่ 5</div><h2>🎓 สรุป: จริยธรรมและความปลอดภัยดิจิทัล</h2><ul class="step-list"><li><span class="sn">⚖️</span>Digital Ethics = รู้<strong style="color:#67e8f9">ถูกผิดในโลกออนไลน์</strong></li><li><span class="sn">⚖️</span>พ.ร.บ.คอมฯ = มีบทลงโทษ<strong style="color:#f87171">จริงๆ</strong></li><li><span class="sn">📰</span>Fake News = <strong style="color:#fbbf24">ตรวจสอบก่อนแชร์</strong>เสมอ</li><li><span class="sn">🔒</span>PDPA = เรา<strong style="color:#4ade80">มีสิทธิ์</strong>ในข้อมูลตัวเอง</li><li><span class="sn">🤝</span>เป็น<strong style="color:#a78bfa">พลเมืองดิจิทัลที่ดี</strong>ได้เลยตั้งแต่วันนี้</li></ul></div>
+
+<div class="nav"><button class="nav-btn" onclick="go(-1)">◀</button><div class="dots" id="dots"></div><span class="counter" id="counter">1 / 22</span><button class="nav-btn" onclick="go(1)">▶</button></div>
 <script>
 let cur=0;const slides=document.querySelectorAll('.slide');const total=slides.length;const dotsEl=document.getElementById('dots');const counterEl=document.getElementById('counter');const progEl=document.getElementById('prog');
 for(let i=0;i<total;i++){const d=document.createElement('div');d.className='dot'+(i===0?' on':'');dotsEl.appendChild(d);}
 function showSlide(n){slides[cur].classList.remove('active');document.querySelectorAll('.dot')[cur].classList.remove('on');cur=Math.max(0,Math.min(n,total-1));slides[cur].classList.add('active');document.querySelectorAll('.dot')[cur].classList.add('on');counterEl.textContent=(cur+1)+' / '+total;progEl.style.width=((cur+1)/total*100)+'%';}
 function go(d){showSlide(cur+d)}
 document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')go(1);if(e.key==='ArrowLeft')go(-1);});
-function qa(btn,correct){document.querySelectorAll('.qbtn').forEach(b=>b.disabled=true);btn.classList.add(correct?'correct':'wrong');if(!correct){document.querySelectorAll('.qbtn').forEach(b=>{if(b.textContent.includes('บทความข่าว'))b.classList.add('correct')})}const msg=document.getElementById('qa-msg');msg.style.display='block';msg.style.color=correct?'#4ade80':'#f87171';msg.textContent=correct?'🎉 ถูกต้อง! โพสต์ข่าวจริงไม่ผิดกฎหมาย':'❌ การโพสต์ข้อมูลจริงไม่ถือว่าผิด พ.ร.บ.คอมฯ';}
+function rev(id){document.getElementById(id).classList.toggle('show')}
+function qa(btn){const opts=btn.closest('.quiz-opts');const correct=btn.dataset.correct==='1';opts.querySelectorAll('.qbtn').forEach(b=>b.disabled=true);btn.classList.add(correct?'correct':'wrong');if(!correct)opts.querySelectorAll('.qbtn').forEach(b=>{if(b.dataset.correct==='1')b.classList.add('correct')});const msg=btn.closest('.slide').querySelector('.result-msg');msg.style.display='block';msg.style.color=correct?'#4ade80':'#f87171';msg.textContent=correct?msg.dataset.ok:msg.dataset.no;}
 let timerInterval=null;
 function startTimer(min){clearInterval(timerInterval);let sec=min*60;const disp=document.getElementById('timerDisplay');disp.style.display='block';function tick(){const m=Math.floor(sec/60);const s=sec%60;disp.textContent=m+':'+(s<10?'0':'')+s;if(sec===0){clearInterval(timerInterval);disp.textContent='⏰ หมดเวลา!';disp.style.color='#f87171';}sec--;}tick();timerInterval=setInterval(tick,1000);}
 </script>
