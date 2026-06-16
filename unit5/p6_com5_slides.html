@@ -4,50 +4,161 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ป.6 คอมพิวเตอร์เพิ่มเติม หน่วย 5 — แก้ปัญหาโรงเรียนด้วยเทคโนโลยี</title>
 <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700;800&display=swap" rel="stylesheet">
-<style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Sarabun',sans-serif;background:#0a0008;overflow:hidden;height:100vh}.prog-bar{position:fixed;top:0;left:0;height:4px;background:linear-gradient(90deg,#fbbf24,#f59e0b,#d97706);transition:width .4s ease;z-index:300}.slide{display:none;width:100vw;height:100vh;flex-direction:column;align-items:center;justify-content:center;padding:40px 32px;position:relative}.slide.active{display:flex;animation:fadeUp .4s ease}@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}.s1{background:linear-gradient(135deg,#1a1000,#78350f,#d97706)}.s2{background:linear-gradient(135deg,#0a1a10,#14532d,#16a34a)}.s3{background:linear-gradient(135deg,#0c1a40,#1e3a6e,#2563eb)}.s4{background:linear-gradient(135deg,#1a0533,#3d0c6b,#6b21a8)}.s5{background:linear-gradient(135deg,#0a1520,#0c4a6e,#0284c7)}.s6{background:linear-gradient(135deg,#0a1a0a,#166534,#15803d)}.s7{background:linear-gradient(135deg,#1a0505,#7f1d1d,#dc2626)}.s8{background:linear-gradient(135deg,#150015,#6b0060,#c026d3)}.s9{background:linear-gradient(135deg,#050f1a,#1e3a5f,#2563eb)}.s10{background:linear-gradient(135deg,#0a0518,#3b0764,#7e22ce)}.s11{background:linear-gradient(135deg,#001a15,#065f46,#0d9488)}.s12{background:linear-gradient(135deg,#0a0a1a,#1e1b4b,#4338ca)}
-h1{font-size:clamp(28px,5.5vw,64px);font-weight:800;color:#fff;text-align:center;line-height:1.15}h2{font-size:clamp(20px,3.8vw,46px);font-weight:700;color:#fff;text-align:center;line-height:1.3}p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:center;margin-top:12px}.badge{background:rgba(245,158,11,.3);border:1px solid rgba(245,158,11,.6);border-radius:50px;padding:8px 24px;font-size:clamp(12px,1.6vw,18px);color:#fcd34d;font-weight:700;margin-bottom:16px}.big-emoji{font-size:clamp(60px,12vw,120px);text-align:center;line-height:1;margin-bottom:8px}.box{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);backdrop-filter:blur(12px);border-radius:20px;padding:22px 30px;width:100%;max-width:880px;margin-top:14px}.step-list{list-style:none;width:100%;max-width:800px;margin-top:12px}.step-list li{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:12px 20px;margin-bottom:10px;font-size:clamp(14px,2.2vw,24px);color:#fff;display:flex;align-items:center;gap:14px;animation:slideIn .4s ease both}@keyframes slideIn{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}.step-list li:nth-child(1){animation-delay:.1s}.step-list li:nth-child(2){animation-delay:.2s}.step-list li:nth-child(3){animation-delay:.3s}.step-list li:nth-child(4){animation-delay:.4s}.step-list li:nth-child(5){animation-delay:.5s}.sn{background:#f59e0b;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px;flex-shrink:0;color:#fff}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;width:100%;max-width:880px;margin-top:14px}.col{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:18px 22px}.col h4{font-size:clamp(14px,2.2vw,22px);color:#fcd34d;font-weight:800;margin-bottom:10px}.col p{font-size:clamp(12px,1.7vw,19px);color:rgba(255,255,255,.85);padding:4px 0}.quiz-opts{display:flex;flex-direction:column;gap:10px;width:100%;max-width:720px;margin-top:14px}.qbtn{background:rgba(255,255,255,.09);border:1.5px solid rgba(255,255,255,.2);border-radius:14px;padding:13px 20px;color:#fff;font-size:clamp(14px,2vw,22px);font-weight:700;cursor:pointer;text-align:left;font-family:'Sarabun',sans-serif;transition:all .2s}.qbtn:hover{background:rgba(255,255,255,.16)}.qbtn.correct{background:rgba(74,222,128,.2);border-color:#4ade80;color:#4ade80}.qbtn.wrong{background:rgba(248,113,113,.15);border-color:#f87171;color:#f87171;opacity:.7}.result-msg{font-size:clamp(16px,2.5vw,28px);font-weight:800;text-align:center;margin-top:12px;display:none}.teacher-note{position:fixed;top:18px;right:18px;background:rgba(0,0,0,.65);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:10px 16px;color:rgba(255,255,255,.65);font-size:13px;max-width:280px;text-align:right;cursor:pointer;z-index:200}.timer-widget{position:fixed;top:18px;left:18px;z-index:200}.timer-btn{background:rgba(245,158,11,.2);border:1px solid rgba(245,158,11,.4);border-radius:10px;padding:8px 14px;color:#fcd34d;font-size:13px;font-weight:700;cursor:pointer;font-family:'Sarabun',sans-serif}.timer-display{background:rgba(0,0,0,.7);border:1px solid rgba(245,158,11,.4);border-radius:10px;padding:10px 18px;color:#fbbf24;font-size:28px;font-weight:800;text-align:center;margin-top:6px;display:none;font-family:monospace}.nav{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:14px;z-index:100}.nav-btn{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:50%;width:52px;height:52px;font-size:22px;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center}.nav-btn:hover{background:rgba(255,255,255,.25);transform:scale(1.1)}.counter{background:rgba(0,0,0,.5);color:#fff;border-radius:20px;padding:8px 20px;font-size:16px;font-weight:700;border:1px solid rgba(255,255,255,.15)}.dots{display:flex;gap:7px;align-items:center}.dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.25);transition:all .3s}.dot.on{background:#f59e0b;transform:scale(1.5);box-shadow:0 0 8px #f59e0b}.activity-box{background:rgba(245,158,11,.1);border:2px solid rgba(245,158,11,.4);border-radius:20px;padding:20px 28px;width:100%;max-width:820px;margin-top:14px;text-align:center}.activity-box h3{color:#fcd34d;font-size:clamp(16px,2.5vw,28px);font-weight:800;margin-bottom:10px}.activity-box p{color:rgba(255,255,255,.85);font-size:clamp(13px,2vw,22px)}</style>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Sarabun',sans-serif;background:#0a0008;overflow:hidden;height:100vh}
+.prog-bar{position:fixed;top:0;left:0;height:4px;background:linear-gradient(90deg,#fbbf24,#f59e0b,#d97706);transition:width .4s ease;z-index:300}
+.slide{display:none;width:100vw;height:100vh;flex-direction:column;align-items:center;justify-content:center;padding:40px 32px;position:relative}
+.slide.active{display:flex;animation:fadeUp .4s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.s1{background:linear-gradient(135deg,#1a1000,#78350f,#d97706)}
+.s2{background:linear-gradient(135deg,#0a1a10,#14532d,#16a34a)}
+.s3{background:linear-gradient(135deg,#0c1a40,#1e3a6e,#2563eb)}
+.s4{background:linear-gradient(135deg,#1a0533,#3d0c6b,#6b21a8)}
+.s5{background:linear-gradient(135deg,#0a1520,#0c4a6e,#0284c7)}
+.s6{background:linear-gradient(135deg,#0a1a0a,#166534,#15803d)}
+.s7{background:linear-gradient(135deg,#1a0505,#7f1d1d,#dc2626)}
+.s8{background:linear-gradient(135deg,#150015,#6b0060,#c026d3)}
+.s9{background:linear-gradient(135deg,#050f1a,#1e3a5f,#2563eb)}
+.s10{background:linear-gradient(135deg,#0a0518,#3b0764,#7e22ce)}
+.s11{background:linear-gradient(135deg,#001a15,#065f46,#0d9488)}
+.s12{background:linear-gradient(135deg,#0a0a1a,#1e1b4b,#4338ca)}
+.s13{background:linear-gradient(135deg,#1a1000,#78350f,#d97706)}
+.s14{background:linear-gradient(135deg,#150015,#6b0060,#c026d3)}
+.s15{background:linear-gradient(135deg,#1a0505,#7f1d1d,#dc2626)}
+.s16{background:linear-gradient(135deg,#0a0518,#3b0764,#7e22ce)}
+.s17{background:linear-gradient(135deg,#001a15,#065f46,#0d9488)}
+.s18{background:linear-gradient(135deg,#0a1520,#0c4a6e,#0284c7)}
+.s19{background:linear-gradient(135deg,#0a1a0a,#166534,#15803d)}
+.s20{background:linear-gradient(135deg,#1a1000,#78350f,#d97706)}
+h1{font-size:clamp(28px,5.5vw,64px);font-weight:800;color:#fff;text-align:center;line-height:1.15}
+h2{font-size:clamp(20px,3.8vw,46px);font-weight:700;color:#fff;text-align:center;line-height:1.3}
+p.sub{font-size:clamp(14px,2.2vw,26px);color:rgba(255,255,255,.75);text-align:center;margin-top:12px}
+.badge{background:rgba(245,158,11,.3);border:1px solid rgba(245,158,11,.6);border-radius:50px;padding:8px 24px;font-size:clamp(12px,1.6vw,18px);color:#fcd34d;font-weight:700;margin-bottom:16px}
+.big-emoji{font-size:clamp(60px,12vw,120px);text-align:center;line-height:1;margin-bottom:8px}
+.box{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);backdrop-filter:blur(12px);border-radius:20px;padding:22px 30px;width:100%;max-width:880px;margin-top:14px}
+.step-list{list-style:none;width:100%;max-width:800px;margin-top:12px}
+.step-list li{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:12px 20px;margin-bottom:10px;font-size:clamp(14px,2.2vw,24px);color:#fff;display:flex;align-items:center;gap:14px;animation:slideIn .4s ease both}
+@keyframes slideIn{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
+.step-list li:nth-child(1){animation-delay:.1s}.step-list li:nth-child(2){animation-delay:.2s}.step-list li:nth-child(3){animation-delay:.3s}.step-list li:nth-child(4){animation-delay:.4s}.step-list li:nth-child(5){animation-delay:.5s}
+.sn{background:#f59e0b;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px;flex-shrink:0;color:#fff}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;width:100%;max-width:880px;margin-top:14px}
+.col{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:18px 22px}
+.col h4{font-size:clamp(14px,2.2vw,22px);color:#fcd34d;font-weight:800;margin-bottom:10px}
+.col p{font-size:clamp(12px,1.7vw,19px);color:rgba(255,255,255,.85);padding:4px 0}
+.quiz-opts{display:flex;flex-direction:column;gap:10px;width:100%;max-width:720px;margin-top:14px}
+.qbtn{background:rgba(255,255,255,.09);border:1.5px solid rgba(255,255,255,.2);border-radius:14px;padding:13px 20px;color:#fff;font-size:clamp(14px,2vw,22px);font-weight:700;cursor:pointer;text-align:left;font-family:'Sarabun',sans-serif;transition:all .2s}
+.qbtn:hover{background:rgba(255,255,255,.16)}
+.qbtn.correct{background:rgba(74,222,128,.2);border-color:#4ade80;color:#4ade80}
+.qbtn.wrong{background:rgba(248,113,113,.15);border-color:#f87171;color:#f87171;opacity:.7}
+.result-msg{font-size:clamp(16px,2.5vw,28px);font-weight:800;text-align:center;margin-top:12px;display:none}
+.teacher-note{position:fixed;top:18px;right:18px;background:rgba(0,0,0,.65);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:10px 16px;color:rgba(255,255,255,.65);font-size:13px;max-width:280px;text-align:right;cursor:pointer;z-index:200}
+.timer-widget{position:fixed;top:18px;left:18px;z-index:200}
+.timer-btn{background:rgba(245,158,11,.2);border:1px solid rgba(245,158,11,.4);border-radius:10px;padding:8px 14px;color:#fcd34d;font-size:13px;font-weight:700;cursor:pointer;font-family:'Sarabun',sans-serif}
+.timer-display{background:rgba(0,0,0,.7);border:1px solid rgba(245,158,11,.4);border-radius:10px;padding:10px 18px;color:#fbbf24;font-size:28px;font-weight:800;text-align:center;margin-top:6px;display:none;font-family:monospace}
+.nav{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:14px;z-index:100}
+.nav-btn{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:50%;width:52px;height:52px;font-size:22px;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center}
+.nav-btn:hover{background:rgba(255,255,255,.25);transform:scale(1.1)}
+.counter{background:rgba(0,0,0,.5);color:#fff;border-radius:20px;padding:8px 20px;font-size:16px;font-weight:700;border:1px solid rgba(255,255,255,.15)}
+.dots{display:flex;gap:7px;align-items:center}
+.dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.25);transition:all .3s}
+.dot.on{background:#f59e0b;transform:scale(1.5);box-shadow:0 0 8px #f59e0b}
+.activity-box{background:rgba(245,158,11,.1);border:2px solid rgba(245,158,11,.4);border-radius:20px;padding:20px 28px;width:100%;max-width:820px;margin-top:14px;text-align:center}
+.activity-box h3{color:#fcd34d;font-size:clamp(16px,2.5vw,28px);font-weight:800;margin-bottom:10px}
+.activity-box p{color:rgba(255,255,255,.85);font-size:clamp(13px,2vw,22px)}
+.reveal-btn{background:rgba(245,158,11,.7);border:1px solid #f59e0b;color:#fff;border-radius:50px;padding:11px 28px;font-size:clamp(13px,1.8vw,20px);font-weight:700;cursor:pointer;font-family:'Sarabun',sans-serif;transition:all .2s;margin-top:12px}
+.reveal-text{color:#fcd34d;font-size:clamp(15px,2.3vw,26px);font-weight:800;text-align:center;margin-top:12px;display:none}
+.reveal-text.show{display:block;animation:fadeUp .4s ease}
+</style>
 </head>
 <body>
 <div class="prog-bar" id="prog"></div>
 <div class="timer-widget"><button class="timer-btn" onclick="startTimer(10)">⏱ 10 นาที</button><div class="timer-display" id="timerDisplay">10:00</div></div>
 
+<!-- 1 -->
 <div class="slide s1 active"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ถาม: "ปัญหาอะไรในโรงเรียนที่อยากแก้มากที่สุด?"</div><div class="badge">คอมพิวเตอร์เพิ่มเติม • ป.6 • หน่วยที่ 5</div><div class="big-emoji">🏫</div><h1>แก้ปัญหาโรงเรียน<br>ด้วยเทคโนโลยี</h1><p class="sub">Design Thinking • เลือกเครื่องมือ • นำเสนอแนวทาง</p></div>
 
+<!-- 2 -->
 <div class="slide s2"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ทบทวนหน่วย 4 Google Sites</div><h2>🔄 จำได้มั้ย? หน่วยที่ 4</h2><ul class="step-list" style="max-width:700px"><li><span class="sn">1</span>สร้าง<strong style="color:#fbbf24">เว็บไซต์ Google Sites</strong> 3 หน้า</li><li><span class="sn">2</span>เพิ่ม<strong style="color:#4ade80">รูปภาพ วิดีโอ เอกสาร</strong></li><li><span class="sn">3</span>แชร์<strong style="color:#a78bfa">ลิงก์ให้คนอื่นเข้าชม</strong></li></ul><p class="sub" style="margin-top:16px">หน่วยนี้ = <strong style="color:#fcd34d">ใช้เทคโนโลยีแก้ปัญหาจริงๆ</strong> 🏫</p></div>
 
+<!-- 3 -->
 <div class="slide s3"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 อธิบาย Design Thinking 5 ขั้นตอน</div><h2>💡 Design Thinking คืออะไร?</h2><ul class="step-list"><li><span class="sn">1</span><strong style="color:#fcd34d">Empathize</strong> — เข้าใจปัญหาของผู้ใช้จริงๆ</li><li><span class="sn">2</span><strong style="color:#4ade80">Define</strong> — กำหนดปัญหาให้ชัดเจน</li><li><span class="sn">3</span><strong style="color:#a78bfa">Ideate</strong> — ระดมความคิดหาทางออก</li><li><span class="sn">4</span><strong style="color:#7dd3fc">Prototype</strong> — สร้างต้นแบบ</li><li><span class="sn">5</span><strong style="color:#f87171">Test</strong> — ทดสอบและปรับปรุง</li></ul></div>
 
-<div class="slide s4"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้นักเรียนระดมความคิดเรื่องปัญหาในโรงเรียน</div><h2>🔍 ปัญหาในโรงเรียนที่พบ</h2><div class="two-col"><div class="col"><h4>📌 ปัญหาที่อาจพบ</h4><p>• เวลาเรียนน้อยเกินไป</p><p>• หาห้องเรียนไม่เจอ</p><p>• เสียงดังในโรงอาหาร</p><p>• ขยะในโรงเรียนเยอะ</p><p>• สิ่งอำนวยความสะดวก</p></div><div class="col"><h4>💡 เลือกปัญหาที่</h4><p>• ส่งผลกระทบชัดเจน</p><p>• แก้ได้ด้วยเทคโนโลยี</p><p>• นักเรียนมีส่วนร่วมได้</p><p>• วัดผลได้ชัดเจน</p></div></div></div>
+<!-- 4 -->
+<div class="slide s4"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 เจาะ Empathize — เน้นการเข้าใจผู้ใช้จริง</div><h2>❤️ ขั้นที่ 1: Empathize</h2><div class="box" style="text-align:center"><p style="font-size:clamp(14px,2.4vw,26px);color:#fff">เข้าใจ<span style="color:#fcd34d">ความรู้สึกและปัญหาจริง</span>ของคนที่เจอปัญหา</p></div><div class="two-col"><div class="col"><h4>🔎 ทำได้โดย</h4><p>• สังเกตพฤติกรรม</p><p>• สัมภาษณ์/พูดคุย</p><p>• ทำแบบสำรวจ</p></div><div class="col"><h4>💡 ตัวอย่างคำถาม</h4><p>• "ปัญหานี้ทำให้ลำบากยังไง?"</p><p>• "เกิดบ่อยแค่ไหน?"</p><p>• "อยากให้เป็นยังไง?"</p></div></div></div>
 
-<div class="slide s5"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สาธิตเครื่องมือดิจิทัลที่ใช้แก้ปัญหาได้</div><h2>🛠️ เครื่องมือดิจิทัลที่ใช้ได้</h2><div class="two-col"><div class="col"><h4>📊 วิเคราะห์ข้อมูล</h4><p>• Google Forms (แบบสำรวจ)</p><p>• Excel (วิเคราะห์ข้อมูล)</p><p>• Google Sheets (ร่วมกัน)</p></div><div class="col"><h4>📢 สื่อสารแนวทาง</h4><p>• PowerPoint (นำเสนอ)</p><p>• Canva (Infographic)</p><p>• Google Sites (เว็บไซต์)</p><p>• Poster (โปสเตอร์)</p></div></div></div>
+<!-- 5 -->
+<div class="slide s5"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้นักเรียนระดมความคิดเรื่องปัญหาในโรงเรียน</div><h2>🔍 ปัญหาในโรงเรียนที่พบ</h2><div class="two-col"><div class="col"><h4>📌 ปัญหาที่อาจพบ</h4><p>• เวลาเรียนน้อยเกินไป</p><p>• หาห้องเรียนไม่เจอ</p><p>• เสียงดังในโรงอาหาร</p><p>• ขยะในโรงเรียนเยอะ</p><p>• สิ่งอำนวยความสะดวก</p></div><div class="col"><h4>💡 เลือกปัญหาที่</h4><p>• ส่งผลกระทบชัดเจน</p><p>• แก้ได้ด้วยเทคโนโลยี</p><p>• นักเรียนมีส่วนร่วมได้</p><p>• วัดผลได้ชัดเจน</p></div></div></div>
 
-<div class="slide s6"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สาธิตการสร้าง Google Form สำรวจความเห็น</div><h2>📋 สำรวจด้วย Google Forms</h2><ul class="step-list"><li><span class="sn">1</span>เปิด <strong style="color:#fcd34d">Google Forms</strong></li><li><span class="sn">2</span>ตั้งชื่อแบบสำรวจ<strong style="color:#4ade80">ชัดเจน</strong></li><li><span class="sn">3</span>เพิ่มคำถาม<strong style="color:#a78bfa">หลายรูปแบบ</strong></li><li><span class="sn">4</span>แชร์ลิงก์<strong style="color:#7dd3fc">ให้เพื่อนตอบ</strong></li><li><span class="sn">5</span>ดูผลใน<strong style="color:#f87171">Responses</strong></li></ul></div>
+<!-- 6 -->
+<div class="slide s6"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สอน Define — เขียนปัญหาให้ชัดเป็นประโยคเดียว</div><h2>🎯 ขั้นที่ 2: Define (กำหนดปัญหา)</h2><div class="box" style="text-align:center"><p style="font-size:clamp(14px,2.3vw,25px);color:#fff">เขียนปัญหาให้<span style="color:#fcd34d">ชัดเจนเป็นประโยคเดียว</span></p></div><div class="box" style="text-align:left;margin-top:10px"><p style="color:#fcd34d;font-weight:700;font-size:clamp(13px,2vw,22px)">ตัวอย่าง:</p><p style="color:#fff;font-size:clamp(13px,2vw,22px)">"นักเรียนทิ้งขยะไม่ลงถัง เพราะถังขยะมีน้อยและหายาก"</p><p style="color:rgba(255,255,255,.7);font-size:clamp(12px,1.7vw,18px);margin-top:6px">→ ปัญหาชัด นำไปคิดทางแก้ต่อได้ง่าย</p></div></div>
 
-<div class="slide s7"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สาธิตการสร้าง Infographic ใน Canva</div><h2>🎨 สร้าง Infographic ด้วย Canva</h2><div class="two-col"><div class="col"><h4>📌 Infographic ที่ดี</h4><p>• ข้อมูลชัดเจน กระชับ</p><p>• รูปภาพและไอคอน</p><p>• สีสันน่าสนใจ</p><p>• อ่านง่าย ดูง่าย</p></div><div class="col"><h4>🔧 ขั้นตอน Canva</h4><p>• เลือก Template Infographic</p><p>• เปลี่ยนข้อความ</p><p>• ใส่ข้อมูลของเรา</p><p>• ดาวน์โหลด PNG</p></div></div></div>
+<!-- 7 — Quiz 1 -->
+<div class="slide s7"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้ยกมือตอบก่อนกดเฉลย</div><div class="badge">Quiz ข้อที่ 1</div><h2>🎯 ทดสอบความเข้าใจ!</h2><p class="sub">ขั้นตอนแรกของ Design Thinking คืออะไร?</p><div class="quiz-opts">
+<button class="qbtn" onclick="qa(this)">A. สร้าง Prototype ทันที</button>
+<button class="qbtn" data-correct="1" onclick="qa(this)">B. Empathize — เข้าใจปัญหาของผู้ใช้</button>
+<button class="qbtn" onclick="qa(this)">C. Test — ทดสอบ</button>
+<button class="qbtn" onclick="qa(this)">D. Ideate — ระดมความคิด</button>
+</div><div class="result-msg" data-ok="🎉 ถูกต้อง! Empathize = เข้าใจปัญหาผู้ใช้ก่อนเสมอ" data-no="❌ ยังไม่ใช่ — ขั้นแรกคือ Empathize เข้าใจปัญหาของผู้ใช้ก่อน"></div></div>
 
-<div class="slide s8"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 แนะนำการนำเสนอโปรเจกต์</div><h2>🎤 นำเสนอโปรเจกต์</h2><ul class="step-list"><li><span class="sn">1</span><strong style="color:#fcd34d">ปัญหา</strong> — อธิบายปัญหาที่เลือก</li><li><span class="sn">2</span><strong style="color:#4ade80">ข้อมูล</strong> — ผลการสำรวจจาก Forms</li><li><span class="sn">3</span><strong style="color:#a78bfa">แนวทาง</strong> — วิธีแก้ปัญหาที่เสนอ</li><li><span class="sn">4</span><strong style="color:#7dd3fc">เครื่องมือ</strong> — เทคโนโลยีที่ใช้</li><li><span class="sn">5</span><strong style="color:#f87171">ผลลัพธ์</strong> — คาดหวังอะไรจากโปรเจกต์</li></ul></div>
+<!-- 8 -->
+<div class="slide s8"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สาธิตเครื่องมือดิจิทัลที่ใช้แก้ปัญหาได้</div><h2>🛠️ เครื่องมือดิจิทัลที่ใช้ได้</h2><div class="two-col"><div class="col"><h4>📊 วิเคราะห์ข้อมูล</h4><p>• Google Forms (แบบสำรวจ)</p><p>• Excel (วิเคราะห์ข้อมูล)</p><p>• Google Sheets (ร่วมกัน)</p></div><div class="col"><h4>📢 สื่อสารแนวทาง</h4><p>• PowerPoint (นำเสนอ)</p><p>• Canva (Infographic)</p><p>• Google Sites (เว็บไซต์)</p><p>• Poster (โปสเตอร์)</p></div></div></div>
 
-<div class="slide s9"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้ยกมือตอบ</div><h2>🎯 ทดสอบความเข้าใจ!</h2><p class="sub">ขั้นตอนแรกของ Design Thinking คืออะไร?</p><div class="quiz-opts">
-<button class="qbtn" onclick="qa(this,false)">A. สร้าง Prototype ทันที</button>
-<button class="qbtn" onclick="qa(this,true)">B. Empathize — เข้าใจปัญหาของผู้ใช้</button>
-<button class="qbtn" onclick="qa(this,false)">C. Test — ทดสอบ</button>
-<button class="qbtn" onclick="qa(this,false)">D. Ideate — ระดมความคิด</button>
-</div><div id="qa-msg" class="result-msg"></div></div>
+<!-- 9 -->
+<div class="slide s9"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สาธิตการสร้าง Google Form สำรวจความเห็น</div><h2>📋 สำรวจด้วย Google Forms</h2><ul class="step-list"><li><span class="sn">1</span>เปิด <strong style="color:#fcd34d">Google Forms</strong></li><li><span class="sn">2</span>ตั้งชื่อแบบสำรวจ<strong style="color:#4ade80">ชัดเจน</strong></li><li><span class="sn">3</span>เพิ่มคำถาม<strong style="color:#a78bfa">หลายรูปแบบ</strong></li><li><span class="sn">4</span>แชร์ลิงก์<strong style="color:#7dd3fc">ให้เพื่อนตอบ</strong></li><li><span class="sn">5</span>ดูผลใน<strong style="color:#f87171">Responses</strong></li></ul></div>
 
-<div class="slide s10"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 แจกคู่มือโปรเจกต์ ให้กลุ่มเริ่มทำงาน</div><div class="big-emoji">🚀</div><h2>งานของเรา: โปรเจกต์แก้ปัญหาโรงเรียน</h2><div class="activity-box"><h3>📋 โจทย์</h3><p>ทำงานกลุ่ม 3-4 คน<br>เลือก <strong style="color:#fcd34d">1 ปัญหา</strong> → สำรวจ → เสนอแนวทาง<br>นำเสนอด้วย Presentation + Infographic</p></div><button class="timer-btn" onclick="startTimer(30)" style="margin-top:14px;font-size:15px;padding:10px 24px">⏱ เริ่มจับเวลา 30 นาที</button></div>
+<!-- 10 -->
+<div class="slide s10"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สอนอ่านผลสำรวจจากกราฟใน Forms</div><h2>📊 อ่านผลสำรวจจากกราฟ</h2><div class="two-col"><div class="col"><h4>📈 Forms สรุปให้อัตโนมัติ</h4><p>• กราฟวงกลม (สัดส่วน)</p><p>• กราฟแท่ง (เปรียบเทียบ)</p><p>• จำนวนคนที่ตอบ</p></div><div class="col"><h4>💡 ดูอะไรจากกราฟ</h4><p>• คนส่วนใหญ่คิดเหมือนกันไหม</p><p>• ปัญหาไหนรุนแรงสุด</p><p>• ใช้เป็นหลักฐานสนับสนุน</p></div></div></div>
 
-<div class="slide s11"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้แต่ละกลุ่มนำเสนอ 5-7 นาที</div><h2>🌟 เกณฑ์การให้คะแนน</h2><div class="two-col"><div class="col"><h4>📊 เนื้อหา (60%)</h4><p>• กำหนดปัญหาชัดเจน</p><p>• มีข้อมูลสนับสนุน</p><p>• แนวทางแก้ปัญหาสมเหตุผล</p><p>• เลือกเครื่องมือเหมาะสม</p></div><div class="col"><h4>🎤 การนำเสนอ (40%)</h4><p>• ชัดเจน มั่นใจ</p><p>• ทุกคนมีส่วนร่วม</p><p>• ตอบคำถามได้</p><p>• Infographic สวยงาม</p></div></div></div>
+<!-- 11 — Quiz 2 -->
+<div class="slide s11"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ทบทวนเครื่องมือ</div><div class="badge">Quiz ข้อที่ 2</div><h2>🎯 ลองคิดดู!</h2><p class="sub">อยากเก็บความคิดเห็นจากเพื่อนทั้งห้องอย่างรวดเร็ว ควรใช้เครื่องมือใด?</p><div class="quiz-opts">
+<button class="qbtn" onclick="qa(this)">A. โปรแกรม Paint</button>
+<button class="qbtn" data-correct="1" onclick="qa(this)">B. Google Forms (แบบสำรวจออนไลน์)</button>
+<button class="qbtn" onclick="qa(this)">C. เครื่องคิดเลข</button>
+<button class="qbtn" onclick="qa(this)">D. โปรแกรมเล่นเพลง</button>
+</div><div class="result-msg" data-ok="✅ ถูกต้อง! Google Forms เก็บความเห็นและสรุปเป็นกราฟให้อัตโนมัติ" data-no="❌ ยังไม่ใช่ — ควรใช้ Google Forms ทำแบบสำรวจออนไลน์"></div></div>
 
-<div class="slide s12"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สรุปปีการศึกษา ขอบคุณนักเรียน ป.6 ที่ใกล้จบ ป.6 แล้ว</div><div class="badge">สรุปบทเรียน หน่วยที่ 5</div><h2>🎓 สรุป: แก้ปัญหาด้วยเทคโนโลยี</h2><ul class="step-list"><li><span class="sn">💡</span>Design Thinking = <strong style="color:#fcd34d">กระบวนการคิดสร้างสรรค์</strong></li><li><span class="sn">📋</span>Google Forms = <strong style="color:#4ade80">สำรวจข้อมูลได้ง่าย</strong></li><li><span class="sn">🎨</span>Canva = <strong style="color:#a78bfa">สื่อสารด้วยภาพสวยงาม</strong></li><li><span class="sn">🎤</span>นำเสนอ = <strong style="color:#7dd3fc">มั่นใจ ชัดเจน</strong></li><li><span class="sn">⭐</span>นักเรียน<strong style="color:#fbbf24">สามารถแก้ปัญหาได้!</strong> 🚀</li></ul></div>
+<!-- 12 -->
+<div class="slide s12"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สอน Ideate — ระดมความคิดแบบไม่ตัดสิน</div><h2>💭 ขั้นที่ 3: Ideate (ระดมความคิด)</h2><div class="box" style="text-align:center"><p style="font-size:clamp(14px,2.3vw,25px);color:#fff">คิดทางแก้ให้<span style="color:#fcd34d">เยอะที่สุด</span> ยังไม่ต้องตัดสินว่าดีหรือไม่</p></div><div class="two-col"><div class="col"><h4>✅ กติกาการระดมความคิด</h4><p>• ทุกความคิดมีค่า</p><p>• ยิ่งเยอะยิ่งดี</p><p>• ต่อยอดความคิดเพื่อน</p></div><div class="col"><h4>🚫 อย่าเพิ่งทำ</h4><p>• ไม่ล้อหรือตัดสินไอเดีย</p><p>• ไม่บอกว่า "ทำไม่ได้หรอก"</p><p>• ค่อยเลือกทีหลัง</p></div></div></div>
 
-<div class="nav"><button class="nav-btn" onclick="go(-1)">◀</button><div class="dots" id="dots"></div><span class="counter" id="counter">1 / 12</span><button class="nav-btn" onclick="go(1)">▶</button></div>
+<!-- 13 -->
+<div class="slide s13"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สาธิตการสร้าง Infographic ใน Canva</div><h2>🎨 สร้าง Infographic ด้วย Canva</h2><div class="two-col"><div class="col"><h4>📌 Infographic ที่ดี</h4><p>• ข้อมูลชัดเจน กระชับ</p><p>• รูปภาพและไอคอน</p><p>• สีสันน่าสนใจ</p><p>• อ่านง่าย ดูง่าย</p></div><div class="col"><h4>🔧 ขั้นตอน Canva</h4><p>• เลือก Template Infographic</p><p>• เปลี่ยนข้อความ</p><p>• ใส่ข้อมูลของเรา</p><p>• ดาวน์โหลด PNG</p></div></div></div>
+
+<!-- 14 -->
+<div class="slide s14"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 แนะนำการนำเสนอโปรเจกต์</div><h2>🎤 นำเสนอโปรเจกต์</h2><ul class="step-list"><li><span class="sn">1</span><strong style="color:#fcd34d">ปัญหา</strong> — อธิบายปัญหาที่เลือก</li><li><span class="sn">2</span><strong style="color:#4ade80">ข้อมูล</strong> — ผลการสำรวจจาก Forms</li><li><span class="sn">3</span><strong style="color:#a78bfa">แนวทาง</strong> — วิธีแก้ปัญหาที่เสนอ</li><li><span class="sn">4</span><strong style="color:#7dd3fc">เครื่องมือ</strong> — เทคโนโลยีที่ใช้</li><li><span class="sn">5</span><strong style="color:#f87171">ผลลัพธ์</strong> — คาดหวังอะไรจากโปรเจกต์</li></ul></div>
+
+<!-- 15 — Quiz 3 -->
+<div class="slide s15"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ข้อสุดท้าย — ทบทวน Infographic</div><div class="badge">Quiz ข้อที่ 3</div><h2>🎯 ข้อสุดท้าย!</h2><p class="sub">Infographic ที่ดีควรเป็นอย่างไร?</p><div class="quiz-opts">
+<button class="qbtn" onclick="qa(this)">A. ใส่ข้อความเยอะๆ เต็มหน้า</button>
+<button class="qbtn" data-correct="1" onclick="qa(this)">B. ข้อมูลกระชับ มีภาพ อ่านง่าย</button>
+<button class="qbtn" onclick="qa(this)">C. ใช้ตัวอักษรเล็กมาก</button>
+<button class="qbtn" onclick="qa(this)">D. ไม่ต้องมีรูปเลย</button>
+</div><div class="result-msg" data-ok="✅ ถูกต้อง! Infographic ที่ดีต้องกระชับ มีภาพประกอบ และอ่านง่าย" data-no="❌ ยังไม่ใช่ — Infographic ที่ดีต้องข้อมูลกระชับ มีภาพ และอ่านง่าย"></div></div>
+
+<!-- 16 — กิจกรรม -->
+<div class="slide s16"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 แจกคู่มือโปรเจกต์ ให้กลุ่มเริ่มทำงาน</div><div class="big-emoji">🚀</div><h2>งานของเรา: โปรเจกต์แก้ปัญหาโรงเรียน</h2><div class="activity-box"><h3>📋 โจทย์</h3><p>ทำงานกลุ่ม 3-4 คน<br>เลือก <strong style="color:#fcd34d">1 ปัญหา</strong> → สำรวจ → เสนอแนวทาง<br>นำเสนอด้วย Presentation + Infographic</p></div><button class="timer-btn" onclick="startTimer(30)" style="margin-top:14px;font-size:15px;padding:10px 24px">⏱ เริ่มจับเวลา 30 นาที</button></div>
+
+<!-- 17 -->
+<div class="slide s17"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ให้แต่ละกลุ่มนำเสนอ 5-7 นาที</div><h2>🌟 เกณฑ์การให้คะแนน</h2><div class="two-col"><div class="col"><h4>📊 เนื้อหา (60%)</h4><p>• กำหนดปัญหาชัดเจน</p><p>• มีข้อมูลสนับสนุน</p><p>• แนวทางแก้ปัญหาสมเหตุผล</p><p>• เลือกเครื่องมือเหมาะสม</p></div><div class="col"><h4>🎤 การนำเสนอ (40%)</h4><p>• ชัดเจน มั่นใจ</p><p>• ทุกคนมีส่วนร่วม</p><p>• ตอบคำถามได้</p><p>• Infographic สวยงาม</p></div></div></div>
+
+<!-- 18 -->
+<div class="slide s18"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สอนการทำงานกลุ่มที่ดี การแบ่งหน้าที่</div><h2>🤝 ทำงานกลุ่มให้สำเร็จ</h2><ul class="step-list"><li><span class="sn">1</span><strong style="color:#fcd34d">แบ่งหน้าที่</strong>ให้ทุกคนมีงานทำ</li><li><span class="sn">2</span><strong style="color:#4ade80">รับฟัง</strong>ความเห็นของทุกคน</li><li><span class="sn">3</span><strong style="color:#a78bfa">ช่วยกัน</strong>เมื่อเพื่อนติดขัด</li><li><span class="sn">4</span><strong style="color:#7dd3fc">ส่งงานตรงเวลา</strong>ตามที่นัด</li></ul></div>
+
+<!-- 19 -->
+<div class="slide s19"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 ป.6 ใกล้จบ — สร้างแรงบันดาลใจสู่ ม.ต้น</div><h2>🚀 ก้าวต่อไปสู่ ม.ต้น</h2><div class="two-col"><div class="col"><h4>💪 ทักษะที่ติดตัวไป</h4><p>• คิดแก้ปัญหาเป็นขั้นตอน</p><p>• ใช้เครื่องมือดิจิทัลได้</p><p>• ทำงานกลุ่มและนำเสนอ</p></div><div class="col"><h4>🌱 เรียนรู้ต่อได้</h4><p>• เขียนโปรแกรม (Python)</p><p>• สร้างเว็บ/แอป</p><p>• วิเคราะห์ข้อมูล</p><p>• ใช้ AI ช่วยงาน</p></div></div></div>
+
+<!-- 20 — สรุป -->
+<div class="slide s20"><div class="teacher-note" onclick="this.style.opacity=this.style.opacity=='.3'?'1':'.3'">👩‍🏫 สรุปปีการศึกษา ขอบคุณนักเรียน ป.6 ที่ใกล้จบ ป.6 แล้ว</div><div class="badge">สรุปบทเรียน หน่วยที่ 5</div><h2>🎓 สรุป: แก้ปัญหาด้วยเทคโนโลยี</h2><ul class="step-list"><li><span class="sn">💡</span>Design Thinking = <strong style="color:#fcd34d">กระบวนการคิดสร้างสรรค์</strong></li><li><span class="sn">📋</span>Google Forms = <strong style="color:#4ade80">สำรวจข้อมูลได้ง่าย</strong></li><li><span class="sn">🎨</span>Canva = <strong style="color:#a78bfa">สื่อสารด้วยภาพสวยงาม</strong></li><li><span class="sn">🎤</span>นำเสนอ = <strong style="color:#7dd3fc">มั่นใจ ชัดเจน</strong></li><li><span class="sn">⭐</span>นักเรียน<strong style="color:#fbbf24">สามารถแก้ปัญหาได้!</strong> 🚀</li></ul></div>
+
+<div class="nav"><button class="nav-btn" onclick="go(-1)">◀</button><div class="dots" id="dots"></div><span class="counter" id="counter">1 / 20</span><button class="nav-btn" onclick="go(1)">▶</button></div>
 <script>
 let cur=0;const slides=document.querySelectorAll('.slide');const total=slides.length;const dotsEl=document.getElementById('dots');const counterEl=document.getElementById('counter');const progEl=document.getElementById('prog');
 for(let i=0;i<total;i++){const d=document.createElement('div');d.className='dot'+(i===0?' on':'');dotsEl.appendChild(d);}
 function showSlide(n){slides[cur].classList.remove('active');document.querySelectorAll('.dot')[cur].classList.remove('on');cur=Math.max(0,Math.min(n,total-1));slides[cur].classList.add('active');document.querySelectorAll('.dot')[cur].classList.add('on');counterEl.textContent=(cur+1)+' / '+total;progEl.style.width=((cur+1)/total*100)+'%';}
 function go(d){showSlide(cur+d)}
 document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')go(1);if(e.key==='ArrowLeft')go(-1);});
-function qa(btn,correct){document.querySelectorAll('.qbtn').forEach(b=>b.disabled=true);btn.classList.add(correct?'correct':'wrong');if(!correct){document.querySelectorAll('.qbtn').forEach(b=>{if(b.textContent.includes('Empathize'))b.classList.add('correct')})}const msg=document.getElementById('qa-msg');msg.style.display='block';msg.style.color=correct?'#4ade80':'#f87171';msg.textContent=correct?'🎉 ถูกต้อง! Empathize = เข้าใจปัญหาผู้ใช้ก่อนเสมอ':'❌ ขั้นแรกคือ Empathize เข้าใจปัญหาของผู้ใช้ก่อน';}
+function rev(id){document.getElementById(id).classList.toggle('show')}
+function qa(btn){const opts=btn.closest('.quiz-opts');const correct=btn.dataset.correct==='1';opts.querySelectorAll('.qbtn').forEach(b=>b.disabled=true);btn.classList.add(correct?'correct':'wrong');if(!correct)opts.querySelectorAll('.qbtn').forEach(b=>{if(b.dataset.correct==='1')b.classList.add('correct')});const msg=btn.closest('.slide').querySelector('.result-msg');msg.style.display='block';msg.style.color=correct?'#4ade80':'#f87171';msg.textContent=correct?msg.dataset.ok:msg.dataset.no;}
 let timerInterval=null;
 function startTimer(min){clearInterval(timerInterval);let sec=min*60;const disp=document.getElementById('timerDisplay');disp.style.display='block';function tick(){const m=Math.floor(sec/60);const s=sec%60;disp.textContent=m+':'+(s<10?'0':'')+s;if(sec===0){clearInterval(timerInterval);disp.textContent='⏰ หมดเวลา!';disp.style.color='#f87171';}sec--;}tick();timerInterval=setInterval(tick,1000);}
 </script>
