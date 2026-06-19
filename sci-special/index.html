@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>สื่อการสอนพิเศษ วิทยาศาสตร์ — ป.5 / ป.6</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Sarabun',sans-serif;background:#0f0f1a;min-height:100vh;padding:24px}
+  .header{text-align:center;padding:32px 20px 24px;color:#fff}
+  .header h1{font-size:clamp(22px,4vw,44px);font-weight:800;background:linear-gradient(135deg,#22c55e,#3b82f6,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .header p{color:rgba(255,255,255,.65);margin-top:8px;font-size:clamp(13px,1.8vw,18px)}
+  .how-to{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:16px 24px;max-width:800px;margin:0 auto 24px;color:rgba(255,255,255,.85);font-size:clamp(12px,1.6vw,15px)}
+  .how-to h3{color:#4ade80;font-size:clamp(14px,1.8vw,18px);margin-bottom:10px}
+  .how-to ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+  .how-to li{background:rgba(255,255,255,.08);border-radius:8px;padding:6px 12px}
+  .how-to li strong{color:#FFD700}
+
+  .group-title{font-size:clamp(15px,2.2vw,22px);font-weight:800;color:#fff;margin:24px 0 10px;padding-left:12px;border-left:4px solid;display:flex;align-items:center;gap:10px;max-width:1100px;margin-left:auto;margin-right:auto}
+  .gt-p5{border-color:#a855f7;color:#c084fc}
+  .gt-p6{border-color:#3b82f6;color:#60a5fa}
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-bottom:8px;max-width:1100px;margin-left:auto;margin-right:auto}
+  .card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:16px 18px;transition:all .2s;position:relative;overflow:hidden}
+  .card:hover{background:rgba(255,255,255,.1);transform:translateY(-2px);border-color:rgba(255,255,255,.25)}
+  .card-grade{font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;display:inline-block;margin-bottom:8px}
+  .card-title{font-size:clamp(14px,1.8vw,17px);font-weight:700;color:#fff;margin-bottom:4px}
+  .card-sub{font-size:12px;color:rgba(255,255,255,.55);margin-bottom:12px}
+  .btn-row{display:flex;gap:6px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:7px 14px;border-radius:8px;font-size:clamp(11px,1.4vw,13px);font-weight:700;text-decoration:none;cursor:pointer;border:none;transition:all .15s}
+  .btn:hover{filter:brightness(1.15);transform:scale(1.03)}
+  .btn-slides{background:#22c55e;color:#fff}
+  .btn-slides.b6{background:#3b82f6}
+  .btn-worksheet{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.25)}
+
+  .p5c{background:rgba(168,85,247,.25);color:#c084fc}
+  .p6c{background:rgba(59,130,246,.25);color:#93c5fd}
+
+  .footer{text-align:center;padding:32px 20px 16px;color:rgba(255,255,255,.35);font-size:13px}
+  .footer kbd{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:4px;padding:2px 8px;color:rgba(255,255,255,.6);font-family:monospace}
+  .footer a{color:#60a5fa;text-decoration:none}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🔬 สื่อการสอนพิเศษ วิทยาศาสตร์</h1>
+  <p>คาบเรียนพิเศษ • ป.5 และ ป.6 | โรงเรียนเซนต์โยเซฟระยอง</p>
+</div>
+
+<div class="how-to">
+  <h3>🖥️ วิธีใช้งาน</h3>
+  <ul>
+    <li>กดปุ่ม <strong>▶ Slideshow</strong> เพื่อเปิดสไลด์สอน</li>
+    <li>กด <strong>Space / →</strong> ถัดไป &nbsp; <strong>←</strong> ย้อนกลับ</li>
+    <li>มี <strong>Teacher Note</strong> มุมบนขวาทุกสไลด์</li>
+    <li>กดปุ่ม <strong>📝 ใบงาน</strong> เพื่อเปิดใบงาน (พิมพ์/กรอกได้)</li>
+  </ul>
+</div>
+
+<!-- ป.5 -->
+<div class="group-title gt-p5">🟣 วิทยาศาสตร์ ป.5</div>
+<div class="cards">
+
+  <div class="card">
+    <span class="card-grade p5c">ป.5 • บท 1</span>
+    <div class="card-title">ทักษะกระบวนการทางวิทยาศาสตร์</div>
+    <div class="card-sub">เส้นทางของขยะ • จัดกระทำข้อมูล • แบบจำลอง</div>
+    <div class="btn-row">
+      <a class="btn btn-slides" href="p5/p5_sci1_slides.html" target="_blank">▶ Slideshow</a>
+      <a class="btn btn-worksheet" href="p5/p5_sci1_worksheet.html" target="_blank">📝 ใบงาน</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="card-grade p5c">ป.5 • บท 2</span>
+    <div class="card-title">แรงลัพธ์และแรงเสียดทาน</div>
+    <div class="card-sub">แรง • แรงลัพธ์ • แรงเสียดทาน • การวัดแรง</div>
+    <div class="btn-row">
+      <a class="btn btn-slides" href="p5/p5_sci2_slides.html" target="_blank">▶ Slideshow</a>
+      <a class="btn btn-worksheet" href="p5/p5_sci2_worksheet.html" target="_blank">📝 ใบงาน</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="card-grade p5c">ป.5 • บท 3</span>
+    <div class="card-title">เสียง</div>
+    <div class="card-sub">การเกิดเสียง • ตัวกลาง • สูง-ต่ำ • ดัง-ค่อย</div>
+    <div class="btn-row">
+      <a class="btn btn-slides" href="p5/p5_sci3_slides.html" target="_blank">▶ Slideshow</a>
+      <a class="btn btn-worksheet" href="p5/p5_sci3_worksheet.html" target="_blank">📝 ใบงาน</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ป.6 -->
+<div class="group-title gt-p6">🔵 วิทยาศาสตร์ ป.6</div>
+<div class="cards">
+
+  <div class="card">
+    <span class="card-grade p6c">ป.6 • หน่วย 1</span>
+    <div class="card-title">อาหารและการย่อยอาหาร</div>
+    <div class="card-sub">สารอาหาร • ระบบย่อยอาหาร • สุขภาพ</div>
+    <div class="btn-row">
+      <a class="btn btn-slides b6" href="p6/p6_sci1_slides.html" target="_blank">▶ Slideshow</a>
+      <a class="btn btn-worksheet" href="p6/p6_sci1_worksheet.html" target="_blank">📝 ใบงาน</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="card-grade p6c">ป.6 • หน่วย 2</span>
+    <div class="card-title">การแยกสารเนื้อผสม</div>
+    <div class="card-sub">วิธีแยกสาร • การกรอง • การตกตะกอน</div>
+    <div class="btn-row">
+      <a class="btn btn-slides b6" href="p6/p6_sci2_slides.html" target="_blank">▶ Slideshow</a>
+      <a class="btn btn-worksheet" href="p6/p6_sci2_worksheet.html" target="_blank">📝 ใบงาน</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="card-grade p6c">ป.6 • หน่วย 3</span>
+    <div class="card-title">หิน วัฏจักรหิน และซากดึกดำบรรพ์</div>
+    <div class="card-sub">การเกิดหิน • วัฏจักรหิน • ซากดึกดำบรรพ์</div>
+    <div class="btn-row">
+      <a class="btn btn-slides b6" href="p6/p6_sci3_slides.html" target="_blank">▶ Slideshow</a>
+      <a class="btn btn-worksheet" href="p6/p6_sci3_worksheet.html" target="_blank">📝 ใบงาน</a>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p>Navigation: <kbd>Space</kbd> / <kbd>→</kbd> ถัดไป &nbsp;|&nbsp; <kbd>←</kbd> ย้อนกลับ &nbsp;|&nbsp; Teacher Notes: มุมบนขวาทุกสไลด์</p>
+  <p style="margin-top:8px"><a href="../">⬅ กลับหน้าสื่อการสอนหลัก</a></p>
+</div>
+
+</body>
+</html>

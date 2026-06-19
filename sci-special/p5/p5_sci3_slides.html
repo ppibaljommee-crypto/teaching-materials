@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ป.5 วิทยาศาสตร์ หน่วย 2 — เสียง</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Sarabun',sans-serif;background:#0a0010;overflow:hidden;height:100vh}
+.prog-bar{position:fixed;top:0;left:0;height:4px;background:linear-gradient(90deg,#a855f7,#d946ef,#8b5cf6);transition:width .4s;z-index:300;box-shadow:0 0 10px rgba(168,85,247,.7)}
+.slide{display:none;width:100vw;height:100vh;flex-direction:column;align-items:center;justify-content:center;padding:40px 32px;position:relative}
+.slide.active{display:flex;animation:fadeUp .4s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.s1{background:linear-gradient(135deg,#0a0020,#4c1d95,#7c3aed)}
+.s2{background:linear-gradient(135deg,#100015,#5b21b6,#7c3aed)}
+.s3{background:linear-gradient(135deg,#15001a,#701a75,#c026d3)}
+.s4{background:linear-gradient(135deg,#0a0020,#3730a3,#6366f1)}
+.s5{background:linear-gradient(135deg,#001a05,#14532d,#16a34a)}
+.s6{background:linear-gradient(135deg,#0a0020,#4c1d95,#7c3aed)}
+.s7{background:linear-gradient(135deg,#001015,#0c4a6e,#0284c7)}
+.s8{background:linear-gradient(135deg,#150000,#7f1d1d,#dc2626)}
+.s9{background:linear-gradient(135deg,#15001a,#6b21a8,#a21caf)}
+.s10{background:linear-gradient(135deg,#001a10,#047857,#059669)}
+.s11{background:linear-gradient(135deg,#0a0020,#4c1d95,#7c3aed)}
+.s12{background:linear-gradient(135deg,#100015,#5b21b6,#8b5cf6)}
+.s13{background:linear-gradient(135deg,#1a0a00,#92400e,#d97706)}
+.s14{background:linear-gradient(135deg,#000a1a,#1e3a8a,#2563eb)}
+.s15{background:linear-gradient(135deg,#001a05,#166534,#16a34a)}
+.s16{background:linear-gradient(135deg,#0a0020,#4c1d95,#7c3aed)}
+.s17{background:linear-gradient(135deg,#15001a,#701a75,#c026d3)}
+.s18{background:linear-gradient(135deg,#150000,#7f1d1d,#dc2626)}
+.s19{background:linear-gradient(135deg,#0a0020,#5b21b6,#8b5cf6)}
+.s20{background:linear-gradient(135deg,#0a0020,#6d28d9,#a855f7)}
+h1{font-size:clamp(28px,5vw,60px);font-weight:800;color:#fff;text-align:center;line-height:1.15}
+h2{font-size:clamp(20px,3.5vw,42px);font-weight:700;color:#fff;text-align:center;line-height:1.3}
+p.sub{font-size:clamp(14px,2vw,24px);color:rgba(255,255,255,.75);text-align:center;margin-top:12px}
+.badge{background:rgba(168,85,247,.3);border:1px solid rgba(168,85,247,.6);border-radius:50px;padding:8px 24px;font-size:clamp(12px,1.6vw,18px);color:#e9d5ff;font-weight:700;margin-bottom:16px}
+.big-emoji{font-size:clamp(60px,10vw,110px);text-align:center;line-height:1;margin-bottom:10px;filter:drop-shadow(0 0 20px rgba(168,85,247,.4))}
+.box{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);backdrop-filter:blur(12px);border-radius:20px;padding:22px 30px;width:100%;max-width:880px;margin-top:14px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;width:100%;max-width:880px;margin-top:14px}
+.col{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:18px 22px}
+.col h4{font-size:clamp(14px,2vw,22px);color:#e9d5ff;font-weight:800;margin-bottom:10px}
+.col p{font-size:clamp(12px,1.6vw,18px);color:rgba(255,255,255,.85);padding:4px 0}
+.step-list{list-style:none;width:100%;max-width:820px;margin-top:12px}
+.step-list li{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:12px 20px;margin-bottom:10px;font-size:clamp(14px,2vw,22px);color:#fff;display:flex;align-items:center;gap:14px;animation:slideIn .4s ease both}
+@keyframes slideIn{from{opacity:0;transform:translateX(-18px)}to{opacity:1;transform:translateX(0)}}
+.step-list li:nth-child(1){animation-delay:.1s}.step-list li:nth-child(2){animation-delay:.2s}.step-list li:nth-child(3){animation-delay:.3s}.step-list li:nth-child(4){animation-delay:.4s}.step-list li:nth-child(5){animation-delay:.5s}.step-list li:nth-child(6){animation-delay:.6s}
+.sn{background:#a855f7;border-radius:50%;min-width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;color:#fff;flex-shrink:0}
+.nutrient-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:100%;max-width:900px;margin-top:14px}
+.nutrient-card{border-radius:16px;padding:14px 16px;text-align:center}
+.nutrient-card h4{font-size:clamp(14px,1.8vw,20px);font-weight:800;margin-bottom:6px}
+.nutrient-card p{font-size:clamp(11px,1.4vw,15px);color:rgba(255,255,255,.85)}
+.quiz-opts{display:flex;flex-direction:column;gap:10px;width:100%;max-width:720px;margin-top:14px}
+.qbtn{background:rgba(255,255,255,.09);border:1.5px solid rgba(255,255,255,.2);border-radius:14px;padding:13px 20px;color:#fff;font-size:clamp(14px,1.8vw,20px);font-weight:700;cursor:pointer;text-align:left;font-family:'Sarabun',sans-serif;transition:all .2s}
+.qbtn:hover{background:rgba(255,255,255,.16)}
+.qbtn.correct{background:rgba(74,222,128,.2);border-color:#4ade80;color:#4ade80}
+.qbtn.wrong{background:rgba(248,113,113,.15);border-color:#f87171;opacity:.7}
+.result-msg{font-size:clamp(15px,2.2vw,26px);font-weight:800;text-align:center;margin-top:12px;display:none}
+.teacher-note{position:fixed;top:18px;right:18px;background:rgba(0,0,0,.7);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:10px 16px;color:rgba(255,255,255,.6);font-size:13px;max-width:280px;text-align:right;cursor:pointer;z-index:200;transition:opacity .2s}
+.teacher-note:hover{opacity:.3}
+.timer-widget{position:fixed;top:18px;left:18px;z-index:200}
+.timer-btn{background:rgba(168,85,247,.2);border:1px solid rgba(168,85,247,.4);border-radius:10px;padding:8px 14px;color:#e9d5ff;font-size:13px;font-weight:700;cursor:pointer;font-family:'Sarabun',sans-serif}
+.timer-display{background:rgba(0,0,0,.7);border:1px solid rgba(168,85,247,.4);border-radius:10px;padding:10px 18px;color:#c084fc;font-size:28px;font-weight:800;text-align:center;margin-top:6px;display:none;font-family:monospace}
+.nav{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:14px;z-index:100}
+.nav-btn{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:50%;width:52px;height:52px;font-size:22px;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center}
+.nav-btn:hover{background:rgba(255,255,255,.25);transform:scale(1.1)}
+.counter{background:rgba(0,0,0,.5);color:#fff;border-radius:20px;padding:8px 20px;font-size:16px;font-weight:700;border:1px solid rgba(255,255,255,.15)}
+.dots{display:flex;gap:7px;align-items:center}
+.dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.25);transition:all .3s}
+.dot.on{background:#a855f7;transform:scale(1.5);box-shadow:0 0 8px #a855f7}
+.reveal-btn{background:rgba(168,85,247,.6);border:1px solid #a855f7;color:#fff;border-radius:50px;padding:10px 26px;font-size:clamp(13px,1.8vw,19px);font-weight:700;cursor:pointer;font-family:'Sarabun',sans-serif;transition:all .2s;margin-top:12px}
+.reveal-text{color:#fcd34d;font-size:clamp(14px,2vw,22px);font-weight:800;text-align:center;margin-top:10px;display:none}
+.reveal-text.show{display:block;animation:fadeUp .4s ease}
+.activity-box{background:rgba(168,85,247,.1);border:2px solid rgba(168,85,247,.4);border-radius:20px;padding:18px 26px;width:100%;max-width:820px;margin-top:12px;text-align:center}
+.activity-box h3{color:#e9d5ff;font-size:clamp(15px,2.2vw,26px);font-weight:800;margin-bottom:8px}
+.activity-box p{color:rgba(255,255,255,.85);font-size:clamp(13px,1.8vw,20px)}
+.lesson-tag{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:4px 14px;font-size:13px;color:rgba(255,255,255,.6);font-weight:700;margin-bottom:10px;display:inline-block}
+</style>
+</head>
+<body>
+<div class="prog-bar" id="prog"></div>
+<div class="timer-widget"><button class="timer-btn" onclick="startTimer(10)">⏱ 10 นาที</button><div class="timer-display" id="timerDisplay">10:00</div></div>
+
+<!-- S1 -->
+<div class="slide s1 active" id="s1">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 แผน 4 ชั่วโมง: ชม.1=S2-5 (เสียงเกิดจากการสั่น), ชม.2=S6-11 (ตัวกลาง), ชม.3=S12-16 (สูง-ต่ำ ดัง-ค่อย), ชม.4=S17-20+ใบงาน</div>
+  <div class="badge">วิทยาศาสตร์ • ป.5 • หน่วยที่ 2</div>
+  <div class="big-emoji">🔊</div>
+  <h1>เสียง</h1>
+  <p class="sub">การเกิดเสียง • ตัวกลาง • เสียงสูง-ต่ำ • ดัง-ค่อย • มลพิษทางเสียง</p>
+</div>
+
+<!-- S2 -->
+<div class="slide s2" id="s2">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 ให้นักเรียนเอามือแตะคอแล้วพูด "อา~" จะรู้สึกสั่น นำเข้าว่าเสียงเกิดจากการสั่น</div>
+  <div class="lesson-tag">ชั่วโมงที่ 1</div>
+  <div class="big-emoji">🤔</div>
+  <h2>เสียงเกิดขึ้นได้อย่างไร?</h2>
+  <div class="box" style="text-align:center">
+    <p style="font-size:clamp(15px,2.3vw,26px);color:#fff">เสียงเกิดจากการ <span style="color:#c084fc">สั่นสะเทือน</span> ของวัตถุ<br>เมื่อวัตถุสั่น → อากาศรอบๆ สั่นตาม → เดินทางมาถึงหูเรา</p>
+  </div>
+  <div class="two-col">
+    <div class="col"><h4>✋ ลองพิสูจน์</h4><p>• แตะคอแล้วพูด → รู้สึกสั่น</p><p>• ดีดสายยาง/สายกีตาร์ → เห็นสั่น</p><p>• เคาะส้อมเสียงแตะน้ำ → น้ำกระเซ็น</p></div>
+    <div class="col"><h4>🔇 หยุดสั่น = หยุดเสียง</h4><p>• จับสายกีตาร์ที่กำลังสั่นให้นิ่ง</p><p>• เสียงจะหายไปทันที</p></div>
+  </div>
+</div>
+
+<!-- S3 -->
+<div class="slide s3" id="s3">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 ให้นักเรียนยกตัวอย่างแหล่งกำเนิดเสียงรอบตัว แล้วชี้ว่าส่วนไหนสั่น</div>
+  <h2>🎵 แหล่งกำเนิดเสียงรอบตัว</h2>
+  <div class="nutrient-grid">
+    <div class="nutrient-card" style="background:rgba(168,85,247,.15);border:1px solid rgba(168,85,247,.4)"><h4 style="color:#c084fc">🎸 เครื่องดนตรี</h4><p>สายสั่น / อากาศในท่อสั่น</p></div>
+    <div class="nutrient-card" style="background:rgba(236,72,153,.15);border:1px solid rgba(236,72,153,.4)"><h4 style="color:#f9a8d4">🗣️ เสียงคน</h4><p>เส้นเสียงในลำคอสั่น</p></div>
+    <div class="nutrient-card" style="background:rgba(59,130,246,.15);border:1px solid rgba(59,130,246,.4)"><h4 style="color:#93c5fd">🔔 กระดิ่ง/ระฆัง</h4><p>โลหะสั่นเมื่อถูกเคาะ</p></div>
+    <div class="nutrient-card" style="background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.4)"><h4 style="color:#4ade80">📻 ลำโพง</h4><p>แผ่นลำโพงสั่น</p></div>
+    <div class="nutrient-card" style="background:rgba(251,191,36,.15);border:1px solid rgba(251,191,36,.4)"><h4 style="color:#fbbf24">🐦 สัตว์</h4><p>นก แมลง สั่นปีก/อวัยวะ</p></div>
+    <div class="nutrient-card" style="background:rgba(14,165,233,.15);border:1px solid rgba(14,165,233,.4)"><h4 style="color:#7dd3fc">💨 ลม/ธรรมชาติ</h4><p>อากาศสั่นผ่านสิ่งกีดขวาง</p></div>
+  </div>
+</div>
+
+<!-- S4 -->
+<div class="slide s4" id="s4">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 อธิบายการสั่นสะเทือนแทนด้วยคลื่น สั่นไป-มา รอบจุดสมดุล ครูสาธิตด้วยหนังยางหรือไม้บรรทัด</div>
+  <h2>〰️ การสั่นสะเทือน → เสียง</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>〰️ การสั่นสะเทือนคืออะไร</h4>
+      <p>• การเคลื่อนที่ไป-กลับ ซ้ำๆ รอบตำแหน่งเดิม</p>
+      <p>• ทำให้อากาศรอบๆ สั่นเป็น <span style="color:#c084fc">คลื่นเสียง</span></p>
+      <p>• คลื่นเดินทางมาถึงหูเรา</p>
+    </div>
+    <div class="col">
+      <h4>🔬 สังเกตได้อย่างไร</h4>
+      <p>• วางเม็ดข้าวสาร/กระดาษบนลำโพง → เด้ง</p>
+      <p>• โรยทรายบนกลอง แล้วเคาะ → ทรายเต้น</p>
+      <p>• แสดงว่ามีการสั่นจริง</p>
+    </div>
+  </div>
+</div>
+
+<!-- S5 -->
+<div class="slide s5" id="s5">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 กิจกรรมที่ 1 (ชม.1): ให้นักเรียนทำให้เกิดเสียงด้วยของใกล้ตัว แล้วสังเกต/บันทึกว่าส่วนใดสั่น</div>
+  <div class="lesson-tag">กิจกรรมที่ 1</div>
+  <div class="big-emoji">🥁</div>
+  <h2>กิจกรรม: เสียงกับการสั่น</h2>
+  <div class="activity-box">
+    <h3>📝 โจทย์</h3>
+    <p>1. ทำให้เกิดเสียงจากของ 3 อย่าง (หนังยาง ไม้บรรทัด แก้วน้ำ ฯลฯ)<br>
+    2. สังเกตว่าส่วนใดของวัตถุสั่น<br>
+    3. ลองทำให้การสั่นหยุด แล้วบันทึกว่าเสียงเป็นอย่างไร<br>
+    4. สรุป: เสียงเกิดและหยุดเพราะอะไร</p>
+  </div>
+  <button class="timer-btn" onclick="startTimer(15)" style="margin-top:14px;font-size:15px;padding:10px 24px">⏱ 15 นาที</button>
+</div>
+
+<!-- S6 -->
+<div class="slide s6" id="s6">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 เริ่ม ชม.2 ถามว่า "เสียงเดินทางมาถึงหูเราได้อย่างไร?" นำเข้าตัวกลาง</div>
+  <div class="lesson-tag">ชั่วโมงที่ 2 — เสียงกับตัวกลาง</div>
+  <h2>📡 เสียงเคลื่อนที่ผ่าน "ตัวกลาง"</h2>
+  <div class="box" style="text-align:center">
+    <p style="font-size:clamp(15px,2.3vw,26px);color:#fff">เสียงเดินทางจากแหล่งกำเนิดมาถึงหู ต้องอาศัย <span style="color:#c084fc">ตัวกลาง</span><br>ตัวกลางได้แก่ <span style="color:#fcd34d">ของแข็ง ของเหลว และแก๊ส (อากาศ)</span></p>
+  </div>
+</div>
+
+<!-- S7 -->
+<div class="slide s7" id="s7">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 ยกตัวอย่างเสียงผ่านตัวกลางทั้ง 3 สถานะ ให้นักเรียนเล่าประสบการณ์ เช่น ได้ยินเสียงใต้น้ำ</div>
+  <h2>🧊💧💨 เสียงผ่านตัวกลาง 3 สถานะ</h2>
+  <div class="nutrient-grid">
+    <div class="nutrient-card" style="background:rgba(59,130,246,.15);border:1px solid rgba(59,130,246,.4)"><h4 style="color:#93c5fd">🧊 ของแข็ง</h4><p>แนบหูกับโต๊ะ<br>ได้ยินเสียงเคาะชัด</p></div>
+    <div class="nutrient-card" style="background:rgba(14,165,233,.15);border:1px solid rgba(14,165,233,.4)"><h4 style="color:#7dd3fc">💧 ของเหลว</h4><p>ได้ยินเสียงใต้น้ำ<br>เช่น ในสระว่ายน้ำ</p></div>
+    <div class="nutrient-card" style="background:rgba(168,85,247,.15);border:1px solid rgba(168,85,247,.4)"><h4 style="color:#c084fc">💨 อากาศ</h4><p>เสียงที่เราได้ยิน<br>ทั่วไปในชีวิตประจำวัน</p></div>
+  </div>
+</div>
+
+<!-- S8 -->
+<div class="slide s8" id="s8">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 เน้นว่าในสุญญากาศ (ไม่มีอากาศ) เสียงเดินทางไม่ได้ เช่น ในอวกาศเงียบสนิท</div>
+  <h2>🚫 เสียงผ่าน "สุญญากาศ" ไม่ได้</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>🌌 ในอวกาศเงียบสนิท</h4>
+      <p>• สุญญากาศ = ไม่มีอากาศ/ตัวกลาง</p>
+      <p>• ไม่มีอนุภาคให้สั่นต่อ</p>
+      <p>• เสียงจึงเดินทางไม่ได้</p>
+    </div>
+    <div class="col">
+      <h4>🔔 การทดลองคลาสสิก</h4>
+      <p>• กระดิ่งในครอบแก้วที่ดูดอากาศออก</p>
+      <p>• ยิ่งดูดอากาศออก เสียงยิ่งเบาลง</p>
+      <p>• จนเงียบเมื่อเป็นสุญญากาศ</p>
+    </div>
+  </div>
+</div>
+
+<!-- S9 -->
+<div class="slide s9" id="s9">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 อธิบายว่าเสียงเดินทางในของแข็งเร็วที่สุด เพราะอนุภาคอยู่ชิดกัน ส่งต่อการสั่นได้เร็ว</div>
+  <h2>🏃 เสียงเดินทางในตัวกลางใดเร็วสุด?</h2>
+  <div class="box">
+    <p style="color:#c084fc;font-weight:700;font-size:clamp(15px,2.2vw,24px);margin-bottom:10px;text-align:center">ของแข็ง &gt; ของเหลว &gt; อากาศ</p>
+    <div style="display:flex;flex-direction:column;gap:8px;font-size:clamp(13px,1.7vw,19px)">
+      <p>• <span style="color:#93c5fd">ของแข็ง</span> อนุภาคชิดกันมาก → ส่งต่อการสั่นเร็วที่สุด</p>
+      <p>• <span style="color:#7dd3fc">ของเหลว</span> อนุภาคชิดปานกลาง → เร็วปานกลาง</p>
+      <p>• <span style="color:#e9d5ff">อากาศ</span> อนุภาคห่างกัน → ช้าที่สุด</p>
+      <p style="color:#fbbf24;margin-top:6px">💡 จึงแนบหูกับรางรถไฟ ได้ยินเสียงรถไฟก่อนได้ยินผ่านอากาศ</p>
+    </div>
+  </div>
+</div>
+
+<!-- S10 -->
+<div class="slide s10" id="s10">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 กิจกรรมที่ 2 (ชม.2): ทำโทรศัพท์กระป๋อง/แก้ว ต่อด้วยเชือก พิสูจน์ว่าเสียงผ่านของแข็ง (เชือก)</div>
+  <div class="lesson-tag">กิจกรรมที่ 2</div>
+  <div class="big-emoji">📞</div>
+  <h2>กิจกรรม: โทรศัพท์กระป๋อง</h2>
+  <div class="activity-box">
+    <h3>📝 โจทย์</h3>
+    <p>1. ทำโทรศัพท์จากแก้ว/กระป๋อง 2 ใบ ต่อด้วยเชือก<br>
+    2. ดึงเชือกให้ตึง แล้วพูดใส่ปลายหนึ่ง อีกคนฟังอีกปลาย<br>
+    3. ลองหย่อนเชือก แล้วฟังอีกครั้ง<br>
+    4. สรุป: เสียงเดินทางผ่านตัวกลางใด และตึง/หย่อนต่างกันอย่างไร</p>
+  </div>
+  <button class="timer-btn" onclick="startTimer(20)" style="margin-top:14px;font-size:15px;padding:10px 24px">⏱ 20 นาที</button>
+</div>
+
+<!-- S11 -->
+<div class="slide s11" id="s11">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 Quiz ตัวกลาง</div>
+  <div class="lesson-tag">ทดสอบความเข้าใจ</div>
+  <h2>🎯 Quiz: เสียงเดินทางผ่านสิ่งใด "ไม่ได้"?</h2>
+  <div class="quiz-opts">
+    <button class="qbtn" onclick="qb(this,'q11',false)">A. อากาศ</button>
+    <button class="qbtn" onclick="qb(this,'q11',false)">B. น้ำ</button>
+    <button class="qbtn" onclick="qb(this,'q11',false)">C. ไม้</button>
+    <button class="qbtn" onclick="qb(this,'q11',true)">D. สุญญากาศ (อวกาศ)</button>
+  </div>
+  <div id="q11" class="result-msg"></div>
+  <button class="reveal-btn" onclick="rev('r11')" style="margin-top:10px">🔍 อธิบาย</button>
+  <div id="r11" class="reveal-text">สุญญากาศไม่มีตัวกลาง (อนุภาค) ให้สั่นต่อ เสียงจึงเดินทางไม่ได้ ✅</div>
+</div>
+
+<!-- S12 -->
+<div class="slide s12" id="s12">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 เริ่ม ชม.3 แยกให้ชัดระหว่าง "สูง-ต่ำ" (ระดับเสียง) กับ "ดัง-ค่อย" (ความดัง) เด็กมักสับสน</div>
+  <div class="lesson-tag">ชั่วโมงที่ 3 — ลักษณะของเสียง</div>
+  <h2>🎚️ เสียงสูง-ต่ำ และ ดัง-ค่อย</h2>
+  <div class="box" style="text-align:center">
+    <p style="font-size:clamp(15px,2.3vw,26px);color:#fff">เสียงมี 2 ลักษณะที่ต่างกัน<br><span style="color:#fbbf24">สูง-ต่ำ</span> (ระดับเสียง) และ <span style="color:#c084fc">ดัง-ค่อย</span> (ความดัง)</p>
+  </div>
+  <p class="sub">⚠️ "เสียงสูง" ไม่ได้แปลว่า "เสียงดัง" — เป็นคนละเรื่องกัน</p>
+</div>
+
+<!-- S13 -->
+<div class="slide s13" id="s13">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 เสียงสูง-ต่ำ ขึ้นกับความถี่การสั่น สั่นเร็ว/ถี่ = สูง ครูสาธิตด้วยไม้บรรทัดยื่นสั้น-ยาว</div>
+  <h2>🎵 เสียงสูง-ต่ำ (ระดับเสียง)</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>⬆️ เสียงสูง</h4>
+      <p>• วัตถุสั่น <span style="color:#fbbf24">เร็ว / ถี่</span> (ความถี่สูง)</p>
+      <p>• เช่น สายเส้นเล็ก/ตึง, ไม้บรรทัดยื่นสั้น</p>
+      <p>• เสียงนกหวีด เสียงเด็กเล็ก</p>
+    </div>
+    <div class="col">
+      <h4>⬇️ เสียงต่ำ</h4>
+      <p>• วัตถุสั่น <span style="color:#93c5fd">ช้า / ห่าง</span> (ความถี่ต่ำ)</p>
+      <p>• เช่น สายเส้นใหญ่/หย่อน, ไม้บรรทัดยื่นยาว</p>
+      <p>• เสียงกลองใหญ่ เสียงผู้ชายทุ้ม</p>
+    </div>
+  </div>
+</div>
+
+<!-- S14 -->
+<div class="slide s14" id="s14">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 เสียงดัง-ค่อย ขึ้นกับพลังงาน/ขนาดการสั่น (แอมพลิจูด) เคาะแรง=ดัง หน่วยความดังคือเดซิเบล</div>
+  <h2>🔊 เสียงดัง-ค่อย (ความดัง)</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4>📢 เสียงดัง</h4>
+      <p>• วัตถุสั่นด้วย <span style="color:#fbbf24">พลังงานมาก</span> (สั่นกว้าง)</p>
+      <p>• เคาะ/ดีด/ตีแรง</p>
+      <p>• เช่น ตีกลองแรงๆ</p>
+    </div>
+    <div class="col">
+      <h4>🔉 เสียงค่อย</h4>
+      <p>• วัตถุสั่นด้วย <span style="color:#93c5fd">พลังงานน้อย</span> (สั่นแคบ)</p>
+      <p>• เคาะ/ดีด/ตีเบา</p>
+      <p>• หน่วยวัดความดัง = <span style="color:#e9d5ff">เดซิเบล (dB)</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- S15 -->
+<div class="slide s15" id="s15">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 กิจกรรมที่ 3 (ชม.3): ใช้ไม้บรรทัด/หนังยาง ทดลองเปลี่ยนสูง-ต่ำ (ความยาว/ความตึง) และดัง-ค่อย (แรงดีด)</div>
+  <div class="lesson-tag">กิจกรรมที่ 3</div>
+  <div class="big-emoji">📏</div>
+  <h2>กิจกรรม: ทดลองเสียงสูง-ต่ำ ดัง-ค่อย</h2>
+  <div class="activity-box">
+    <h3>📝 โจทย์</h3>
+    <p>1. กดไม้บรรทัดที่ขอบโต๊ะ ดีดให้สั่น — ลองยื่นสั้น/ยาว สังเกตเสียงสูง-ต่ำ<br>
+    2. ดีดเบา/แรง สังเกตเสียงดัง-ค่อย<br>
+    3. บันทึก: ยื่นสั้น → เสียง____ , ดีดแรง → เสียง____<br>
+    4. สรุปความสัมพันธ์ของการสั่นกับเสียง</p>
+  </div>
+  <button class="timer-btn" onclick="startTimer(20)" style="margin-top:14px;font-size:15px;padding:10px 24px">⏱ 20 นาที</button>
+</div>
+
+<!-- S16 -->
+<div class="slide s16" id="s16">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 Quiz สูง-ต่ำ ดัง-ค่อย เน้นความต่าง</div>
+  <div class="lesson-tag">ทดสอบความเข้าใจ</div>
+  <h2>🎯 Quiz: ดีดสายกีตาร์เส้นเดิม "แรงขึ้น" เสียงจะเป็นอย่างไร?</h2>
+  <div class="quiz-opts">
+    <button class="qbtn" onclick="qb(this,'q16',false)">A. เสียงสูงขึ้น</button>
+    <button class="qbtn" onclick="qb(this,'q16',false)">B. เสียงต่ำลง</button>
+    <button class="qbtn" onclick="qb(this,'q16',true)">C. เสียงดังขึ้น (ระดับเสียงเท่าเดิม)</button>
+    <button class="qbtn" onclick="qb(this,'q16',false)">D. ไม่มีเสียง</button>
+  </div>
+  <div id="q16" class="result-msg"></div>
+  <button class="reveal-btn" onclick="rev('r16')" style="margin-top:10px">🔍 อธิบาย</button>
+  <div id="r16" class="reveal-text">ดีดแรงขึ้น = ให้พลังงานมาก → เสียง "ดัง" ขึ้น ส่วนสูง-ต่ำขึ้นกับความถี่ (ความตึง/ขนาดสาย) ✅</div>
+</div>
+
+<!-- S17 -->
+<div class="slide s17" id="s17">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 เริ่ม ชม.4 อธิบายเส้นทางการได้ยิน เสียง → ใบหู → แก้วหู → ส่งสัญญาณไปสมอง</div>
+  <div class="lesson-tag">ชั่วโมงที่ 4 — การได้ยิน</div>
+  <h2>👂 เราได้ยินเสียงได้อย่างไร?</h2>
+  <ul class="step-list">
+    <li><span class="sn">1</span>คลื่นเสียงเดินทางผ่านอากาศเข้าสู่ <strong style="color:#e9d5ff">ใบหู</strong></li>
+    <li><span class="sn">2</span>เสียงทำให้ <strong style="color:#fbbf24">แก้วหู</strong> สั่นสะเทือน</li>
+    <li><span class="sn">3</span>การสั่นถูกส่งต่อผ่านกระดูกหูชั้นกลาง</li>
+    <li><span class="sn">4</span>เปลี่ยนเป็นสัญญาณส่งไปยัง <strong style="color:#c084fc">สมอง</strong> → แปลความเป็นเสียง</li>
+  </ul>
+</div>
+
+<!-- S18 -->
+<div class="slide s18" id="s18">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 อภิปรายมลพิษทางเสียงในชีวิตจริง เช่น เสียงรถ เสียงก่อสร้าง หูฟังดังเกินไป และวิธีป้องกัน</div>
+  <h2>🔇 มลพิษทางเสียง</h2>
+  <div class="two-col">
+    <div class="col">
+      <h4 style="color:#f87171">⚠️ ผลเสีย</h4>
+      <p>• เสียงดังเกิน 85 เดซิเบลนานๆ ทำลายการได้ยิน</p>
+      <p>• ทำให้เครียด หงุดหงิด นอนไม่หลับ</p>
+      <p>• เสียสมาธิ การเรียนแย่ลง</p>
+    </div>
+    <div class="col">
+      <h4 style="color:#4ade80">🛡️ การป้องกัน</h4>
+      <p>• ไม่เปิดเพลง/หูฟังดังเกินไป</p>
+      <p>• ใส่ที่อุดหู/ครอบหูในที่เสียงดัง</p>
+      <p>• ปลูกต้นไม้ ทำกำแพงกันเสียง</p>
+    </div>
+  </div>
+</div>
+
+<!-- S19 -->
+<div class="slide s19" id="s19">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 Quiz สรุป + บัตรออกห้อง ให้เขียนคำตอบส่งครู</div>
+  <div class="lesson-tag">ทบทวน + บัตรออกห้อง</div>
+  <h2>🎯 Quiz: เสียงสูง-ต่ำ ขึ้นอยู่กับสิ่งใด?</h2>
+  <div class="quiz-opts">
+    <button class="qbtn" onclick="qb(this,'q19',true)">A. ความถี่ของการสั่น (สั่นเร็ว-ช้า)</button>
+    <button class="qbtn" onclick="qb(this,'q19',false)">B. ความแรงในการเคาะ</button>
+    <button class="qbtn" onclick="qb(this,'q19',false)">C. สีของวัตถุ</button>
+    <button class="qbtn" onclick="qb(this,'q19',false)">D. ขนาดของหู</button>
+  </div>
+  <div id="q19" class="result-msg"></div>
+  <button class="reveal-btn" onclick="rev('r19')" style="margin-top:10px">🎫 บัตรออกห้อง</button>
+  <div id="r19" class="reveal-text">เขียนส่งครู: 1) เสียงเกิดจากอะไร? &nbsp; 2) เสียงเดินทางในของแข็ง ของเหลว อากาศ แบบใดเร็วที่สุด?</div>
+</div>
+
+<!-- S20 -->
+<div class="slide s20" id="s20">
+  <div class="teacher-note" onclick="toggleNote(this)">👩‍🏫 สรุปบทเรียน ทบทวนการเกิดเสียง ตัวกลาง สูง-ต่ำ ดัง-ค่อย มลพิษทางเสียง</div>
+  <div class="badge">สรุปบทเรียน หน่วยที่ 2 บทที่ 2</div>
+  <h2>🎓 สรุป: เสียง</h2>
+  <ul class="step-list">
+    <li><span class="sn">〰️</span><strong style="color:#c084fc">เสียงเกิด</strong>จากการสั่นสะเทือนของวัตถุ</li>
+    <li><span class="sn">📡</span><strong style="color:#93c5fd">ตัวกลาง</strong>: ผ่านของแข็ง&gt;ของเหลว&gt;อากาศ · สุญญากาศไม่ได้</li>
+    <li><span class="sn">🎵</span><strong style="color:#fbbf24">สูง-ต่ำ</strong>: ขึ้นกับความถี่ (สั่นเร็ว=สูง)</li>
+    <li><span class="sn">🔊</span><strong style="color:#f9a8d4">ดัง-ค่อย</strong>: ขึ้นกับพลังงาน/แอมพลิจูด (สั่นแรง=ดัง)</li>
+    <li><span class="sn">👂</span><strong style="color:#4ade80">การได้ยิน + มลพิษทางเสียง</strong>: ดูแลหู หลีกเลี่ยงเสียงดัง</li>
+  </ul>
+</div>
+
+<div class="nav">
+  <button class="nav-btn" onclick="go(-1)">◀</button>
+  <div class="dots" id="dots"></div>
+  <span class="counter" id="counter">1 / 20</span>
+  <button class="nav-btn" onclick="go(1)">▶</button>
+</div>
+
+<script>
+let cur=0;const slides=document.querySelectorAll('.slide');const total=slides.length;
+for(let i=0;i<total;i++){const d=document.createElement('div');d.className='dot'+(i===0?' on':'');document.getElementById('dots').appendChild(d);}
+function showSlide(n){slides[cur].classList.remove('active');document.querySelectorAll('.dot')[cur].classList.remove('on');cur=Math.max(0,Math.min(n,total-1));slides[cur].classList.add('active');document.querySelectorAll('.dot')[cur].classList.add('on');document.getElementById('counter').textContent=(cur+1)+' / '+total;document.getElementById('prog').style.width=((cur+1)/total*100)+'%';}
+function go(d){showSlide(cur+d)}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')go(1);if(e.key==='ArrowLeft')go(-1);});
+function rev(id){document.getElementById(id).classList.toggle('show')}
+function toggleNote(el){el.style.opacity=el.style.opacity=='.2'?'1':'.2'}
+function qb(btn,msgId,correct){
+  const opts=btn.closest('.quiz-opts').querySelectorAll('.qbtn');
+  opts.forEach(b=>b.disabled=true);
+  btn.classList.add(correct?'correct':'wrong');
+  if(!correct){opts.forEach(b=>{if(b.onclick.toString().includes(',true)'))b.classList.add('correct')})}
+  const msg=document.getElementById(msgId);
+  msg.style.display='block';msg.style.color=correct?'#4ade80':'#f87171';
+  msg.textContent=correct?'🎉 ถูกต้อง! เก่งมาก!':'❌ ลองดูอีกที — ดูเฉลยสีเขียว';
+}
+let timerInterval=null;
+function startTimer(min){clearInterval(timerInterval);let sec=min*60;const disp=document.getElementById('timerDisplay');disp.style.display='block';disp.style.color='#c084fc';function tick(){const m=Math.floor(sec/60);const s=sec%60;disp.textContent=m+':'+(s<10?'0':'')+s;if(sec===0){clearInterval(timerInterval);disp.textContent='⏰ หมดเวลา!';disp.style.color='#f87171';}sec--;}tick();timerInterval=setInterval(tick,1000);}
+</script>
+</body>
+</html>
