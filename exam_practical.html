@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ข้อสอบปฏิบัติ — ครูแพรพลอย | เซนต์โยเซฟระยอง</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Sarabun',sans-serif;background:#020f0a;color:#fff;min-height:100vh;padding:0 0 80px}
+.bg{position:fixed;inset:0;z-index:-1;background:linear-gradient(135deg,#020f0a,#022c22,#065f46,#0d9488);background-size:400% 400%;animation:grad 18s ease infinite}
+@keyframes grad{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+header{text-align:center;padding:48px 20px 20px}
+header .badge{display:inline-block;background:rgba(16,185,129,.25);border:1px solid rgba(16,185,129,.6);border-radius:50px;padding:7px 22px;font-size:15px;font-weight:700;color:#a7f3d0;margin-bottom:14px}
+header h1{font-size:clamp(26px,5vw,48px);font-weight:800;line-height:1.15}
+header p{font-size:clamp(14px,2.2vw,20px);color:rgba(255,255,255,.75);margin-top:10px}
+
+.wrap{max-width:960px;margin:0 auto;padding:0 18px}
+
+.grade{margin-top:38px}
+.grade-title{font-size:clamp(20px,3.5vw,32px);font-weight:800;color:#6ee7b7;border-left:6px solid #10b981;padding-left:14px;margin-bottom:16px}
+
+.card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(12px);border-radius:22px;padding:26px 28px;margin-bottom:22px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.card .subj{display:inline-block;font-size:14px;font-weight:700;padding:5px 16px;border-radius:50px;margin-bottom:12px}
+.subj.cs{background:rgba(16,185,129,.22);color:#a7f3d0;border:1px solid rgba(16,185,129,.5)}
+.subj.com{background:rgba(59,130,246,.22);color:#bfdbfe;border:1px solid rgba(59,130,246,.5)}
+.card h3{font-size:clamp(19px,3vw,27px);font-weight:800;margin-bottom:6px}
+.quote{background:rgba(255,255,255,.05);border-left:4px solid rgba(255,255,255,.35);border-radius:0 12px 12px 0;padding:12px 18px;font-size:clamp(14px,2vw,19px);color:rgba(255,255,255,.9);margin:12px 0 18px;font-style:italic}
+
+.lbl{font-size:clamp(15px,2.2vw,20px);font-weight:800;color:#fcd34d;margin:16px 0 10px}
+ol.steps{list-style:none;counter-reset:st}
+ol.steps li{counter-increment:st;position:relative;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:11px 16px 11px 50px;margin-bottom:9px;font-size:clamp(14px,2vw,18px);line-height:1.5}
+ol.steps li::before{content:counter(st);position:absolute;left:12px;top:11px;width:28px;height:28px;background:#10b981;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:#fff}
+
+table{width:100%;border-collapse:collapse;margin-top:14px;font-size:clamp(13px,1.9vw,17px);overflow:hidden;border-radius:12px}
+table caption{text-align:left;font-weight:800;color:#fcd34d;font-size:clamp(15px,2.2vw,20px);margin-bottom:8px;caption-side:top}
+th,td{padding:10px 14px;text-align:left;border-bottom:1px solid rgba(255,255,255,.12)}
+th{background:rgba(16,185,129,.25);font-weight:800}
+td:last-child,th:last-child{text-align:center;width:90px;font-weight:700}
+tr:last-child td{border-bottom:none}
+tbody tr:nth-child(even){background:rgba(255,255,255,.04)}
+
+.vartab td:first-child{font-weight:700;color:#a7f3d0;width:200px}
+
+pre{background:#04140d;border:1px solid rgba(16,185,129,.3);border-radius:14px;padding:18px 20px;overflow-x:auto;margin-top:12px;font-size:clamp(12.5px,1.7vw,15px);line-height:1.65}
+pre code{font-family:'Consolas','Courier New',monospace;color:#d1fae5;white-space:pre}
+.cmt{color:#6b9080}
+
+.tip{background:rgba(252,211,77,.12);border:1px solid rgba(252,211,77,.35);border-radius:12px;padding:12px 16px;margin-top:14px;font-size:clamp(13px,1.9vw,17px);color:#fde68a}
+
+/* Teacher edit toolbar */
+.toolbar{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;gap:10px;justify-content:center;align-items:center;padding:10px;background:rgba(2,15,10,.85);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.12);transform:translateY(-100%);transition:transform .3s}
+.toolbar.show{transform:translateY(0)}
+.tbtn{font-family:'Sarabun',sans-serif;font-weight:700;font-size:15px;border:none;border-radius:50px;padding:9px 20px;cursor:pointer;transition:all .2s}
+.tbtn.save{background:#10b981;color:#fff}
+.tbtn.reset{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3)}
+.tbtn.print{background:#3b82f6;color:#fff}
+.tbtn:hover{transform:translateY(-2px);filter:brightness(1.1)}
+.tstatus{font-size:14px;color:#a7f3d0}
+
+.fab{position:fixed;bottom:22px;right:22px;z-index:400;background:#f59e0b;color:#0a0a0a;border:none;border-radius:50px;padding:14px 24px;font-family:'Sarabun',sans-serif;font-weight:800;font-size:16px;cursor:pointer;box-shadow:0 8px 24px rgba(245,158,11,.5);transition:all .2s}
+.fab:hover{transform:translateY(-3px)}
+.fab.editing{background:#ef4444;color:#fff;box-shadow:0 8px 24px rgba(239,68,68,.5)}
+
+body.editmode [data-edit]{outline:2px dashed rgba(252,211,77,.7);outline-offset:3px;border-radius:6px;background:rgba(252,211,77,.06)}
+body.editmode{padding-top:60px}
+
+footer{text-align:center;color:rgba(255,255,255,.5);font-size:14px;margin-top:40px;padding:0 20px}
+
+@media print{
+  body{background:#fff;color:#000;padding:0}
+  .bg,.toolbar,.fab,footer .noprint{display:none}
+  .card{break-inside:avoid;border:1px solid #999;background:#fff;box-shadow:none;color:#000}
+  header h1,.grade-title,.card h3{color:#000}
+  .lbl{color:#b45309}.subj{color:#000!important}
+  th{background:#ddd;color:#000}
+  pre{background:#f4f4f4;color:#000}pre code{color:#000}.cmt{color:#777}
+  .quote,.tip{color:#000;background:#f7f7f7}
+}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+
+<!-- Teacher edit toolbar -->
+<div class="toolbar" id="toolbar">
+  <span class="tstatus" id="tstatus">✏️ โหมดแก้ไข — คลิกที่ข้อความเพื่อแก้ได้เลย</span>
+  <button class="tbtn save" onclick="saveEdits()">💾 บันทึก</button>
+  <button class="tbtn print" onclick="window.print()">🖨️ พิมพ์</button>
+  <button class="tbtn reset" onclick="resetEdits()">↺ คืนค่าเดิม</button>
+</div>
+
+<header>
+  <span class="badge">โรงเรียนเซนต์โยเซฟระยอง · ครูแพรพลอย ภิบาลจอมมี</span>
+  <h1 data-edit>📝 ข้อสอบปฏิบัติ คอมพิวเตอร์</h1>
+  <p data-edit>วิทยาการคำนวณ &amp; คอมพิวเตอร์เพิ่มเติม · ป.1 – ม.2 · ข้อละ 10 คะแนน</p>
+</header>
+
+<div class="wrap" id="content">
+
+  <!-- ================= ป.1 ================= -->
+  <section class="grade">
+    <div class="grade-title" data-edit>🎒 ป.1</div>
+
+    <div class="card">
+      <span class="subj cs">วิทยาการคำนวณ</span>
+      <h3 data-edit>วาดโฟลชาร์ท "วางแผนตอนเช้าก่อนมาโรงเรียน"</h3>
+      <div class="quote" data-edit>ตื่นนอนตอนเช้าต้องทำอะไรบ้างก่อนมาโรงเรียน? ให้วาดโฟลชาร์ทในโปรแกรม Paint แสดงขั้นตอนการเตรียมตัว อย่างน้อย 4 ขั้นตอน</div>
+      <div class="lbl">📋 ให้เด็กทำตามนี้</div>
+      <ol class="steps" data-edit>
+        <li>เปิดโปรแกรม Paint</li>
+        <li>วาดกล่อง <b>เริ่มต้น</b> (วงรี) เขียนคำว่า "ตื่นนอน"</li>
+        <li>วาดกล่องขั้นตอน (สี่เหลี่ยม) เรียงลงมา เช่น แปรงฟัน → อาบน้ำ → แต่งตัว → กินข้าว</li>
+        <li>ลากลูกศรเชื่อมแต่ละกล่องตามลำดับ</li>
+        <li>วาดกล่อง <b>จบ</b> (วงรี) เขียนคำว่า "มาโรงเรียน"</li>
+        <li>เซฟงานตั้งชื่อ "โฟลชาร์ท_ชื่อตัวเอง"</li>
+      </ol>
+      <table data-edit>
+        <caption>🎯 เกณฑ์ให้คะแนน (10 คะแนน)</caption>
+        <thead><tr><th>รายการ</th><th>คะแนน</th></tr></thead>
+        <tbody>
+          <tr><td>มีกล่องเริ่มต้น–จบ (วงรี)</td><td>2</td></tr>
+          <tr><td>มีขั้นตอนอย่างน้อย 4 ขั้น เรียงถูกลำดับ</td><td>4</td></tr>
+          <tr><td>มีลูกศรเชื่อมครบทุกกล่อง</td><td>2</td></tr>
+          <tr><td>เซฟงานถูกต้อง ตั้งชื่อไฟล์ได้</td><td>2</td></tr>
+        </tbody>
+      </table>
+      <div class="tip" data-edit>💡 เน้นวัด "การวางแผน/เรียงลำดับก่อนทำ" — ไม่เน้นวาดสวย</div>
+    </div>
+
+    <div class="card">
+      <span class="subj com">คอมพิวเตอร์เพิ่มเติม</span>
+      <h3 data-edit>"พิมพ์และเซฟงานของฉัน"</h3>
+      <div class="quote" data-edit>เปิด Microsoft Word พิมพ์ข้อความตามกำหนด แล้วเซฟลงโฟลเดอร์ที่สร้างเองให้ถูกต้อง</div>
+      <div class="lbl">📋 ให้เด็กทำตามนี้</div>
+      <ol class="steps" data-edit>
+        <li>เปิดโปรแกรม <b>Microsoft Word</b></li>
+        <li>พิมพ์ 3 บรรทัด: (1) ชื่อ–นามสกุล (2) ชั้น ป.1/… (3) ชื่อส่วนประกอบคอมพิวเตอร์ 2 อย่าง</li>
+        <li>สร้าง <b>โฟลเดอร์ใหม่</b> บนหน้าจอ ตั้งชื่อ "งานของ(ชื่อตัวเอง)"</li>
+        <li><b>เซฟไฟล์</b> เก็บไว้ในโฟลเดอร์ที่สร้าง</li>
+      </ol>
+      <table data-edit>
+        <caption>🎯 เกณฑ์ให้คะแนน (10 คะแนน)</caption>
+        <thead><tr><th>รายการ</th><th>คะแนน</th></tr></thead>
+        <tbody>
+          <tr><td>เปิดโปรแกรม Word ได้เอง</td><td>2</td></tr>
+          <tr><td>พิมพ์ครบ 3 บรรทัด (เว้นวรรค/ขึ้นบรรทัดใหม่ถูก)</td><td>3</td></tr>
+          <tr><td>บอกชื่อส่วนประกอบคอมได้ถูก 2 อย่าง</td><td>2</td></tr>
+          <tr><td>สร้างโฟลเดอร์ใหม่ได้</td><td>1</td></tr>
+          <tr><td>เซฟงานเข้าโฟลเดอร์ถูกต้อง</td><td>2</td></tr>
+        </tbody>
+      </table>
+      <div class="tip" data-edit>💡 วัดครบ: คีย์บอร์ด + Word + ส่วนประกอบคอม + เซฟงาน + โฟลเดอร์</div>
+    </div>
+  </section>
+
+  <!-- ================= ป.2 ================= -->
+  <section class="grade">
+    <div class="grade-title" data-edit>🎒 ป.2</div>
+
+    <div class="card">
+      <span class="subj cs">วิทยาการคำนวณ</span>
+      <h3 data-edit>"วาดโฟลชาร์ทขั้นตอนการทำงาน"</h3>
+      <div class="quote" data-edit>เลือกงาน 1 อย่าง แล้ววาดโฟลชาร์ทแสดงขั้นตอนในโปรแกรม Paint เรียงลงมาให้ครบ</div>
+      <div class="lbl">📋 ให้เด็กทำตามนี้</div>
+      <ol class="steps" data-edit>
+        <li>เปิดโปรแกรม Paint</li>
+        <li>วาดกล่อง <b>เริ่มต้น</b> (วงรี) เขียนชื่องาน เช่น "ล้างจาน" / "รดน้ำต้นไม้" / "ทำความสะอาดห้อง"</li>
+        <li>วาดกล่องขั้นตอน (สี่เหลี่ยม) <b>เรียงลงมาอย่างน้อย 4 ขั้น</b> ตามลำดับการทำงาน</li>
+        <li>ลากลูกศรเชื่อมทุกกล่องจากบนลงล่าง</li>
+        <li>วาดกล่อง <b>จบ</b> (วงรี)</li>
+        <li>เซฟงานตั้งชื่อ "โฟลชาร์ท_ชื่อตัวเอง"</li>
+      </ol>
+      <table data-edit>
+        <caption>🎯 เกณฑ์ให้คะแนน (10 คะแนน)</caption>
+        <thead><tr><th>รายการ</th><th>คะแนน</th></tr></thead>
+        <tbody>
+          <tr><td>มีกล่องเริ่มต้น–จบ (วงรี)</td><td>2</td></tr>
+          <tr><td>มีขั้นตอนอย่างน้อย 4 ขั้น เรียงลำดับถูกต้อง</td><td>4</td></tr>
+          <tr><td>มีลูกศรเชื่อมครบทุกกล่อง</td><td>2</td></tr>
+          <tr><td>เซฟงานถูกต้อง ตั้งชื่อไฟล์ได้</td><td>2</td></tr>
+        </tbody>
+      </table>
+      <div class="tip" data-edit>💡 จบในไฟล์เดียว — เน้นเรียงขั้นตอนบนลงล่างในเพ้น</div>
+    </div>
+
+    <div class="card">
+      <span class="subj com">คอมพิวเตอร์เพิ่มเติม</span>
+      <h3 data-edit>"ทำบัตรอวยพรของฉัน"</h3>
+      <div class="quote" data-edit>ทำบัตรอวยพร 1 ใบใน Word โดยใช้ปุ่มคีย์บอร์ดที่เรียนมาให้ถูกต้อง</div>
+      <div class="lbl">📋 ให้เด็กทำตามนี้</div>
+      <ol class="steps" data-edit>
+        <li>เปิดโปรแกรม <b>Word</b></li>
+        <li>พิมพ์คำอวยพร เช่น "สุขสันต์วันเกิด" หรือ "สวัสดีปีใหม่"</li>
+        <li>ใช้ปุ่ม <b>Shift</b> (สระบน/ตัวใหญ่) · <b>Enter</b> (ขึ้นบรรทัด) · <b>Spacebar</b> (เว้นวรรค)</li>
+        <li>ตกแต่ง: เปลี่ยน <b>สีตัวอักษร</b> และ <b>ขนาดตัวอักษร</b> ให้สวยงาม</li>
+        <li>ใส่ชื่อคนส่ง (ชื่อตัวเอง) ท้ายบัตร</li>
+        <li>เซฟไฟล์ตั้งชื่อ "บัตรอวยพร_ชื่อตัวเอง"</li>
+      </ol>
+      <table data-edit>
+        <caption>🎯 เกณฑ์ให้คะแนน (10 คะแนน)</caption>
+        <thead><tr><th>รายการ</th><th>คะแนน</th></tr></thead>
+        <tbody>
+          <tr><td>เปิด Word + พิมพ์คำอวยพรได้</td><td>2</td></tr>
+          <tr><td>ใช้ปุ่ม Shift / Enter / Spacebar ถูกต้อง</td><td>3</td></tr>
+          <tr><td>เปลี่ยนสี + ขนาดตัวอักษรได้</td><td>3</td></tr>
+          <tr><td>ใส่ชื่อผู้ส่ง + เซฟงานถูกต้อง</td><td>2</td></tr>
+        </tbody>
+      </table>
+      <div class="tip" data-edit>💡 วัดครบ: ปุ่มคีย์บอร์ด + ทำบัตรอวยพรใน Word</div>
+    </div>
+  </section>
+
+  <!-- ================= ป.3 ================= -->
+  <section class="grade">
+    <div class="grade-title" data-edit>🎒 ป.3</div>
+
+    <div class="card">
+      <span class="subj cs">วิทยาการคำนวณ</span>
+      <h3 data-edit>"โฟลชาร์ทแบบมีการตัดสินใจ"</h3>
+      <div class="quote" data-edit>วาดโฟลชาร์ทที่มีเงื่อนไข (ถ้า...แล้ว...) ในโปรแกรม Paint</div>
+      <div class="lbl">📋 ให้เด็กทำตามนี้</div>
+      <ol class="steps" data-edit>
+        <li>เปิดโปรแกรม Paint</li>
+        <li>เลือกสถานการณ์ที่มีทางเลือก เช่น "ฝนตกไหม? → ถ้าตก กางร่ม / ถ้าไม่ตก เดินไปเลย"</li>
+        <li>วาดกล่อง <b>เริ่มต้น</b> (วงรี)</li>
+        <li>วาดกล่อง <b>คำถามเงื่อนไข</b> รูปสี่เหลี่ยมข้าวหลามตัด (◇) เขียนคำถามที่ตอบใช่/ไม่ใช่</li>
+        <li>แตกลูกศรออก <b>2 ทาง</b> เขียนกำกับ "ใช่" และ "ไม่ใช่" แต่ละทางมีกล่องขั้นตอน</li>
+        <li>วาดกล่อง <b>จบ</b> (วงรี) แล้วเซฟตั้งชื่อ "โฟลชาร์ทเงื่อนไข_ชื่อตัวเอง"</li>
+      </ol>
+      <table data-edit>
+        <caption>🎯 เกณฑ์ให้คะแนน (10 คะแนน)</caption>
+        <thead><tr><th>รายการ</th><th>คะแนน</th></tr></thead>
+        <tbody>
+          <tr><td>มีกล่องเริ่มต้น–จบ (วงรี)</td><td>2</td></tr>
+          <tr><td>มีกล่องเงื่อนไข (ข้าวหลามตัด) พร้อมคำถามใช่/ไม่ใช่</td><td>3</td></tr>
+          <tr><td>แตก 2 ทาง เขียนกำกับ "ใช่/ไม่ใช่" ถูกต้อง</td><td>3</td></tr>
+          <tr><td>มีลูกศรครบ + เซฟงานถูก</td><td>2</td></tr>
+        </tbody>
+      </table>
+      <div class="tip" data-edit>💡 หัวใจของบท: โฟลชาร์ทแบบมีเงื่อนไข — เพิ่มการตัดสินใจ 2 ทางจาก ป.2</div>
+    </div>
+
+    <div class="card">
+      <span class="subj com">คอมพิวเตอร์เพิ่มเติม</span>
+      <h3 data-edit>"ทำรายงาน 1 หน้า แล้วนำเสนอ"</h3>
+      <div class="quote" data-edit>ทำรายงานใน Word หน้า A4 ครึ่งบนใส่รูปภาพ ครึ่งล่างพิมพ์เนื้อหา แล้วนำมาทำสไลด์นำเสนอ</div>
+      <div class="lbl">📋 ให้เด็กทำตามนี้</div>
+      <ol class="steps" data-edit>
+        <li>เปิด <b>Word</b> เลือกหัวข้อที่ชอบ (เช่น "สัตว์ที่ฉันชอบ" / "ผลไม้ที่ชอบ")</li>
+        <li>พิมพ์ <b>ชื่อเรื่อง</b> ไว้บนสุด จัดกึ่งกลาง</li>
+        <li><b>ครึ่งบนของหน้า A4</b> → แทรกรูปภาพ (Insert → Picture) ที่ตรงกับเรื่อง</li>
+        <li><b>ครึ่งล่างของหน้า A4</b> → พิมพ์เนื้อหาอย่างน้อย 3 บรรทัด แล้วเซฟ "รายงาน_ชื่อตัวเอง"</li>
+        <li>เปิด <b>PowerPoint</b> ทำสไลด์ 2 สไลด์ (ปก + เนื้อหา) เซฟ "นำเสนอ_ชื่อตัวเอง"</li>
+      </ol>
+      <table data-edit>
+        <caption>🎯 เกณฑ์ให้คะแนน (10 คะแนน)</caption>
+        <thead><tr><th>รายการ</th><th>คะแนน</th></tr></thead>
+        <tbody>
+          <tr><td>มีชื่อเรื่องจัดกึ่งกลาง</td><td>1</td></tr>
+          <tr><td>ครึ่งบนแทรกรูปภาพตรงกับเรื่อง</td><td>3</td></tr>
+          <tr><td>ครึ่งล่างพิมพ์เนื้อหาอย่างน้อย 3 บรรทัด</td><td>3</td></tr>
+          <tr><td>ทำสไลด์นำเสนอได้ 2 สไลด์</td><td>2</td></tr>
+          <tr><td>เซฟงานถูกทั้ง 2 ไฟล์</td><td>1</td></tr>
+        </tbody>
+      </table>
+      <div class="tip" data-edit>💡 เน้นจัดหน้า: บน = รูป / ล่าง = เนื้อหา + แทรกรูปใน Word ได้</div>
+    </div>
+  </section>
+
+  <!-- ================= ป.6 ================= -->
+  <section class="grade">
+    <div class="grade-title" data-edit>🎒 ป.6</div>
+
+    <div class="card">
+      <span class="subj cs">วิทยาการคำนวณ</span>
+      <h3 data-edit>"แก้ปัญหาอย่างนักวิทยาศาสตร์"</h3>
+      <div class="quote" data-edit>เลือกปัญหา 1 อย่าง แก้ปัญหาเป็นขั้นตอนใน Word พร้อมเขียนซูโดโค้ด (Pseudocode) และวาดโฟลชาร์ทในเพ้น</div>
+      <div class="lbl">📋 ให้เด็กทำตามนี้</div>
+      <ol class="steps" data-edit>
+        <li>เปิด <b>Word</b> เลือกปัญหา เช่น "หาค่าเฉลี่ยคะแนน 3 วิชา" / "ตรวจเลขคู่-คี่" / "แปลงคะแนนเป็นเกรด"</li>
+        <li>เขียน: <b>ปัญหาคืออะไร</b> · <b>ข้อมูลนำเข้า/ผลลัพธ์</b> · <b>ขั้นตอนแก้ (Pseudocode)</b> เริ่ม → รับข้อมูล → ประมวลผล → แสดงผล → จบ</li>
+        <li>เซฟไฟล์ Word "แก้ปัญหา_ชื่อตัวเอง"</li>
+        <li>เปิด <b>Paint</b> วาดโฟลชาร์ทจากซูโดโค้ด (กล่องเริ่ม–จบ, รับข้อมูล, ประมวลผล, เงื่อนไขถ้ามี, ลูกศรครบ)</li>
+        <li>เซฟไฟล์ Paint "โฟลชาร์ท_ชื่อตัวเอง"</li>
+      </ol>
+      <table data-edit>
+        <caption>🎯 เกณฑ์ให้คะแนน (10 คะแนน)</caption>
+        <thead><tr><th>รายการ</th><th>คะแนน</th></tr></thead>
+        <tbody>
+          <tr><td>ระบุปัญหา + ข้อมูลนำเข้า/ผลลัพธ์ ใน Word</td><td>2</td></tr>
+          <tr><td>เขียนซูโดโค้ดเป็นขั้นตอนถูกต้อง ครบ เริ่ม–จบ</td><td>3</td></tr>
+          <tr><td>โฟลชาร์ทตรงกับซูโดโค้ด (สัญลักษณ์ถูก + ลูกศรครบ)</td><td>3</td></tr>
+          <tr><td>เซฟงานถูกทั้ง 2 ไฟล์</td><td>2</td></tr>
+        </tbody>
+      </table>
+      <div class="tip" data-edit>💡 หัวใจ: คิดอย่างนักวิทย์ → ซูโดโค้ด → แปลงเป็นโฟลชาร์ท (สอดคล้องกัน)</div>
+    </div>
+
+    <div class="card">
+      <span class="subj com">คอมพิวเตอร์เพิ่มเติม</span>
+      <h3 data-edit>"รายงานพร้อมนำเสนอ"</h3>
+      <div class="quote" data-edit>ทำรายงานใน Word แล้วนำมาทำสไลด์นำเสนอด้วย PowerPoint</div>
+      <div class="lbl">📋 ให้เด็กทำตามนี้</div>
+      <ol class="steps" data-edit>
+        <li>เปิด <b>Word</b> ทำรายงานหัวข้อที่สนใจ: มีชื่อเรื่อง (จัดกึ่งกลาง) + รูปภาพอย่างน้อย 1 รูป + เนื้อหาอย่างน้อย 5 บรรทัด เซฟ "รายงาน_ชื่อตัวเอง"</li>
+        <li>เปิด <b>PowerPoint</b> ทำสไลด์อย่างน้อย 3 สไลด์</li>
+        <li>สไลด์ 1: หน้าปก (ชื่อเรื่อง + ชื่อผู้ทำ)</li>
+        <li>สไลด์ 2–3: เนื้อหา + รูปภาพ ตกแต่งพื้นหลัง/สี/ขนาดตัวอักษรให้เหมาะสม</li>
+        <li>เซฟไฟล์ "นำเสนอ_ชื่อตัวเอง"</li>
+      </ol>
+      <table data-edit>
+        <caption>🎯 เกณฑ์ให้คะแนน (10 คะแนน)</caption>
+        <thead><tr><th>รายการ</th><th>คะแนน</th></tr></thead>
+        <tbody>
+          <tr><td>รายงาน Word มีชื่อเรื่อง + รูป + เนื้อหา 5 บรรทัด</td><td>3</td></tr>
+          <tr><td>ทำสไลด์ได้อย่างน้อย 3 สไลด์ (ปก + เนื้อหา)</td><td>3</td></tr>
+          <tr><td>มีรูปภาพในสไลด์ + ตกแต่งเหมาะสม</td><td>2</td></tr>
+          <tr><td>เซฟงานถูกทั้ง 2 ไฟล์</td><td>2</td></tr>
+        </tbody>
+      </table>
+      <div class="tip" data-edit>💡 ยกระดับจาก ป.3: เนื้อหายาวขึ้น สไลด์มากขึ้น เน้นการจัดวางให้น่านำเสนอ</div>
+    </div>
+  </section>
+
+  <!-- ================= ม.2 ================= -->
+  <section class="grade">
+    <div class="grade-title" data-edit>🎒 ม.2</div>
+
+    <div class="card">
+      <span class="subj cs">วิทยาการคำนวณ (Python)</span>
+      <h3 data-edit>"โปรแกรมคำนวณบิลร้านค้า" — ใช้ตัวแปรครบทุกชนิด (ไม่มี if-else)</h3>
+      <div class="quote" data-edit>เขียนโปรแกรม Python รับข้อมูลการซื้อของ คำนวณราคารวม และตรวจว่าเงินพอจ่ายไหม (แสดงผลเป็น True/False)</div>
+
+      <div class="lbl">🔤 ต้องใช้ตัวแปรครบทั้ง 4 ชนิด</div>
+      <table class="vartab" data-edit>
+        <thead><tr><th>ชนิดตัวแปร</th><th style="text-align:left;width:auto">ตัวอย่างในโจทย์</th></tr></thead>
+        <tbody>
+          <tr><td>str (ข้อความ)</td><td style="text-align:left">ชื่อลูกค้า, ชื่อสินค้า</td></tr>
+          <tr><td>int (จำนวนเต็ม)</td><td style="text-align:left">จำนวนชิ้นที่ซื้อ</td></tr>
+          <tr><td>float (ทศนิยม)</td><td style="text-align:left">ราคาต่อชิ้น, เงินที่มี</td></tr>
+          <tr><td>bool (จริง/เท็จ)</td><td style="text-align:left">เงินพอจ่ายหรือไม่ (True/False)</td></tr>
+        </tbody>
+      </table>
+
+      <div class="lbl">📋 ให้เด็กเขียนโปรแกรมทำสิ่งนี้</div>
+      <ol class="steps" data-edit>
+        <li>รับ <b>ชื่อลูกค้า</b> (str) และ <b>ชื่อสินค้า</b> (str) ด้วย input()</li>
+        <li>รับ <b>จำนวนชิ้น</b> (int) และ <b>ราคาต่อชิ้น</b> (float)</li>
+        <li>รับ <b>เงินที่ลูกค้ามี</b> (float)</li>
+        <li>คำนวณ <b>ราคารวม</b> = จำนวนชิ้น × ราคาต่อชิ้น และ <b>เงินทอน</b> = เงินที่มี − ราคารวม</li>
+        <li>สร้างตัวแปร bool: <b>เงินพอ</b> = เงินที่มี &gt;= ราคารวม แล้ว print ออกมาตรงๆ (True/False)</li>
+        <li>เซฟไฟล์ตั้งชื่อ "บิลร้านค้า_ชื่อตัวเอง.py"</li>
+      </ol>
+
+      <div class="lbl">✅ ตัวอย่างโค้ดเฉลย (สำหรับครูตรวจ)</div>
+      <pre data-edit><code><span class="cmt"># รับข้อมูล</span>
+ชื่อลูกค้า = input("ชื่อลูกค้า: ")          <span class="cmt"># str</span>
+สินค้า = input("ชื่อสินค้า: ")             <span class="cmt"># str</span>
+จำนวน = int(input("จำนวนชิ้น: "))          <span class="cmt"># int</span>
+ราคาต่อชิ้น = float(input("ราคาต่อชิ้น: ")) <span class="cmt"># float</span>
+เงินที่มี = float(input("เงินที่มี: "))     <span class="cmt"># float</span>
+
+<span class="cmt"># คำนวณ</span>
+ราคารวม = จำนวน * ราคาต่อชิ้น
+เงินทอน = เงินที่มี - ราคารวม
+เงินพอ = เงินที่มี &gt;= ราคารวม               <span class="cmt"># bool (True/False)</span>
+
+<span class="cmt"># แสดงผล</span>
+print("ลูกค้า:", ชื่อลูกค้า)
+print("สินค้า:", สินค้า)
+print("ราคารวม:", ราคารวม, "บาท")
+print("เงินทอน:", เงินทอน, "บาท")
+print("เงินพอจ่ายไหม:", เงินพอ)   <span class="cmt"># แสดง True หรือ False</span></code></pre>
+
+      <table data-edit>
+        <caption>🎯 เกณฑ์ให้คะแนน (10 คะแนน)</caption>
+        <thead><tr><th>รายการ</th><th>คะแนน</th></tr></thead>
+        <tbody>
+          <tr><td>ใช้ตัวแปร str ถูกต้อง (ชื่อลูกค้า/สินค้า)</td><td>1</td></tr>
+          <tr><td>ใช้ตัวแปร int ถูกต้อง + แปลงด้วย int()</td><td>2</td></tr>
+          <tr><td>ใช้ตัวแปร float ถูกต้อง + แปลงด้วย float()</td><td>2</td></tr>
+          <tr><td>สร้างตัวแปร bool จากการเปรียบเทียบ + print True/False</td><td>2</td></tr>
+          <tr><td>คำนวณราคารวม + เงินทอน ถูกต้อง</td><td>2</td></tr>
+          <tr><td>โปรแกรมรันได้ไม่ error + เซฟไฟล์ .py</td><td>1</td></tr>
+        </tbody>
+      </table>
+      <div class="tip" data-edit>💡 ครบ 4 ชนิดตัวแปร + input/print + การคำนวณ — โดยไม่ต้องใช้ if-else (เงินไม่พอ → เงินทอนติดลบ + เงินพอเป็น False)</div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="noprint">🔒 ปุ่มแก้ไขด้านล่างขวาสำหรับครูเท่านั้น · การแก้ไขบันทึกไว้ในเครื่องนี้</p>
+    <p>โรงเรียนเซนต์โยเซฟระยอง · ครูแพรพลอย ภิบาลจอมมี</p>
+  </footer>
+</div>
+
+<button class="fab" id="fab" onclick="toggleEdit()">✏️ แก้ไข (สำหรับครู)</button>
+
+<script>
+const KEY='exam_practical_edits_v1';
+let editing=false;
+
+// restore saved edits
+(function(){
+  try{
+    const saved=localStorage.getItem(KEY);
+    if(saved){document.getElementById('content').innerHTML=saved;}
+  }catch(e){}
+})();
+
+function toggleEdit(){
+  editing=!editing;
+  const fab=document.getElementById('fab');
+  const bar=document.getElementById('toolbar');
+  document.body.classList.toggle('editmode',editing);
+  bar.classList.toggle('show',editing);
+  document.querySelectorAll('[data-edit]').forEach(el=>el.contentEditable=editing);
+  if(editing){
+    fab.textContent='✖ ปิดโหมดแก้ไข';fab.classList.add('editing');
+  }else{
+    fab.textContent='✏️ แก้ไข (สำหรับครู)';fab.classList.remove('editing');
+    saveEdits(true);
+  }
+}
+function saveEdits(silent){
+  try{
+    localStorage.setItem(KEY,document.getElementById('content').innerHTML);
+    if(!silent)flash('💾 บันทึกแล้ว');
+  }catch(e){flash('⚠️ บันทึกไม่สำเร็จ');}
+}
+function resetEdits(){
+  if(confirm('คืนค่าข้อความทั้งหมดกลับเป็นต้นฉบับ? การแก้ไขที่บันทึกไว้จะหายไป')){
+    localStorage.removeItem(KEY);location.reload();
+  }
+}
+function flash(msg){
+  const s=document.getElementById('tstatus');const old=s.textContent;
+  s.textContent=msg;setTimeout(()=>{s.textContent=old;},1800);
+}
+</script>
+</body>
+</html>
